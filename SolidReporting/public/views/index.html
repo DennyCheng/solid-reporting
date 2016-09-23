@@ -10,6 +10,8 @@
     <!--Data Factory & Controllers  -->
     <script type="text/javascript" src="/public/scripts/services/dataFactory.js"></script>
     <script type="text/javascript" src="/public/scripts/controllers/homeController.js"></script>
+    <script type="text/javascript" src="/public/scripts/controllers/loginController.js"></script>
+    <script type="text/javascript" src="/public/scripts/controllers/userController.js"></script>
 
     <title>Solid Reporting</title>
     <h1>Navi Bar</h1>
@@ -18,6 +20,43 @@
   <body ng-app="myApp" ng-controller="homeController">
     <h2>Body Div</h2>
     <h3>This is dataFactory{{test}}</h3>
+
+    <div class="container" ng-controller="LoginController">
+  <h1 class="lead">Login</h1>
+    <h1 class="lead alert alert-danger" role="alert" ng-if="message != ''">{{message}}</h2>
+    <form ng-submit="login()">
+      <div>
+          <label for="username">Username:</label>
+          <input type="text" ng-model="user.username" />
+      </div>
+      <div>
+          <label for="password">Password:</label>
+          <input type="password" ng-model="user.password" />
+      </div>
+      <div>
+          <input class="btn btn-default" type="submit" name="submit" value="Log In" />
+          <a href="#register">Register</a>
+      </div>
+    </form>
+</div>
+<!--
+    <div class="container" ng-controller="LoginController">
+  <h1 class="lead">Register User</h1>
+  <h1 class="lead alert alert-danger" role="alert" ng-if="message != ''">{{message}}</h2>
+  <form ng-submit="registerUser()">
+    <div>
+        <label for="username">Username:</label>
+        <input type="text" ng-model="user.username" />
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" ng-model="user.password" />
+    </div>
+    <input class="btn btn-default" type="submit" name="submit" value="Register" />
+    <a href="#home">Cancel</a>
+  </form>
+
+</div> -->
 
   </body>
 
