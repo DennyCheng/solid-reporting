@@ -1,0 +1,20 @@
+{
+  "name": "solidreporting",
+  "version": "1.0.0",
+  "description": "Data reporting application ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node SolidReporting/app.js"
+  },
+  "author": "Liz Haakenson, Liz Puhl, Jerry Lee, Denny Cheng, Nick Matecki",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-route": "^1.5.8",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "path": "^0.12.7",
+    "pg": "^6.1.0"
+  }
+}
