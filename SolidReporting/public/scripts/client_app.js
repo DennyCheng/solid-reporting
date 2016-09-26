@@ -1,15 +1,19 @@
-var myApp = angular.module('myApp',['ngRoute']);
+var myApp = angular.module('myApp',['ngMaterial','ngRoute', 'isteven-multi-select', 'angularjs-dropdown-multiselect']);
 
 
 myApp.config(['$routeProvider',function($routeProvider){
 
   $routeProvider
-  .when('/index',{
-        templateUrl:'/public/views/index.html',
-        controller:'homeController'
+  .when('/home', {
+        templateUrl:'/public/views/partials/demographics.html',
+        controller:'DemoController'
+      })
+  .when('/demographics', {
+        templateUrl: '/public/views/partials/demographics.html',
+        controller: "DemoController"
       })
   .otherwise({
-        redirectTo:'index'
+        redirectTo:'home'
       });
 
 }]);
