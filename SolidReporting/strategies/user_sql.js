@@ -5,11 +5,13 @@ var connection = require('../modules/connection');
 var pg = require('pg');
 
 passport.serializeUser(function(user, done) {
+  console.log('serialized');
+  console.log(user.id);
     done(null, user.id);
 });
 
 passport.deserializeUser(function(id, done) {
-//TODO SQL query
+// TO DO SQL query
   console.log('called deserializeUser');
   pg.connect(connection, function (err, client) {
 
