@@ -13,7 +13,7 @@ myApp.config(['$routeProvider',function($routeProvider){
       controller: "LoginController"
     })
   .when('/register', {
-      templateUrl: '/pubic/views/register.html',
+      templateUrl: '/public/views/register.html',
       controller: "LoginController"
     })
   .when('/user', {
