@@ -4,24 +4,24 @@ var myApp = angular.module('myApp',['ngRoute']);
 myApp.config(['$routeProvider',function($routeProvider){
 
   $routeProvider
-  .when('/index',{
-        templateUrl:'/public/views/index.html',
-        controller:'homeController'
-      })
+  // .when('/index',{
+  //       templateUrl:'/public/views/index.html',
+  //       controller:'homeController'
+  //     })
   .when('/login', {
-      templateUrl: '/views/home.html',
+      templateUrl: '/public/views/login.html',
       controller: "LoginController"
     })
   .when('/register', {
-      templateUrl: '/views/register.html',
+      templateUrl: '/pubic/views/register.html',
       controller: "LoginController"
     })
   .when('/user', {
-      templateUrl: '/views/user.html',
+      templateUrl: '/public/views/user.html',
       controller: "UserController"
     })
   .otherwise({
-        redirectTo:'index'
-      });
+        redirectTo:'login'
+      })
 
 }]);

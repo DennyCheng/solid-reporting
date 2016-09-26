@@ -17,11 +17,13 @@
     <h1>Navi Bar</h1>
   </head>
 
-  <body ng-app="myApp" ng-controller="homeController">
-    <h2>Body Div</h2>
-    <h3>This is dataFactory{{test}}</h3>
+  <body ng-app="myApp">
+    <!-- <h2>Body Div</h2>
+    <h3>This is dataFactory{{test}}</h3> -->
 
-    <div class="container" ng-controller="LoginController">
+    <main ng-view></main>
+
+    <!-- <div class="container" ng-controller="LoginController">
   <h1 class="lead">Login</h1>
     <h1 class="lead alert alert-danger" role="alert" ng-if="message != ''">{{message}}</h2>
     <form ng-submit="login()">
@@ -38,7 +40,7 @@
           <a href="#register">Register</a>
       </div>
     </form>
-</div>
+</div> -->
 <!--
     <div class="container" ng-controller="LoginController">
   <h1 class="lead">Register User</h1>
