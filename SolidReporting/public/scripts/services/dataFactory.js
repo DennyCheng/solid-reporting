@@ -3,6 +3,10 @@ myApp.factory('DataFactory', ['$http', '$location', function($http, $location) {
   //Private API Scope
   var randomArray = [1,2,3];
 
+  var dataUsername = '';
+
+  var message = '';
+
 
 
   login = function(user) {
@@ -30,7 +34,7 @@ myApp.factory('DataFactory', ['$http', '$location', function($http, $location) {
   registerUser = function(user) {
     console.log('register user', user);
     if(user.username == '' || user.password == '') {
-      // $scope.message = "Choose a username and password!";
+      message = "Choose a username and password!";
     } else {
       console.log('sending to server...', user);
       var promise = $http.post('/register', user).then(function(response) {
@@ -39,10 +43,32 @@ myApp.factory('DataFactory', ['$http', '$location', function($http, $location) {
       },
       function(response) {
         console.log('error');
-        // $scope.message = "Please try again."
+        message = "Please try again."
       });
     return promise;
     }
+  }
+
+currentSess = function() {
+var promise = $http.get('/user').then(function(response) {
+      if(response.data.username) {
+          // user has a curret session on the server
+          dataUsername = response.data.username;
+          console.log('User Data: ', dataUsername);
+      } else {
+          // user has no session, bounce them back to the login page
+          $location.path("/home");
+      }
+  });
+  return promise;
+}
+
+  logout = function() {
+    var promise = $http.get('/user/logout').then(function(response) {
+      console.log('logged out');
+      $location.path("/home");
+    });
+    return promise;
   }
 
 
@@ -58,6 +84,15 @@ myApp.factory('DataFactory', ['$http', '$location', function($http, $location) {
     },
     registerUser: function(user){
       return registerUser(user);
+    },
+    logout: function(){
+      return logout();
+    },
+    currentSess: function(){
+      return currentSess();
+    },
+    varUsername: function(){
+      return dataUsername;
     }
 
 
