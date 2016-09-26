@@ -1,4 +1,4 @@
-myApp.controller("homeController", ["$scope",'$http','DataFactory','$location',function($scope,$http,DataFactory,$location) {
+myApp.controller("HomeController", ['$scope','$http','DataFactory','$location',function($scope,$http,DataFactory,$location) {
   console.log("hello from homeController");
 
   $scope.dataFactory = DataFactory;
