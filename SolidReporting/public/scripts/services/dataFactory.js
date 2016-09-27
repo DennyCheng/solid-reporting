@@ -17,6 +17,7 @@ myApp.factory('DataFactory', ['$http', '$location', function($http, $location) {
         if(response.data.username) {
           console.log('success: ', response.data);
           userData = response.data;
+          dataUsername = response.data.username;
           return true;
         } else {
           console.log('failure: ', response);
@@ -28,10 +29,6 @@ myApp.factory('DataFactory', ['$http', '$location', function($http, $location) {
     }
 
   registerUser = function(user) {
-    console.log('register user', user);
-    if(user.username == '' || user.password == '') {
-      // message = "Choose a username and password!";
-    } else {
       console.log('sending to server...', user);
       var promise = $http.post('/register', user).then(function(response) {
         console.log('success');
@@ -43,7 +40,6 @@ myApp.factory('DataFactory', ['$http', '$location', function($http, $location) {
       });
     return promise;
     }
-  }
 
 currentSess = function() {
 var promise = $http.get('/user').then(function(response) {
