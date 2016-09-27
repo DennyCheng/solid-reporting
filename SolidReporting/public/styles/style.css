@@ -17,3 +17,7 @@
     width: auto; }
   .demoDropdown md-content._md {
     max-height: 240px; }
+
+  .calendar {
+    width: 10em;
+  }

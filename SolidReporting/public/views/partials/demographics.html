@@ -134,4 +134,30 @@
       </md-input-container>
     </div>
 
+    <!-- <h1 class="md-title">Date Range</h1>
+    <adm-dtp class="calendar"
+             ng-model="date"
+             full-data="date1_detail"
+             maxdate="{{date2_detail.unix}}"
+             on-datechange="date1Changed(date)">
+    </adm-dtp>
+    <adm-dtp class="calendar"
+             ng-model="date"
+             full-data="date2_detail"
+             mindate="{{date1_detail.unix}}"
+             on-datechange="date2Changed(date)">
+    </adm-dtp> -->
+    <label>Date Range</label>
+    <md-datepicker ng-model="date1" name="dateField" 
+      md-max-date="date2"></md-datepicker>
+    <md-datepicker ng-model="date2" name="dateField" md-min-date="date1">
+    </md-datepicker>
+
+    <!-- <div ng-messages="myOtherForm.dateField.$error">
+      <div ng-message="valid">The entered value is not a date!</div>
+      <div ng-message="required">This date is required!</div>
+      <div ng-message="mindate">Date is too early!</div>
+      <div ng-message="maxdate">Date is too late!</div>
+    </div> -->
+
 </div>

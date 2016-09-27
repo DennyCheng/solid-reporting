@@ -10,6 +10,7 @@
   "author": "Liz Haakenson, Liz Puhl, Jerry Lee, Denny Cheng, Nick Matecki",
   "license": "ISC",
   "dependencies": {
+    "adm-dtp": "^1.1.4",
     "angular": "^1.5.8",
     "angular-animate": "^1.5.8",
     "angular-aria": "^1.5.8",

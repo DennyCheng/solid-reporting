@@ -1,9 +1,9 @@
-var myApp = angular.module('myApp',['ngMaterial','ngRoute', ]);
+var myApp = angular.module('myApp',['ngMaterial','ngRoute', 'ADM-dateTimePicker']);
 
 // Unused dependencies (for dropdown menus)
 // 'isteven-multi-select', 'angularjs-dropdown-multiselect'
 
-myApp.config(['$routeProvider',function($routeProvider){
+myApp.config(['$routeProvider','ADMdtpProvider', function($routeProvider, ADMdtp){
 
   $routeProvider
   .when('/home', {
@@ -17,5 +17,14 @@ myApp.config(['$routeProvider',function($routeProvider){
   .otherwise({
         redirectTo:'home'
       });
+
+  ADMdtp.setOptions({
+    calType: 'gregorian',
+    format: 'MM/DD/YYYY',
+    default: 'today',
+    multiple: false,
+    autoClose: true
+});
+
 
 }]);

@@ -24,6 +24,32 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', function ($s
 
   $scope.exitingPersons = ['Graduated', 'Left voluntarily (not grad)', 'Terminated/Mutual termination', 'Other (i.e. death)'];
 
+  // -----------------Used with ADM-dateTimePicker-------------------
+  // $scope.date1Changed = function(date) {
+  //   var date1 = $scope.date;
+  //   console.log(date1);
+  // };
+  //
+  // $scope.date2Changed = function(date) {
+  //   var date2 = $scope.date;
+  //   console.log(date2);
+  // };
+  // ------------------------------------------------------------------
+
+
+  $scope.date1 = new Date();
+  $scope.date2 = new Date();
+
+  $scope.minDate = new Date(
+      $scope.date1.getFullYear(),
+      $scope.date1.getMonth() - 2,
+      $scope.date1.getDate());
+
+  $scope.maxDate = new Date(
+      $scope.date1.getFullYear(),
+      $scope.date1.getMonth() + 2,
+      $scope.date1.getDate());
+
 
   // The md-select directive eats keydown events for some quick select
   // logic. Since we have a search input here, we don't need that logic.
