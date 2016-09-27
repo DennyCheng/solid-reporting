@@ -1,5 +1,7 @@
-var myApp = angular.module('myApp',['ngMaterial','ngRoute', 'isteven-multi-select', 'angularjs-dropdown-multiselect']);
+var myApp = angular.module('myApp',['ngMaterial','ngRoute', ]);
 
+// Unused dependencies (for dropdown menus)
+// 'isteven-multi-select', 'angularjs-dropdown-multiselect'
 
 myApp.config(['$routeProvider',function($routeProvider){
 

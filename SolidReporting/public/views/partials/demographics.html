@@ -7,7 +7,8 @@
                   md-on-close="clearSearchTerm()"  data-md-container-class="demoDropdown"
                   multiple="">
         <md-optgroup label="Gender">
-          <md-option ng-value="gender">Select All</md-option>
+          <button ng-click= "selectedgender = genders">Select All</button>
+          <button ng-click="selectedgender=[]">Clear</button>
           <md-option ng-value="gender" ng-repeat="gender in genders">{{gender}}</md-option>
         </md-optgroup>
       </md-select>
@@ -28,7 +29,7 @@
                    class="demo-header-searchbox md-text">
           </md-select-header>
           <md-optgroup label="Race: Adults">
-            <button ng-click="selectedadultRace=adultRaces">Select All</button>
+            <button ng-click= "selectedadultRace = adultRaces">Select All</button>
             <button ng-click="selectedadultRace=[]">Clear</button>
             <md-option ng-value="adultRace" ng-repeat="adultRace in adultRaces">{{adultRace}}</md-option>
           </md-optgroup>
@@ -41,11 +42,12 @@
     <div layout="row">
       <md-input-container>
         <label>Select Race(s)</label>
-        <md-select  ng-model="selectedraceChilds"
+        <md-select  ng-model="selectedchildRace"
                     md-on-close="clearSearchTerm()"  data-md-container-class="demoDropdown"
                     multiple="">
           <md-optgroup label="Race: Children">
-            <md-option ng-value="childRace">Select All</md-option>
+            <button ng-click="selectedchildRace = childRaces">Select All</button>
+            <button ng-click="selectedchildRace=[]">Clear</button>
             <md-option ng-value="childRace" ng-repeat="childRace in childRaces">{{childRace}}</md-option>
           </md-optgroup>
         </md-select>
@@ -56,52 +58,80 @@
     <div layout="row">
       <md-input-container>
         <label>Select Age(s)</label>
-        <md-select  ng-model="selectedchildAges"
+        <md-select  ng-model="selectedchildAge"
                     md-on-close="clearSearchTerm()"  data-md-container-class="demoDropdown"
                     multiple="">
           <md-optgroup label="Age: Children">
-            <md-option ng-value="childAges">Select All</md-option>
-            <md-option ng-value="childAges" ng-repeat="childAge in childAges">{{childAge}}</md-option>
+            <button ng-click="selectedchildAge = childAges">Select All</button>
+            <button ng-click="selectedchildAge=[]">Clear</button>
+            <md-option ng-value="childAge" ng-repeat="childAge in childAges">{{childAge}}</md-option>
           </md-optgroup>
         </md-select>
       </md-input-container>
     </div>
 
     <h1 class="md-title">Age: Adults</h1>
-    <div isteven-multi-select
-    input-model="adultAges"
-    output-model="outputAdultAges"
-    button-label="range"
-    item-label="range"
-    tick-property="ticked"
-    on-open="fOpen()"
-    on-close="fClose()"
-    on-item-click="fClick( data )"
-    on-select-all="fSelectAll()"
-    on-select-none="fSelectNone()"
-    on-reset="fReset()"
-    on-clear="fClear()"
-    on-search-change="fSearchChange( data )">
+    <div layout="row">
+      <md-input-container>
+        <label>Select Age(s)</label>
+        <md-select  ng-model="selectedadultAge"
+                    md-on-close="clearSearchTerm()"  data-md-container-class="demoDropdown"
+                    multiple="">
+          <md-optgroup label="Age: Adults">
+            <button ng-click="selectedadultAge = adultAges">Select All</button>
+            <button ng-click="selectedadultAge=[]">Clear</button>
+            <md-option ng-value="adultAge" ng-repeat="adultAge in adultAges">{{adultAge}}</md-option>
+          </md-optgroup>
+        </md-select>
+      </md-input-container>
     </div>
 
     <h1 class="md-title">Last Residence</h1>
-    <div ng-dropdown-multiselect="" options="lastResidences" selected-model="lastResidencesModel" checkboxes="true" extra-settings="lastResidenceSettings"></div>
+    <div layout="row">
+      <md-input-container>
+        <label>Select Residence</label>
+        <md-select  ng-model="selectedresidence"
+                    md-on-close="clearSearchTerm()"  data-md-container-class="demoDropdown"
+                    multiple="">
+          <md-optgroup label="Last Residence">
+            <button ng-click="selectedresidence = residences">Select All</button>
+            <button ng-click="selectedresidence=[]">Clear</button>
+            <md-option ng-value="residence" ng-repeat="residence in residences">{{residence}}</md-option>
+          </md-optgroup>
+        </md-select>
+      </md-input-container>
+    </div>
 
     <h1 class="md-title">Household Income</h1>
-    <select multiple style="checkbox" ng-model="selectedhhIncome">
-      <option value="" style="display:none">Select Income Level</option>
-      <option ng-repeat="hhIncome in hhIncomes" value="{{hhIncome}}">{{hhIncome}} </option>
-    </select>
+    <div layout="row">
+      <md-input-container>
+        <label>Select Income Level</label>
+        <md-select  ng-model="selectedhhIncome"
+                    md-on-close="clearSearchTerm()"  data-md-container-class="demoDropdown"
+                    multiple="">
+          <md-optgroup label="Household Income">
+            <button ng-click="selectedhhIncome = hhIncomes">Select All</button>
+            <button ng-click="selectedhhIncome=[]">Clear</button>
+            <md-option ng-value="hhIncome" ng-repeat="hhIncome in hhIncomes">{{hhIncome}}</md-option>
+          </md-optgroup>
+        </md-select>
+      </md-input-container>
+    </div>
 
-    <div class="btn-group">
-      <button data-toggle="dropdown" class="btn btn-default dropdown-toggle">Checked option <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li ng-repeat="hhIncome in hhIncomes">
-            <input type="radio" id="hhIncome" name="NAME" value="VALUE">
-            <label for="hhIncome">Label</label>
-          </li>
-          <!-- Other items -->
-        </ul>
+    <h1 class="md-title">Persons Exiting Housing</h1>
+    <div layout="row">
+      <md-input-container>
+        <label>Select Reason</label>
+        <md-select  ng-model="selectedexitingPerson"
+                    md-on-close="clearSearchTerm()"  data-md-container-class="demoDropdown"
+                    multiple="">
+          <md-optgroup label="Select Reason">
+            <button ng-click="selectedexitingPerson = exitingPersons">Select All</button>
+            <button ng-click="selectedexitingPerson=[]">Clear</button>
+            <md-option ng-value="exitingPerson" ng-repeat="exitingPerson in exitingPersons">{{exitingPerson}}</md-option>
+          </md-optgroup>
+        </md-select>
+      </md-input-container>
     </div>
 
 </div>
