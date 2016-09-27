@@ -7,7 +7,9 @@ var path = require('path');
 router.post('/',
     passport.authenticate('local', {
         successRedirect: '/user',
-        failureRedirect: '/'
+        failureRedirect: function(err) {
+          console.log('here');
+        }
     })
 );
 

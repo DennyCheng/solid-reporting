@@ -5,41 +5,37 @@ myApp.factory('DataFactory', ['$http', '$location', function($http, $location) {
 
   var dataUsername = '';
 
-  var message = '';
+  // var message = '';
+  var userData = {};
+
 
 
 
   login = function(user) {
-    console.log('this is what login has', user);
-
-    if(user.username == '' || user.password == '') {
-      // $scope.message = "Enter your username and password!";
-    } else {
       console.log('sending to server...', user);
     var promise =  $http.post('/', user).then(function(response) {
         if(response.data.username) {
           console.log('success: ', response.data);
-          // location works with SPA (ng-route)
-          console.log('redirecting to user page');
-          $location.path('/user');
+          userData = response.data;
+          return true;
         } else {
           console.log('failure: ', response);
-          // $scope.message = "Wrong!!";
+          return false;
         }
       });
+      console.log('returning promise');
     return promise;
     }
-  }
 
   registerUser = function(user) {
     console.log('register user', user);
     if(user.username == '' || user.password == '') {
-      message = "Choose a username and password!";
+      // message = "Choose a username and password!";
     } else {
       console.log('sending to server...', user);
       var promise = $http.post('/register', user).then(function(response) {
         console.log('success');
-        $location.path('/home');
+        $location.path('/login');
       },
       function(response) {
         console.log('error');
@@ -53,11 +49,10 @@ currentSess = function() {
 var promise = $http.get('/user').then(function(response) {
       if(response.data.username) {
           // user has a curret session on the server
-          dataUsername = response.data.username;
           console.log('User Data: ', dataUsername);
       } else {
           // user has no session, bounce them back to the login page
-          $location.path("/home");
+          $location.path("/login");
       }
   });
   return promise;
@@ -66,8 +61,10 @@ var promise = $http.get('/user').then(function(response) {
   logout = function() {
     var promise = $http.get('/user/logout').then(function(response) {
       console.log('logged out');
-      $location.path("/home");
+      return true;
     });
+
+    console.log('returned promise');
     return promise;
   }
 
@@ -93,6 +90,9 @@ var promise = $http.get('/user').then(function(response) {
     },
     varUsername: function(){
       return dataUsername;
+    },
+    theMessage: function(){
+      return message;
     }
 
 
