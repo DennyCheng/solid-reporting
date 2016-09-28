@@ -52,6 +52,11 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', function ($s
   };
 //--------------------------------------------
 
+$scope.myData = [
+        {
+            "firstName": "Cox",
+            "lastName": "Carney"
+        }];
 
 // end controller
 }]);

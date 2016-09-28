@@ -1,6 +1,31 @@
 .logo {
-  
+
 }
+@font-face {
+  font-family: 'ui-grid';
+  src: url('ui-grid-fonts/ui-grid.eot');
+  src: url('ui-grid-fonts/ui-grid.eot#iefix') format('embedded-opentype'), url('ui-grid-fonts/ui-grid.woff') format('woff'), url('ui-grid-fonts/ui-grid.ttf?') format('truetype'), url('ui-grid-fonts/ui-grid.svg?#ui-grid') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+md-sidenav {
+   width: 220px;
+   height: 100%;
+   padding: 20px;
+   /*background-color: #6bc7cc;*/
+ }
+
+ md-content {
+   background-color : tan;
+   height: 100%;
+   padding: 20px;
+ }
+
+.demoGrid {
+    width: 500px;
+    height: 250px;
+  }
 
 .demoDropdown {
 /* Please note: All these selectors are only applied to children of elements with the 'demoDropdown' class */ }

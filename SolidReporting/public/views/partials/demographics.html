@@ -1,4 +1,7 @@
-<div class="md-padding" ng-cloak>
+<div layout="row" ng-cloak>
+<md-sidenav layout="column" class="sidenav1" md-is-locked-open='true'>
+
+  <!-- <div class="md-padding" ng-cloak> -->
   <h1 class="md-title">Gender</h1>
   <div layout="row">
     <md-input-container>
@@ -161,4 +164,9 @@
       <div ng-message="maxdate">Date is too late!</div>
     </div> -->
 
+  <!-- </div> -->
+</md-sidenav>
+<md-content flex layout="column">
+  <div ui-grid="{ data: myData }" class="demoGrid"></div>
+</md-content>
 </div>
