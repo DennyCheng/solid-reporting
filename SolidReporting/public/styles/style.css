@@ -1,3 +1,7 @@
+.logo {
+  
+}
+
 .demoDropdown {
 /* Please note: All these selectors are only applied to children of elements with the 'demoDropdown' class */ }
   .demoDropdown .demo-header-searchbox {
@@ -20,4 +24,18 @@
 
   .calendar {
     width: 10em;
+  }
+
+  md-content {
+  padding-bottom: 200px; }
+
+  .action-buttons {
+    display: flex;
+  }
+
+  #reset {
+    background-color: #d9dbe0;
+  }
+  #export {
+    background-color: #77a5ed;
   }

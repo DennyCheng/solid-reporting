@@ -3,29 +3,22 @@
   <head>
     <meta charset="utf-8">
 
-    <!-- Angular Material style sheet -->
+    <!-- Stylesheets -->
      <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
-     <!-- <link rel="stylesheet" href="/public/vendors/bootstrap.min.css"> -->
 
-     <!-- <link rel="stylesheet" href="/public/vendors/isteven-multi-select.css"> -->
-
-     <link rel="stylesheet" href="/public/vendors/ADM-dateTimePicker.min.css" />
      <link rel="stylesheet" href="/public/styles/style.css"/>
 
-     <!-- Angular.js Libraries -->
+     <!-- Angular.js  -->
      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
      <script type="text/javascript" src="/public/vendors/angular-route.min.js"></script>
+
+     <!-- Angular Material Libraries -->
      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
-
-
-     <!-- Angular Material Library -->
      <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
 
-     <!-- <script src="/public/vendors/isteven-multi-select.js"></script> -->
-     <script src="/public/vendors/ADM-dateTimePicker.min.js"></script>
-
+     <!-- Client-side JS app-->
      <script src="/public/scripts/client_app.js"></script>
 
      <!--Data Factory & Controllers  -->
@@ -33,16 +26,11 @@
      <script type="text/javascript" src="/public/scripts/controllers/homeController.js"></script>
      <script type="text/javascript" src="/public/scripts/controllers/democontroller.js"></script>
 
-
-
     <title>Solid Reporting</title>
-    <h1>Navi Bar</h1>
   </head>
-
   <body ng-app="myApp">
-    <h2>Body Div</h2>
-    <h3>This is dataFactory{{test}}</h3>
-
+    <div ng-include="'public/views/partials/header.html'">
+    </div>
     <div ng-view class="content"></div>
 
 

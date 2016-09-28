@@ -6,10 +6,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', function ($s
   $scope.test = $scope.dataFactory.testVar();
   console.log($scope.test);
 
-  $scope.searchTerm;
-  $scope.clearSearchTerm = function() {
-    $scope.searchTerm = '';
-  };
+  //----- Dropdowns -------------------------------------------------
 
   var races = ['African', 'African American', 'American Indian' ,'Asian/SE Asian/Pacific Islander', 'Caucasian/White', 'Hispanic/Latino', 'Multiracial', 'Other'];
   $scope.adultRaces = races;
@@ -24,40 +21,36 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', function ($s
 
   $scope.exitingPersons = ['Graduated', 'Left voluntarily (not grad)', 'Terminated/Mutual termination', 'Other (i.e. death)'];
 
-  // -----------------Used with ADM-dateTimePicker-------------------
-  // $scope.date1Changed = function(date) {
-  //   var date1 = $scope.date;
-  //   console.log(date1);
-  // };
-  //
-  // $scope.date2Changed = function(date) {
-  //   var date2 = $scope.date;
-  //   console.log(date2);
-  // };
-  // ------------------------------------------------------------------
 
+  //----- Dropdown Search field (doesn't work right) ------------------------
+  $scope.searchTerm;
+  $scope.clearSearchTerm = function() {
+    $scope.searchTerm = '';
+  };
+
+
+ //------ Calendar -------------------------------------------------------
+
+  var startDate;
+  var endDate;
 
   $scope.date1 = new Date();
   $scope.date2 = new Date();
 
-  $scope.minDate = new Date(
-      $scope.date1.getFullYear(),
-      $scope.date1.getMonth() - 2,
-      $scope.date1.getDate());
-
   $scope.maxDate = new Date(
-      $scope.date1.getFullYear(),
-      $scope.date1.getMonth() + 2,
-      $scope.date1.getDate());
+      $scope.date2.getFullYear(),
+      $scope.date2.getMonth(),
+      $scope.date2.getDate());
 
-
-  // The md-select directive eats keydown events for some quick select
-  // logic. Since we have a search input here, we don't need that logic.
-  // $element.find('input').on('keydown', function(ev) {
-  //   console.log("working");
-  //     ev.stopPropagation();
-  // });
-
+  $scope.startDate = function(date) {
+    var startDate = date;
+    console.log('startDate: ', startDate);
+  };
+  $scope.endDate = function(date) {
+    var endDate = date;
+    console.log('endDate: ', endDate);
+  };
+//--------------------------------------------
 
 
 // end controller
