@@ -15,7 +15,7 @@ console.log('logincontroller');
         if(response) {
           // location works with SPA (ng-route)
           console.log('redirecting to user page');
-          $location.path('/user');
+          $location.path('/demographics');
         } else {
           alert("please try again!");
         }

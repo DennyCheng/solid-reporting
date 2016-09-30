@@ -3,7 +3,7 @@ var myApp = angular.module('myApp',['ngMaterial','ngRoute']);
 myApp.config(['$routeProvider', function($routeProvider){
 
   $routeProvider
-    .when('/login', {
+  .when('/login', {
       templateUrl: '/public/views/login.html',
       controller: "LoginController"
     })
@@ -38,5 +38,5 @@ myApp.config(['$routeProvider', function($routeProvider){
     })
     .otherwise({
       redirectTo:'/login'
-    })
+    });
 }]);
