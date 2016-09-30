@@ -2,29 +2,49 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <script type="text/javascript" src="/public/vendors/angular.min.js"></script>
-    <script type="text/javascript" src="/public/vendors/angular-route.min.js"></script>
-    <link rel="stylesheet" href="/public/styles/style.css"/>
-    <script src="/public/scripts/client_app.js"></script>
+    <!-- Stylesheets -->
+     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
 
-    <!--Data Factory & Controllers  -->
-    <script type="text/javascript" src="/public/scripts/services/dataFactory.js"></script>
-    <script type="text/javascript" src="/public/scripts/controllers/indexController.js"></script>
-    <script type="text/javascript" src="/public/scripts/controllers/homeController.js"></script>
-    <script type="text/javascript" src="/public/scripts/controllers/outcomeController.js"></script>
+     <link rel="stylesheet" href="/public/styles/style.css"/>
+
+     <!-- Angular.js  -->
+     <script type="text/javascript" src="/public/vendors/angular.min.js"></script>
+     <script type="text/javascript" src="/public/vendors/angular-route.min.js"></script>
+
+     <!-- Angular Material Libraries -->
+     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+     <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+     <!-- Client-side JS app-->
+     <script src="/public/scripts/client_app.js"></script>
+
+     <!--Data Factory & Controllers  -->
+     <script type="text/javascript" src="/public/scripts/services/dataFactory.js"></script>
+     <script type="text/javascript" src="/public/scripts/controllers/homeController.js"></script>
+     <script type="text/javascript" src="/public/scripts/controllers/democontroller.js"></script>
+     <script type="text/javascript" src="/public/scripts/controllers/loginController.js"></script>
+     <script type="text/javascript" src="/public/scripts/controllers/userController.js"></script>
+
 
     <title>Solid Reporting</title>
-    <h1>Navi Bar</h1>
-    <a href="#home">Home</a>
-    <a href="#outcomes">Outcomes</a>
+>>>>>>> be15a6938b6261b4037e440bb86ae6d80644e566
   </head>
+  <body ng-app="myApp">
+    <div ng-include="'public/views/partials/header.html'">
+    </div>
+    <div ng-view class="content"></div>
 
+<<<<<<< HEAD
   <body ng-app="myApp">
     <h2>Body Div</h2>
     <h2>This is the index page</h2>
 
 
     <div ng-view></div>
+=======
+>>>>>>> be15a6938b6261b4037e440bb86ae6d80644e566
 
   </body>
 
