@@ -29,7 +29,12 @@ myApp.config(['$routeProvider', function($routeProvider){
     })
     .when('/reset/:token', {
       templateUrl: '/public/views/reset.html',
-      controller: "LoginController"
+      controller: "LoginController",
+      resolve: {
+        currentAuth: function (TokenFactory) {
+           return TokenFactory();
+        }
+      }
     })
     .otherwise({
       redirectTo:'/login'

@@ -2,13 +2,10 @@ myApp.factory('DataFactory', ['$http', '$location', function($http, $location) {
 
   //Private API Scope
   var randomArray = [1,2,3];
-
   var dataUsername = '';
-
-  // var message = '';
   var userData = {};
-
-
+  var responseStatus = undefined;
+  var reset = undefined;
 
 
   login = function(user) {
@@ -41,18 +38,18 @@ myApp.factory('DataFactory', ['$http', '$location', function($http, $location) {
     return promise;
     }
 
-currentSess = function() {
-var promise = $http.get('/user').then(function(response) {
-      if(response.data.username) {
-          // user has a curret session on the server
-          console.log('User Data: ', dataUsername);
-      } else {
-          // user has no session, bounce them back to the login page
-          $location.path("/login");
-      }
-  });
-  return promise;
-}
+  currentSess = function() {
+    var promise = $http.get('/user').then(function(response) {
+          if(response.data.username) {
+              // user has a curret session on the server
+              console.log('User Data: ', dataUsername);
+          } else {
+              // user has no session, bounce them back to the login page
+              $location.path("/login");
+          }
+      });
+      return promise;
+  }
 
   logout = function() {
     var promise = $http.get('/user/logout').then(function(response) {
@@ -64,6 +61,37 @@ var promise = $http.get('/user').then(function(response) {
     return promise;
   }
 
+  var checkUserSendPasswordReset = function(username) {
+    var promise = $http.post('/forgot', {username: username}).then(function(response) {
+        responseStatus = response.status;
+        return responseStatus;
+    });
+    return promise;
+  }
+
+  var resetUsersPassword = function(user) {
+    var promise = $http.get('/forgot/reset/' + user.token).then(function(response) {
+          if(response.status == 200) {
+          console.log('user was found!');
+          console.log('response.data in factory: ', response.data);
+          var userID = response.data.userID;
+          var username = response.data.username;
+        return $http.post('/forgot/reset', {userId: userID, password: user.password, username: username}).then(function(response) {
+              console.log("response: ", response);
+              responseStatus = response.status;
+              return responseStatus;
+          });
+      } else {
+        responseStatus = response.status;
+        return responseStatus;
+      }
+    });
+    return promise;
+  }
+
+  function tokenValid() {
+    console.log("$location.url in DF: ", $location.url);
+  }
 
 
     // PUBLIC API scope
@@ -89,7 +117,14 @@ var promise = $http.get('/user').then(function(response) {
     },
     theMessage: function(){
       return message;
+    },
+    forgotPassword: function(username) {
+      return checkUserSendPasswordReset(username);
+    },
+    resetPassword: function(user) {
+      return resetUsersPassword(user);
     }
+
 
 
     };//end of public scope

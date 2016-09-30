@@ -110,16 +110,22 @@ router.get('/reset/:token', function(req, res) {
                   res.sendStatus(500);
                 }
 
-                var userID = result.rows[0].id;
-                var username = result.rows[0].username;
-                userID = userID.toString();
-                var user = {
-                  userID: userID,
-                  username: username
-                }
-                console.log("user in GET request: ", user);
+                console.log("result.rows: ", result.rows);
+                if(result.rows == 0 || result.rows == []) {
+                  console.log('Password reset token is invalid or has expired!!')
+                  res.sendStatus(204);
+                } else {
+                  var userID = result.rows[0].id;
+                  var username = result.rows[0].username;
+                  userID = userID.toString();
+                  var user = {
+                    userID: userID,
+                    username: username
+                  }
+                  console.log("user in GET request: ", user);
 
-                res.send(user);
+                  res.send(user);
+                }
               });
   });
 });

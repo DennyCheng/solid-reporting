@@ -29,15 +29,10 @@ console.log('logincontroller');
     $scope.dataFactory.registerUser(userWhole);
     }
 
-    $scope.forgotPassword = function() {
+    $scope.forgotPassword = function () {
         var username = $scope.user.username;
-        $http.post('/forgot', {username: username}).then(function(response) {
-            console.log('set token and password reset time to specific user!');
-            // $http.get('/forgot/' + username).then(function(response) {
-            //     console.log("email should have sent, maybe?");
-            // });
-            console.log("response: ", response.status);
-            if(response.status == 200) {
+        $scope.dataFactory.forgotPassword(username).then(function(response) {
+            if(response == 200) {
                 $scope.message = "An e-mail has been sent to " + username + " with further instructions.";
             } else {
                 $scope.message = "No account with that email address exists.";
@@ -45,20 +40,19 @@ console.log('logincontroller');
         });
     }
 
-
     $scope.resetPassword = function() {
-        console.log("$location.$$url: ", $location.$$url);
         var token = $location.$$url.replace('/reset/','');
-        console.log('token from url: ', token);
         var password = $scope.user.confirm_password;
-        $http.get('/forgot/reset/' + token).then(function(response) {
-            console.log('user was found!');
-            console.log("response.data in factory: ", response.data);
-            var userID = response.data.userID;
-            var username = response.data.username;
-            $http.post('/forgot/reset', {userId: userID, password: password, username: username}).then(function(response) {
-                console.log('password was reset and user should receive confirmation email!');
-            });
+        var user = {token: token, password: password};
+        $scope.dataFactory.resetPassword(user).then(function(response) {
+            console.log("response in resetPassword: ", response);
+            if (response == 200) {
+                $scope.message = 'Password was reset and user should receive confirmation email!';
+            } else if(response == 204) {
+                $scope.message = 'Password reset is invalid or has expired!';
+            } else {
+                $scope.message = 'There was an error with reseting your password, please try again.'
+            }
         });
     }
 
