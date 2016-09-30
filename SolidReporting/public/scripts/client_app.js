@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp',['ngMaterial','ngRoute', 'ui.grid']);
+var myApp = angular.module('myApp',['ngMaterial','ngRoute', 'ngTable']);
 
 myApp.config(['$routeProvider', function($routeProvider){
 
