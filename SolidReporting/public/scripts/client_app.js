@@ -3,10 +3,6 @@ var myApp = angular.module('myApp',['ngMaterial','ngRoute']);
 myApp.config(['$routeProvider', function($routeProvider){
 
   $routeProvider
-  .when('/home', {
-        templateUrl:'/public/views/partials/demographics.html',
-        controller:'DemoController'
-      })
   .when('/demographics', {
         templateUrl: '/public/views/partials/demographics.html',
         controller: "DemoController"
@@ -19,11 +15,6 @@ myApp.config(['$routeProvider', function($routeProvider){
       templateUrl: '/public/views/register.html',
       controller: "LoginController"
     })
-  .when('/user', {
-      templateUrl: '/public/views/user.html',
-      controller: "UserController"
-    })
-
   .otherwise({
         redirectTo:'login'
       });
