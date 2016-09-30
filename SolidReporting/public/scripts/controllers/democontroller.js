@@ -24,7 +24,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
   function showData() {
     $scope.dataFactory.retrieveData().then(function(response) {
       $scope.data = response;
-      console.log('repsonse data', $scope.data);
+      console.log('response data', $scope.data);
 
     });
   }
