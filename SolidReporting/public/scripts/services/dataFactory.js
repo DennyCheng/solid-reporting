@@ -8,8 +8,14 @@ myApp.factory('DataFactory', ['$http', '$location', function($http, $location) {
   // var message = '';
   var userData = {};
 
+  function getData() {
+    var promise = $http.get('/fileUpload').then(function (response) {
+      console.log('response---', response);
+      return response.data;
+    });
 
-
+    return promise;
+  }
 
   login = function(user) {
       console.log('sending to server...', user);
@@ -68,28 +74,30 @@ var promise = $http.get('/user').then(function(response) {
 
     // PUBLIC API scope
     return {//start of return scope
-
-    testVar: function(){
+      retrieveData: function () {
+        return getData();
+      },
+      testVar: function(){
       return randomArray;
-    },
-    login: function(user){
-      return login(user);
-    },
-    registerUser: function(user){
-      return registerUser(user);
-    },
-    logout: function(){
-      return logout();
-    },
-    currentSess: function(){
-      return currentSess();
-    },
-    varUsername: function(){
-      return dataUsername;
-    },
-    theMessage: function(){
-      return message;
-    }
+      },
+      login: function(user){
+        return login(user);
+      },
+      registerUser: function(user){
+        return registerUser(user);
+      },
+      logout: function(){
+        return logout();
+      },
+      currentSess: function(){
+        return currentSess();
+      },
+      varUsername: function(){
+        return dataUsername;
+      },
+      theMessage: function(){
+        return message;
+      }
 
 
     };//end of public scope

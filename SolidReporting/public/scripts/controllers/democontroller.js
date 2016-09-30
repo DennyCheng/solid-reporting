@@ -19,6 +19,15 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
   $scope.test = $scope.dataFactory.testVar();
   console.log($scope.test);
 
+  //----GET Massive Data ----------------------------------------------
+  showData();
+  function showData() {
+    $scope.dataFactory.retrieveData().then(function(response) {
+      $scope.data = response;
+      console.log('response data', $scope.data);
+
+    });
+  }
 
   //----- Dropdowns -------------------------------------------------
 
