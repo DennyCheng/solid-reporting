@@ -1,6 +1,7 @@
 myApp.controller('LoginController', ['$scope', '$http', 'DataFactory', '$location', function($scope, $http, DataFactory, $location) {
 console.log('logincontroller');
 
+
     $scope.dataFactory = DataFactory;
     $scope.user = {
       username: '',
@@ -19,14 +20,12 @@ console.log('logincontroller');
         } else {
           alert("please try again!");
         }
-
       });
-    }
+    };
 
     $scope.userRegister = function() {
       var userWhole = $scope.user;
       console.log('preinfo', userWhole);
     $scope.dataFactory.registerUser(userWhole);
     }
-
 }]);

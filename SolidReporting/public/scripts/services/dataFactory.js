@@ -1,5 +1,5 @@
 myApp.factory('DataFactory', ['$http', '$location', function($http, $location) {
-
+  
   //Private API Scope
   var randomArray = [1,2,3];
 
