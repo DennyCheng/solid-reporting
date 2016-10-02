@@ -1,4 +1,4 @@
-myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location', 'NgTableParams', function ($scope, $http, DataFactory, $location, NgTableParams) {
+myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location', function ($scope, $http, DataFactory, $location) {
   console.log("hello from demoController");
 
   $scope.dataFactory = DataFactory;
@@ -8,10 +8,11 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
 
   //----- Programs ----------------------------
 
-  $scope.programs = ['EMP I', "EMP II", 'Home Again', 'HomeSafe', 'HomeFront'];
+  $scope.programs = ['EMP I', 'EMP II', 'Home Again', 'HomeSafe', 'HomeFront'];
 
   //----- Logic for program checkboxes ----------------
-  $scope.selectedProgram = [1];
+
+  $scope.selectedprogram = $scope.programs;
   $scope.toggle = function (item, list) {
     var idx = list.indexOf(item);
     if (idx > -1) {
@@ -27,19 +28,19 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
   };
 
   $scope.isIndeterminate = function() {
-    return ($scope.selectedProgram.length !== 0 &&
-        $scope.selectedProgram.length !== $scope.programs.length);
+    return ($scope.selectedprogram.length !== 0 &&
+        $scope.selectedprogram.length !== $scope.programs.length);
   };
 
   $scope.isChecked = function() {
-    return $scope.selectedProgram.length === $scope.programs.length;
+    return $scope.selectedprogram.length === $scope.programs.length;
   };
 
   $scope.toggleAll = function() {
-    if ($scope.selectedProgram.length === $scope.programs.length) {
-      $scope.selectedProgram = [];
-    } else if ($scope.selectedProgram.length === 0 || $scope.selectedProgram.length > 0) {
-      $scope.selectedProgram = $scope.programs.slice(0);
+    if ($scope.selectedprogram.length === $scope.programs.length) {
+      $scope.selectedprogram = [];
+    } else if ($scope.selectedprogram.length === 0 || $scope.selectedprogram.length > 0) {
+      $scope.selectedprogram = $scope.programs.slice(0);
     }
   };
 
@@ -59,7 +60,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
 
   $scope.hhIncomes = ['At or below 100% Poverty', '101%-200% Poverty', 'At or above 200% Poverty'];
 
-  $scope.exitingPersons = ['Graduated', 'Left voluntarily (not grad)', 'Terminated/Mutual termination', 'Other (i.e. death)'];
+  $scope.exitReasons = ['Graduated', 'Left voluntarily (not grad)', 'Terminated/Mutual termination', 'Other (i.e. death)'];
 
 
   //----- Dropdown Search field (doesn't work right) ------------------------
@@ -96,14 +97,34 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
 // var users = [{name: "Moroni", age: 50} /*,*/];
 // self.tableParams = new NgTableParams({}, { dataset: users});
 
+  $scope.sql = {};
+
   $scope.newQuery = function () {
-    $http.get('/demoquery').then(function(response) {
-    console.log('data', response.data);
-    $scope.data = response.data;
-    });
+
+    console.log("Program: " + $scope.selectedprogram + "\n"
+      + "Gender: " + $scope.selectedgender + "\n"
+      + "Adult Race: " + $scope.selectedadultRace + "\n"
+      + "Adult Age: " + $scope.selectedadultAge)
+
+    // $http.get('/demoquery').then(function(response) {
+    // console.log('data', response.data);
+    // $scope.data = response.data;
+    // });
   }
 
-
+  $scope.resetQuery = function () {
+    $scope.selectedprogram = [];
+    $scope.selectedgender = [];
+    $scope.selectedadultRace = [];
+    $scope.selectedchildRace = [];
+    $scope.selectedchildAge = [];
+    $scope.selectedadultAge = [];
+    $scope.selectedresidence = [];
+    $scope.selectedhhIncome = [];
+    $scope.selectedexitReason = [];
+    $scope.date1 = new Date();
+    $scope.date2 = new Date();
+  }
 
 
 // end controller

@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp',['ngMaterial','ngRoute', 'ngTable']);
+var myApp = angular.module('myApp',['ngMaterial','ngRoute']);
 
 myApp.config(['$routeProvider', function($routeProvider){
 
@@ -30,3 +30,9 @@ myApp.config(['$routeProvider', function($routeProvider){
 
 
 }]);
+
+myApp.config(function($mdThemingProvider) {
+  $mdThemingProvider.theme('default')
+    .primaryPalette('indigo')
+    .accentPalette('light-green')
+});

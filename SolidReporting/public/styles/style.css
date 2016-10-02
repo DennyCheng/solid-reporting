@@ -1,5 +1,7 @@
 .logo {
-
+  width: 40%;
+  height: 40%;
+  /*margin: 20px auto 20px auto;*/
 }
 @font-face {
   font-family: 'ui-grid';
@@ -9,31 +11,44 @@
   font-style: normal;
 }
 
+fieldset {
+  border-style: solid;
+  border-width: 1px;
+  height: 100%;
+}
+
 md-sidenav {
-   width: 100%;
-   height: 100%;
-   padding: 20px;
+   /*width: 100%;*/
+   /*height: 100%;
+   padding: 20px;*/
    /*background-color: #6bc7cc;*/
  }
 
 md-select {
 }
 
- md-content {
-   height: 100%;
-   padding: 20px;
+md-content {
+ /*height: 100%;
+ padding: 20px;
+ padding-bottom: 200px;*/
+ background-color: lavender;
+}
 
- }
+.programinput {
+  margin-top: 0;
+}
+.selectprogram {
+  margin-top: 0;
+  margin-bottom: 2em;
+}
 
  .checkboxdemoSelectAll .program-select-all-checkboxes {
    padding-left: 30px; }
 
-
-
-.demoGrid {
+/*.demoGrid {
     width: 500px;
     height: 250px;
-  }
+  }*/
 
 .demoDropdown {
 /* Please note: All these selectors are only applied to children of elements with the 'demoDropdown' class */ }
@@ -52,19 +67,17 @@ md-select {
     display: flex;
     align-items: center;
     width: auto; }
-  .demoDropdown md-content._md {
-    /*max-height: 240px;*/
-   }
+
+  /*.demoDropdown md-content._md {
+    /*max-height: 240px;}*/
 
   .calendar {
-    width: 10em;
+    padding: .5em;
   }
 
-  md-content {
-  padding-bottom: 200px; }
-
   .action-buttons {
-    display: flex;
+    width: 200px;
+    margin: 2em;
   }
 
   #reset {
