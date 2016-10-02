@@ -1,5 +1,34 @@
-myApp.controller('uploadController', ['$scope', 'fileUpload', function($scope, fileUpload){
-    
+myApp.controller('uploadController', ['$scope', 'fileUpload','DataFactory',function($scope, fileUpload, DataFactory){
+
+  $scope.dataFactory = DataFactory;
+
+
+  $scope.dataFactory.currentSess();
+
+  $scope.userName = $scope.dataFactory.varUsername();
+
+  $scope.tologout = function() {
+    $scope.dataFactory.logout().then(function(response) {
+      console.log('logged out');
+      console.log('i redirected you to the home page');
+      $location.path("/login");
+    });
+
+  }
+
+   $scope.dataFactory.currentSess();
+
+   $scope.userName = $scope.dataFactory.varUsername();
+
+   $scope.tologout = function() {
+     $scope.dataFactory.logout().then(function(response) {
+       console.log('logged out');
+       console.log('i redirected you to the home page');
+       $location.path("/login");
+     });
+
+   }
+
     $scope.uploadFile = function(){
         var file = $scope.myFile;
 

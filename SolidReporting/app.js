@@ -10,6 +10,7 @@ var session = require('express-session');
 var index = require('./routes/index');
 var user = require('./routes/user');
 var register = require('./routes/register');
+var forgot = require('./routes/forgot');
 var upload = require('./routes/uploadfile');
 //test route
 
@@ -37,6 +38,7 @@ app.use(passport.session());
 app.use('/fileUpload', upload);
 app.use('/register', register);
 app.use('/user', user);
+app.use('/forgot', forgot);
 app.use('/*', index);
 
 app.use('/index', test);

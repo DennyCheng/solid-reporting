@@ -1,89 +1,94 @@
-myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location','$filter', function ($scope, $http, DataFactory, $location, $filter) {
+myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location', function ($scope, $http, DataFactory, $location) {
   console.log("hello from demoController");
-  var races = [];
-  var residences = [];
-  function submitQuery() {
-    // get call to the server passing the data
-    $http.get('/uploadfile/data').then(function(response){
-      console.log('response', response.data);
-      $scope.selectedgender;
-      console.log($scope.selectedgender[0]);
-      $scope.selectedadultRace;
-      console.log($scope.selectedadultRace);
-      $scope.selectedchildAge;
-      console.log($scope.selectedchildAge);
-      $scope.selectedresidence;
-      console.log($scope.selectedresidence);
-      $scope.selectedhhIncome;
-      console.log($scope.selectedhhIncome);
-      $scope.selectedexitingPerson;
-      console.log($scope.selectedexitingPerson);
-      $scope.date1;
-      console.log('selectedDate', $scope.date1);
-      $scope.date2;
-      console.log('selectedDate', $scope.date2);
-    })
+    var races = [];
+    var residences = [];
+    $scope.dataFactory = DataFactory;
+    $scope.dataFactory.currentSess();
+    $scope.userName = $scope.dataFactory.varUsername();
 
-  }
-  $scope.dataFactory = DataFactory;
+    //----GET Massive Data ----------------------------------------------
+    showData();
+    function showData() {
 
-  $scope.dataFactory.currentSess();
+        $scope.dataFactory.retrieveData().then(function(response) {
+            $scope.data = response;
+            $scope.data.forEach(function (item) {
+                // indexOf checks from index 0 to end of index every loop
+                if (races.indexOf(item['Race Code']) === -1 &&
+                    item['Race Code'] !== null && item['Race Code'] !== 'Other(specify)Irainan' &&
+                    item['Race Code'] !== 'Other(specify)________________________' &&
+                    item['Race Code'] !== 'Other(specify' &&
+                    item['Race Code'] !== 'Asian/SE Asian/Pacific Islander') {
+                    races.push(item['Race Code']);
+                }
+                if (residences.indexOf(item['County of Last Residence']) === -1 &&
+                    item['County of Last Residence'] !== null &&
+                    item['County of Last Residence'] !== undefined) {
+                    residences.push(item['County of Last Residence']);
+                }
+            });
 
-  $scope.userName = $scope.dataFactory.varUsername();
+        });
+    }
 
-  $scope.tologout = function() {
-    $scope.dataFactory.logout().then(function(response) {
-      console.log('logged out');
-      console.log('i redirected you to the home page');
-      $location.path("/login");
-    });
+  //----- Programs ----------------------------
 
-  }
+  $scope.programs = ['EMP I', 'EMP II', 'Home Again', 'HomeSafe', 'HomeFront'];
 
-  $scope.test = $scope.dataFactory.testVar();
-  console.log($scope.test);
+  //----- Logic for program checkboxes ----------------
 
-  //----GET Massive Data ----------------------------------------------
-  showData();
-  function showData() {
+  $scope.selectedprogram = $scope.programs;
+  $scope.toggle = function (item, list) {
+    var idx = list.indexOf(item);
+    if (idx > -1) {
+      list.splice(idx, 1);
+    }
+    else {
+      list.push(item);
+    }
+  };
 
-    $scope.dataFactory.retrieveData().then(function(response) {
-      $scope.data = response;
-      console.log('data -----', $scope.data);
-      console.log('data ----dfd-', $scope.data[1]["HoH Mthly  Earned Income"]);
-      $scope.data.forEach(function (item) {
-        // indexOf checks from index 0 to end of index every loop
-        if (races.indexOf(item['Race Code']) === -1 &&
-            item['Race Code'] !== null && item['Race Code'] !== 'Other(specify)Irainan' &&
-            item['Race Code'] !== 'Other(specify)________________________' &&
-            item['Race Code'] !== 'Other(specify' &&
-            item['Race Code'] !== 'Asian/SE Asian/Pacific Islander') {
-          races.push(item['Race Code']);
-        }
-        if (residences.indexOf(item['County of Last Residence']) === -1 &&
-            item['County of Last Residence'] !== null &&
-            item['County of Last Residence'] !== undefined) {
-          residences.push(item['County of Last Residence']);
-        }
-      });
+  $scope.exists = function (item, list) {
+    return list.indexOf(item) > -1;
+  };
 
-    });
+  $scope.isIndeterminate = function() {
+    return ($scope.selectedprogram.length !== 0 &&
+        $scope.selectedprogram.length !== $scope.programs.length);
+  };
 
-  }
+  $scope.isChecked = function() {
+    return $scope.selectedprogram.length === $scope.programs.length;
+  };
+
+  $scope.toggleAll = function() {
+    if ($scope.selectedprogram.length === $scope.programs.length) {
+      $scope.selectedprogram = [];
+    } else if ($scope.selectedprogram.length === 0 || $scope.selectedprogram.length > 0) {
+      $scope.selectedprogram = $scope.programs.slice(0);
+    }
+  };
+
+
+  //----- Dropdowns --------------------------------
+  $scope.genders = ['Female', 'Male'];
+
 
   //----- Dropdowns -------------------------------------------------
 
+
   $scope.adultRaces = races;
   $scope.childRaces = races;
-  $scope.genders = ['Female', 'Male'];
+
   $scope.childAges = ['0-18 mths', '19-35 mths', '36-59 mths', '60-71 mths (5 y.o.)', '6-9 yrs', '10-14 yrs', '15-17 yrs', '18+ child in home'];
+
   $scope.adultAges = ['18-22', '23-30', '31-40', '41-54', '55-64', '65+'];
 
-  $scope.residences = residences;
+  $scope.residences = ['Ramsey', 'Suburban Ramsey Co.', 'Washington Co.', 'Hennepin', 'Suburban Hennepin Co.', 'Other Metro County', 'Outside Twin Cities Metro', 'Outside of State'];
 
   $scope.hhIncomes = ['At or below 100% Poverty', '101%-200% Poverty', 'At or above 200% Poverty'];
 
-  $scope.exitingPersons = ['Graduated', 'Left voluntarily (not grad)', 'Terminated/Mutual termination', 'Other (i.e. death)'];
+  $scope.exitReasons = ['Graduated', 'Left voluntarily (not grad)', 'Terminated/Mutual termination', 'Other (i.e. death)'];
 
 
   //----- Dropdown Search field (doesn't work right) ------------------------
@@ -114,9 +119,65 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     var endDate = date;
     console.log('endDate: ', endDate);
   };
-
-  $scope.submitQuery = submitQuery;
 //--------------------------------------------
+
+// var self = this;
+// var users = [{name: "Moroni", age: 50} /*,*/];
+// self.tableParams = new NgTableParams({}, { dataset: users});
+
+  $scope.sql = {};
+
+  $scope.newQuery = function () {
+
+    console.log("Program: " + $scope.selectedprogram + "\n"
+      + "Gender: " + $scope.selectedgender + "\n"
+      + "Adult Race: " + $scope.selectedadultRace + "\n"
+      + "Adult Age: " + $scope.selectedadultAge)
+
+    // $http.get('/demoquery').then(function(response) {
+    // console.log('data', response.data);
+    // $scope.data = response.data;
+    // });
+  }
+
+    //********** Second option selected function ****************
+
+    // $scope.newQuery = function() {
+    //     // get call to the server passing the data
+    //     $http.get('/uploadfile/data').then(function(response){
+    //         console.log('response', response.data);
+    //         $scope.selectedgender;
+    //         console.log($scope.selectedgender[0]);
+    //         $scope.selectedadultRace;
+    //         console.log($scope.selectedadultRace);
+    //         $scope.selectedchildAge;
+    //         console.log($scope.selectedchildAge);
+    //         $scope.selectedresidence;
+    //         console.log($scope.selectedresidence);
+    //         $scope.selectedhhIncome;
+    //         console.log($scope.selectedhhIncome);
+    //         $scope.selectedexitingPerson;
+    //         console.log($scope.selectedexitingPerson);
+    //         $scope.date1;
+    //         console.log('selectedDate', $scope.date1);
+    //         $scope.date2;
+    //         console.log('selectedDate', $scope.date2);
+    //     })
+    //
+    // }
+  $scope.resetQuery = function () {
+    $scope.selectedprogram = [];
+    $scope.selectedgender = [];
+    $scope.selectedadultRace = [];
+    $scope.selectedchildRace = [];
+    $scope.selectedchildAge = [];
+    $scope.selectedadultAge = [];
+    $scope.selectedresidence = [];
+    $scope.selectedhhIncome = [];
+    $scope.selectedexitReason = [];
+    $scope.date1 = new Date();
+    $scope.date2 = new Date();
+  }
 
 
 // end controller
