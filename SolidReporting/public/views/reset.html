@@ -1,0 +1,18 @@
+<md-toolbar layout="row" layout-align="center"><img class="logo" layout-align="center" src="/public/styles/images/solid_ground_logo.jpg" /></md-toolbar>
+<div class="container">
+  <h1 class="lead">Reset Password</h1>
+  <h2 class="lead alert alert-danger" role="alert" ng-if="message != ''">{{message}}</h2>
+  <form ng-submit="resetPassword()">
+    <div>
+        <label for="new_password">New Password:</label>
+        <input type="password" ng-model="user.new_password" />
+    </div>
+    <div>
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" ng-model="user.confirm_password" />
+    </div>
+    <input class="btn btn-default" type="submit" name="submit" value="Reset Password" />
+    <a href="#login">Cancel</a>
+  </form>
+
+</div>
