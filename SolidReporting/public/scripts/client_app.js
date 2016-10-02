@@ -27,6 +27,10 @@ myApp.config(['$routeProvider', function($routeProvider){
       templateUrl: '/public/views/partials/demographics.html',
       controller: "DemoController"
     })
+    .when('/upload', {
+        templateUrl: '/public/views/partials/upload.html',
+        controller: "uploadController"
+    })
     .when('/reset/:token', {
       templateUrl: '/public/views/reset.html',
       controller: "LoginController",
@@ -40,3 +44,9 @@ myApp.config(['$routeProvider', function($routeProvider){
       redirectTo:'/login'
     });
 }]);
+
+myApp.config(function($mdThemingProvider) {
+  $mdThemingProvider.theme('default')
+    .primaryPalette('indigo')
+    .accentPalette('light-green')
+});

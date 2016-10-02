@@ -5,7 +5,7 @@ var connection = require('../modules/connection');
 var pg = require('pg');
 
 var config = {
-  user: 'elizabethhaakenson', //env var: PGUSER
+  user: '', //env var: PGUSER
   database: 'omicron', //env var: PGDATABASE
   password: '', //env var: PGPASSWORD
   port: 5432, //env var: PGPORT

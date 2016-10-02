@@ -11,6 +11,7 @@ var index = require('./routes/index');
 var user = require('./routes/user');
 var register = require('./routes/register');
 var forgot = require('./routes/forgot');
+var upload = require('./routes/uploadfile');
 //test route
 
 
@@ -34,6 +35,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
+app.use('/fileUpload', upload);
 app.use('/register', register);
 app.use('/user', user);
 app.use('/forgot', forgot);

@@ -7,6 +7,14 @@ myApp.factory('DataFactory', ['$http', '$location', function($http, $location) {
   var responseStatus = undefined;
   var reset = undefined;
 
+  function getData() {
+    var promise = $http.get('/fileUpload').then(function (response) {
+      console.log('response---', response);
+      return response.data;
+    });
+
+    return promise;
+  }
 
   login = function(user) {
       console.log('sending to server...', user);
@@ -96,36 +104,36 @@ myApp.factory('DataFactory', ['$http', '$location', function($http, $location) {
 
     // PUBLIC API scope
     return {//start of return scope
-
-    testVar: function(){
+      retrieveData: function () {
+        return getData();
+      },
+      testVar: function(){
       return randomArray;
-    },
-    login: function(user){
-      return login(user);
-    },
-    registerUser: function(user){
-      return registerUser(user);
-    },
-    logout: function(){
-      return logout();
-    },
-    currentSess: function(){
-      return currentSess();
-    },
-    varUsername: function(){
-      return dataUsername;
-    },
-    theMessage: function(){
-      return message;
-    },
-    forgotPassword: function(username) {
-      return checkUserSendPasswordReset(username);
-    },
-    resetPassword: function(user) {
-      return resetUsersPassword(user);
-    }
-
-
+      },
+      login: function(user){
+        return login(user);
+      },
+      registerUser: function(user){
+        return registerUser(user);
+      },
+      logout: function(){
+        return logout();
+      },
+      currentSess: function(){
+        return currentSess();
+      },
+      varUsername: function(){
+        return dataUsername;
+      },
+      theMessage: function(){
+        return message;
+      },
+      forgotPassword: function(username) {
+        return checkUserSendPasswordReset(username);
+      },
+      resetPassword: function(user) {
+        return resetUsersPassword(user);
+      }
 
     };//end of public scope
 }]);
