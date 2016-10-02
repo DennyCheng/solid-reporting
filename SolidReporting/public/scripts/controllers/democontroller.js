@@ -3,7 +3,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
 
   $scope.dataFactory = DataFactory;
 
-<<<<<<< HEAD
+
  $scope.dataFactory.currentSess();
 
  $scope.userName = $scope.dataFactory.varUsername();
@@ -16,7 +16,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
    });
 
  }
-=======
+
   $scope.dataFactory.currentSess();
 
   $scope.userName = $scope.dataFactory.varUsername();
@@ -71,7 +71,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
 
   //----- Dropdowns --------------------------------
   $scope.genders = ['Female', 'Male'];
-=======
+
   //----GET Massive Data ----------------------------------------------
   showData();
   function showData() {
@@ -83,7 +83,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
   }
 
   //----- Dropdowns -------------------------------------------------
->>>>>>> master
+
 
   var races = ['African', 'African American', 'American Indian' ,'Asian/SE Asian/Pacific Islander', 'Caucasian/White', 'Hispanic/Latino', 'Multiracial', 'Other'];
   $scope.adultRaces = races;
