@@ -7,6 +7,10 @@ myApp.config(['$routeProvider', function($routeProvider){
             templateUrl: '/public/views/partials/demographics.html',
             controller: "DemoController"
           })
+      .when('/outcomes', {
+            templateUrl: '/public/views/partials/outcomes.html',
+            controller: "OutcomesController"
+          })
       .when('/login', {
           templateUrl: '/public/views/login.html',
           controller: "LoginController"
