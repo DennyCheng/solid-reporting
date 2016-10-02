@@ -9,7 +9,6 @@ myApp.factory('DataFactory', ['$http', '$location', function($http, $location) {
 
   function getData() {
     var promise = $http.get('/fileUpload').then(function (response) {
-      console.log('response---', response);
       return response.data;
     });
 

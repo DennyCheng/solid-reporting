@@ -9,7 +9,11 @@ var connectionString = 'postgres://localhost:5432/solid_ground';
 //   console.log(task);
 //
 //   // Store in DB
+<<<<<<< HEAD
 //   pg.connect(connection, function(err, client, done) {
+=======
+//   pg.connect(connectionString, function(err, client, done) {
+>>>>>>> jerrylee
 //     if(err) {
 //       console.log(err);
 //       res.sendStatus(500);
@@ -32,7 +36,11 @@ var connectionString = 'postgres://localhost:5432/solid_ground';
 // });
 
 router.get('/', function(req, res) {
+<<<<<<< HEAD
   pg.connect(connection, function(err, client, done) {
+=======
+  pg.connect(connectionString, function(err, client, done) {
+>>>>>>> jerrylee
     if(err) {
       console.log(err);
       res.sendStatus(500);
@@ -58,7 +66,11 @@ router.get('/', function(req, res) {
 router.delete('/:id', function(req, res) {
   var taskID = req.params.id;
 
+<<<<<<< HEAD
   pg.connect(connection, function(err, client, done) {
+=======
+  pg.connect(connectionString, function(err, client, done) {
+>>>>>>> jerrylee
     if(err) {
       console.log(err);
       res.sendStatus(500);
