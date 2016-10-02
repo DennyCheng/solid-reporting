@@ -1,7 +1,7 @@
 myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location', function ($scope, $http, DataFactory, $location) {
   console.log("hello from demoController");
 
-  $scope.dataFactory = DataFactory;
+ $scope.dataFactory = DataFactory;
 
 
  $scope.dataFactory.currentSess();
@@ -16,19 +16,6 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
    });
 
  }
-
-  $scope.dataFactory.currentSess();
-
-  $scope.userName = $scope.dataFactory.varUsername();
-
-  $scope.tologout = function() {
-    $scope.dataFactory.logout().then(function(response) {
-      console.log('logged out');
-      console.log('i redirected you to the home page');
-      $location.path("/login");
-    });
-
-  }
 
   //----- Programs ----------------------------
 
