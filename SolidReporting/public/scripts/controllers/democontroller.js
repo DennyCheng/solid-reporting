@@ -48,7 +48,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     }
   };
 
-<<<<<<< HEAD
+
  $scope.dataFactory = DataFactory;
 
 
@@ -106,7 +106,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
 
   //----- Dropdowns --------------------------------
   $scope.genders = ['Female', 'Male'];
-=======
+
   $scope.exists = function (item, list) {
     return list.indexOf(item) > -1;
   };
@@ -128,7 +128,6 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     }
   };
 
->>>>>>> jerrylee
 
   //----- Dropdowns --------------------------------
   $scope.genders = ['Female', 'Male'];
@@ -137,10 +136,8 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
   //----- Dropdowns -------------------------------------------------
 
 
-<<<<<<< HEAD
   var races = ['African', 'African American', 'American Indian' ,'Asian/SE Asian/Pacific Islander', 'Caucasian/White', 'Hispanic/Latino', 'Multiracial', 'Other'];
-=======
->>>>>>> jerrylee
+
   $scope.adultRaces = races;
   $scope.childRaces = races;
 
@@ -204,8 +201,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     // });
   }
 
-<<<<<<< HEAD
-=======
+
     //********** Second option selected function ****************
 
     // $scope.newQuery = function() {
@@ -231,7 +227,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     //     })
     //
     // }
->>>>>>> jerrylee
+
   $scope.resetQuery = function () {
     $scope.selectedprogram = [];
     $scope.selectedgender = [];
