@@ -3,6 +3,19 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
 
   $scope.dataFactory = DataFactory;
 
+ $scope.dataFactory.currentSess();
+
+ $scope.userName = $scope.dataFactory.varUsername();
+
+ $scope.tologout = function() {
+   $scope.dataFactory.logout().then(function(response) {
+     console.log('logged out');
+     console.log('i redirected you to the home page');
+     $location.path("/login");
+   });
+
+ }
+
   $scope.test = $scope.dataFactory.testVar();
   console.log($scope.test);
 
