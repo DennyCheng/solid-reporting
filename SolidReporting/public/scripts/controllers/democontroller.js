@@ -3,6 +3,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
 
   $scope.dataFactory = DataFactory;
 
+<<<<<<< HEAD
  $scope.dataFactory.currentSess();
 
  $scope.userName = $scope.dataFactory.varUsername();
@@ -15,9 +16,19 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
    });
 
  }
+=======
+  $scope.dataFactory.currentSess();
 
-  $scope.test = $scope.dataFactory.testVar();
-  console.log($scope.test);
+  $scope.userName = $scope.dataFactory.varUsername();
+
+  $scope.tologout = function() {
+    $scope.dataFactory.logout().then(function(response) {
+      console.log('logged out');
+      console.log('i redirected you to the home page');
+      $location.path("/login");
+    });
+
+  }
 
   //----- Programs ----------------------------
 
@@ -60,6 +71,19 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
 
   //----- Dropdowns --------------------------------
   $scope.genders = ['Female', 'Male'];
+=======
+  //----GET Massive Data ----------------------------------------------
+  showData();
+  function showData() {
+    $scope.dataFactory.retrieveData().then(function(response) {
+      $scope.data = response;
+      console.log('response data', $scope.data);
+
+    });
+  }
+
+  //----- Dropdowns -------------------------------------------------
+>>>>>>> master
 
   var races = ['African', 'African American', 'American Indian' ,'Asian/SE Asian/Pacific Islander', 'Caucasian/White', 'Hispanic/Latino', 'Multiracial', 'Other'];
   $scope.adultRaces = races;
