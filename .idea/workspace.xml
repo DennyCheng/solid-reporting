@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28b7ed3c-4ea3-48b4-b704-f3e0336b94a4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SolidReporting/public/scripts/controllers/navigationController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/scripts/controllers/democontroller.js" afterPath="$PROJECT_DIR$/SolidReporting/public/scripts/controllers/democontroller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/scripts/controllers/loginController.js" afterPath="$PROJECT_DIR$/SolidReporting/public/scripts/controllers/loginController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/scripts/controllers/uploadController.js" afterPath="$PROJECT_DIR$/SolidReporting/public/scripts/controllers/uploadController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/scripts/services/dataFactory.js" afterPath="$PROJECT_DIR$/SolidReporting/public/scripts/services/dataFactory.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/views/index.html" afterPath="$PROJECT_DIR$/SolidReporting/public/views/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/views/partials/demographics.html" afterPath="$PROJECT_DIR$/SolidReporting/public/views/partials/demographics.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/views/partials/header.html" afterPath="$PROJECT_DIR$/SolidReporting/public/views/partials/header.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/routes/uploadfile.js" afterPath="$PROJECT_DIR$/SolidReporting/routes/uploadfile.js" />
     </list>
     <ignored path="solid-reporting.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,11 +24,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="democontroller.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="democontroller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SolidReporting/public/scripts/controllers/democontroller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+            <state relative-caret-position="120">
+              <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SolidReporting/public/views/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="84">
+              <caret line="27" column="56" selection-start-line="27" selection-start-column="56" selection-end-line="27" selection-end-column="56" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SolidReporting/public/views/partials/header.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="95" selection-start-line="2" selection-start-column="95" selection-end-line="2" selection-end-column="95" />
               <folding />
             </state>
           </provider>
@@ -78,11 +90,11 @@
         <option value="$PROJECT_DIR$/SolidReporting/public/views/index.html" />
         <option value="$PROJECT_DIR$/SolidReporting/public/scripts/controllers/navigationController.js" />
         <option value="$PROJECT_DIR$/SolidReporting/public/scripts/controllers/uploadController.js" />
-        <option value="$PROJECT_DIR$/SolidReporting/public/views/partials/header.html" />
         <option value="$PROJECT_DIR$/SolidReporting/public/scripts/controllers/loginController.js" />
         <option value="$PROJECT_DIR$/SolidReporting/public/views/partials/demographics.html" />
         <option value="$PROJECT_DIR$/SolidReporting/routes/uploadfile.js" />
         <option value="$PROJECT_DIR$/SolidReporting/public/scripts/controllers/democontroller.js" />
+        <option value="$PROJECT_DIR$/SolidReporting/public/views/partials/header.html" />
       </list>
     </option>
   </component>
@@ -390,16 +402,16 @@
       <updated>1475263158542</updated>
       <workItem from="1475263166130" duration="3432000" />
       <workItem from="1475345951243" duration="7378000" />
-      <workItem from="1475367389677" duration="14102000" />
+      <workItem from="1475367389677" duration="14593000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26640000" />
+    <option name="totallyTimeSpent" value="27131000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="773" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2494043" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -408,7 +420,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32892805" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32892805" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -467,6 +479,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="75" selection-start-line="1" selection-start-column="75" selection-end-line="1" selection-end-column="75" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -474,6 +487,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="28" column="76" selection-start-line="28" selection-start-column="76" selection-end-line="28" selection-end-column="76" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -534,24 +548,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SolidReporting/public/views/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="27" column="56" selection-start-line="27" selection-start-column="56" selection-end-line="27" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SolidReporting/public/scripts/client_app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SolidReporting/public/views/partials/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -587,8 +587,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SolidReporting/public/scripts/controllers/democontroller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+        <state relative-caret-position="120">
+          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SolidReporting/public/views/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="27" column="56" selection-start-line="27" selection-start-column="56" selection-end-line="27" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SolidReporting/public/views/partials/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="95" selection-start-line="2" selection-start-column="95" selection-end-line="2" selection-end-column="95" />
           <folding />
         </state>
       </provider>
