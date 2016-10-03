@@ -113,14 +113,19 @@ and "Head of Household"."Program" = 'EMPII';
 Age - Adults
 SELECT "Date of Birth" as DOB
 FROM "Head of Household"
-WHERE "Head of Household"."Program Exit Date" > '2015-12-31' and "Head of Household"."Program Exit Date" < '2016-12-31' OR "Head of Household"."Program Exit Date" IS NULL
-and "Head of Household"."Program" = 'EMPII'
+WHERE
+"Head of Household"."Program Exit Date" > '2016-1-1' and "Head of Household"."Program Exit Date" < '2016-3-31' and "Head of Household"."Program" = 'EMP'
+OR "Head of Household"."Program Exit Date" IS NULL and "Head of Household"."Program" = 'EMP'
+OR "Head of Household"."Program Entry Date" < '2015-1-1' and "Head of Household"."Program Exit Date" > '2016-3-31' and "Head of Household"."Program" = 'EMP'
 UNION
 SELECT "Head of Household-2"."Date of Birth" as DOB
 FROM "Head of Household-2"
 LEFT JOIN "Head of Household" ON "Head of Household-2"."Head of Household" = "Head of Household"."HoHID"
-WHERE "Head of Household"."Program Exit Date" > '2015-12-31' and "Head of Household"."Program Exit Date" < '2016-12-31' OR "Head of Household"."Program Exit Date" IS NULL
-and "Head of Household"."Program" = 'EMPII';
+WHERE
+"Head of Household"."Program Exit Date" > '2016-1-1' and "Head of Household"."Program Exit Date" < '2016-3-31' and "Head of Household"."Program" = 'EMP'
+OR "Head of Household"."Program Exit Date" IS NULL and "Head of Household"."Program" = 'EMP'
+OR "Head of Household"."Program Entry Date" < '2015-1-1' and "Head of Household"."Program Exit Date" > '2016-3-31' and "Head of Household"."Program" = 'EMP'
+;
 
 Last Resedence
 SELECT "County of Last Residence", COUNT (*)
