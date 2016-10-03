@@ -56,10 +56,9 @@ and "Head of Household"."Program" = 'EMPII'
 ;
 
 Total people gender
-SELECT "Gender", COUNT (*) as numberOfPeople
+SELECT "Gender", COUNT (*) as numberOfPeople, 'head of household' as role
 FROM "Head of Household"
 WHERE "Head of Household"."Program Exit Date" > '2015-12-31' and "Head of Household"."Program Exit Date" < '2016-12-31' OR "Head of Household"."Program Exit Date" IS NULL
-and "Head of Household"."Program" = 'EMPII'
 GROUP BY "Gender"
 UNION
 
@@ -67,7 +66,6 @@ SELECT "Head of Household-2"."Gender", COUNT (*) as numberOfPeople
 FROM "Head of Household-2"
 LEFT JOIN "Head of Household" ON "Head of Household-2"."Head of Household" = "Head of Household"."HoHID"
 WHERE "Head of Household"."Program Exit Date" > '2015-12-31' and "Head of Household"."Program Exit Date" < '2016-12-31' OR "Head of Household"."Program Exit Date" IS NULL
-and "Head of Household"."Program" = 'EMPII'
 GROUP BY "Head of Household-2"."Gender"
 UNION
 
@@ -75,7 +73,6 @@ SELECT "Members of Household"."Gender", COUNT (*) as numberOfPeople
 FROM "Members of Household"
 LEFT JOIN "Head of Household" ON "Members of Household"."Head of Household" = "Head of Household"."HoHID"
 WHERE "Head of Household"."Program Exit Date" > '2015-12-31' and "Head of Household"."Program Exit Date" < '2016-12-31' OR "Head of Household"."Program Exit Date" IS NULL
-and "Head of Household"."Program" = 'EMPII'
 GROUP BY "Members of Household"."Gender"
 ;
 
