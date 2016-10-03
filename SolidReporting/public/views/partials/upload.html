@@ -1,21 +1,61 @@
-<div ng-include="'public/views/partials/header.html'"> </div>
-<h1>Solid Ground Uploads</h1>
-<p>1. Open Ms Access to Postgresql application on your computer.</p>
-<p>2.Within MS Access to Postgresql</p>
-<p>3. Click next</p>
-<p>4. Filename will be set to the Access Database file</p>
-<p>5. Click next</p>
-<p>6. select Create dump file field</p>
-<p>7. Make sure Desination Database iput field reads: movedb</p>
-<p>8. Click Next</p>
-<p>9. Make sure all checkboxes are selected or click Selected or click select  all to do this</p>
-<p>10. Click next</p>
-<p>11. Click run Now button</p>
-<div>
-    <input type="file" file-model="myFile"/>
-    <md-button ng-click="uploadFile()" class="md-raised md-cornered md-raised md-primary"> upload me</md-button>
+<style>
+    .md-button.md-raised:not([disabled]) {
+    width: 100px;
+    margin-top: 40px;
+    background-color: #4a89dc;
+    height: 48px;
+    color: white;
+    }
+</style>
 
-</div>
+<div ng-include="'public/views/partials/header.html'"> </div>
+
+<form  layout="column" layout-align="center center">
+    <h1 class="sg-blue">Uploads</h1>
+    <!--<lf-ng-md-file-input name="files00" file-model="myFile" lf-files="myFile" lf-api="api09"  multiple drag preview></lf-ng-md-file-input>-->
+    <!--<div ng-messages="testForm.files00.$error" style="color:red;">-->
+        <!--<div ng-message="required">This is required.</div>-->
+        <!--<div ng-message="maxcount">Too much files.</div>-->
+        <!--<div ng-message="filesize">File size too large.</div>-->
+        <!--<div ng-message="totalsize">Total size too large.</div>-->
+        <!--<div ng-message="mimetype">Mimetype error.</div>-->
+    <!--</div>-->
+    <lf-ng-md-file-input lf-files='file' lf-required  drag preview> </lf-ng-md-file-input>
+    <div ng-message="required">This is required.</div>
+    <md-button type="button"  class="md-raised md-primary" ng-click="onSubmit()">Submit</md-button>
+</form>
+
+
+<!--<lf-ng-md-file-input lf-files="files03" lf-placeholder="{{myPlacehoder}}" lf-caption="{{myCaption}}" ></lf-ng-md-file-input>-->
+<!--<div layout="row">-->
+    <!--<md-input-container flex>-->
+        <!--<label>My placeholder</label>-->
+        <!--<input ng-model="myPlacehoder">-->
+    <!--</md-input-container>-->
+    <!--<md-input-container flex>-->
+        <!--<label>My caption</label>-->
+        <!--<input ng-model="myCaption">-->
+    <!--</md-input-container>-->
+<!--</div>-->
+<!--<p>1. Open Ms Access to Postgresql application on your computer.</p>-->
+<!--2.Within MS Access to Postgresql-->
+<!--3. Click next-->
+<!--4. Filename will be set to the Access Database file-->
+<!--5. Click next-->
+<!--6. select Create dump file field-->
+<!--7. Make sure Desination Database iput field reads: movedb-->
+<!--8. Click Next-->
+<!--9. Make sure all checkboxes are selected or click Selected or click select  all to do this-->
+<!--10. Click next-->
+<!--11. Click run Now button-->
+<!--<div>-->
+    <!--<input type="file" file-model="myFile"/>-->
+<!--<lf-ng-md-file-input lf-files="files01" lf-api="api01" ng-disabled="disabled01" file-model="myFile"></lf-ng-md-file-input>-->
+
+    <!--<md-button ng-click="uploadFile()" class="md-raised md-cornered md-raised md-primary"> upload me</md-button>-->
+
+<!--</div>-->
+
 
 <!--<lf-ng-md-file-input lf-files="files01" lf-api="api01" ng-disabled="disabled01"></lf-ng-md-file-input>-->
 <!--<md-button class="md-raised md-warn" ng-click="api01.removeAll()">remove all file outside</md-button>-->

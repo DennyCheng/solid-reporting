@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp',['ngMaterial','ngRoute']);
+var myApp = angular.module('myApp',['ngMaterial','ngRoute', 'lfNgMdFileInput']);
 
 myApp.config(['$routeProvider', function($routeProvider){
 

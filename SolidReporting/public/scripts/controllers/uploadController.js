@@ -1,4 +1,4 @@
-myApp.controller('uploadController', ['$scope', 'fileUpload','DataFactory',function($scope, fileUpload, DataFactory){
+myApp.controller('uploadController', ['$scope', 'fileUpload','DataFactory', '$http', function($scope, fileUpload, DataFactory, $http){
 
   $scope.dataFactory = DataFactory;
 
@@ -43,6 +43,21 @@ myApp.controller('uploadController', ['$scope', 'fileUpload','DataFactory',funct
         } else {
             alert('Please enter file');
         }
+    };
+
+    $scope.onSubmit = function(){
+        var formData = new FormData();
+        angular.forEach($scope.file,function(obj){
+            formData.append('file', obj.lfFile);
+        });
+        $http.post('./fileUpload', formData, {
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+        }).then(function(result){
+            // do sometingh
+        },function(err){
+            // do sometingh
+        });
     };
 
 }]);

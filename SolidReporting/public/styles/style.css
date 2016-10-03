@@ -1,6 +1,7 @@
 /* header style */
 md-toolbar:not(.md-menu-toolbar) {
-  background-color: rgba(12,106,169,0.3);
+  /*background-color: rgba(12,106,169,0.3);*/
+  background-color: rgb(250,250,250);
 }
 /* solid ground color blue */
 .sg-blue{
