@@ -12,6 +12,7 @@ var user = require('./routes/user');
 var register = require('./routes/register');
 var forgot = require('./routes/forgot');
 var upload = require('./routes/uploadfile');
+var demoquery = require('./routes/demoquery');
 //test route
 
 
@@ -39,6 +40,7 @@ app.use('/fileUpload', upload);
 app.use('/register', register);
 app.use('/user', user);
 app.use('/forgot', forgot);
+app.use('/demoquery', demoquery);
 app.use('/*', index);
 
 app.use('/index', test);

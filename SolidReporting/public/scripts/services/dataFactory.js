@@ -7,14 +7,6 @@ myApp.factory('DataFactory', ['$http', '$location', function($http, $location) {
   var responseStatus = undefined;
   var reset = undefined;
 
-  function getData() {
-    var promise = $http.get('/fileUpload').then(function (response) {
-      return response.data;
-    });
-
-    return promise;
-  }
-
   login = function(user) {
       console.log('sending to server...', user);
     var promise =  $http.post('/', user).then(function(response) {
