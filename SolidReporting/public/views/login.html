@@ -22,10 +22,10 @@
 <div layout="row" layout-align="center center">
 
     <div class="login">
-        <h1 class="lead sg-blue">Login</h1>
         <h1 class="lead alert alert-danger" role="alert" ng-if="message != ''">{{message}}</h1>
 
         <form name="clientLogin" ng-submit="userLogin()">
+            <h1 class="lead sg-blue">Login</h1>
             <md-input-container>
                 <md-icon class="fa fa-user sg-blue" aria-hidden="true"></md-icon>
                 <input ng-model="user.username" name="userName" type="text" placeholder="Name" ng-required="true">

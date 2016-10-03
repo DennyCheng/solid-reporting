@@ -1,18 +1,45 @@
 <md-toolbar layout="row" layout-align="center"><img class="logo" layout-align="center" src="/public/styles/images/solid_ground_logo.jpg" /></md-toolbar>
-<div class="container">
-  <h1 class="lead">Reset Password</h1>
-  <h2 class="lead alert alert-danger" role="alert" ng-if="message != ''">{{message}}</h2>
-  <form ng-submit="resetPassword()">
-    <div>
-        <label for="new_password">New Password:</label>
-        <input type="password" ng-model="user.new_password" />
-    </div>
-    <div>
-        <label for="confirm_password">Confirm Password:</label>
-        <input type="password" ng-model="user.confirm_password" />
-    </div>
-    <input class="btn btn-default" type="submit" name="submit" value="Reset Password" />
-    <a href="#login">Cancel</a>
-  </form>
+<!--<div class="container">-->
+  <!--<h1 class="lead">Reset Password</h1>-->
+  <!--<h2 class="lead alert alert-danger" role="alert" ng-if="message != ''">{{message}}</h2>-->
+  <!--<form >-->
+    <!--<div>-->
+        <!--<label for="new_password">New Password:</label>-->
+        <!--<input type="password" ng-model="user.new_password" />-->
+    <!--</div>-->
+    <!--<div>-->
+        <!--<label for="confirm_password">Confirm Password:</label>-->
+        <!--<input type="password" ng-model="user.confirm_password" />-->
+    <!--</div>-->
+    <!--<input class="btn btn-default" type="submit" name="submit" value="Reset Password" />-->
+    <!--<a href="#login">Cancel</a>-->
+  <!--</form>-->
 
+<!--</div>-->
+
+<div layout="row" layout-align="center center">
+    <div class="login">
+        <h1 class="lead alert alert-danger sg-green" role="alert" ng-if="message != ''">{{message}}</h1>
+        <form>
+            <h1 class="lead sg-blue">Reset Password</h1>
+            <md-input-container>
+                <md-icon class="fa fa-unlock-alt sg-blue" aria-hidden="true"></md-icon>
+                <input ng-model="user.new_password" type="password" placeholder="Password" ng-required="true">
+                <div ng-messages="clientLogin.userPassword.$error">
+                    <div ng-message="required">Please enter your password</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <!-- Use floating placeholder instead of label -->
+                <md-icon class="fa fa-unlock-alt sg-blue" aria-hidden="true" ></md-icon>
+                <input  ng-model="user.confirm_password" type="password" placeholder="Password" ng-required="true" >
+                <div ng-messages="clientLogin.userPassword.$error">
+                    <div ng-message="required">Confirm your password</div>
+                </div>
+            </md-input-container>
+            <!--</md-input-container>-->
+            <md-button class="md-raised md-primary" ng-click="resetPassword()">Reset Password</md-button>
+            <a href="#login"><md-button class="md-raised md-primary" >Cancel</md-button></a>
+        </form>
+    </div>
 </div>
