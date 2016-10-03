@@ -1,165 +1,223 @@
-<div class="md-padding" ng-cloak>
-  <button class="btn btn-default" ng-click="tologout()">Log Out</button>
-  <h1 class="md-title">Gender</h1>
-  <div layout="row">
-    <md-input-container>
-      <label>Select Gender</label>
-      <md-select  ng-model="selectedgender"
-                  md-on-close="clearSearchTerm()"  data-md-container-class="demoDropdown"
-                  multiple="">
-        <md-optgroup label="Gender">
-          <button ng-click= "selectedgender = genders">Select All</button>
-          <button ng-click="selectedgender=[]">Clear</button>
-          <md-option ng-value="gender" ng-repeat="gender in genders">{{gender}}</md-option>
-        </md-optgroup>
-      </md-select>
-    </md-input-container>
-  </div>
-
-    <h1 class="md-title">Race: Adults</h1>
-    <div layout="row">
-      <md-input-container>
-        <label>Select Race(s)</label>
-        <md-select  ng-model="selectedadultRace"
-                    md-on-close="clearSearchTerm()"  data-md-container-class="demoDropdown"
-                    multiple="">
-          <md-select-header class="demo-select-header">
-            <input ng-model="searchTerm"
-                   type="search"
-                   placeholder="Search"
-                   class="demo-header-searchbox md-text">
-          </md-select-header>
-          <md-optgroup label="Race: Adults">
-            <button ng-click= "selectedadultRace = adultRaces">Select All</button>
-            <button ng-click="selectedadultRace=[]">Clear</button>
-            <md-option ng-value="adultRace" ng-repeat="adultRace in adultRaces">{{adultRace}}</md-option>
-          </md-optgroup>
-        </md-select>
-      </md-input-container>
-
-    </div>
-
-    <h1 class="md-title">Race: Children</h1>
-    <div layout="row">
-      <md-input-container>
-        <label>Select Race(s)</label>
-        <md-select  ng-model="selectedchildRace"
-                    md-on-close="clearSearchTerm()"  data-md-container-class="demoDropdown"
-                    multiple="">
-          <md-optgroup label="Race: Children">
-            <button ng-click="selectedchildRace = childRaces">Select All</button>
-            <button ng-click="selectedchildRace=[]">Clear</button>
-            <md-option ng-value="childRace" ng-repeat="childRace in childRaces">{{childRace}}</md-option>
-          </md-optgroup>
-        </md-select>
-      </md-input-container>
-    </div>
-
-    <h1 class="md-title">Age: Children</h1>
-    <div layout="row">
-      <md-input-container>
-        <label>Select Age(s)</label>
-        <md-select  ng-model="selectedchildAge"
-                    md-on-close="clearSearchTerm()"  data-md-container-class="demoDropdown"
-                    multiple="">
-          <md-optgroup label="Age: Children">
-            <button ng-click="selectedchildAge = childAges">Select All</button>
-            <button ng-click="selectedchildAge=[]">Clear</button>
-            <md-option ng-value="childAge" ng-repeat="childAge in childAges">{{childAge}}</md-option>
-          </md-optgroup>
-        </md-select>
-      </md-input-container>
-    </div>
-
-    <h1 class="md-title">Age: Adults</h1>
-    <div layout="row">
-      <md-input-container>
-        <label>Select Age(s)</label>
-        <md-select  ng-model="selectedadultAge"
-                    md-on-close="clearSearchTerm()"  data-md-container-class="demoDropdown"
-                    multiple="">
-          <md-optgroup label="Age: Adults">
-            <button ng-click="selectedadultAge = adultAges">Select All</button>
-            <button ng-click="selectedadultAge=[]">Clear</button>
-            <md-option ng-value="adultAge" ng-repeat="adultAge in adultAges">{{adultAge}}</md-option>
-          </md-optgroup>
-        </md-select>
-      </md-input-container>
-    </div>
-
-    <h1 class="md-title">Last Residence</h1>
-    <div layout="row">
-      <md-input-container>
-        <label>Select Residence</label>
-        <md-select  ng-model="selectedresidence"
-                    md-on-close="clearSearchTerm()"  data-md-container-class="demoDropdown"
-                    multiple="">
-          <md-optgroup label="Last Residence">
-            <button ng-click="selectedresidence = residences">Select All</button>
-            <button ng-click="selectedresidence=[]">Clear</button>
-            <md-option ng-value="residence" ng-repeat="residence in residences">{{residence}}</md-option>
-          </md-optgroup>
-        </md-select>
-      </md-input-container>
-    </div>
-
-    <h1 class="md-title">Household Income</h1>
-    <div layout="row">
-      <md-input-container>
-        <label>Select Income Level</label>
-        <md-select  ng-model="selectedhhIncome"
-                    md-on-close="clearSearchTerm()"  data-md-container-class="demoDropdown"
-                    multiple="">
-          <md-optgroup label="Household Income">
-            <button ng-click="selectedhhIncome = hhIncomes">Select All</button>
-            <button ng-click="selectedhhIncome=[]">Clear</button>
-            <md-option ng-value="hhIncome" ng-repeat="hhIncome in hhIncomes">{{hhIncome}}</md-option>
-          </md-optgroup>
-        </md-select>
-      </md-input-container>
-    </div>
-
-    <h1 class="md-title">Persons Exiting Housing</h1>
-    <div layout="row">
-      <md-input-container>
-        <label>Select Reason</label>
-        <md-select  ng-model="selectedexitingPerson"
-                    md-on-close="clearSearchTerm()"  data-md-container-class="demoDropdown"
-                    multiple="">
-          <md-optgroup label="Select Reason">
-            <button ng-click="selectedexitingPerson = exitingPersons">Select All</button>
-            <button ng-click="selectedexitingPerson=[]">Clear</button>
-            <md-option ng-value="exitingPerson" ng-repeat="exitingPerson in exitingPersons">{{exitingPerson}}</md-option>
-          </md-optgroup>
-        </md-select>
+<div ng-include="'public/views/partials/header.html'"> </div>
+<div layout="column">
+  <div class="container" layout="row" flex ng-cloak>
+    <md-sidenav layout="column" class="sidenav1" md-is-locked-open="true">
+      <div class="md-padding">
+        <h1 class="md-title">Program</h1>
+        <div layout="row" layout-wrap>
+          <md-input-container class="programinput" flex="100">
+            <p class="selectprogram"><label>Select Program(s)</label></p>
+              <div flex-xs flex="100">
+                <md-checkbox aria-label="Select All"
+                             ng-checked="isChecked()"
+                             md-indeterminate="isIndeterminate()"
+                             ng-click="toggleAll()"
+                             class="md-primary">
+                  <span ng-if="isChecked()">Un-</span>Select All
+                </md-checkbox>
+              </div>
+              <div class="program-select-all-checkboxes"
+                   flex="100"
+                   ng-repeat="program in programs">
+                <md-checkbox
+                    ng-checked="exists(program, selectedprogram)"
+                    ng-click="toggle(program, selectedprogram)"
+                    class="md-primary">
+                 {{ program }}
+                </md-checkbox>
+              </div>
+          </md-input-container>
       </div>
-      </md-input-container>
 
-      <div class="dateSelect">
-          <h1 class="md-title">Reporting Period</h1>
-          <!-- <label>Select Date Range</label> -->
-          <div class="calendar">
-            <p>Start Date</p>
-            <md-datepicker ng-model="date1"  name="dateField"  md-max-date="date2" ng-change="startDate(date1)"></md-datepicker>
-          </div>
-          <div class="calendar">
-            <p>End Date</p>
-            <md-datepicker ng-model="date2" name="dateField" md-min-date="date1" md-max-date="maxDate" ng-change="endDate(date2)">
-            </md-datepicker>
-          </div>
+        <h1 class="md-title">Gender</h1>
+        <div layout="row" layout-wrap>
+          <md-input-container flex="100">
+            <label>Select Gender</label>
+            <md-select  ng-model="selectedgender"
+                        ng-init="selectedgender = genders"
+                        md-on-close="clearSearchTerm()"  data-md-container-class="demoDropdown"
+                        multiple="">
+              <md-optgroup label="Gender">
+                <button ng-click= "selectedgender = genders">Select All</button>
+                <button ng-click="selectedgender=[]">Clear</button>
+                <md-option ng-value="gender" ng-repeat="gender in genders">{{gender}}</md-option>
+              </md-optgroup>
+            </md-select>
+          </md-input-container>
         </div>
-  <div class="action-buttons">
-      <md-button class="md-raised md-primary">Submit Query</md-button>
-      <md-button id="reset" class="md-raised">Reset Query</md-button>
-      <md-button id="export" class="md-raised export">Export to CSV</md-button>
+
+        <h1 class="md-title">Race: Adults</h1>
+        <div layout="row" layout-wrap>
+          <md-input-container flex="100">
+            <label>Select Race(s)</label>
+            <md-select  md-no-ink ng-model="selectedadultRace"
+                        ng-init="selectedadultRace = adultRaces"
+                        md-on-close="clearSearchTerm()"  data-md-container-class="demoDropdown"
+                        multiple="">
+              <md-select-header class="demo-select-header">
+                <input ng-model="searchTerm"
+                       type="search"
+                       placeholder="Search"
+                       class="demo-header-searchbox md-text">
+              </md-select-header>
+              <md-optgroup label="Race: Adults">
+                <button ng-click= "selectedadultRace = adultRaces">Select All</button>
+                <button ng-click="selectedadultRace=[]">Clear</button>
+                <md-option ng-value="adultRace" ng-repeat="adultRace in adultRaces">{{adultRace}}</md-option>
+              </md-optgroup>
+            </md-select>
+          </md-input-container>
+        </div>
+
+        <h1 class="md-title">Race: Children</h1>
+        <div layout="row" layout-wrap>
+          <md-input-container flex="100">
+            <label>Select Race(s)</label>
+            <md-select ng-model="selectedchildRace"
+                        ng-init="selectedchildRace = childRaces"
+                        md-on-close="clearSearchTerm()"  data-md-container-class="demoDropdown"
+                        multiple="">
+              <md-optgroup label="Race: Children">
+                <button ng-click="selectedchildRace = childRaces">Select All</button>
+                <button ng-click="selectedchildRace=[]">Clear</button>
+                <md-option ng-value="childRace" ng-repeat="childRace in childRaces">{{childRace}}</md-option>
+              </md-optgroup>
+            </md-select>
+          </md-input-container>
+        </div>
+
+        <h1 class="md-title">Age: Adults</h1>
+        <div layout="row" layout-wrap>
+          <md-input-container flex="100">
+            <label>Select Ages</label>
+            <md-select  ng-model="selectedadultAge"
+                        ng-init="selectedadultAge = adultAges"
+                        md-on-close="clearSearchTerm()"  data-md-container-class="demoDropdown"
+                        multiple="">
+              <md-optgroup label="Age: Adults">
+                <button ng-click="selectedadultAge = adultAges">Select All</button>
+                <button ng-click="selectedadultAge=[]">Clear</button>
+                <md-option ng-value="adultAge" ng-repeat="adultAge in adultAges">{{adultAge}}</md-option>
+              </md-optgroup>
+            </md-select>
+          </md-input-container>
+        </div>
+
+        <h1 class="md-title">Age: Children</h1>
+        <div layout="row" layout-wrap>
+          <md-input-container flex="100">
+            <label>Select Ages</label>
+            <md-select  ng-model="selectedchildAge"
+                        ng-init="selectedchildAge = childAges"
+                        md-on-close="clearSearchTerm()"  data-md-container-class="demoDropdown"
+                        multiple="">
+              <md-optgroup label="Age: Children">
+                <button ng-click="selectedchildAge = childAges">Select All</button>
+                <button ng-click="selectedchildAge=[]">Clear</button>
+                <md-option ng-value="childAge" ng-repeat="childAge in childAges">{{childAge}}</md-option>
+              </md-optgroup>
+            </md-select>
+          </md-input-container>
+        </div>
+
+        <h1 class="md-title">Last Residence</h1>
+        <div layout="row" layout-wrap>
+          <md-input-container flex="100">
+            <label>Select Residence</label>
+            <md-select  ng-model="selectedresidence"
+                        ng-init="selectedresidence = residences"
+                        md-on-close="clearSearchTerm()"  data-md-container-class="demoDropdown"
+                        multiple="">
+              <md-optgroup label="Last Residence">
+                <button ng-click="selectedresidence = residences">Select All</button>
+                <button ng-click="selectedresidence=[]">Clear</button>
+                <md-option ng-value="residence" ng-repeat="residence in residences">{{residence}}</md-option>
+              </md-optgroup>
+            </md-select>
+          </md-input-container>
+        </div>
+
+        <h1 class="md-title">Household Income</h1>
+        <div layout="row" layout-wrap>
+          <md-input-container flex="100">
+            <label>Select Income Level(s)</label>
+            <md-select  ng-model="selectedhhIncome"
+                        ng-init="selectedhhIncome = hhIncomes"
+                        md-on-close="clearSearchTerm()"  data-md-container-class="demoDropdown"
+                        multiple="">
+              <md-optgroup label="Household Income">
+                <button ng-click="selectedhhIncome = hhIncomes">Select All</button>
+                <button ng-click="selectedhhIncome=[]">Clear</button>
+                <md-option ng-value="hhIncome" ng-repeat="hhIncome in hhIncomes">{{hhIncome}}</md-option>
+              </md-optgroup>
+            </md-select>
+          </md-input-container>
+        </div>
+
+        <h1 class="md-title">Persons Exiting Housing</h1>
+        <div layout="row" layout-wrap>
+          <md-input-container flex="100">
+            <label>Select Reason(s)</label>
+            <md-select  ng-model="selectedexitReason"
+                        ng-init="selectedexitReason = exitReasons"
+                        md-on-close="clearSearchTerm()"
+                        data-md-container-class="demoDropdown"
+                        multiple="">
+              <md-optgroup label="Select Reason">
+                <button ng-click="selectedexitReason = exitReasons">Select All</button>
+                <button ng-click="selectedexitReason=[]">Clear</button>
+                <md-option ng-value="exitReason" ng-repeat="exitReason in exitReasons">{{exitReason}}</md-option>
+              </md-optgroup>
+            </md-select>
+          </md-input-container>
+        </div>
+
+        <fieldset class="dateSelect">
+            <h1 class="md-title">Reporting Period</h1>
+            <!-- <label>Select Date Range</label> -->
+            <div class="calendar">
+              <p>Start Date</p>
+              <md-datepicker ng-model="startdate"  name="dateField"  md-max-date="enddate" ng-change="startDate(startdate)"></md-datepicker>
+            </div>
+            <div class="calendar">
+              <p>End Date</p>
+              <md-datepicker ng-model="enddate" name="dateField" md-min-date="startdate" md-max-date="maxDate" ng-change="endDate(enddate)">
+              </md-datepicker>
+            </div>
+        </fieldset>
+
+        <div class="action-buttons" layout="column">
+            <md-button class="md-raised md-primary" ng-click="newQuery()">Submit Query</md-button>
+            <md-button id="reset" class="md-raised" ng-click="resetQuery()">Reset Query</md-button>
+            <md-button id="export" class="md-raised export">Export to CSV</md-button>
+
+
+        </div>
+      </div>
+            <!-- <div ng-messages="myOtherForm.dateField.$error">
+              <div ng-message="valid">The entered value is not a date!</div>
+              <div ng-message="required">This date is required!</div>
+              <div ng-message="mindate">Date is too early!</div>
+              <div ng-message="maxdate">Date is too late!</div>
+            </div> -->
+    </md-sidenav>
+    <md-content layout="column" flex>
+      <table>
+        <tr ng-repeat="user in users">
+            <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">
+                {{user.name}}</td>
+            <td title="'Age'" filter="{ age: 'number'}" sortable="'age'">
+                {{user.age}}</td>
+        </tr>
+      </table>
+    <!-- <table ng-table="vm.tableParams" class="table" show-filter="true">
+      <tr ng-repeat="user in users">
+          <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">
+              {{user.name}}</td>
+          <td title="'Age'" filter="{ age: 'number'}" sortable="'age'">
+              {{user.age}}</td>
+      </tr>
+    </table> -->
+    </md-content>
   </div>
-
-
-    <!-- <div ng-messages="myOtherForm.dateField.$error">
-      <div ng-message="valid">The entered value is not a date!</div>
-      <div ng-message="required">This date is required!</div>
-      <div ng-message="mindate">Date is too early!</div>
-      <div ng-message="maxdate">Date is too late!</div>
-    </div> -->
-
 </div>
