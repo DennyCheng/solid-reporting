@@ -2,33 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28b7ed3c-4ea3-48b4-b704-f3e0336b94a4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SolidReporting/public/styles/images/Solid_Ground_logo.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SolidReporting/public/vendors/ui-grid-fonts/ui-grid.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SolidReporting/public/vendors/ui-grid-fonts/ui-grid.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SolidReporting/public/vendors/ui-grid-fonts/ui-grid.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SolidReporting/public/scripts/services/tokenFactory.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SolidReporting/public/vendors/ng-table.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SolidReporting/public/vendors/ng-table.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SolidReporting/public/vendors/ng-table.min.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SolidReporting/public/vendors/smart-table.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SolidReporting/public/vendors/smart-table.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SolidReporting/public/vendors/smart-table.min.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SolidReporting/public/vendors/ui-grid-fonts/ui-grid.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SolidReporting/public/vendors/ui-grid.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SolidReporting/public/vendors/ui-grid.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SolidReporting/public/views/forgot.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SolidReporting/public/views/reset.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SolidReporting/routes/demoquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SolidReporting/routes/forgot.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/styles/images/Solid_Ground_logo.jpg" afterPath="$PROJECT_DIR$/SolidReporting/public/styles/images/Solid_Ground_logo.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/styles/images/logo-sm.png" afterPath="$PROJECT_DIR$/SolidReporting/public/styles/images/logo-sm.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/styles/images/logo.png" afterPath="$PROJECT_DIR$/SolidReporting/public/styles/images/logo.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/vendors/ui-grid-fonts/ui-grid.eot" afterPath="$PROJECT_DIR$/SolidReporting/public/vendors/ui-grid-fonts/ui-grid.eot" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/vendors/ui-grid-fonts/ui-grid.ttf" afterPath="$PROJECT_DIR$/SolidReporting/public/vendors/ui-grid-fonts/ui-grid.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/vendors/ui-grid-fonts/ui-grid.woff" afterPath="$PROJECT_DIR$/SolidReporting/public/vendors/ui-grid-fonts/ui-grid.woff" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/app.js" afterPath="$PROJECT_DIR$/SolidReporting/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/scripts/client_app.js" afterPath="$PROJECT_DIR$/SolidReporting/public/scripts/client_app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/modules/connection.js" afterPath="$PROJECT_DIR$/SolidReporting/modules/connection.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/modules/encryption.js" afterPath="$PROJECT_DIR$/SolidReporting/modules/encryption.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/scripts/controllers/democontroller.js" afterPath="$PROJECT_DIR$/SolidReporting/public/scripts/controllers/democontroller.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/scripts/controllers/loginController.js" afterPath="$PROJECT_DIR$/SolidReporting/public/scripts/controllers/loginController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/scripts/controllers/navigationController.js" afterPath="$PROJECT_DIR$/SolidReporting/public/scripts/controllers/navigationController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/scripts/controllers/uploadController.js" afterPath="$PROJECT_DIR$/SolidReporting/public/scripts/controllers/uploadController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/scripts/services/dataFactory.js" afterPath="$PROJECT_DIR$/SolidReporting/public/scripts/services/dataFactory.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/styles/style.css" afterPath="$PROJECT_DIR$/SolidReporting/public/styles/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/scripts/services/tokenFactory.js" afterPath="$PROJECT_DIR$/SolidReporting/public/scripts/services/tokenFactory.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/vendors/angular.min.js.map" afterPath="$PROJECT_DIR$/SolidReporting/public/vendors/angular.min.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/vendors/ng-table.min.css" afterPath="$PROJECT_DIR$/SolidReporting/public/vendors/ng-table.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/vendors/ng-table.min.js" afterPath="$PROJECT_DIR$/SolidReporting/public/vendors/ng-table.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/vendors/ng-table.min.js.map" afterPath="$PROJECT_DIR$/SolidReporting/public/vendors/ng-table.min.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/vendors/smart-table.js" afterPath="$PROJECT_DIR$/SolidReporting/public/vendors/smart-table.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/vendors/smart-table.min.js" afterPath="$PROJECT_DIR$/SolidReporting/public/vendors/smart-table.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/vendors/smart-table.min.js.map" afterPath="$PROJECT_DIR$/SolidReporting/public/vendors/smart-table.min.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/vendors/ui-grid-fonts/ui-grid.svg" afterPath="$PROJECT_DIR$/SolidReporting/public/vendors/ui-grid-fonts/ui-grid.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/vendors/ui-grid.min.css" afterPath="$PROJECT_DIR$/SolidReporting/public/vendors/ui-grid.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/vendors/ui-grid.min.js" afterPath="$PROJECT_DIR$/SolidReporting/public/vendors/ui-grid.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/views/failure.html" afterPath="$PROJECT_DIR$/SolidReporting/public/views/failure.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/views/forgot.html" afterPath="$PROJECT_DIR$/SolidReporting/public/views/forgot.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/views/index.html" afterPath="$PROJECT_DIR$/SolidReporting/public/views/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/views/login.html" afterPath="$PROJECT_DIR$/SolidReporting/public/views/login.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/views/partials/demographics.html" afterPath="$PROJECT_DIR$/SolidReporting/public/views/partials/demographics.html" />
@@ -36,10 +36,18 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/views/partials/home.html" afterPath="$PROJECT_DIR$/SolidReporting/public/views/partials/home.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/views/partials/upload.html" afterPath="$PROJECT_DIR$/SolidReporting/public/views/partials/upload.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/views/register.html" afterPath="$PROJECT_DIR$/SolidReporting/public/views/register.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/views/reset.html" afterPath="$PROJECT_DIR$/SolidReporting/public/views/reset.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/public/views/user.html" afterPath="$PROJECT_DIR$/SolidReporting/public/views/user.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/routes/demoquery.js" afterPath="$PROJECT_DIR$/SolidReporting/routes/demoquery.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/routes/forgot.js" afterPath="$PROJECT_DIR$/SolidReporting/routes/forgot.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/routes/index.js" afterPath="$PROJECT_DIR$/SolidReporting/routes/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/routes/register.js" afterPath="$PROJECT_DIR$/SolidReporting/routes/register.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/routes/uploadfile.js" afterPath="$PROJECT_DIR$/SolidReporting/routes/uploadfile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/routes/user.js" afterPath="$PROJECT_DIR$/SolidReporting/routes/user.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SolidReporting/strategies/user_sql.js" afterPath="$PROJECT_DIR$/SolidReporting/strategies/user_sql.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/passport.sql" afterPath="$PROJECT_DIR$/passport.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/solidgroundtables.sql" afterPath="$PROJECT_DIR$/solidgroundtables.sql" />
     </list>
     <ignored path="solid-reporting.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,50 +68,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="democontroller.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="democontroller.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SolidReporting/public/scripts/controllers/democontroller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="30" column="11" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dataFactory.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SolidReporting/public/scripts/services/dataFactory.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="69" selection-start-line="10" selection-start-column="69" selection-end-line="10" selection-end-column="69" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="navigationController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SolidReporting/public/scripts/controllers/navigationController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="header.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/SolidReporting/public/views/partials/header.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="164" selection-start-line="0" selection-start-column="164" selection-end-line="0" selection-end-column="164" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SolidReporting/public/views/login.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="-135">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -130,9 +98,9 @@
         <option value="$PROJECT_DIR$/SolidReporting/routes/demoquery.js" />
         <option value="$PROJECT_DIR$/SolidReporting/public/scripts/controllers/navigationController.js" />
         <option value="$PROJECT_DIR$/SolidReporting/public/views/index.html" />
-        <option value="$PROJECT_DIR$/SolidReporting/public/scripts/controllers/democontroller.js" />
         <option value="$PROJECT_DIR$/SolidReporting/public/scripts/services/dataFactory.js" />
         <option value="$PROJECT_DIR$/SolidReporting/public/views/partials/header.html" />
+        <option value="$PROJECT_DIR$/SolidReporting/public/scripts/controllers/democontroller.js" />
       </list>
     </option>
   </component>
@@ -174,6 +142,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -243,6 +213,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="solid-reporting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="solid-reporting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SolidReporting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="partials" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -340,8 +336,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -426,16 +420,21 @@
       <workItem from="1475445773057" duration="82000" />
       <workItem from="1475445902057" duration="67000" />
       <workItem from="1475446034553" duration="26000" />
-      <workItem from="1475446345374" duration="987000" />
+      <workItem from="1475446345374" duration="3110000" />
+      <workItem from="1475459288847" duration="310000" />
+      <workItem from="1475460007316" duration="1000" />
+      <workItem from="1475460017166" duration="373000" />
+      <workItem from="1475472052221" duration="502000" />
+      <workItem from="1475509520330" duration="177000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30492000" />
+    <option name="totallyTimeSpent" value="33978000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="773" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2494043" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -443,7 +442,7 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32796487" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32892805" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -493,164 +492,6 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/SolidReporting/public/scripts/controllers/democontroller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SolidReporting/public/views/partials/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SolidReporting/strategies/user_sql.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SolidReporting/routes/uploadfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1290">
-          <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-          <folding>
-            <marker date="1475446459000" expanded="true" signature="2652:3441" ph="//..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SolidReporting/public/views/partials/demographics.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2145">
-          <caret line="143" column="37" selection-start-line="143" selection-start-column="37" selection-end-line="143" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SolidReporting/public/scripts/controllers/democontroller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SolidReporting/public/views/partials/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SolidReporting/strategies/user_sql.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SolidReporting/routes/uploadfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1290">
-          <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-          <folding>
-            <marker date="1475446459000" expanded="true" signature="2652:3441" ph="//..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SolidReporting/public/views/partials/demographics.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2145">
-          <caret line="143" column="37" selection-start-line="143" selection-start-column="37" selection-end-line="143" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SolidReporting/strategies/user_sql.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SolidReporting/public/views/partials/demographics.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="172" column="14" selection-start-line="172" selection-start-column="14" selection-end-line="172" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SolidReporting/routes/uploadfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-34">
-          <caret line="78" column="31" selection-start-line="78" selection-start-column="31" selection-end-line="78" selection-end-column="31" />
-          <folding>
-            <marker date="1475446459000" expanded="true" signature="2652:3441" ph="//..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SolidReporting/routes/demoquery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4">
-          <caret line="60" column="29" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SolidReporting/public/scripts/controllers/navigationController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SolidReporting/public/views/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="19" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SolidReporting/public/views/login.html">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
@@ -659,24 +500,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SolidReporting/public/scripts/controllers/democontroller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="30" column="11" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SolidReporting/public/scripts/services/dataFactory.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="69" selection-start-line="10" selection-start-column="69" selection-end-line="10" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SolidReporting/public/views/partials/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="164" selection-start-line="0" selection-start-column="164" selection-end-line="0" selection-end-column="164" />
+        <state relative-caret-position="-135">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

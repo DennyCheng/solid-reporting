@@ -48,6 +48,65 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     }
   };
 
+
+ $scope.dataFactory = DataFactory;
+
+
+ $scope.dataFactory.currentSess();
+
+ $scope.userName = $scope.dataFactory.varUsername();
+
+ $scope.tologout = function() {
+   $scope.dataFactory.logout().then(function(response) {
+     console.log('logged out');
+     console.log('i redirected you to the home page');
+     $location.path("/login");
+   });
+
+ }
+
+  //----- Programs ----------------------------
+
+  $scope.programs = ['EMP I', 'EMP II', 'Home Again', 'HomeSafe', 'HomeFront'];
+
+  //----- Logic for program checkboxes ----------------
+
+  $scope.selectedprogram = $scope.programs;
+  $scope.toggle = function (item, list) {
+    var idx = list.indexOf(item);
+    if (idx > -1) {
+      list.splice(idx, 1);
+    }
+    else {
+      list.push(item);
+    }
+  };
+
+  $scope.exists = function (item, list) {
+    return list.indexOf(item) > -1;
+  };
+
+  $scope.isIndeterminate = function() {
+    return ($scope.selectedprogram.length !== 0 &&
+        $scope.selectedprogram.length !== $scope.programs.length);
+  };
+
+  $scope.isChecked = function() {
+    return $scope.selectedprogram.length === $scope.programs.length;
+  };
+
+  $scope.toggleAll = function() {
+    if ($scope.selectedprogram.length === $scope.programs.length) {
+      $scope.selectedprogram = [];
+    } else if ($scope.selectedprogram.length === 0 || $scope.selectedprogram.length > 0) {
+      $scope.selectedprogram = $scope.programs.slice(0);
+    }
+  };
+
+
+  //----- Dropdowns --------------------------------
+  $scope.genders = ['Female', 'Male'];
+
   $scope.exists = function (item, list) {
     return list.indexOf(item) > -1;
   };
@@ -76,6 +135,8 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
 
   //----- Dropdowns -------------------------------------------------
 
+
+  var races = ['African', 'African American', 'American Indian' ,'Asian/SE Asian/Pacific Islander', 'Caucasian/White', 'Hispanic/Latino', 'Multiracial', 'Other'];
 
   $scope.adultRaces = races;
   $scope.childRaces = races;
@@ -140,6 +201,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     // });
   }
 
+
     //********** Second option selected function ****************
 
     // $scope.newQuery = function() {
@@ -165,6 +227,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     //     })
     //
     // }
+
   $scope.resetQuery = function () {
     $scope.selectedprogram = [];
     $scope.selectedgender = [];
