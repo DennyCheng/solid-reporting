@@ -5,13 +5,13 @@
 
         <h1 class="md-title">Program</h1>
         <div layout="row" layout-wrap>
-          <md-input-container class="programinput" flex="100">
-            <p class="selectprogram"><label>Select Program(s)</label></p>
+          <md-input-container class="boxesinput" flex="100">
+            <p class="selectboxes"><label>Select Program(s)</label></p>
               <div flex-xs flex="100">
                 <md-checkbox aria-label="Select All"
-                             ng-checked="isChecked()"
-                             md-indeterminate="isIndeterminate()"
-                             ng-click="toggleAll()"
+                             ng-checked="isCheckedProgram()"
+                             md-indeterminate="isIndeterminateProgram()"
+                             ng-click="toggleAllProgram()"
                              class="md-primary">
                   <span ng-if="isChecked()">Un-</span>Select All
                 </md-checkbox>
@@ -31,13 +31,13 @@
 
       <h1 class="md-title">Outcome</h1>
       <div layout="row" layout-wrap>
-        <md-input-container class="programinput" flex="100">
-          <p class="selectprogram"><label>Select Outcome(s)</label></p>
+        <md-input-container class="boxesinput" flex="100">
+          <p class="selectboxes"><label>Select Outcome(s)</label></p>
             <div flex-xs flex="100">
               <md-checkbox aria-label="Select All"
-                           ng-checked="isChecked()"
-                           md-indeterminate="isIndeterminate()"
-                           ng-click="toggleAll()"
+                           ng-checked="isCheckedOutcome()"
+                           md-indeterminate="isIndeterminateOutcome()"
+                           ng-click="toggleAllOutcome()"
                            class="md-primary">
                 <span ng-if="isChecked()">Un-</span>Select All
               </md-checkbox>

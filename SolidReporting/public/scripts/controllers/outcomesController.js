@@ -30,44 +30,51 @@ myApp.controller("OutcomesController", ["$scope",'$http','DataFactory', '$locati
     return list.indexOf(item) > -1;
   };
 
-  $scope.isIndeterminate = function() {
+  $scope.isIndeterminateProgram = function() {
     return ($scope.selectedprogram.length !== 0 &&
         $scope.selectedprogram.length !== $scope.programs.length);
   };
 
-  $scope.isChecked = function() {
+  $scope.isIndeterminateOutcome = function() {
+    return ($scope.selectedoutcome.length !== 0 &&
+        $scope.selectedoutcome.length !== $scope.outcomes.length);
+  };
+  $scope.isCheckedProgram = function() {
     return $scope.selectedprogram.length === $scope.programs.length;
   };
+  $scope.isCheckedOutcome = function() {
+    return $scope.selectedoutcome.length === $scope.outcomes.length;
+  };
 
-  $scope.toggleAll = function() {
+  $scope.toggleAllProgram = function() {
     if ($scope.selectedprogram.length === $scope.programs.length) {
       $scope.selectedprogram = [];
     } else if ($scope.selectedprogram.length === 0 || $scope.selectedprogram.length > 0) {
       $scope.selectedprogram = $scope.programs.slice(0);
     }
+    console.log($scope.selectedprogram);
   };
-
-
-
-
-
-
-
-
-
+  $scope.toggleAllOutcome = function() {
+    if ($scope.selectedoutcome.length === $scope.outcomes.length) {
+      $scope.selectedoutcome = [];
+    } else if ($scope.selectedoutcome.length === 0 || $scope.selectedoutcome.length > 0) {
+      $scope.selectedoutcome = $scope.outcomes.slice(0);
+    }
+    console.log($scope.selectedoutcome);
+  };
 
  //------ Calendar -------------------------------------------------------
 
   var startDate;
   var endDate;
 
-  $scope.date1 = new Date();
-  $scope.date2 = new Date();
+  $scope.startdate = new Date();
+  $scope.enddate = new Date();
 
   $scope.maxDate = new Date(
-      $scope.date2.getFullYear(),
-      $scope.date2.getMonth(),
-      $scope.date2.getDate());
+      $scope.enddate.getFullYear(),
+      $scope.enddate.getMonth(),
+      $scope.enddate.getDate());
 
   $scope.startDate = function(date) {
     var startDate = date;
@@ -87,10 +94,7 @@ myApp.controller("OutcomesController", ["$scope",'$http','DataFactory', '$locati
 
   $scope.newQuery = function () {
 
-    console.log("Program: " + $scope.selectedprogram + "\n"
-      + "Gender: " + $scope.selectedgender + "\n"
-      + "Adult Race: " + $scope.selectedadultRace + "\n"
-      + "Adult Age: " + $scope.selectedadultAge)
+    console.log("Program: " + $scope.selectedprogram);
 
     // $http.get('/demoquery').then(function(response) {
     // console.log('data', response.data);
@@ -101,8 +105,8 @@ myApp.controller("OutcomesController", ["$scope",'$http','DataFactory', '$locati
   $scope.resetQuery = function () {
     $scope.selectedprogram = [];
     $scope.selectedoutcome = [];
-    $scope.date1 = new Date();
-    $scope.date2 = new Date();
+    $scope.startdate = new Date();
+    $scope.enddate = new Date();
   }
 
 
