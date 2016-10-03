@@ -7,6 +7,10 @@ md-toolbar:not(.md-menu-toolbar) {
   color:#0c6aa9;
 }
 
+.sg-green{
+  color:#779b1f;
+}
+
 .logo {
   width: 40%;
   height: 40%;
