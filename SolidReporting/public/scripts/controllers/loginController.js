@@ -10,17 +10,18 @@ console.log('logincontroller');
     $scope.userLogin = function() {
       var userWhole = $scope.user;
       console.log('preinfo', userWhole);
-      $scope.dataFactory.login(userWhole).then(function(response) {
-        console.log('login complete', response);
-        if(response) {
-          // location works with SPA (ng-route)
-          console.log('redirecting to user page');
-          $location.path('/demographics');
-        } else {
-          alert("please try again!");
-        }
+            $scope.dataFactory.login(userWhole).then(function(response) {
+                console.log('login complete', response);
+                if(response) {
+                    // location works with SPA (ng-route)
+                    console.log('redirecting to user page');
+                    $location.path('/demographics');
+                } else {
+                    alert("please try again!");
+                }
 
-      });
+            });
+
     }
 
     $scope.userRegister = function() {
@@ -31,13 +32,18 @@ console.log('logincontroller');
 
     $scope.forgotPassword = function () {
         var username = $scope.user.username;
-        $scope.dataFactory.forgotPassword(username).then(function(response) {
-            if(response == 200) {
-                $scope.message = "An e-mail has been sent to " + username + " with further instructions.";
-            } else {
-                $scope.message = "No account with that email address exists.";
-            }
-        });
+        // if(username){
+            $scope.dataFactory.forgotPassword(username).then(function(response) {
+                if(response == 200) {
+                    $scope.message = "An e-mail has been sent to " + username + " with further instructions.";
+                } else {
+                    $scope.message = "No account with that email address exists.";
+                }
+            });
+        // } else {
+        //     alert('Please enter your email');
+        // }
+
     }
 
     $scope.resetPassword = function() {
@@ -56,4 +62,13 @@ console.log('logincontroller');
         });
     }
 
+
+    // angular
+    //     .module('MyApp')
+    //     .controller('DemoCtrl', function( $scope ) {
+    //         $scope.user = {
+    //             name : "Naomi Black",
+    //             password: ""
+    //         }
+    //     });
 }]);

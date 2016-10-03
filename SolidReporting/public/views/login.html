@@ -1,20 +1,53 @@
 <md-toolbar layout="row" layout-align="center"><img class="logo" layout-align="center" src="http://www.solidgroundmn.org/wp-content/themes/theme1205/images/logo.png" /></md-toolbar>
-<div class="container">
-  <h1 class="lead">Login</h1>
-    <h1 class="lead alert alert-danger" role="alert" ng-if="message != ''">{{message}}</h2>
-    <form ng-submit="userLogin()">
-      <div>
-          <label for="username">Username:</label>
-          <input type="text" ng-model="user.username" />
-      </div>
-      <div>
-          <label for="password">Password:</label>
-          <input type="password" ng-model="user.password" />
-      </div>
-      <div>
-          <input class="btn btn-default" type="submit" name="submit" value="Log In" />
-          <a href="#register">Register</a>
-          <a href="#forgot">Forgot Password</a>
-      </div>
-    </form>
+<!--<div class="container">-->
+  <!--<h1 class="lead">Login</h1>-->
+    <!--<h1 class="lead alert alert-danger" role="alert" ng-if="message != ''">{{message}}</h1>-->
+    <!--<form ng-submit="userLogin()">-->
+      <!--<div>-->
+          <!--<label for="username">Username:</label>-->
+          <!--<input type="text" ng-model="user.username" />-->
+      <!--</div>-->
+      <!--<div>-->
+          <!--<label for="password">Password:</label>-->
+          <!--<input type="password" ng-model="user.password" />-->
+      <!--</div>-->
+      <!--<div>-->
+          <!--<input class="btn btn-default" type="submit" name="submit" value="Log In" />-->
+          <!--<a href="#register">Register</a>-->
+          <!--<a href="#forgot">Forgot Password</a>-->
+      <!--</div>-->
+    <!--</form>-->
+<!--</div>-->
+
+<div layout="row" layout-align="center center">
+
+    <div class="login">
+        <h1 class="lead sg-blue">Login</h1>
+        <h1 class="lead alert alert-danger" role="alert" ng-if="message != ''">{{message}}</h1>
+
+        <form name="clientLogin" ng-submit="userLogin()">
+            <md-input-container>
+                <md-icon class="fa fa-user sg-blue" aria-hidden="true"></md-icon>
+                <input ng-model="user.username" name="userName" type="text" placeholder="Name" ng-required="true">
+                <div ng-messages="clientLogin.userName.$error">
+                    <div ng-message="required">Your full name is required.</div>
+                </div>
+            </md-input-container>
+            <md-input-container md-no-float>
+                <!-- Use floating placeholder instead of label -->
+                <md-icon class="fa fa-unlock-alt sg-blue" aria-hidden="true" ></md-icon>
+                <input ng-model="user.password" type="password" placeholder="Password" ng-required="true" name="userPassword">
+                <div ng-messages="clientLogin.userPassword.$error">
+                    <div ng-message="required">Your password is required.</div>
+                </div>
+            </md-input-container>
+            <md-button class="md-raised md-primary" ng-click="userLogin()">Login</md-button>
+            <a href="#register"><md-button class="md-raised md-primary" >Register</md-button></a>
+            <a href="#forgot"><md-button class="md-raised md-primary">Forgot Password</md-button></a>
+        </form>
+
+
+    </div>
+
+
 </div>
