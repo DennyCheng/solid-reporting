@@ -37,8 +37,6 @@ var connectionString = 'postgres://localhost:5432/solid_ground';
 
 router.get('/', function(req, res) {
 
-  pg.connect(connection, function(err, client, done) {
-
   pg.connect(connectionString, function(err, client, done) {
 
     if(err) {
@@ -65,9 +63,6 @@ router.get('/', function(req, res) {
 
 router.delete('/:id', function(req, res) {
   var taskID = req.params.id;
-
-
-  pg.connect(connection, function(err, client, done) {
 
   pg.connect(connectionString, function(err, client, done) {
 
