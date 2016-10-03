@@ -1,52 +1,24 @@
 var express = require('express');
 var router = express.Router();
 var pg = require('pg');
-var connectionString = 'postgres://localhost:5432/solid_ground';
+var connection = require('../modules/connection');
 
-//routes
-// router.post('/', function(req, res) {
-//   var task = req.body;
-//   console.log(task);
-//
-//   // Store in DB
 
-//   pg.connect(connection, function(err, client, done) {
-
-//   pg.connect(connectionString, function(err, client, done) {
-
-//     if(err) {
-//       console.log(err);
-//       res.sendStatus(500);
-//     }
-//
-//     client.query("INSERT INTO tasks (task_content) VALUES ($1)",
-//       [task.content],
-//       function(err, result) {
-//         done();
-//
-//         if(err) {
-//           console.log("query error: ", err);
-//           res.sendStatus(500);
-//         }
-//         // created!
-//         res.sendStatus(201);
-//     });
-//   });
-//
-// });
-
-router.get('/', function(req, res) {
+router.post('/', function(req, res) {
+  console.log("req.body line 43: ", req.body);
+  console.log("req.body.dates line 44: ", req.body.dates);
+  // need to convert these dates to be: '2016-10-03'  NOT '2016-10-03T14:33:40.943Z';
+  console.log("req.body.dates.date1 line 44: ", req.body.dates.date1);
+  console.log("req.body.dates.date2 line 44: ", req.body.dates.date2);
 
   pg.connect(connection, function(err, client, done) {
-
-  pg.connect(connectionString, function(err, client, done) {
 
     if(err) {
       console.log(err);
       res.sendStatus(500);
     }
 
-    client.query("SELECT * FROM tasks ORDER BY completed_date DESC",
+    client.query('SELECT COUNT(*) FROM "Head of Household"',
       function(err, result) {
         done();
 
@@ -54,7 +26,7 @@ router.get('/', function(req, res) {
           console.log("select error: ", err);
           res.sendStatus(500);
         }
-        // console.log('results: ', resultStuff);
+        console.log('results.row: ', result.rows);
 
         res.send(result.rows);
     });
@@ -62,34 +34,5 @@ router.get('/', function(req, res) {
   });
 });
 
-
-router.delete('/:id', function(req, res) {
-  var taskID = req.params.id;
-
-
-  pg.connect(connection, function(err, client, done) {
-
-  pg.connect(connectionString, function(err, client, done) {
-
-    if(err) {
-      console.log(err);
-      res.sendStatus(500);
-    }
-
-  client.query("DELETE FROM tasks WHERE id = $1",
-      [taskID],
-      function(err, result) {
-        done();
-
-        if(err) {
-          console.log("delete error: ", err);
-          res.sendStatus(500);
-        }
-
-        res.sendStatus(202);
-    });
-  });
-
-});
 
 module.exports = router;

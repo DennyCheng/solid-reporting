@@ -1,16 +1,17 @@
-myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location', function ($scope, $http, DataFactory, $location) {
+myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location', 'DemoFactory', function ($scope, $http, DataFactory, $location, DemoFactory) {
   console.log("hello from demoController");
     var races = [];
     var residences = [];
     $scope.dataFactory = DataFactory;
     $scope.dataFactory.currentSess();
     $scope.userName = $scope.dataFactory.varUsername();
+    $scope.demoFactory = DemoFactory;
 
     //----GET Massive Data ----------------------------------------------
     showData();
     function showData() {
 
-        $scope.dataFactory.retrieveData().then(function(response) {
+        $scope.demoFactory.retrieveData().then(function(response) {
             $scope.data = response;
             $scope.data.forEach(function (item) {
                 // indexOf checks from index 0 to end of index every loop
@@ -164,8 +165,13 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
   var startDate;
   var endDate;
 
-  $scope.date1 = new Date();
+
   $scope.date2 = new Date();
+  console.log("$scope.date2: ", $scope.date2);
+  $scope.date1 = new Date();
+  $scope.date1 = $scope.date1.setFullYear($scope.date1.getFullYear() - 1);
+  $scope.date1 = new Date($scope.date1);
+  console.log("$scope.date1: ", $scope.date1);
 
   $scope.maxDate = new Date(
       $scope.date2.getFullYear(),
@@ -199,6 +205,16 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     // console.log('data', response.data);
     // $scope.data = response.data;
     // });
+    console.log("$scope.date1 newQuery: ", $scope.date1);
+    console.log("$scope.date2 newQuery: ", $scope.date2);
+    var dates = {
+      date1: $scope.date1,
+      date2: $scope.date2
+    }
+    $scope.demoFactory.getDemo(dates).then(function(response) {
+      console.log("response: ", response);
+      console.log("response.data: ", response.data);
+    });
   }
 
 
