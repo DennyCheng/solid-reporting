@@ -3,26 +3,9 @@ var myApp = angular.module('myApp',['ngMaterial','ngRoute']);
 myApp.config(['$routeProvider', function($routeProvider){
 
   $routeProvider
-<<<<<<< HEAD
-<<<<<<< HEAD
-  .when('/home',{
-        templateUrl:'/public/views/partials/home.html',
-        controller:'HomeController'
-      })
   .when('/outcomes',{
         templateUrl:'/public/views/partials/outcomes.html',
         controller:'OutcomeController'
-=======
-  .when('/home', {
-        templateUrl:'/public/views/partials/demographics.html',
-        controller:'DemoController'
-      })
-  .when('/demographics', {
-        templateUrl: '/public/views/partials/demographics.html',
-        controller: "DemoController"
-      })
-=======
->>>>>>> master
   .when('/login', {
       templateUrl: '/public/views/login.html',
       controller: "LoginController"

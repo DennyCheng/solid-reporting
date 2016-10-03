@@ -7,6 +7,7 @@ myApp.factory('DataFactory', ['$http', '$location', function($http, $location) {
   var responseStatus = undefined;
   var reset = undefined;
 
+
   login = function(user) {
       console.log('sending to server...', user);
     var promise =  $http.post('/', user).then(function(response) {

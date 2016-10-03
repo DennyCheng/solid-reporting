@@ -5,14 +5,14 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     $scope.dataFactory = DataFactory;
     $scope.dataFactory.currentSess();
     $scope.userName = $scope.dataFactory.varUsername();
+
     $scope.demoFactory = DemoFactory;
     var dates;
 
     //----GET Massive Data ----------------------------------------------
     showData();
     function showData() {
-
-        $scope.demoFactory.retrieveData().then(function(response) {
+        $scope.dataFactory.retrieveData().then(function(response) {
             $scope.data = response;
             $scope.data.forEach(function (item) {
                 // indexOf checks from index 0 to end of index every loop

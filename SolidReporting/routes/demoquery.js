@@ -5,6 +5,7 @@ var connection = require('../modules/connection');
 
 
 
+
 router.post('/dobadults', function(req, res) {
   console.log("req.body line 43: ", req.body);
   // console.log("req.body.dates line 44: ", req.body.correctDates);
@@ -13,6 +14,10 @@ router.post('/dobadults', function(req, res) {
   console.log("req.body.dates.enddate line 44: ", req.body.endDate);
   var startDate = req.body.startDate;
   var endDate = req.body.endDate;
+
+  pg.connect(connection, function(err, client, done) {
+
+router.get('/', function(req, res) {
 
   pg.connect(connection, function(err, client, done) {
 
@@ -49,5 +54,6 @@ router.post('/dobadults', function(req, res) {
 
   });
 });
+
 
 module.exports = router;
