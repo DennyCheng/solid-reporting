@@ -177,11 +177,11 @@
             <!-- <label>Select Date Range</label> -->
             <div class="calendar">
               <p>Start Date</p>
-              <md-datepicker ng-model="date1"  name="dateField"  md-max-date="date2" ng-change="startDate(date1)"></md-datepicker>
+              <md-datepicker ng-model="startdate"  name="dateField"  md-max-date="enddate" ng-change="startDate(startdate)"></md-datepicker>
             </div>
             <div class="calendar">
               <p>End Date</p>
-              <md-datepicker ng-model="date2" name="dateField" md-min-date="date1" md-max-date="maxDate" ng-change="endDate(date2)">
+              <md-datepicker ng-model="enddate" name="dateField" md-min-date="startdate" md-max-date="maxDate" ng-change="endDate(enddate)">
               </md-datepicker>
             </div>
         </fieldset>

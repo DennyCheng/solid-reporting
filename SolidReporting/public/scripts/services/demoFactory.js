@@ -12,7 +12,34 @@ myApp.factory('DemoFactory', ['$http', '$location', function($http, $location) {
 
   var demoData = function(dates) {
     console.log("dates in DF: ", dates);
-    var promise = $http.post('/demoquery', {dates: dates}).then(function (response) {
+
+    var startDate = dates.startdate;
+    console.log("startDate : ", typeof startDate);
+    var startDateYear = startDate.getFullYear();
+    console.log("startDateYear: ", startDateYear);
+    var startDateMonth = startDate.getMonth();
+    var startDateDay = startDate.getDate();
+
+    var startDateFull = startDateYear + '-' + startDateMonth + '-' + startDateDay;
+    console.log("startDateFull: ", startDateFull);
+
+    var endDate = dates.enddate;
+    console.log("endDate : ", typeof endDate);
+    var endDateYear = endDate.getFullYear();
+    console.log("endDateYear: ", endDateYear);
+    var endDateMonth = endDate.getMonth();
+    var endDateDay = endDate.getDate();
+
+    var endDateFull = endDateYear + '-' + endDateMonth + '-' + endDateDay;
+    console.log("endDateFull: ", endDateFull);
+
+    var correctDates = {
+      startDate: startDateFull,
+      endDate: endDateFull
+    }
+
+
+    var promise = $http.post('/demoquery', correctDates).then(function (response) {
       return response.data;
     });
     return promise;
