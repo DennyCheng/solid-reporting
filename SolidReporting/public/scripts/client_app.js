@@ -4,6 +4,7 @@ myApp.config(['$routeProvider', function($routeProvider){
 
   $routeProvider
 <<<<<<< HEAD
+<<<<<<< HEAD
   .when('/home',{
         templateUrl:'/public/views/partials/home.html',
         controller:'HomeController'
@@ -20,22 +21,52 @@ myApp.config(['$routeProvider', function($routeProvider){
         templateUrl: '/public/views/partials/demographics.html',
         controller: "DemoController"
       })
+=======
+>>>>>>> master
   .when('/login', {
       templateUrl: '/public/views/login.html',
       controller: "LoginController"
     })
-  .when('/register', {
+    .when('/register', {
       templateUrl: '/public/views/register.html',
       controller: "LoginController"
     })
-  .when('/user', {
+    .when('/user', {
       templateUrl: '/public/views/user.html',
       controller: "UserController"
     })
-
-  .otherwise({
-        redirectTo:'login'
-      });
-
-
+    .when('/forgot', {
+      templateUrl: '/public/views/forgot.html',
+      controller: "LoginController"
+    })
+    .when('/home', {
+      templateUrl:'/public/views/partials/demographics.html',
+      controller:'DemoController'
+    })
+    .when('/demographics', {
+      templateUrl: '/public/views/partials/demographics.html',
+      controller: "DemoController"
+    })
+    .when('/upload', {
+        templateUrl: '/public/views/partials/upload.html',
+        controller: "uploadController"
+    })
+    .when('/reset/:token', {
+      templateUrl: '/public/views/reset.html',
+      controller: "LoginController",
+      resolve: {
+        currentAuth: function (TokenFactory) {
+           return TokenFactory();
+        }
+      }
+    })
+    .otherwise({
+      redirectTo:'/login'
+    });
 }]);
+
+myApp.config(function($mdThemingProvider) {
+  $mdThemingProvider.theme('default')
+    .primaryPalette('indigo')
+    .accentPalette('light-green')
+});
