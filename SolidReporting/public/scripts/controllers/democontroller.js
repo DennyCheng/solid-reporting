@@ -1,16 +1,18 @@
-myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location', function ($scope, $http, DataFactory, $location) {
+myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location', 'DemoFactory', function ($scope, $http, DataFactory, $location, DemoFactory) {
   console.log("hello from demoController");
     var races = [];
     var residences = [];
     $scope.dataFactory = DataFactory;
     $scope.dataFactory.currentSess();
     $scope.userName = $scope.dataFactory.varUsername();
+    $scope.demoFactory = DemoFactory;
+    var dates;
 
     //----GET Massive Data ----------------------------------------------
     showData();
     function showData() {
 
-        $scope.dataFactory.retrieveData().then(function(response) {
+        $scope.demoFactory.retrieveData().then(function(response) {
             $scope.data = response;
             $scope.data.forEach(function (item) {
                 // indexOf checks from index 0 to end of index every loop
@@ -161,25 +163,32 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
 
  //------ Calendar -------------------------------------------------------
 
-  var startDate;
-  var endDate;
+  // var startDate;
+  // var endDate;
 
-  $scope.date1 = new Date();
-  $scope.date2 = new Date();
+
+  $scope.enddate = new Date();
+  console.log("$scope.enddate: ", $scope.enddate);
+  $scope.startdate = new Date();
+  $scope.startdate = $scope.startdate.setFullYear($scope.startdate.getFullYear() - 1);
+  $scope.startdate = new Date($scope.startdate);
+  console.log("$scope.startdate: ", $scope.startdate);
 
   $scope.maxDate = new Date(
-      $scope.date2.getFullYear(),
-      $scope.date2.getMonth(),
-      $scope.date2.getDate());
+      $scope.enddate.getFullYear(),
+      $scope.enddate.getMonth(),
+      $scope.enddate.getDate()
+    );
 
-  $scope.startDate = function(date) {
-    var startDate = date;
-    console.log('startDate: ', startDate);
-  };
-  $scope.endDate = function(date) {
-    var endDate = date;
-    console.log('endDate: ', endDate);
-  };
+
+  // $scope.startDate = function(date) {
+  //   var startDate = date;
+  //   console.log('startDate: ', startDate);
+  // };
+  // $scope.endDate = function(date) {
+  //   var endDate = date;
+  //   console.log('endDate: ', endDate);
+  // };
 //--------------------------------------------
 
 // var self = this;
@@ -199,6 +208,16 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     // console.log('data', response.data);
     // $scope.data = response.data;
     // });
+    console.log("$scope.startdate newQuery: ", $scope.startdate);
+    console.log("$scope.enddate newQuery: ", $scope.enddate);
+    dates = {
+      startdate: $scope.startdate,
+      enddate: $scope.enddate
+    }
+    $scope.demoFactory.getDemo(dates).then(function(response) {
+      console.log("response: ", response);
+      console.log("response.data: ", response.data);
+    });
   }
 
 
@@ -238,8 +257,8 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     $scope.selectedresidence = [];
     $scope.selectedhhIncome = [];
     $scope.selectedexitReason = [];
-    $scope.date1 = new Date();
-    $scope.date2 = new Date();
+    $scope.startdate = new Date();
+    $scope.enddate = new Date();
   }
 
 
