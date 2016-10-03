@@ -32,26 +32,36 @@ WHERE "Head of Household"."Program Exit Date" > '2015-12-31' and "Head of Househ
 ;
 
 
-Total people Adult/Children
-SELECT SUM (numberOfPeople), 'Adults' as role
-FROM 
-(SELECT COUNT (*) as numberOfPeople
+Total people Adult/Children *
+SELECT "Gender", SUM (numberOfPeople), "Program"
+FROM
+
+(SELECT "Head of Household"."Gender", COUNT (*) as numberOfPeople, "Program"
 FROM "Head of Household"
 WHERE "Head of Household"."Program Exit Date" > '2015-12-31' and "Head of Household"."Program Exit Date" < '2016-12-31' OR "Head of Household"."Program Exit Date" IS NULL
+GROUP BY "Head of Household"."Gender", "Program"
 UNION
-SELECT COUNT (*) as numberOfPeople
+
+SELECT "Head of Household-2"."Gender", COUNT (*) as numberOfPeople, "Head of Household"."Program"
 FROM "Head of Household-2"
 LEFT JOIN "Head of Household" ON "Head of Household-2"."Head of Household" = "Head of Household"."HoHID"
-WHERE "Head of Household"."Program Exit Date" > '2015-12-31' and "Head of Household"."Program Exit Date" < '2016-12-31' OR "Head of Household"."Program Exit Date" IS NULL) as Adult
+WHERE "Head of Household"."Program Exit Date" > '2015-12-31' and "Head of Household"."Program Exit Date" < '2016-12-31' OR "Head of Household"."Program Exit Date" IS NULL
+GROUP BY "Head of Household-2"."Gender", "Head of Household"."Program"
 UNION
-SELECT COUNT (*) as numberOfPeople, 'Children' as role
+
+SELECT "Members of Household"."Gender", COUNT (*) as numberOfPeople, "Head of Household"."Program"
 FROM "Members of Household"
 LEFT JOIN "Head of Household" ON "Members of Household"."Head of Household" = "Head of Household"."HoHID"
-WHERE "Head of Household"."Program Exit Date" > '2015-12-31' and "Head of Household"."Program Exit Date" < '2016-12-31' OR "Head of Household"."Program Exit Date" IS NULL;
+WHERE "Head of Household"."Program Exit Date" > '2015-12-31' and "Head of Household"."Program Exit Date" < '2016-12-31' OR "Head of Household"."Program Exit Date" IS NULL
+GROUP BY "Members of Household"."Gender", "Head of Household"."Program") as People
+GROUP BY "Gender", "Program";
 
 
-Total people gender
-SELECT "Gender", COUNT (*) as numberOfPeople, 'head of household' as role
+Total people gender *
+SELECT "Gender", SUM (numberOfPeople)
+FROM
+
+(SELECT "Gender", COUNT (*) as numberOfPeople
 FROM "Head of Household"
 WHERE "Head of Household"."Program Exit Date" > '2015-12-31' and "Head of Household"."Program Exit Date" < '2016-12-31' OR "Head of Household"."Program Exit Date" IS NULL
 GROUP BY "Gender"
@@ -68,11 +78,11 @@ SELECT "Members of Household"."Gender", COUNT (*) as numberOfPeople
 FROM "Members of Household"
 LEFT JOIN "Head of Household" ON "Members of Household"."Head of Household" = "Head of Household"."HoHID"
 WHERE "Head of Household"."Program Exit Date" > '2015-12-31' and "Head of Household"."Program Exit Date" < '2016-12-31' OR "Head of Household"."Program Exit Date" IS NULL
-GROUP BY "Members of Household"."Gender"
-;
+GROUP BY "Members of Household"."Gender") as People
+GROUP BY "Gender";
 
 
-Race - Adults
+Race - Adults *
 SELECT "Race Code", SUM (Race)
 FROM
 (SELECT "Race Code", COUNT (*) as Race
@@ -90,7 +100,7 @@ GROUP BY "Head of Household-2"."Race Code") as Races
 GROUP BY "Race Code";
 
 
-Race - Children
+Race - Children *
 SELECT "Members of Household"."Race Code" as Race, COUNT (*)
 FROM "Members of Household"
 LEFT JOIN "Head of Household" ON "Members of Household"."Head of Household" = "Head of Household"."HoHID"
