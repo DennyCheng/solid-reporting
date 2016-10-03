@@ -32,28 +32,23 @@ WHERE "Head of Household"."Program Exit Date" > '2015-12-31' and "Head of Househ
 ;
 
 
-vvv - change 'EMPII' to what ever you want the program to be in the query
-
 Total people Adult/Children
-SELECT COUNT (*) as numberOfPeople
+SELECT SUM (numberOfPeople), 'Adults' as role
+FROM 
+(SELECT COUNT (*) as numberOfPeople
 FROM "Head of Household"
 WHERE "Head of Household"."Program Exit Date" > '2015-12-31' and "Head of Household"."Program Exit Date" < '2016-12-31' OR "Head of Household"."Program Exit Date" IS NULL
- and "Head of Household"."Program" = 'EMPII' --change 'EMPII' to what ever you want the program to be in the query
 UNION
-
 SELECT COUNT (*) as numberOfPeople
 FROM "Head of Household-2"
 LEFT JOIN "Head of Household" ON "Head of Household-2"."Head of Household" = "Head of Household"."HoHID"
-WHERE "Head of Household"."Program Exit Date" > '2015-12-31' and "Head of Household"."Program Exit Date" < '2016-12-31' OR "Head of Household"."Program Exit Date" IS NULL
- and "Head of Household"."Program" = 'EMPII'
+WHERE "Head of Household"."Program Exit Date" > '2015-12-31' and "Head of Household"."Program Exit Date" < '2016-12-31' OR "Head of Household"."Program Exit Date" IS NULL) as Adult
 UNION
-
-SELECT COUNT (*) as numberOfPeople
+SELECT COUNT (*) as numberOfPeople, 'Children' as role
 FROM "Members of Household"
 LEFT JOIN "Head of Household" ON "Members of Household"."Head of Household" = "Head of Household"."HoHID"
-WHERE "Head of Household"."Program Exit Date" > '2015-12-31' and "Head of Household"."Program Exit Date" < '2016-12-31' OR "Head of Household"."Program Exit Date" IS NULL
-and "Head of Household"."Program" = 'EMPII'
-;
+WHERE "Head of Household"."Program Exit Date" > '2015-12-31' and "Head of Household"."Program Exit Date" < '2016-12-31' OR "Head of Household"."Program Exit Date" IS NULL;
+
 
 Total people gender
 SELECT "Gender", COUNT (*) as numberOfPeople, 'head of household' as role
@@ -76,21 +71,24 @@ WHERE "Head of Household"."Program Exit Date" > '2015-12-31' and "Head of Househ
 GROUP BY "Members of Household"."Gender"
 ;
 
+
 Race - Adults
-SELECT "Race Code" as Race, COUNT (*)
+SELECT "Race Code", SUM (Race)
+FROM
+(SELECT "Race Code", COUNT (*) as Race
 FROM "Head of Household"
 WHERE "Head of Household"."Program Exit Date" > '2015-12-31' and "Head of Household"."Program Exit Date" < '2016-12-31' OR "Head of Household"."Program Exit Date" IS NULL
-and "Head of Household"."Program" = 'EMPII'
 GROUP BY "Race Code"
 
 UNION ALL
 
-SELECT "Head of Household-2"."Race Code" as Race, COUNT (*)
+SELECT "Head of Household-2"."Race Code", COUNT (*) as Race
 FROM "Head of Household-2"
 LEFT JOIN "Head of Household" ON "Head of Household-2"."Head of Household" = "Head of Household"."HoHID"
 WHERE "Head of Household"."Program Exit Date" > '2015-12-31' and "Head of Household"."Program Exit Date" < '2016-12-31' OR "Head of Household"."Program Exit Date" IS NULL
-and "Head of Household"."Program" = 'EMPII'
-GROUP BY "Head of Household-2"."Race Code";
+GROUP BY "Head of Household-2"."Race Code") as Races
+GROUP BY "Race Code";
+
 
 Race - Children
 SELECT "Members of Household"."Race Code" as Race, COUNT (*)
@@ -100,12 +98,14 @@ WHERE "Head of Household"."Program Exit Date" > '2015-12-31' and "Head of Househ
 and "Head of Household"."Program" = 'EMPII'
 GROUP BY "Members of Household"."Race Code";
 
+
 Age - Children
 SELECT "Members of Household"."Date of Birth" as DOB
 FROM "Members of Household"
 LEFT JOIN "Head of Household" ON "Members of Household"."Head of Household" = "Head of Household"."HoHID"
 WHERE "Head of Household"."Program Exit Date" > '2015-12-31' and "Head of Household"."Program Exit Date" < '2016-12-31' OR "Head of Household"."Program Exit Date" IS NULL
 and "Head of Household"."Program" = 'EMPII';
+
 
 Age - Adults
 SELECT "Date of Birth" as DOB
