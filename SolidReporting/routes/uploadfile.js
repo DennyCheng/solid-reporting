@@ -75,28 +75,30 @@ router.get('/', function (req, res) {
     });
 });
 
-// router.get('/count', function (req, res) {
-//     var tables = ' SELECT "Gender" COUNT(*) FROM "Head of Household-2";';
-//     // tables += ' SELECT * FROM "Head of Household-2"; ';
-//     // tables += ' SELECT * FROM "Members of Household"; ';
-//
-//     pg.connect(connectionString, function (err, client, done) {
-//         if (err) {
-//             res.sendStatus(500);
-//         }
-//
-//         client.query(tables, function (err, result) {
-//             done();
-//
-//             if (err) {
-//                 console.log('err---', err);
-//                 res.sendStatus(500);
-//             }
-//
-//             res.send(result.rows);
-//         });
-//     });
-// });
+router.get('/data', function (req, res) {
+    var program = 'SELECT * FROM "Head of Household" WHERE "Gender" = \' $1 \'';
+    // program += 'SELECT * FROM "Head of Household-2" WHERE status = \' $2 \'';
+    // program += 'SELECT * FROM "Members of Household" WHERE status = \' $2 \'';
+
+    pg.connect(connectionString, function (err, client, done) {
+        if (err) {
+            res.sendStatus(500);
+        }
+
+        console.log('req.param --------', req.params.status);
+        client.query(program, function (err, result) {
+            done();
+
+            console.log('error line 60');
+            console.log(err);
+            if (err) {
+                res.sendStatus(500);
+            }
+            console.log(result);
+            res.send(result.rows);
+        });
+    });
+});
 
 
 

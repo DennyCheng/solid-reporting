@@ -1,5 +1,53 @@
 myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location', function ($scope, $http, DataFactory, $location) {
   console.log("hello from demoController");
+    var races = [];
+    var residences = [];
+    $scope.dataFactory = DataFactory;
+    $scope.dataFactory.currentSess();
+    $scope.userName = $scope.dataFactory.varUsername();
+
+    //----GET Massive Data ----------------------------------------------
+    showData();
+    function showData() {
+
+        $scope.dataFactory.retrieveData().then(function(response) {
+            $scope.data = response;
+            $scope.data.forEach(function (item) {
+                // indexOf checks from index 0 to end of index every loop
+                if (races.indexOf(item['Race Code']) === -1 &&
+                    item['Race Code'] !== null && item['Race Code'] !== 'Other(specify)Irainan' &&
+                    item['Race Code'] !== 'Other(specify)________________________' &&
+                    item['Race Code'] !== 'Other(specify' &&
+                    item['Race Code'] !== 'Asian/SE Asian/Pacific Islander') {
+                    races.push(item['Race Code']);
+                }
+                if (residences.indexOf(item['County of Last Residence']) === -1 &&
+                    item['County of Last Residence'] !== null &&
+                    item['County of Last Residence'] !== undefined) {
+                    residences.push(item['County of Last Residence']);
+                }
+            });
+
+        });
+    }
+
+  //----- Programs ----------------------------
+
+  $scope.programs = ['EMP I', 'EMP II', 'Home Again', 'HomeSafe', 'HomeFront'];
+
+  //----- Logic for program checkboxes ----------------
+
+  $scope.selectedprogram = $scope.programs;
+  $scope.toggle = function (item, list) {
+    var idx = list.indexOf(item);
+    if (idx > -1) {
+      list.splice(idx, 1);
+    }
+    else {
+      list.push(item);
+    }
+  };
+
 
  $scope.dataFactory = DataFactory;
 
@@ -59,20 +107,37 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
   //----- Dropdowns --------------------------------
   $scope.genders = ['Female', 'Male'];
 
-  //----GET Massive Data ----------------------------------------------
-  showData();
-  function showData() {
-    $scope.dataFactory.retrieveData().then(function(response) {
-      $scope.data = response;
-      console.log('response data', $scope.data);
+  $scope.exists = function (item, list) {
+    return list.indexOf(item) > -1;
+  };
 
-    });
-  }
+  $scope.isIndeterminate = function() {
+    return ($scope.selectedprogram.length !== 0 &&
+        $scope.selectedprogram.length !== $scope.programs.length);
+  };
+
+  $scope.isChecked = function() {
+    return $scope.selectedprogram.length === $scope.programs.length;
+  };
+
+  $scope.toggleAll = function() {
+    if ($scope.selectedprogram.length === $scope.programs.length) {
+      $scope.selectedprogram = [];
+    } else if ($scope.selectedprogram.length === 0 || $scope.selectedprogram.length > 0) {
+      $scope.selectedprogram = $scope.programs.slice(0);
+    }
+  };
+
+
+  //----- Dropdowns --------------------------------
+  $scope.genders = ['Female', 'Male'];
+
 
   //----- Dropdowns -------------------------------------------------
 
 
   var races = ['African', 'African American', 'American Indian' ,'Asian/SE Asian/Pacific Islander', 'Caucasian/White', 'Hispanic/Latino', 'Multiracial', 'Other'];
+
   $scope.adultRaces = races;
   $scope.childRaces = races;
 
@@ -135,6 +200,33 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     // $scope.data = response.data;
     // });
   }
+
+
+    //********** Second option selected function ****************
+
+    // $scope.newQuery = function() {
+    //     // get call to the server passing the data
+    //     $http.get('/uploadfile/data').then(function(response){
+    //         console.log('response', response.data);
+    //         $scope.selectedgender;
+    //         console.log($scope.selectedgender[0]);
+    //         $scope.selectedadultRace;
+    //         console.log($scope.selectedadultRace);
+    //         $scope.selectedchildAge;
+    //         console.log($scope.selectedchildAge);
+    //         $scope.selectedresidence;
+    //         console.log($scope.selectedresidence);
+    //         $scope.selectedhhIncome;
+    //         console.log($scope.selectedhhIncome);
+    //         $scope.selectedexitingPerson;
+    //         console.log($scope.selectedexitingPerson);
+    //         $scope.date1;
+    //         console.log('selectedDate', $scope.date1);
+    //         $scope.date2;
+    //         console.log('selectedDate', $scope.date2);
+    //     })
+    //
+    // }
 
   $scope.resetQuery = function () {
     $scope.selectedprogram = [];
