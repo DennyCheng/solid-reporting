@@ -17,7 +17,8 @@ myApp.factory('DemoFactory', ['$http', '$location', function($http, $location) {
     console.log("startDate : ", typeof startDate);
     var startDateYear = startDate.getFullYear();
     console.log("startDateYear: ", startDateYear);
-    var startDateMonth = startDate.getMonth();
+    var startDateMonth = startDate.getMonth() + 1;
+    console.log("startDateMonth: ", startDateMonth);
     var startDateDay = startDate.getDate();
 
     var startDateFull = startDateYear + '-' + startDateMonth + '-' + startDateDay;
@@ -27,7 +28,8 @@ myApp.factory('DemoFactory', ['$http', '$location', function($http, $location) {
     console.log("endDate : ", typeof endDate);
     var endDateYear = endDate.getFullYear();
     console.log("endDateYear: ", endDateYear);
-    var endDateMonth = endDate.getMonth();
+    var endDateMonth = endDate.getMonth() + 1;
+    console.log("endDateMonth: ", endDateMonth);
     var endDateDay = endDate.getDate();
 
     var endDateFull = endDateYear + '-' + endDateMonth + '-' + endDateDay;
@@ -39,7 +41,7 @@ myApp.factory('DemoFactory', ['$http', '$location', function($http, $location) {
     }
 
 
-    var promise = $http.post('/demoquery', correctDates).then(function (response) {
+    var promise = $http.post('/demoquery/dobadults', correctDates).then(function (response) {
       return response.data;
     });
     return promise;
