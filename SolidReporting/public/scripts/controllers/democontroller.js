@@ -6,7 +6,15 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     $scope.dataFactory.currentSess();
     $scope.userName = $scope.dataFactory.varUsername();
     $scope.demoFactory = DemoFactory;
-    var dates;
+    var selections;
+    var programSelected;
+    var raceAdultSelection;
+    var raceChildrenSelection;
+    var genderSelection;
+    var ageAdultSelection;
+    var ageChildrenSelection;
+    var lastResidenceSelection;
+
 
     //----GET Massive Data ----------------------------------------------
     showData();
@@ -16,11 +24,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
             $scope.data = response;
             $scope.data.forEach(function (item) {
                 // indexOf checks from index 0 to end of index every loop
-                if (races.indexOf(item['Race Code']) === -1 &&
-                    item['Race Code'] !== null && item['Race Code'] !== 'Other(specify)Irainan' &&
-                    item['Race Code'] !== 'Other(specify)________________________' &&
-                    item['Race Code'] !== 'Other(specify' &&
-                    item['Race Code'] !== 'Asian/SE Asian/Pacific Islander') {
+                if (races.indexOf(item['Race Code']) === -1 ) {
                     races.push(item['Race Code']);
                 }
                 if (residences.indexOf(item['County of Last Residence']) === -1 &&
@@ -49,9 +53,6 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       list.push(item);
     }
   };
-
-
- $scope.dataFactory = DataFactory;
 
 
  $scope.dataFactory.currentSess();
@@ -131,14 +132,8 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
   };
 
 
-  //----- Dropdowns --------------------------------
-  $scope.genders = ['Female', 'Male'];
-
-
   //----- Dropdowns -------------------------------------------------
 
-
-  var races = ['African', 'African American', 'American Indian' ,'Asian/SE Asian/Pacific Islander', 'Caucasian/White', 'Hispanic/Latino', 'Multiracial', 'Other'];
 
   $scope.adultRaces = races;
   $scope.childRaces = races;
@@ -163,10 +158,6 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
 
  //------ Calendar -------------------------------------------------------
 
-  // var startDate;
-  // var endDate;
-
-
   $scope.enddate = new Date();
   console.log("$scope.enddate: ", $scope.enddate);
   $scope.startdate = new Date();
@@ -181,14 +172,6 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     );
 
 
-  // $scope.startDate = function(date) {
-  //   var startDate = date;
-  //   console.log('startDate: ', startDate);
-  // };
-  // $scope.endDate = function(date) {
-  //   var endDate = date;
-  //   console.log('endDate: ', endDate);
-  // };
 //--------------------------------------------
 
 // var self = this;
@@ -202,7 +185,10 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     console.log("Program: " + $scope.selectedprogram + "\n"
       + "Gender: " + $scope.selectedgender + "\n"
       + "Adult Race: " + $scope.selectedadultRace + "\n"
-      + "Adult Age: " + $scope.selectedadultAge)
+      + "Adult Age: " + $scope.selectedadultAge + "\n"
+      + "Children Race: " + $scope.selectedchildRace + "\n"
+      + "Children Age: " + $scope.selectedchildAge + "\n"
+      + "Last Residence: " + $scope.lastResidenceSelection + "\n")
 
     // $http.get('/demoquery').then(function(response) {
     // console.log('data', response.data);
@@ -210,13 +196,43 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     // });
     console.log("$scope.startdate newQuery: ", $scope.startdate);
     console.log("$scope.enddate newQuery: ", $scope.enddate);
-    dates = {
+
+    selections = {
+      programSelected: $scope.selectedprogram,
+      raceAdultSelection: $scope.selectedadultRace,
+      raceChildrenSelection: $scope.selectedchildRace,
+      genderSelection: $scope.selectedgender,
+      ageAdultSelection: $scope.selectedadultAge,
+      ageChildrenSelection: $scope.selectedchildAge,
+      lastResidenceSelection: $scope.lastResidenceSelection,
       startdate: $scope.startdate,
       enddate: $scope.enddate
     }
-    $scope.demoFactory.getDemo(dates).then(function(response) {
-      console.log("response: ", response);
-      console.log("response.data: ", response.data);
+    console.log("selections: ", selections);
+
+
+    $scope.demoFactory.dobAdults(selections).then(function(response) {
+      console.log("response dobAdults: ", response);
+    });
+
+    $scope.demoFactory.dobChildren(selections).then(function(response) {
+      console.log("response dobChildren: ", response);
+    });
+
+    $scope.demoFactory.totalPeople(selections).then(function(response) {
+      console.log("response totalPeople: ", response);
+    });
+
+    $scope.demoFactory.allGender(selections).then(function(response) {
+      console.log("response allGender: ", response);
+    });
+
+    $scope.demoFactory.raceAdults(selections).then(function(response) {
+      console.log("response raceAdults: ", response);
+    });
+
+    $scope.demoFactory.raceChildren(selections).then(function(response) {
+      console.log("response raceChildren: ", response);
     });
   }
 

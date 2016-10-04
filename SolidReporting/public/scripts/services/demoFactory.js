@@ -10,39 +10,62 @@ myApp.factory('DemoFactory', ['$http', '$location', function($http, $location) {
     return promise;
   }
 
-  var demoData = function(dates) {
-    console.log("dates in DF: ", dates);
+  var dobAdults = function(selections) {
 
-    var startDate = dates.startdate;
-    console.log("startDate : ", typeof startDate);
-    var startDateYear = startDate.getFullYear();
-    console.log("startDateYear: ", startDateYear);
-    var startDateMonth = startDate.getMonth() + 1;
-    console.log("startDateMonth: ", startDateMonth);
-    var startDateDay = startDate.getDate();
+    var promise = $http.post('/demoquery/dobadults', selections).then(function (response) {
+      var dobAdults = response.data;
+      console.log("dobAdults: ", dobAdults);
+      return dobAdults;
+    });
+    return promise;
+  }
 
-    var startDateFull = startDateYear + '-' + startDateMonth + '-' + startDateDay;
-    console.log("startDateFull: ", startDateFull);
+  var dobChildren = function(selections) {
 
-    var endDate = dates.enddate;
-    console.log("endDate : ", typeof endDate);
-    var endDateYear = endDate.getFullYear();
-    console.log("endDateYear: ", endDateYear);
-    var endDateMonth = endDate.getMonth() + 1;
-    console.log("endDateMonth: ", endDateMonth);
-    var endDateDay = endDate.getDate();
+    var promise = $http.post('/demoquery/dobchildren', selections).then(function (response) {
+      var dobChildren = response.data;
+      console.log("dobChildren: ", dobChildren);
+      return dobChildren;
+    });
+    return promise;
+  }
 
-    var endDateFull = endDateYear + '-' + endDateMonth + '-' + endDateDay;
-    console.log("endDateFull: ", endDateFull);
+  var totalPeople = function(selections) {
 
-    var correctDates = {
-      startDate: startDateFull,
-      endDate: endDateFull
-    }
+    var promise = $http.post('/demoquery/totalpeople', selections).then(function (response) {
+      var totalPeople = response.data;
+      console.log("totalPeople: ", totalPeople);
+      return totalPeople;
+    });
+    return promise;
+  }
 
+  var allGender = function(selections) {
 
-    var promise = $http.post('/demoquery/dobadults', correctDates).then(function (response) {
-      return response.data;
+    var promise = $http.post('/demoquery/allgender', selections).then(function (response) {
+      var allGender = response.data;
+      console.log("allGender: ", allGender);
+      return allGender;
+    });
+    return promise;
+  }
+
+  var raceAdults = function(selections) {
+
+    var promise = $http.post('/demoquery/raceadults', selections).then(function (response) {
+      var raceAdults = response.data;
+      console.log("raceAdults: ", raceAdults);
+      return raceAdults;
+    });
+    return promise;
+  }
+
+  var raceChildren = function(selections) {
+
+    var promise = $http.post('/demoquery/racechildren', selections).then(function (response) {
+      var raceChildren = response.data;
+      console.log("raceChildren: ", raceChildren);
+      return raceChildren;
     });
     return promise;
   }
@@ -51,8 +74,23 @@ myApp.factory('DemoFactory', ['$http', '$location', function($http, $location) {
     retrieveData: function () {
       return getData();
     },
-    getDemo: function (dates) {
-      return demoData(dates);
+    dobAdults: function (selections) {
+      return dobAdults(selections);
+    },
+    totalPeople: function (selections) {
+      return totalPeople(selections);
+    },
+    allGender: function (selections) {
+      return allGender(selections);
+    },
+    raceAdults: function (selections) {
+      return raceAdults(selections);
+    },
+    raceChildren: function (selections) {
+      return raceChildren(selections);
+    },
+    dobChildren: function (selections) {
+      return dobChildren(selections);
     }
   };  //end of return scope
 
