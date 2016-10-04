@@ -69,6 +69,20 @@ myApp.factory('DemoFactory', ['$http', '$location', function($http, $location) {
     return promise;
   }
 
+  var raceAdults = function(dates) {
+    var correctDates = {
+      startDate: dates.startdate,
+      endDate: dates.enddate
+    }
+
+    var promise = $http.post('/demoquery/raceadults', correctDates).then(function (response) {
+      var raceAdults = response.data;
+      console.log("raceAdults: ", raceAdults);
+      return raceAdults;
+    });
+    return promise;
+  }
+
   return {  //start of return scope
     retrieveData: function () {
       return getData();
@@ -81,6 +95,9 @@ myApp.factory('DemoFactory', ['$http', '$location', function($http, $location) {
     },
     allGender: function (dates) {
       return allGender(dates);
+    },
+    raceAdults: function (dates) {
+      return raceAdults(dates);
     }
   };  //end of return scope
 

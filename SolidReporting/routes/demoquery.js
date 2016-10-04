@@ -145,4 +145,49 @@ router.post('/allgender', function(req, res) {
 });
 
 
+// Race - only Adults
+router.post('/raceadults', function(req, res) {
+  console.log("req.body line 56: ", req.body);
+  console.log("req.body.dates.startdate line 59: ", req.body.startDate);
+  console.log("req.body.dates.enddate line 60: ", req.body.endDate);
+  var startDate = req.body.startDate;
+  var endDate = req.body.endDate;
+
+  pg.connect(connection, function(err, client, done) {
+
+    if(err) {
+      console.log(err);
+      res.sendStatus(500);
+    }
+
+    client.query("SELECT \"Race Code\", SUM (Race) " +
+                 "FROM " +
+                 "(SELECT \"Race Code\", COUNT (*) as Race " +
+                 "FROM \"Head of Household\" " +
+                 "WHERE \"Head of Household\".\"Program Exit Date\" > '" + startDate + "' and \"Head of Household\".\"Program Exit Date\" < '" + endDate + "' OR \"Head of Household\".\"Program Exit Date\" IS NULL " +
+                 "GROUP BY \"Race Code\" " +
+                 "UNION ALL " +
+                 "SELECT \"Head of Household-2\".\"Race Code\", COUNT (*) as Race " +
+                 "FROM \"Head of Household-2\" " +
+                 "LEFT JOIN \"Head of Household\" ON \"Head of Household-2\".\"Head of Household\" = \"Head of Household\".\"HoHID\" " +
+                 "WHERE \"Head of Household\".\"Program Exit Date\" > '" + startDate + "' and \"Head of Household\".\"Program Exit Date\" < '" + endDate + "' OR \"Head of Household\".\"Program Exit Date\" IS NULL " +
+                 "GROUP BY \"Head of Household-2\".\"Race Code\") as Races " +
+                 "GROUP BY \"Race Code\";",
+      function(err, result) {
+        done();
+
+        if(err) {
+          console.log("select error: ", err);
+          res.sendStatus(500);
+        }
+        console.log('results.row: ', result.rows);
+
+        res.send(result.rows);
+    });
+
+  });
+});
+
+
+
 module.exports = router;

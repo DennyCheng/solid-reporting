@@ -225,6 +225,10 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     $scope.demoFactory.allGender(dates).then(function(response) {
       console.log("response allGender: ", response);
     });
+
+    $scope.demoFactory.raceAdults(dates).then(function(response) {
+      console.log("response raceAdults: ", response);
+    });
   }
 
 
