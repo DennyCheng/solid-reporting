@@ -6,7 +6,7 @@ var connection = require('../modules/connection');
 
 
 router.post('/dobadults', function(req, res) {
-  console.log("req.body line 43: ", req.body);
+  console.log("req.body line 09: ", req.body);
   // console.log("req.body.dates line 44: ", req.body.correctDates);
   // need to convert these dates to be: '2016-10-03'  NOT '2016-10-03T14:33:40.943Z';
   console.log("req.body.dates.startdate line 44: ", req.body.startDate);
