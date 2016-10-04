@@ -7,10 +7,10 @@ var connection = require('../modules/connection');
 // Date of Birth - Adults only
 router.post('/dobadults', function(req, res) {
   console.log("req.body line 09: ", req.body);
-  console.log("req.body.dates.startdate line 12: ", req.body.startDate);
-  console.log("req.body.dates.enddate line 13: ", req.body.endDate);
-  var startDate = req.body.startDate;
-  var endDate = req.body.endDate;
+  console.log("req.body.dates.startdate line 12: ", req.body.startdate);
+  console.log("req.body.dates.enddate line 13: ", req.body.enddate);
+  var startDate = req.body.startdate;
+  var endDate = req.body.enddate;
 
   pg.connect(connection, function(err, client, done) {
 
@@ -49,13 +49,48 @@ router.post('/dobadults', function(req, res) {
 });
 
 
+// Date of Birth - Children only
+router.post('/dobchildren', function(req, res) {
+  console.log("req.body line 09: ", req.body);
+  console.log("req.body.dates.startdate line 12: ", req.body.startdate);
+  console.log("req.body.dates.enddate line 13: ", req.body.enddate);
+  var startDate = req.body.startdate;
+  var endDate = req.body.enddate;
+
+  pg.connect(connection, function(err, client, done) {
+
+    if(err) {
+      console.log(err);
+      res.sendStatus(500);
+    }
+
+    client.query("SELECT \"Members of Household\".\"Date of Birth\" as DOB, \"Members of Household\".\"Program\" " +
+                "FROM \"Members of Household\" " +
+                "LEFT JOIN \"Head of Household\" ON \"Members of Household\".\"Head of Household\" = \"Head of Household\".\"HoHID\" " +
+                "WHERE \"Head of Household\".\"Program Exit Date\" > '2015-12-31' and \"Head of Household\".\"Program Exit Date\" < '2016-12-31' OR \"Head of Household\".\"Program Exit Date\" IS NULL; ",
+      function(err, result) {
+        done();
+
+        if(err) {
+          console.log("select error: ", err);
+          res.sendStatus(500);
+        }
+        console.log('results.row: ', result.rows);
+
+        res.send(result.rows);
+    });
+
+  });
+});
+
+
 // Total People - Adults and Children
 router.post('/totalpeople', function(req, res) {
   console.log("req.body line 56: ", req.body);
-  console.log("req.body.dates.startdate line 59: ", req.body.startDate);
-  console.log("req.body.dates.enddate line 60: ", req.body.endDate);
-  var startDate = req.body.startDate;
-  var endDate = req.body.endDate;
+  console.log("req.body.dates.startdate line 12: ", req.body.startdate);
+  console.log("req.body.dates.enddate line 13: ", req.body.enddate);
+  var startDate = req.body.startdate;
+  var endDate = req.body.enddate;
 
   pg.connect(connection, function(err, client, done) {
 
@@ -98,10 +133,10 @@ router.post('/totalpeople', function(req, res) {
 // All Gender - Adults and Children
 router.post('/allgender', function(req, res) {
   console.log("req.body line 56: ", req.body);
-  console.log("req.body.dates.startdate line 59: ", req.body.startDate);
-  console.log("req.body.dates.enddate line 60: ", req.body.endDate);
-  var startDate = req.body.startDate;
-  var endDate = req.body.endDate;
+  console.log("req.body.dates.startdate line 12: ", req.body.startdate);
+  console.log("req.body.dates.enddate line 13: ", req.body.enddate);
+  var startDate = req.body.startdate;
+  var endDate = req.body.enddate;
 
   pg.connect(connection, function(err, client, done) {
 
@@ -148,10 +183,10 @@ router.post('/allgender', function(req, res) {
 // Race - only Adults
 router.post('/raceadults', function(req, res) {
   console.log("req.body line 56: ", req.body);
-  console.log("req.body.dates.startdate line 59: ", req.body.startDate);
-  console.log("req.body.dates.enddate line 60: ", req.body.endDate);
-  var startDate = req.body.startDate;
-  var endDate = req.body.endDate;
+  console.log("req.body.dates.startdate line 12: ", req.body.startdate);
+  console.log("req.body.dates.enddate line 13: ", req.body.enddate);
+  var startDate = req.body.startdate;
+  var endDate = req.body.enddate;
 
   pg.connect(connection, function(err, client, done) {
 
@@ -192,10 +227,10 @@ router.post('/raceadults', function(req, res) {
 // Race - only Children
 router.post('/racechildren', function(req, res) {
   console.log("req.body line 56: ", req.body);
-  console.log("req.body.dates.startdate line 59: ", req.body.startDate);
-  console.log("req.body.dates.enddate line 60: ", req.body.endDate);
-  var startDate = req.body.startDate;
-  var endDate = req.body.endDate;
+  console.log("req.body.dates.startdate line 12: ", req.body.startdate);
+  console.log("req.body.dates.enddate line 13: ", req.body.enddate);
+  var startDate = req.body.startdate;
+  var endDate = req.body.enddate;
 
   pg.connect(connection, function(err, client, done) {
 

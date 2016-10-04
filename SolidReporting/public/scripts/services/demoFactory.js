@@ -10,30 +10,9 @@ myApp.factory('DemoFactory', ['$http', '$location', function($http, $location) {
     return promise;
   }
 
-  var dobAdults = function(dates) {
-    // var startDate = dates.startdate;
-    // var startDateYear = startDate.getFullYear();
-    // var startDateMonth = startDate.getMonth() + 1;
-    // var startDateDay = startDate.getDate();
-    // var startDateFull = startDateYear + '-' + startDateMonth + '-' + startDateDay;
-    // console.log("startDateFull: ", startDateFull);
+  var dobAdults = function(selections) {
 
-    // var endDate = dates.enddate;
-    // var endDateYear = endDate.getFullYear();
-    // var endDateMonth = endDate.getMonth() + 1;
-    // var endDateDay = endDate.getDate();
-    // var endDateFull = endDateYear + '-' + endDateMonth + '-' + endDateDay;
-
-    // var correctDates = {
-    //   startDate: startDateFull,
-    //   endDate: endDateFull
-    // }
-    var correctDates = {
-      startDate: dates.startdate,
-      endDate: dates.enddate
-    }
-
-    var promise = $http.post('/demoquery/dobadults', correctDates).then(function (response) {
+    var promise = $http.post('/demoquery/dobadults', selections).then(function (response) {
       var dobAdults = response.data;
       console.log("dobAdults: ", dobAdults);
       return dobAdults;
@@ -41,13 +20,19 @@ myApp.factory('DemoFactory', ['$http', '$location', function($http, $location) {
     return promise;
   }
 
-  var totalPeople = function(dates) {
-    var correctDates = {
-      startDate: dates.startdate,
-      endDate: dates.enddate
-    }
+  var dobChildren = function(selections) {
 
-    var promise = $http.post('/demoquery/totalpeople', correctDates).then(function (response) {
+    var promise = $http.post('/demoquery/dobchildren', selections).then(function (response) {
+      var dobChildren = response.data;
+      console.log("dobChildren: ", dobChildren);
+      return dobChildren;
+    });
+    return promise;
+  }
+
+  var totalPeople = function(selections) {
+
+    var promise = $http.post('/demoquery/totalpeople', selections).then(function (response) {
       var totalPeople = response.data;
       console.log("totalPeople: ", totalPeople);
       return totalPeople;
@@ -55,13 +40,9 @@ myApp.factory('DemoFactory', ['$http', '$location', function($http, $location) {
     return promise;
   }
 
-  var allGender = function(dates) {
-    var correctDates = {
-      startDate: dates.startdate,
-      endDate: dates.enddate
-    }
+  var allGender = function(selections) {
 
-    var promise = $http.post('/demoquery/allgender', correctDates).then(function (response) {
+    var promise = $http.post('/demoquery/allgender', selections).then(function (response) {
       var allGender = response.data;
       console.log("allGender: ", allGender);
       return allGender;
@@ -69,13 +50,9 @@ myApp.factory('DemoFactory', ['$http', '$location', function($http, $location) {
     return promise;
   }
 
-  var raceAdults = function(dates) {
-    var correctDates = {
-      startDate: dates.startdate,
-      endDate: dates.enddate
-    }
+  var raceAdults = function(selections) {
 
-    var promise = $http.post('/demoquery/raceadults', correctDates).then(function (response) {
+    var promise = $http.post('/demoquery/raceadults', selections).then(function (response) {
       var raceAdults = response.data;
       console.log("raceAdults: ", raceAdults);
       return raceAdults;
@@ -83,13 +60,9 @@ myApp.factory('DemoFactory', ['$http', '$location', function($http, $location) {
     return promise;
   }
 
-  var raceChildren = function(dates) {
-    var correctDates = {
-      startDate: dates.startdate,
-      endDate: dates.enddate
-    }
+  var raceChildren = function(selections) {
 
-    var promise = $http.post('/demoquery/racechildren', correctDates).then(function (response) {
+    var promise = $http.post('/demoquery/racechildren', selections).then(function (response) {
       var raceChildren = response.data;
       console.log("raceChildren: ", raceChildren);
       return raceChildren;
@@ -101,20 +74,23 @@ myApp.factory('DemoFactory', ['$http', '$location', function($http, $location) {
     retrieveData: function () {
       return getData();
     },
-    dobAdults: function (dates) {
-      return dobAdults(dates);
+    dobAdults: function (selections) {
+      return dobAdults(selections);
     },
-    totalPeople: function (dates) {
-      return totalPeople(dates);
+    totalPeople: function (selections) {
+      return totalPeople(selections);
     },
-    allGender: function (dates) {
-      return allGender(dates);
+    allGender: function (selections) {
+      return allGender(selections);
     },
-    raceAdults: function (dates) {
-      return raceAdults(dates);
+    raceAdults: function (selections) {
+      return raceAdults(selections);
     },
-    raceChildren: function (dates) {
-      return raceChildren(dates);
+    raceChildren: function (selections) {
+      return raceChildren(selections);
+    },
+    dobChildren: function (selections) {
+      return dobChildren(selections);
     }
   };  //end of return scope
 
