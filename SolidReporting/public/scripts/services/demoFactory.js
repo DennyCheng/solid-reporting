@@ -83,6 +83,20 @@ myApp.factory('DemoFactory', ['$http', '$location', function($http, $location) {
     return promise;
   }
 
+  var raceChildren = function(dates) {
+    var correctDates = {
+      startDate: dates.startdate,
+      endDate: dates.enddate
+    }
+
+    var promise = $http.post('/demoquery/racechildren', correctDates).then(function (response) {
+      var raceChildren = response.data;
+      console.log("raceChildren: ", raceChildren);
+      return raceChildren;
+    });
+    return promise;
+  }
+
   return {  //start of return scope
     retrieveData: function () {
       return getData();
@@ -98,6 +112,9 @@ myApp.factory('DemoFactory', ['$http', '$location', function($http, $location) {
     },
     raceAdults: function (dates) {
       return raceAdults(dates);
+    },
+    raceChildren: function (dates) {
+      return raceChildren(dates);
     }
   };  //end of return scope
 

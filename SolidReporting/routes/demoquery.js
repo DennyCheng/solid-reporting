@@ -189,5 +189,40 @@ router.post('/raceadults', function(req, res) {
 });
 
 
+// Race - only Children
+router.post('/racechildren', function(req, res) {
+  console.log("req.body line 56: ", req.body);
+  console.log("req.body.dates.startdate line 59: ", req.body.startDate);
+  console.log("req.body.dates.enddate line 60: ", req.body.endDate);
+  var startDate = req.body.startDate;
+  var endDate = req.body.endDate;
+
+  pg.connect(connection, function(err, client, done) {
+
+    if(err) {
+      console.log(err);
+      res.sendStatus(500);
+    }
+
+    client.query("SELECT \"Members of Household\".\"Race Code\" as Race, COUNT (*) " +
+                "FROM \"Members of Household\" " +
+                "LEFT JOIN \"Head of Household\" ON \"Members of Household\".\"Head of Household\" = \"Head of Household\".\"HoHID\" " +
+                "WHERE \"Head of Household\".\"Program Exit Date\" > '" + startDate + "' and \"Head of Household\".\"Program Exit Date\" < '" + endDate + "' OR \"Head of Household\".\"Program Exit Date\" IS NULL " +
+                "and \"Head of Household\".\"Program\" = 'EMPII' " +
+                "GROUP BY \"Members of Household\".\"Race Code\";",
+      function(err, result) {
+        done();
+
+        if(err) {
+          console.log("select error: ", err);
+          res.sendStatus(500);
+        }
+        console.log('results.row: ', result.rows);
+
+        res.send(result.rows);
+    });
+
+  });
+});
 
 module.exports = router;
