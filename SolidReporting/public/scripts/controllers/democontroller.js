@@ -215,11 +215,15 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       enddate: $scope.enddate
     }
     $scope.demoFactory.dobAdults(dates).then(function(response) {
-      console.log("response: ", response);
+      console.log("response dobAdults: ", response);
     });
 
     $scope.demoFactory.totalPeople(dates).then(function(response) {
-      console.log("response: ", response);
+      console.log("response totalPeople: ", response);
+    });
+
+    $scope.demoFactory.allGender(dates).then(function(response) {
+      console.log("response allGender: ", response);
     });
   }
 

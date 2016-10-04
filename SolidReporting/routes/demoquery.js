@@ -7,8 +7,6 @@ var connection = require('../modules/connection');
 // Date of Birth - Adults only
 router.post('/dobadults', function(req, res) {
   console.log("req.body line 09: ", req.body);
-  // console.log("req.body.dates line 44: ", req.body.correctDates);
-  // need to convert these dates to be: '2016-10-03'  NOT '2016-10-03T14:33:40.943Z';
   console.log("req.body.dates.startdate line 12: ", req.body.startDate);
   console.log("req.body.dates.enddate line 13: ", req.body.endDate);
   var startDate = req.body.startDate;
@@ -54,8 +52,6 @@ router.post('/dobadults', function(req, res) {
 // Total People - Adults and Children
 router.post('/totalpeople', function(req, res) {
   console.log("req.body line 56: ", req.body);
-  // console.log("req.body.dates line 44: ", req.body.correctDates);
-  // need to convert these dates to be: '2016-10-03'  NOT '2016-10-03T14:33:40.943Z';
   console.log("req.body.dates.startdate line 59: ", req.body.startDate);
   console.log("req.body.dates.enddate line 60: ", req.body.endDate);
   var startDate = req.body.startDate;
@@ -83,6 +79,56 @@ router.post('/totalpeople', function(req, res) {
                   "FROM \"Members of Household\" " +
                   "LEFT JOIN \"Head of Household\" ON \"Members of Household\".\"Head of Household\" = \"Head of Household\".\"HoHID\" " +
                   "WHERE \"Head of Household\".\"Program Exit Date\" > '" + startDate + "' and \"Head of Household\".\"Program Exit Date\" < '" + endDate + "' OR \"Head of Household\".\"Program Exit Date\" IS NULL;",
+      function(err, result) {
+        done();
+
+        if(err) {
+          console.log("select error: ", err);
+          res.sendStatus(500);
+        }
+        console.log('results.row: ', result.rows);
+
+        res.send(result.rows);
+    });
+
+  });
+});
+
+
+// All Gender - Adults and Children
+router.post('/allgender', function(req, res) {
+  console.log("req.body line 56: ", req.body);
+  console.log("req.body.dates.startdate line 59: ", req.body.startDate);
+  console.log("req.body.dates.enddate line 60: ", req.body.endDate);
+  var startDate = req.body.startDate;
+  var endDate = req.body.endDate;
+
+  pg.connect(connection, function(err, client, done) {
+
+    if(err) {
+      console.log(err);
+      res.sendStatus(500);
+    }
+
+    client.query("SELECT \"Gender\", SUM (numberOfPeople) " +
+                 "FROM " +
+                 "(SELECT \"Gender\", COUNT (*) as numberOfPeople " +
+                 "FROM \"Head of Household\" " +
+                 "WHERE \"Head of Household\".\"Program Exit Date\" > '" + startDate + "' and \"Head of Household\".\"Program Exit Date\" < '" + endDate + "' OR \"Head of Household\".\"Program Exit Date\" IS NULL " +
+                 "GROUP BY \"Gender\" " +
+                 "UNION " +
+                 "SELECT \"Head of Household-2\".\"Gender\", COUNT (*) as numberOfPeople " +
+                 "FROM \"Head of Household-2\" " +
+                 "LEFT JOIN \"Head of Household\" ON \"Head of Household-2\".\"Head of Household\" = \"Head of Household\".\"HoHID\" " +
+                 "WHERE \"Head of Household\".\"Program Exit Date\" > '" + startDate + "' and \"Head of Household\".\"Program Exit Date\" < '" + endDate + "' OR \"Head of Household\".\"Program Exit Date\" IS NULL " +
+                 "GROUP BY \"Head of Household-2\".\"Gender\" " +
+                 "UNION " +
+                 "SELECT \"Members of Household\".\"Gender\", COUNT (*) as numberOfPeople " +
+                 "FROM \"Members of Household\" " +
+                 "LEFT JOIN \"Head of Household\" ON \"Members of Household\".\"Head of Household\" = \"Head of Household\".\"HoHID\" " +
+                 "WHERE \"Head of Household\".\"Program Exit Date\" > '" + startDate + "' and \"Head of Household\".\"Program Exit Date\" < '" + endDate + "' OR \"Head of Household\".\"Program Exit Date\" IS NULL " +
+                 "GROUP BY \"Members of Household\".\"Gender\") as People " +
+                 "GROUP BY \"Gender\";",
       function(err, result) {
         done();
 
