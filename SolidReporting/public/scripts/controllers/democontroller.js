@@ -214,9 +214,12 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       startdate: $scope.startdate,
       enddate: $scope.enddate
     }
-    $scope.demoFactory.getDemo(dates).then(function(response) {
+    $scope.demoFactory.dobAdults(dates).then(function(response) {
       console.log("response: ", response);
-      console.log("response.data: ", response.data);
+    });
+
+    $scope.demoFactory.totalPeople(dates).then(function(response) {
+      console.log("response: ", response);
     });
   }
 

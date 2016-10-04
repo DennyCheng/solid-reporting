@@ -10,39 +10,56 @@ myApp.factory('DemoFactory', ['$http', '$location', function($http, $location) {
     return promise;
   }
 
-  var demoData = function(dates) {
-    console.log("dates in DF: ", dates);
-
+  var dobAdults = function(dates) {
     var startDate = dates.startdate;
-    console.log("startDate : ", typeof startDate);
     var startDateYear = startDate.getFullYear();
-    console.log("startDateYear: ", startDateYear);
     var startDateMonth = startDate.getMonth() + 1;
-    console.log("startDateMonth: ", startDateMonth);
     var startDateDay = startDate.getDate();
-
     var startDateFull = startDateYear + '-' + startDateMonth + '-' + startDateDay;
     console.log("startDateFull: ", startDateFull);
 
     var endDate = dates.enddate;
-    console.log("endDate : ", typeof endDate);
     var endDateYear = endDate.getFullYear();
-    console.log("endDateYear: ", endDateYear);
     var endDateMonth = endDate.getMonth() + 1;
-    console.log("endDateMonth: ", endDateMonth);
     var endDateDay = endDate.getDate();
-
     var endDateFull = endDateYear + '-' + endDateMonth + '-' + endDateDay;
-    console.log("endDateFull: ", endDateFull);
 
     var correctDates = {
       startDate: startDateFull,
       endDate: endDateFull
     }
 
-
     var promise = $http.post('/demoquery/dobadults', correctDates).then(function (response) {
-      return response.data;
+      var dobAdults = response.data;
+      console.log("dobAdults: ", dobAdults);
+      return dobAdults;
+    });
+    return promise;
+  }
+
+  var totalPeople = function(dates) {
+    var startDate = dates.startdate;
+    var startDateYear = startDate.getFullYear();
+    var startDateMonth = startDate.getMonth() + 1;
+    var startDateDay = startDate.getDate();
+    var startDateFull = startDateYear + '-' + startDateMonth + '-' + startDateDay;
+    console.log("startDateFull: ", startDateFull);
+
+    var endDate = dates.enddate;
+    var endDateYear = endDate.getFullYear();
+    var endDateMonth = endDate.getMonth() + 1;
+    var endDateDay = endDate.getDate();
+    var endDateFull = endDateYear + '-' + endDateMonth + '-' + endDateDay;
+
+    var correctDates = {
+      startDate: startDateFull,
+      endDate: endDateFull
+    }
+
+    var promise = $http.post('/demoquery/totalpeople', correctDates).then(function (response) {
+      var totalPeople = response.data;
+      console.log("totalPeople: ", totalPeople);
+      return totalPeople;
     });
     return promise;
   }
@@ -51,8 +68,11 @@ myApp.factory('DemoFactory', ['$http', '$location', function($http, $location) {
     retrieveData: function () {
       return getData();
     },
-    getDemo: function (dates) {
-      return demoData(dates);
+    dobAdults: function (dates) {
+      return dobAdults(dates);
+    },
+    totalPeople: function (dates) {
+      return totalPeople(dates);
     }
   };  //end of return scope
 
