@@ -313,17 +313,54 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       enddate: $scope.enddate
     }
 
-    $scope.demoFactory.getDemo(dates).then(function(response) {
+    $scope.demoFactory.dobAdults(selections).then(function(response) {
+      console.log("response dobAdults: ", response);
+    });
+
+    $scope.demoFactory.dobChildren(selections).then(function(response) {
+      console.log("response dobChildren: ", response);
+    });
+
+    $scope.demoFactory.totalPeople(selections).then(function(response) {
+      console.log("response totalPeople: ", response);
+    });
+
+    $scope.demoFactory.allGender(selections).then(function(response) {
+      console.log("response allGender: ", response);
+    });
+
+    $scope.demoFactory.raceAdults(selections).then(function(response) {
+      console.log("response raceAdults: ", response);
+    });
+
+    $scope.demoFactory.raceChildren(selections).then(function(response) {
+      console.log("response raceChildren: ", response);
+    });
+
+    $scope.demoFactory.householdIncome(selections).then(function(response) {
+      console.log("response householdIncome: ", response);
+    });
+
+    $scope.demoFactory.lastResidence(selections).then(function(response) {
+      console.log("response lastResidence: ", response);
+    });
+
+    $scope.demoFactory.famsExitHousing(selections).then(function(response) {
+      console.log("response famsExitHousing: ", response);
+    });
+    //start of denny function
+    $scope.demoFactory.dobAdults(selections).then(function(response) {
 
       //------------------Birthday Logic--------------------------
       var responseArray = response;
+
       var emp = {
         age18to22:0,
         age23to30:0,
         age31to40:0,
         age41to54:0,
         age55to64:0,
-        age65tobeyond:0,
+        age65tobeyond:0
       };
       var empII= {
         age18to22:0,
@@ -331,7 +368,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
         age31to40:0,
         age41to54:0,
         age55to64:0,
-        age65tobeyond:0,
+        age65tobeyond:0
       };
       var homeSafe = {
         age18to22:0,
@@ -339,7 +376,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
         age31to40:0,
         age41to54:0,
         age55to64:0,
-        age65tobeyond:0,
+        age65tobeyond:0
       };
       var homeAgain = {
         age18to22:0,
@@ -347,7 +384,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
         age31to40:0,
         age41to54:0,
         age55to64:0,
-        age65tobeyond:0,
+        age65tobeyond:0
       };
       var homeFront = {
         age18to22:0,
@@ -355,14 +392,14 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
         age31to40:0,
         age41to54:0,
         age55to64:0,
-        age65tobeyond:0,
+        age65tobeyond:0
       };
-
 
       for (var i = 0; i < responseArray.length; i++) {
         responseArray[i]['Date of Birth'] = responseArray[i]['Date of Birth'].slice(0,10);//removes excess texts from DOB
         var personDOB = new Date(responseArray[i]['Date of Birth']); //reformats persons DOB
         var age = dateDiff(personDOB,$scope.enddate);//comparing persons DOB with selected end date
+
         if(responseArray[i].Program == "EMP"){
           if(age <= 22){
             // console.log("hit the 18-22 for",responseArray[i])
@@ -469,7 +506,6 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
           homeFront.age65tobeyond = homeFront.age65tobeyond+=1;
           }
         }
-
       }//end of for statement
       //these check for the objects to have values(these total values hsould equal response.length)
       console.log('emp test',emp);
@@ -481,44 +517,11 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       // console.log("response.data: ", response.data);//this is the giant array response
 
     console.log("selections: ", selections);
-
-
-    $scope.demoFactory.dobAdults(selections).then(function(response) {
-      console.log("response dobAdults: ", response);
-    });
-
-    $scope.demoFactory.dobChildren(selections).then(function(response) {
-      console.log("response dobChildren: ", response);
-    });
-
-    $scope.demoFactory.totalPeople(selections).then(function(response) {
-      console.log("response totalPeople: ", response);
-    });
-
-    $scope.demoFactory.allGender(selections).then(function(response) {
-      console.log("response allGender: ", response);
-    });
-
-    $scope.demoFactory.raceAdults(selections).then(function(response) {
-      console.log("response raceAdults: ", response);
-    });
-
-    $scope.demoFactory.raceChildren(selections).then(function(response) {
-      console.log("response raceChildren: ", response);
-    });
-
-    $scope.demoFactory.householdIncome(selections).then(function(response) {
-      console.log("response householdIncome: ", response);
-    });
-
-    $scope.demoFactory.lastResidence(selections).then(function(response) {
-      console.log("response lastResidence: ", response);
-    });
-
-    $scope.demoFactory.famsExitHousing(selections).then(function(response) {
-      console.log("response famsExitHousing: ", response);
-    });
+  });
   }
+
+
+
 
 
   ///performs age calculations
