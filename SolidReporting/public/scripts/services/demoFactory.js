@@ -10,6 +10,7 @@ myApp.factory('DemoFactory', ['$http', '$location', function($http, $location) {
     return promise;
   }
 
+// Sun Oct 04 2015 14:10:01 GMT-0500 (CDT) is being passed in an object
   var demoData = function(dates) {
     console.log("dates in DF: ", dates);
 

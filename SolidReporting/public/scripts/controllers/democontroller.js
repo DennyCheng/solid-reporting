@@ -215,10 +215,63 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       enddate: $scope.enddate
     }
     $scope.demoFactory.getDemo(dates).then(function(response) {
-      console.log("response: ", response);
-      console.log("response.data: ", response.data);
+
+      //------------------Birthday Logic--------------------------
+      var responseArray = response;
+      var emp = {
+        age18to22:0,
+        age22to30:0,
+        age41to54:0,
+        age55to64:0,
+        age65beyond:0,
+      };
+      var empII= [];
+      var homeSafe = [];
+      var homeFront = [];
+      var homeAgain = [];
+
+      for (var i = 0; i < responseArray.length; i++) {
+        responseArray[i]['Date of Birth'] = responseArray[i]['Date of Birth'].slice(0,10);//removes excess texts from DOB
+        var personDOB = new Date(responseArray[i]['Date of Birth']); //reformats persons DOB
+        var age = dateDiff(personDOB,$scope.enddate);//comparing persons DOB with selected end date
+        console.log('age', age);
+        console.log(responseArray[i].Program);//able to access individaul persons age and program to sort
+
+        if(responseArray[i].Program == "EMP"){
+          if(age <= 22){
+            console.log("hit the age loopy loop")
+            emp.age18to22 = emp.age18to22+=1;
+          }
+        }
+
+      }//end of for statement
+      console.log('emp test',emp);
+      // console.log("response: ", response);
+      // console.log("response.data: ", response.data);//this is the giant array response
     });
   }
+
+  ///performs age calculations
+  function dateDiff(personDOB, endDate)
+  {
+    var personYear = endDate.getFullYear();
+    var personMonth = endDate.getMonth();
+    var personDate = endDate.getDate();
+    var endYear = personDOB.getFullYear();
+    var endMonth = personDOB.getMonth();
+    var endDay = personDOB.getDate();
+    var diff = personYear - endYear;
+    if(endMonth > personMonth) diff--;
+    else
+    {
+      if(endMonth == personMonth)
+      {
+        if(endDay > personDate) diff--;
+      }
+    }
+    return diff;
+  }
+
 
 
     //********** Second option selected function ****************
