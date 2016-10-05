@@ -10,6 +10,7 @@ myApp.factory('DemoFactory', ['$http', '$location', function($http, $location) {
     return promise;
   }
 
+
   var dobAdults = function(selections) {
 
     var promise = $http.post('/demoquery/dobadults', selections).then(function (response) {

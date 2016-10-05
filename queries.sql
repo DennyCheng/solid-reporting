@@ -184,3 +184,22 @@ FROM "Head of Household"
 WHERE "Head of Household"."Program Exit Date" >= '2015-9-25' and "Head of Household"."Program Exit Date" <= '2016-12-31'
 GROUP BY "Reason for Leaving", "Program"
 ;
+
+
+
+--OUTCOMES
+
+Housing Stability
+SELECT "Achieve Housing Stability", COUNT(*), "Program"
+FROM "Head of Household"
+WHERE ("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+GROUP BY "Achieve Housing Stability", "Program"
+;
+
+
+
+
+Educational Advancement
