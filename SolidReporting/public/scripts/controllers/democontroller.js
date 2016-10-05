@@ -354,7 +354,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       //------------------Birthday Logic--------------------------
       var responseArray = response;
 
-      var emp = {
+      var dobemp = {
         age18to22:0,
         age23to30:0,
         age31to40:0,
@@ -362,7 +362,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
         age55to64:0,
         age65tobeyond:0
       };
-      var empII= {
+      var dobempII= {
         age18to22:0,
         age23to30:0,
         age31to40:0,
@@ -370,7 +370,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
         age55to64:0,
         age65tobeyond:0
       };
-      var homeSafe = {
+      var dobhomeSafe = {
         age18to22:0,
         age23to30:0,
         age31to40:0,
@@ -378,7 +378,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
         age55to64:0,
         age65tobeyond:0
       };
-      var homeAgain = {
+      var dobhomeAgain = {
         age18to22:0,
         age23to30:0,
         age31to40:0,
@@ -386,7 +386,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
         age55to64:0,
         age65tobeyond:0
       };
-      var homeFront = {
+      var dobhomeFront = {
         age18to22:0,
         age23to30:0,
         age31to40:0,
@@ -403,116 +403,116 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
         if(responseArray[i].Program == "EMP"){
           if(age <= 22){
             // console.log("hit the 18-22 for",responseArray[i])
-            emp.age18to22 = emp.age18to22+=1;
+            dobemp.age18to22 = dobemp.age18to22+=1;
           }
           else if(age <=30 && age >= 23){
           // console.log("hit the 23-30 for",responseArray[i])
-          emp.age23to30 = emp.age23to30+=1;
+          dobemp.age23to30 = dobemp.age23to30+=1;
           }
           else if(age <=40 && age >= 31){
           // console.log("hit the 31-40 for",responseArray[i])
-          emp.age31to40 = emp.age31to40+=1;
+          dobemp.age31to40 = dobemp.age31to40+=1;
           }
           else if(age <=54 && age >= 41){
           // console.log("hit the 41-54 fsor",responseArray[i])
-          emp.age41to54 = emp.age41to54+=1;
+          dobemp.age41to54 = dobemp.age41to54+=1;
           }
           else if(age <=64 && age >= 55){
           // console.log("hit the 55-64 for",responseArray[i])
-          emp.age55to64 = emp.age55to64+=1;
+          dobemp.age55to64 = dobemp.age55to64+=1;
           }
           else if(age >=65){
           // console.log("hit the 65+ for",responseArray[i])
-          emp.age65tobeyond = emp.age65tobeyond+=1;
+          dobemp.age65tobeyond = dobemp.age65tobeyond+=1;
           }
         }//end of EMP if
         else if(responseArray[i].Program == "EMPII"){
           if(age <= 22){
-            empII.age18to22 = empII.age18to22+=1;
+            dobempII.age18to22 = dobempII.age18to22+=1;
           }
           else if(age <=30 && age >= 23){
-          empII.age23to30 = empII.age23to30+=1;
+          dobempII.age23to30 = dobempII.age23to30+=1;
           }
           else if(age <=40 && age >= 31){
-          empII.age31to40 = empII.age31to40+=1;
+          dobempII.age31to40 = dobempII.age31to40+=1;
           }
           else if(age <=54 && age >= 41){
-          empII.age41to54 = empII.age41to54+=1;
+          dobempII.age41to54 = dobempII.age41to54+=1;
           }
           else if(age <=64 && age >= 55){
-          empII.age55to64 = empII.age55to64+=1;
+          dobempII.age55to64 = dobempII.age55to64+=1;
           }
           else if(age >=65){
-          empII.age65tobeyond = empII.age65tobeyond+=1;
+          dobempII.age65tobeyond = dobempII.age65tobeyond+=1;
           }
         }
         else if(responseArray[i].Program == "HomeSafe"){
           if(age <= 22){
-            homeSafe.age18to22 = homeSafe.age18to22+=1;
+            dobhomeSafe.age18to22 = dobhomeSafe.age18to22+=1;
           }
           else if(age <=30 && age >= 23){
-          homeSafe.age23to30 = homeSafe.age23to30+=1;
+          dobhomeSafe.age23to30 = dobhomeSafe.age23to30+=1;
           }
           else if(age <=40 && age >= 31){
-          homeSafe.age31to40 = homeSafe.age31to40+=1;
+          dobhomeSafe.age31to40 = dobhomeSafe.age31to40+=1;
           }
           else if(age <=54 && age >= 41){
-          homeSafe.age41to54 = homeSafe.age41to54+=1;
+          dobhomeSafe.age41to54 = dobhomeSafe.age41to54+=1;
           }
           else if(age <=64 && age >= 55){
-          homeSafe.age55to64 = homeSafe.age55to64+=1;
+          dobhomeSafe.age55to64 = dobhomeSafe.age55to64+=1;
           }
           else if(age >=65){
-          homeSafe.age65tobeyond = homeSafe.age65tobeyond+=1;
+          dobhomeSafe.age65tobeyond = dobhomeSafe.age65tobeyond+=1;
           }
         }
         else if(responseArray[i].Program == "Home Again"){
           if(age <= 22){
-            homeAgain.age18to22 = homeAgain.age18to22+=1;
+            dobhomeAgain.age18to22 = dobhomeAgain.age18to22+=1;
           }
           else if(age <=30 && age >= 23){
-          homeAgain.age23to30 = homeAgain.age23to30+=1;
+          dobhomeAgain.age23to30 = dobhomeAgain.age23to30+=1;
           }
           else if(age <=40 && age >= 31){
-          homeAgain.age31to40 = homeAgain.age31to40+=1;
+          dobhomeAgain.age31to40 = dobhomeAgain.age31to40+=1;
           }
           else if(age <=54 && age >= 41){
-          homeAgain.age41to54 = homeAgain.age41to54+=1;
+          dobhomeAgain.age41to54 = dobhomeAgain.age41to54+=1;
           }
           else if(age <=64 && age >= 55){
-          homeAgain.age55to64 = homeAgain.age55to64+=1;
+          dobhomeAgain.age55to64 = dobhomeAgain.age55to64+=1;
           }
           else if(age >=65){
-          homeSafe.age65tobeyond = homeSafe.age65tobeyond+=1;
+          dobhomeSafe.age65tobeyond = dobhomeSafe.age65tobeyond+=1;
           }
         }
         else if(responseArray[i].Program == "Home Front" || responseArray[i].Program == "HomeFront"){//need to make sure on spelling on DB since we have no data with the name (Home Front or HomeFront)
           if(age <= 22){
-          homeFront.age65tobeyond = homeFront.age65tobeyond+=1;
+          dobhomeFront.age65tobeyond = dobhomeFront.age65tobeyond+=1;
           }
           else if(age <=30 && age >= 23){
-          homeFront.age65tobeyond = homeFront.age65tobeyond+=1;
+          dobhomeFront.age65tobeyond = dobhomeFront.age65tobeyond+=1;
           }
           else if(age <=40 && age >= 31){
-          homeFront.age65tobeyond = homeFront.age65tobeyond+=1;
+          dobhomeFront.age65tobeyond = dobhomeFront.age65tobeyond+=1;
           }
           else if(age <=54 && age >= 41){
-          homeFront.age65tobeyond = homeFront.age65tobeyond+=1;
+          dobhomeFront.age65tobeyond = dobhomeFront.age65tobeyond+=1;
           }
           else if(age <=64 && age >= 55){
-          homeFront.age65tobeyond = homeFront.age65tobeyond+=1;
+          dobhomeFront.age65tobeyond = dobhomeFront.age65tobeyond+=1;
           }
           else if(age >=65){
-          homeFront.age65tobeyond = homeFront.age65tobeyond+=1;
+          dobhomeFront.age65tobeyond = dobhomeFront.age65tobeyond+=1;
           }
         }
       }//end of for statement
       //these check for the objects to have values(these total values hsould equal response.length)
-      console.log('emp test',emp);
-      console.log('empII test',empII);
-      console.log('homeSafe test',homeSafe);
-      console.log('homeFront test',homeFront);
-      console.log('homeAgain test',homeAgain);
+      console.log('emp test',dobemp);
+      console.log('empII test',dobempII);
+      console.log('homeSafe test',dobhomeSafe);
+      console.log('homeFront test',dobhomeFront);
+      console.log('homeAgain test',dobhomeAgain);
       console.log("response length: ", response.length);
       // console.log("response.data: ", response.data);//this is the giant array response
 
