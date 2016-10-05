@@ -21,11 +21,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
             $scope.data.forEach(function (item) {
                 // indexOf checks from index 0 to end of index every loop
                 //  console.log('sg data -----', $scope.data);
-                if (races.indexOf(item['Race Code']) === -1 &&
-                    item['Race Code'] !== null && item['Race Code'] !== 'Other(specify)Irainan' &&
-                    item['Race Code'] !== 'Other(specify)________________________' &&
-                    item['Race Code'] !== 'Other(specify' &&
-                    item['Race Code'] !== 'Asian/SE Asian/Pacific Islander') {
+                if (races.indexOf(item['Race Code']) === -1 ) {
                     races.push(item['Race Code']);
                 }
                 if (residences.indexOf(item['County of Last Residence']) === -1 &&
@@ -145,16 +141,12 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
         }
     };
 
-
     //----- Dropdowns --------------------------------
     $scope.genders = ['Female', 'Male'];
 
 
     //----- Dropdowns -------------------------------------------------
-
-
-    var races = ['African', 'African American', 'American Indian' ,'Asian/SE Asian/Pacific Islander', 'Caucasian/White', 'Hispanic/Latino', 'Multiracial', 'Other'];
-
+    
     $scope.adultRaces = races;
     $scope.childRaces = races;
 
