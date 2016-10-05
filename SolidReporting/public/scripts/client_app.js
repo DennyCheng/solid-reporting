@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp',['ngMaterial','ngRoute']);
+var myApp = angular.module('myApp',['ngMaterial','ngRoute', 'lfNgMdFileInput','ngAnimate','toaster']);
 
 myApp.config(['$routeProvider', function($routeProvider){
 
