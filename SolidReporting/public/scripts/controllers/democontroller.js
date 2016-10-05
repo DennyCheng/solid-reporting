@@ -240,27 +240,27 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
 
         if(responseArray[i].Program == "EMP"){
           if(age <= 22){
-            console.log("hit the 18-22 for",responseArray[i])
+            // console.log("hit the 18-22 for",responseArray[i])
             emp.age18to22 = emp.age18to22+=1;
           }
           else if(age <=30 && age >= 23){
-          console.log("hit the 23-30 for",responseArray[i])
+          // console.log("hit the 23-30 for",responseArray[i])
           emp.age23to30 = emp.age23to30+=1;
           }
           else if(age <=40 && age >= 31){
-          console.log("hit the 31-40 for",responseArray[i])
+          // console.log("hit the 31-40 for",responseArray[i])
           emp.age31to40 = emp.age31to40+=1;
           }
           else if(age <=54 && age >= 41){
-          console.log("hit the 41-54 for",responseArray[i])
+          // console.log("hit the 41-54 fsor",responseArray[i])
           emp.age41to54 = emp.age41to54+=1;
           }
           else if(age <=64 && age >= 55){
-          console.log("hit the 55-64 for",responseArray[i])
+          // console.log("hit the 55-64 for",responseArray[i])
           emp.age55to64 = emp.age55to64+=1;
           }
           else if(age >=65){
-          console.log("hit the 65+ for",responseArray[i])
+          // console.log("hit the 65+ for",responseArray[i])
           emp.age65tobeyond = emp.age65tobeyond+=1;
           }
         }
@@ -271,6 +271,8 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       // console.log("response.data: ", response.data);//this is the giant array response
     });
   }
+
+
 
   ///performs age calculations
   function dateDiff(personDOB, endDate)
