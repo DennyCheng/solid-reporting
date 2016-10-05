@@ -142,7 +142,9 @@ md-input-container [ng-messages] {
   height: 48px;
   color: white;
 }
-
+.md-button.md-raised:not([disabled]):hover {
+  background-color: #357DDC;
+}
 .md-button.md-primary.md-raised:not([disabled]):hover, .md-button.md-primary.md-fab:not([disabled]):hover {
   background-color: #357DDC;
 }

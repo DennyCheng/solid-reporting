@@ -1,10 +1,6 @@
 <style>
     .md-button.md-raised:not([disabled]) {
     width: 100px;
-    margin-top: 40px;
-    background-color: #0c6aa9;
-    height: 48px;
-    color: white;
     }
 </style>
 
@@ -28,7 +24,7 @@
         </div>
         <div flex>
             <form layout="column" layout-align="center center" class="uploadform">
-            <lf-ng-md-file-input lf-files="file" lf-required accept="*.sql"  lf-placeholder="sql file" lf-drag-and-drop-label="Drag and Drop SQL file"  drag preview> </lf-ng-md-file-input>
+            <lf-ng-md-file-input lf-files="file"  lf-placeholder="sql file" lf-drag-and-drop-label="Drag and Drop SQL file"  drag preview> </lf-ng-md-file-input>
             <md-button type="button"  class="md-raised md-primary" ng-click="onSubmit()">Submit</md-button>
             </form>
         </div>

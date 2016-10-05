@@ -1,4 +1,4 @@
-myApp.controller('uploadController', ['$scope', 'DataFactory', '$http', '$location', function($scope, DataFactory, $http, $location){
+myApp.controller('uploadController', ['$scope', 'DataFactory', '$http', '$location', 'toaster', function($scope, DataFactory, $http, $location , toaster){
 
   $scope.dataFactory = DataFactory;
 
@@ -66,10 +66,10 @@ myApp.controller('uploadController', ['$scope', 'DataFactory', '$http', '$locati
                     // do someting
                 });
             } else {
-                alert('Please insert sql file');
+                toaster.error('Please insert sql file');
             }
         } else {
-            alert('Please insert file');
+            toaster.error('Please insert file');
         }
 
 

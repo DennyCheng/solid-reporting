@@ -1,4 +1,4 @@
-myApp.controller('LoginController', ['$scope', '$http', 'DataFactory', '$location', function($scope, $http, DataFactory, $location) {
+myApp.controller('LoginController', ['$scope', '$http', 'DataFactory', '$location', 'toaster', function($scope, $http, DataFactory, $location, toaster) {
 console.log('logincontroller');
 
     $scope.dataFactory = DataFactory;
@@ -17,7 +17,7 @@ console.log('logincontroller');
                     console.log('redirecting to user page');
                     $location.path('/demographics');
                 } else {
-                    alert("please try again!");
+                    toaster.error("please try again!");
                 }
 
             });
