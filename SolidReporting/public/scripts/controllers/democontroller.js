@@ -352,22 +352,22 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
         }
         else if(responseArray[i].Program == "Home Front" || responseArray[i].Program == "HomeFront"){//need to make sure on spelling on DB since we have no data with the name (Home Front or HomeFront)
           if(age <= 22){
-            console.log("hit the 18-22 for",responseArray[i])
+          homeFront.age65tobeyond = homeFront.age65tobeyond+=1;
           }
           else if(age <=30 && age >= 23){
-          console.log("hit the 23-30 for",responseArray[i])
+          homeFront.age65tobeyond = homeFront.age65tobeyond+=1;
           }
           else if(age <=40 && age >= 31){
-          console.log("hit the 31-40 for",responseArray[i])
+          homeFront.age65tobeyond = homeFront.age65tobeyond+=1;
           }
           else if(age <=54 && age >= 41){
-          console.log("hit the 41-54 fsor",responseArray[i])
+          homeFront.age65tobeyond = homeFront.age65tobeyond+=1;
           }
           else if(age <=64 && age >= 55){
-          console.log("hit the 55-64 for",responseArray[i])
+          homeFront.age65tobeyond = homeFront.age65tobeyond+=1;
           }
           else if(age >=65){
-          console.log("hit the 65+ for",responseArray[i])
+          homeFront.age65tobeyond = homeFront.age65tobeyond+=1;
           }
         }
 
