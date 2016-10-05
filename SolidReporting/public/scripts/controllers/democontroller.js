@@ -350,7 +350,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
           homeSafe.age65tobeyond = homeSafe.age65tobeyond+=1;
           }
         }
-        else if(responseArray[i].Program == "HomeFront"){//need to make sure on spelling on DB since we have no data with the name (Home Front or HomeFront)
+        else if(responseArray[i].Program == "Home Front" || responseArray[i].Program == "HomeFront"){//need to make sure on spelling on DB since we have no data with the name (Home Front or HomeFront)
           if(age <= 22){
             console.log("hit the 18-22 for",responseArray[i])
           }
