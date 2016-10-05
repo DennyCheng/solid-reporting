@@ -9,6 +9,20 @@ var storage = multer.memoryStorage();
 // This will save the file in storage memory to prevent from making a new folder file
 var upload= multer({ storage: storage });
 
+var config = {
+  user: '', //env var: PGUSER
+  database: 'omicron', //env var: PGDATABASE
+  password: '', //env var: PGPASSWORD
+  port: 5432, //env var: PGPORT
+  max: 100, // max number of clients in the pool
+  idleTimeoutMillis: 1000, // how long a client is allowed to remain idle before being closed
+};
+
+//this initializes a connection pool
+//it will keep idle connections open for a 1 second
+//and set a limit of maximum 1000 idle clients
+var pool = new pg.Pool(config);
+
 router.post('/', upload.single('file'), function (req, res, next) {
 
     var file = req.file;
@@ -33,7 +47,7 @@ router.post('/', upload.single('file'), function (req, res, next) {
         }
     }
 
-    pg.connect(connectionString, function (err, client, done) {
+    pool.connect(function (err, client, done) {
         if (err) {
             console.log('error: ', err);
             res.sendStatus(500);
@@ -57,7 +71,7 @@ router.get('/', function (req, res) {
     tables += ' SELECT * FROM "Members of Household"; ';
 
     console.log('hello from get');
-    pg.connect(connectionString, function (err, client, done) {
+    pool.connect(function (err, client, done) {
         if (err) {
             res.sendStatus(500);
         }
@@ -80,7 +94,7 @@ router.get('/data', function (req, res) {
     // program += 'SELECT * FROM "Head of Household-2" WHERE status = \' $2 \'';
     // program += 'SELECT * FROM "Members of Household" WHERE status = \' $2 \'';
 
-    pg.connect(connectionString, function (err, client, done) {
+    pool.connect(function (err, client, done) {
         if (err) {
             res.sendStatus(500);
         }

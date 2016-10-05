@@ -9,14 +9,14 @@ var config = {
   database: 'omicron', //env var: PGDATABASE
   password: '', //env var: PGPASSWORD
   port: 5432, //env var: PGPORT
-  max: 100, // max number of clients in the pool
-  idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
+  max: 1000, // max number of clients in the pool
+  idleTimeoutMillis: 1000, // how long a client is allowed to remain idle before being closed
 };
 
 
 //this initializes a connection pool
-//it will keep idle connections open for a 30 seconds
-//and set a limit of maximum 10 idle clients
+//it will keep idle connections open for a 5 minutes
+//and set a limit of maximum 1000 idle clients
 var pool = new pg.Pool(config);
 
 passport.serializeUser(function(user, done) {

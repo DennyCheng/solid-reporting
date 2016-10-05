@@ -234,6 +234,18 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     $scope.demoFactory.raceChildren(selections).then(function(response) {
       console.log("response raceChildren: ", response);
     });
+
+    $scope.demoFactory.householdIncome(selections).then(function(response) {
+      console.log("response householdIncome: ", response);
+    });
+
+    $scope.demoFactory.lastResidence(selections).then(function(response) {
+      console.log("response lastResidence: ", response);
+    });
+
+    $scope.demoFactory.famsExitHousing(selections).then(function(response) {
+      console.log("response famsExitHousing: ", response);
+    });
   }
 
 

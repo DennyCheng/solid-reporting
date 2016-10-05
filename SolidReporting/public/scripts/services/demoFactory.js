@@ -70,6 +70,36 @@ myApp.factory('DemoFactory', ['$http', '$location', function($http, $location) {
     return promise;
   }
 
+  var lastResidence = function(selections) {
+
+    var promise = $http.post('/demoquery/lastres', selections).then(function (response) {
+      var lastResidence = response.data;
+      console.log("lastResidence: ", lastResidence);
+      return lastResidence;
+    });
+    return promise;
+  }
+
+  var householdIncome = function(selections) {
+
+    var promise = $http.post('/demoquery/houseincome', selections).then(function (response) {
+      var householdIncome = response.data;
+      console.log("householdIncome: ", householdIncome);
+      return householdIncome;
+    });
+    return promise;
+  }
+
+  var famsExitHousing = function(selections) {
+
+    var promise = $http.post('/demoquery/famsexit', selections).then(function (response) {
+      var famsExitHousing = response.data;
+      console.log("famsExitHousing: ", famsExitHousing);
+      return famsExitHousing;
+    });
+    return promise;
+  }
+
   return {  //start of return scope
     retrieveData: function () {
       return getData();
@@ -88,6 +118,15 @@ myApp.factory('DemoFactory', ['$http', '$location', function($http, $location) {
     },
     raceChildren: function (selections) {
       return raceChildren(selections);
+    },
+    lastResidence: function (selections) {
+      return lastResidence(selections);
+    },
+    householdIncome: function (selections) {
+      return householdIncome(selections);
+    },
+    famsExitHousing: function (selections) {
+      return famsExitHousing(selections);
     },
     dobChildren: function (selections) {
       return dobChildren(selections);
