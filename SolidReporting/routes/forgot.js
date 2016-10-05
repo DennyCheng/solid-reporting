@@ -10,6 +10,20 @@ var encryptLib = require('../modules/encryption');
 var connection = require('../modules/connection');
 var pg = require('pg');
 
+var config = {
+  user: '', //env var: PGUSER
+  database: 'omicron', //env var: PGDATABASE
+  password: '', //env var: PGPASSWORD
+  port: 5432, //env var: PGPORT
+  max: 100, // max number of clients in the pool
+  idleTimeoutMillis: 1000, // how long a client is allowed to remain idle before being closed
+};
+
+//this initializes a connection pool
+//it will keep idle connections open for a 1 second
+//and set a limit of maximum 1000 idle clients
+var pool = new pg.Pool(config);
+
 router.post('/', function(req, res, next) {
   var user = req.body;
   console.log("user pulled in from Data Factory: ", user);
@@ -34,7 +48,7 @@ router.post('/', function(req, res, next) {
     user.reset_password_token = token;
     console.log("Date.now(): ", Date.now())
     user.reset_password_expires = Date.now() + 3600000; // 1 hour
-    pg.connect(connection, function(err, client, done) {
+    pool.connect(function(err, client, done) {
       if(err) {
         console.log(err);
         res.sendStatus(500);
@@ -95,7 +109,7 @@ router.post('/', function(req, res, next) {
 router.get('/reset/:token', function(req, res) {
   console.log('token in url: ', req.params.token);
   console.log("date.now in get line 106: ", Date.now());
-  pg.connect(connection, function(err, client, done) {
+  pool.connect(function(err, client, done) {
     if(err) {
       console.log(err);
       res.sendStatus(500);
@@ -148,7 +162,7 @@ router.post('/reset', function(req, res) {
   );
     function resetPassword(cb) {
       console.log("user in resetPassword: ", user);
-      pg.connect(connection, function(err, client, done) {
+      pool.connect(function(err, client, done) {
         if(err) {
           console.log(err);
           res.sendStatus(500);

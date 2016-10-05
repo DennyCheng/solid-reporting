@@ -1,31 +1,12 @@
 <md-toolbar layout="row" layout-align="center"><img class="logo" layout-align="center" src="http://www.solidgroundmn.org/wp-content/themes/theme1205/images/logo.png" /></md-toolbar>
-<!--<div class="container">-->
-  <!--<h1 class="lead">Login</h1>-->
-    <!--<h1 class="lead alert alert-danger" role="alert" ng-if="message != ''">{{message}}</h1>-->
-    <!--<form ng-submit="userLogin()">-->
-      <!--<div>-->
-          <!--<label for="username">Username:</label>-->
-          <!--<input type="text" ng-model="user.username" />-->
-      <!--</div>-->
-      <!--<div>-->
-          <!--<label for="password">Password:</label>-->
-          <!--<input type="password" ng-model="user.password" />-->
-      <!--</div>-->
-      <!--<div>-->
-          <!--<input class="btn btn-default" type="submit" name="submit" value="Log In" />-->
-          <!--<a href="#register">Register</a>-->
-          <!--<a href="#forgot">Forgot Password</a>-->
-      <!--</div>-->
-    <!--</form>-->
-<!--</div>-->
 
 <div layout="row" layout-align="center center">
 
     <div class="login">
-        <h1 class="lead sg-blue">Login</h1>
         <h1 class="lead alert alert-danger" role="alert" ng-if="message != ''">{{message}}</h1>
 
-        <form name="clientLogin" ng-submit="userLogin()">
+        <form name="clientLogin" ng-submit="userLogin()" class="fadeInDown animated">
+            <h1 class="lead sg-blue">Login</h1>
             <md-input-container>
                 <md-icon class="fa fa-user sg-blue" aria-hidden="true"></md-icon>
                 <input ng-model="user.username" name="userName" type="text" placeholder="Name" ng-required="true">

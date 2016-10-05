@@ -43,7 +43,7 @@ app.use('/forgot', forgot);
 app.use('/demoquery', demoquery);
 app.use('/*', index);
 
-app.use('/index', test);
+// app.use('/index', test);
 //test route
 
 app.get('/', function(req,res){

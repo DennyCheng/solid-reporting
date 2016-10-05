@@ -7,25 +7,17 @@
         <div layout="row" layout-wrap>
           <md-input-container class="programinput" flex="100">
             <p class="selectprogram"><label>Select Program(s)</label></p>
-              <div flex-xs flex="100">
-                <md-checkbox aria-label="Select All"
-                             ng-checked="isChecked()"
-                             md-indeterminate="isIndeterminate()"
-                             ng-click="toggleAll()"
-                             class="md-primary">
-                  <span ng-if="isChecked()">Un-</span>Select All
-                </md-checkbox>
-              </div>
-              <div class="program-select-all-checkboxes"
-                   flex="100"
-                   ng-repeat="program in programs">
-                <md-checkbox
-                    ng-checked="exists(program, selectedprogram)"
-                    ng-click="toggle(program, selectedprogram)"
-                    class="md-primary">
-                 {{ program }}
-                </md-checkbox>
-              </div>
+            <!--<div flex-xs="" flex="50">-->
+              <!--<md-checkbox aria-label="Select All" ng-checked="isChecked()" md-indeterminate="isIndeterminate()" ng-click="toggleAll()">-->
+                <!--<span ng-if="isChecked()">Un-</span>Select All-->
+              <!--</md-checkbox>-->
+            <!--</div>-->
+            <div class="demo-select-all-checkboxes" flex="100" ng-repeat="item in items">
+              <md-checkbox ng-model="toggleSelect" ng-init="toggleSelect = true"
+                       ng-click="toggle(item, selected)" class="md-primary">
+                {{ item }}
+              </md-checkbox>
+            </div>
           </md-input-container>
       </div>
 
@@ -202,14 +194,14 @@
             </div> -->
     </md-sidenav>
     <md-content layout="column" flex>
-      <table>
+      <!-- <table>
         <tr ng-repeat="user in users">
             <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">
                 {{user.name}}</td>
             <td title="'Age'" filter="{ age: 'number'}" sortable="'age'">
                 {{user.age}}</td>
         </tr>
-      </table>
+      </table> -->
     <!-- <table ng-table="vm.tableParams" class="table" show-filter="true">
       <tr ng-repeat="user in users">
           <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">
