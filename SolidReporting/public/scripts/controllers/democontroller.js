@@ -292,7 +292,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       + "Adult Age: " + $scope.selectedadultAge + "\n"
       + "Children Race: " + $scope.selectedchildRace + "\n"
       + "Children Age: " + $scope.selectedchildAge + "\n"
-      + "Last Residence: " + $scope.lastResidenceSelection + "\n")
+      + "Last Residence: " + $scope.selectedresidence + "\n")
 
     // $http.get('/demoquery').then(function(response) {
     // console.log('data', response.data);
