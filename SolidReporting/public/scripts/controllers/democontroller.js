@@ -32,7 +32,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
 
                 if (races.indexOf(item['Race Code']) === -1 ) {
                     races.push(item['Race Code']);
-                    console.log('item------00000',item ['Race Code']);
+                    // console.log('item------00000',item ['Race Code']);
                 }
                 if (residences.indexOf(item['County of Last Residence']) === -1 &&
                     item['County of Last Residence'] !== null &&
@@ -247,50 +247,104 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     });
 
 
-    $scope.demoFactory.totalPeople(selections).then(function(response) {
-      console.log("response totalPeople: ", response);
-        var data = response;
 
-        console.log('3204239438403324-23DATATAT------', data[2]['role']);
-        // console.log('3204239438403324-23------',dataProgram);
-       for (var i = 0; i < data.length; i++) {
-           var dataProgram = data[i]['Program'];
-           var dataRole = data[i]['role'];
+      $scope.empTotal = {
+          adult: 0,
+          children: 0,
+          totalperson1: 0,
+          totalperson2: 0,
+          total: 0
+      };
+      $scope.homeTotal = {
+          adult: 0,
+          children: 0,
+          totalperson1: 0,
+          totalperson2: 0,
+          total: 0
+      };
 
-           if(dataProgram === 'EMP' && dataRole === 'Adults') {
-               var empAdultSum = data[i]['sum'];
+console.log('logggg--',$scope.emp);
+        $scope.demoFactory.totalPeople(selections).then(function (response) {
+            console.log("response totalPeople: ", response);
+            var data = response;
 
-               console.log('total sum emp adult -------', empAdultSum);
-           }
-           if(dataProgram === 'EMP' && dataRole === 'Children') {
-               var empChildrenSum = data[i]['sum'];
-               console.log('total sum emp children -------', empChildrenSum);
-           }
-           if(dataProgram === 'EMPII' && dataRole === 'Adults') {
-               var emp2AdultrenSum = data[i]['sum'];
-               console.log('total sum empII adult -------', emp2AdultrenSum);
-           }
-           if(dataProgram === 'EMPII' && dataRole === 'Children') {
-               var emp2ChildrenSum = data[i]['sum'];
-               console.log('total sum empII children -------', emp2ChildrenSum);
-           }
-       }
-        // response.program.forEach(function (item) {});
-        // if(response.program === response.program["EMP"]) {
-        //     console.log("------EMP----- total");
-        // }
-        // if(response.program === response.program["EMPII"]) {
-        //     console.log("------EMPII----- total");
-        // }
-        // if(response.program === response.program["Home Again"]) {
-        //     console.log("------home again----- total");
-        // }
-        // if(response.program === response.program["HomeSafe"]) {
-        //     console.log("------Home safe----- total");
-        // }
+            // console.log('3204239438403324-23------',dataProgram);
+            for (var i = 0; i < data.length; i++) {
+                console.log('3204239438403324-23DATATAT------', data[i]);
+                var dataProgram = data[i]['Program'];
+                var dataRole = data[i]['role'];
 
+                if (dataProgram === 'EMP' && dataRole === 'Adults') {
+                    var empSum = Number(data[i]['sum']);
+                    console.log('total sum emp adult -------', empSum);
+                }
+                if (dataProgram === 'EMP' && dataRole === 'Children') {
+                    var empChildrenSum = Number(data[i]['sum']);
+                    console.log('total sum emp children -------', empChildrenSum);
+                }
+                if (dataProgram === 'EMPII' && dataRole === 'Adults') {
+                    var emp2Sum = Number(data[i]['sum']);
+                    console.log('total sum empII adult -------', emp2Sum);
+                }
+                if (dataProgram === 'EMPII' && dataRole === 'Children') {
+                    var emp2ChildrenSum = Number(data[i]['sum']);
+                    console.log('total sum empII children -------', emp2ChildrenSum);
+                }
 
-    });
+                if (dataProgram === 'HomeSafe' && dataRole === 'Adults') {
+                    var homesafeSum = Number(data[i]['sum']);
+                    console.log('total sum HomeSafe Adults -------', homesafeSum);
+                }
+                if (dataProgram === 'HomeSafe' && dataRole === 'Children') {
+                    var homesafeChildrenSum = Number(data[i]['sum']);
+                    console.log('total sum HomeSafe children -------', homesafeChildrenSum);
+                }
+                if (dataProgram === 'Home Again' && dataRole === 'Adults') {
+                    var homeAgianSum = Number(data[i]['sum']);
+                    console.log('total sum Home Again Adults -------', homeAgianSum);
+                }
+                if (dataProgram === 'Home Again' && dataRole === 'Children') {
+                    var homeAgianChildrenSum = Number(data[i]['sum']);
+                    console.log('total sum Home Again children -------', homeAgianChildrenSum);
+                }
+            }
+
+            // EMP1 and EMP2 Adults total
+            $scope.empTotal.adult = empSum + emp2Sum;
+            console.log('Total EMP1 and EMP2 Adult', $scope.empTotal.adult);
+
+            // EMP1 and EMP2 children total
+            $scope.empTotal.children = empChildrenSum + emp2ChildrenSum;
+            console.log('Total EMP1 and EMP2 Children', $scope.empTotal.children);
+
+            // EMP1 and EMP2 Grand Total
+            $scope.empTotal.total =  $scope.empTotal.adult + $scope.empTotal.children;
+            console.log('Total EMP1 and EMP2', $scope.empTotal.total);
+
+            //EMP1 Grand Total
+            $scope.empTotaltotalperson1 = empSum + empChildrenSum;
+
+            //EMP2 Grand Total
+            $scope.empTotaltotalperson2 = emp2Sum + emp2ChildrenSum;
+
+            // homesafe and homeAgian Adults total
+            $scope.homeTotal.adult = homesafeSum + homeAgianSum;
+            console.log('Total homesafe and homeAgain Adult', $scope.homeTotal.adult);
+
+            // homesafe and homeAgian children total
+            $scope.homeTotal.children = homesafeChildrenSum + homeAgianChildrenSum;
+            console.log('Total homesafe and homeAgain Children', $scope.homeTotal.children);
+
+            // homesafe and homeAgain Grand Total
+            $scope.homeTotal.total = $scope.homeTotal.adult + $scope.homeTotal.children;
+            console.log('Total homesafe and homeAgain', $scope.homeTotal.total);
+
+            //EMP1 Grand Total
+            $scope.homeTotal.totalperson1 = homesafeSum + homesafeChildrenSum;
+
+            //EMP1 Grand Total
+            $scope.homeTotal.totalperson2 = homeAgianSum + homeAgianChildrenSum;
+        });
     //
     // $scope.demoFactory.allGender(selections).then(function(response) {
     //   console.log("response allGender: ", response);
