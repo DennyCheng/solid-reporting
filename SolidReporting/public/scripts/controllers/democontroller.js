@@ -195,10 +195,6 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       + "Children Age: " + $scope.selectedchildAge + "\n"
       + "Last Residence: " + $scope.lastResidenceSelection + "\n")
 
-    // $http.get('/demoquery').then(function(response) {
-    // console.log('data', response.data);
-    // $scope.data = response.data;
-    // });
     console.log("$scope.startdate newQuery: ", $scope.startdate);
     console.log("$scope.enddate newQuery: ", $scope.enddate);
 
@@ -212,7 +208,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       lastResidenceSelection: $scope.selectedresidence,
       startdate: $scope.startdate,
       enddate: $scope.enddate
-    }
+    };
 
     $scope.demoFactory.dobAdults(selections).then(function(response) {
       console.log("response dobAdults: ", response);
