@@ -1,0 +1,39 @@
+<style>
+    .md-button.md-raised:not([disabled]) {
+    width: 100px;
+    }
+</style>
+
+<div ng-include="'public/views/partials/header.html'"> </div>
+
+<md-content layout-padding>
+    <div layout="row">
+        <div flex>
+            <h3>Instruction</h3>
+            <p>1. Open Ms Access to Postgresql application on your computer.</p>
+            <p>2.Within MS Access to Postgresql</p>
+            <p>3. Click next</p>
+            <p>4. Filename will be set to the Access Database file</p>
+            <p>5. Click next</p>
+            <p>6. select Create dump file field</p>
+            <p>7. Make sure destination Database input field reads: movedb</p>
+            <p>8. Click Next</p>
+            <p>9. Make sure all checkboxes are selected or click<br> Selected or click select  all to do this</p>
+            <p>10. Click next</p>
+            <p>11. Click run Now button</p>
+        </div>
+        <div flex>
+            <form layout="column" layout-align="center center" class="uploadform">
+            <lf-ng-md-file-input lf-files="file"  lf-placeholder="sql file" lf-drag-and-drop-label="Drag and Drop SQL file"  drag preview> </lf-ng-md-file-input>
+            <md-button type="button"  class="md-raised md-primary" ng-click="onSubmit()">Submit</md-button>
+            </form>
+        </div>
+    </div>
+</md-content>
+
+
+
+
+
+<!--https://github.com/shuyu/angular-material-fileinput-->
+<!--http://shuyu.github.io/angular-material-fileinput/example/-->

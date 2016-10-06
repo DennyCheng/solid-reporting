@@ -1,0 +1,185 @@
+p {
+  color: grey;
+}
+/* solid ground color blue */
+.sg-blue{
+  color:#0c6aa9;
+}
+/* solid ground color green */
+.sg-green{
+  color:#779b1f;
+}
+
+/* header style */
+md-toolbar:not(.md-menu-toolbar) {
+  background-color: rgba(12,106,169,.5);
+}
+.logo {
+  width: 40%;
+  height: 40%;
+  /*margin: 20px auto 20px auto;*/
+}
+
+/* end of header style */
+.login {
+  margin-top: 4em;
+  text-align: center;
+}
+/* upload page style*/
+.uploadform {
+  margin-top: 1em;
+  width: 50em;
+  background-color: white;
+}
+
+/* Form Styles */
+form {
+  width: 340px;
+  margin: 4em auto;
+  padding: 3em 2em 2em 2em;
+  background: #fafafa;
+  border: 1px solid #ebebeb;
+  box-shadow: rgba(0, 0, 0, 0.14902) 0px 1px 1px 0px, rgba(0, 0, 0, 0.09804) 0px 1px 2px 0px;
+}
+
+.inputIconDemo {
+  min-height: 48px;
+}
+
+fieldset {
+  border-style: solid;
+  border-width: 1px;
+  height: 100%;
+}
+
+.programinput {
+  margin-top: 0;
+}
+.selectprogram {
+  margin-top: 0;
+  margin-bottom: 2em;
+}
+
+.checkboxdemoSelectAll .program-select-all-checkboxes {
+  padding-left: 30px;
+}
+
+/*.demoGrid {
+    width: 500px;
+    height: 250px;
+  }*/
+
+.demoDropdown {
+  /* Please note: All these selectors are only applied to children of elements with the 'demoDropdown' class */ }
+.demoDropdown .demo-header-searchbox {
+  border: none;
+  outline: none;
+  height: 100%;
+  width: 100%;
+  padding: 0; }
+.demoDropdown .demo-select-header {
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1), 0 0 0 0 rgba(0, 0, 0, 0.14), 0 0 0 0 rgba(0, 0, 0, 0.12);
+  padding-left: 10.667px;
+  height: 48px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: auto; }
+
+
+.calendar {
+  padding: .5em;
+}
+
+
+.action-buttons {
+  width: 200px;
+  margin: 2em;
+}
+
+#reset {
+  background-color: #d9dbe0;
+}
+#export {
+  background-color: #77a5ed;
+}
+
+/* -------------- angular Material custom css ---------------- */
+md-input-container:not(.md-input-invalid) > md-icon.email {
+  color: green;
+}
+
+md-input-container.md-icon-float {
+  margin-bottom: 10px;
+}
+
+md-input-container:not(.md-input-invalid) > md-icon.name {
+  color: #4a89dc;
+}
+
+md-input-container.md-input-invalid > md-icon.email,
+.inputdemoIcons md-input-container.md-input-invalid > md-icon.name {
+  color: red;
+}
+
+md-input-container ng-messages,
+md-input-container [ng-messages] {
+  padding-left: 36px;
+}
+
+.md-button.md-raised:not([disabled]) {
+  width: 100%;
+  margin-top: 40px;
+  background-color: #0c6aa9;
+  height: 48px;
+  color: white;
+}
+.md-button.md-raised:not([disabled]):hover {
+  background-color: #357DDC;
+}
+.md-button.md-primary.md-raised:not([disabled]):hover, .md-button.md-primary.md-fab:not([disabled]):hover {
+  background-color: #357DDC;
+}
+
+md-sidenav {
+   /*width: 100%;*/
+   /*height: 100%;
+   padding: 20px;*/
+   /*background-color: #6bc7cc;*/
+ }
+
+md-select {
+}
+
+md-content {
+ /*height: 100%;
+ padding: 20px;
+ padding-bottom: 200px;*/
+ background-color: rgb(250,250,250);
+}
+
+/* Demographic select and checkbox */
+md-checkbox:not([disabled]).md-primary.md-checked .md-icon {
+  background-color: #779b1f;
+}
+.md-checkbox-enabled[selected] .md-icon {
+  background-color: #779b1f;
+}
+md-select-menu md-content md-option[selected]:focus {
+  color: grey;
+}
+md-select-menu md-content md-option[selected] {
+  color: grey;
+}
+
+/* Data Table Display-----------------------*/
+
+h1.tablehead {
+  padding: 10px;
+}
+
+/* navigation menu---------------------------*/
+.md-button.md-accent {
+  color: rgb(18, 110, 171);
+}
