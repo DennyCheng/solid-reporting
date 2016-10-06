@@ -12,7 +12,6 @@ var config = {
   idleTimeoutMillis: 1000, // how long a client is allowed to remain idle before being closed
 };
 
-
 //this initializes a connection pool
 //it will keep idle connections open for a 1 second
 //and set a limit of maximum 1000 idle clients
@@ -29,12 +28,14 @@ router.post('/dobadults', function(req, res) {
   var lastResidence = req.body.lastResidenceSelection;
   var startDate = req.body.startdate;
   var endDate = req.body.enddate;
+  // Query variables to use in SQL Query
   var raceQuery = '';
   var genderQuery = '';
   var ageAdultQuery = '';
   var lastResidenceQuery = '';
 
-  console.log("lastResidence line 36: ", lastResidence);
+  console.log("raceAdult line 37: ", raceAdult);
+  // console.log("lastResidence line 36: ", lastResidence);
 
   // sorting through raceAdult selections:
   if(raceAdult.length === 0) {
@@ -45,7 +46,9 @@ router.post('/dobadults', function(req, res) {
   } else {
     raceAdult.forEach(function(race, i) {
       //differences if there is a beginning '(' or ')' and ending with 'OR' or 'AND'
-      if(i === 0) {
+      if(race === null) {
+        raceQuery += "(\"Head of Household\".\"Race Code\" IS NULL)) AND ";
+      } else if(i === 0) {
         raceQuery += "((\"Head of Household\".\"Race Code\" = '" + race + "') OR ";
       } else if(i === (raceAdult.length - 1)) {
         raceQuery += "(\"Head of Household\".\"Race Code\" = '" + race + "')) AND ";
@@ -54,7 +57,7 @@ router.post('/dobadults', function(req, res) {
         }
     });
   }
-  console.log("raceQuery after if statement: ", raceQuery);
+  // console.log("raceQuery after if statement: ", raceQuery);
 
   // sorting through gender selections:
   if(gender.length === 0) {
@@ -71,7 +74,7 @@ router.post('/dobadults', function(req, res) {
         }
     });
   }
-  console.log("genderQuery after if statement: ", genderQuery);
+  // console.log("genderQuery after if statement: ", genderQuery);
 
   // // sorting through ageAdult Selections:
   // if(ageAdult.length === 0) {
@@ -99,7 +102,7 @@ router.post('/dobadults', function(req, res) {
         }
     });
   }
-  console.log("lastResidenceQuery after if statement: ", lastResidenceQuery);
+  // console.log("lastResidenceQuery after if statement: ", lastResidenceQuery);
 
 
   pool.connect(function(err, client, done) {
@@ -148,8 +151,84 @@ router.post('/dobchildren', function(req, res) {
   var raceChild = req.body.raceChildrenSelection;
   var gender = req.body.genderSelection;
   var ageChild = req.body.ageChildrenSelection;
+  var lastResidence = req.body.lastResidenceSelection;
   var startDate = req.body.startdate;
   var endDate = req.body.enddate;
+  // Query variables to use in SQL Query
+  var raceQuery = '';
+  var genderQuery = '';
+  var ageChildQuery = '';
+  var lastResidenceQuery = '';
+
+  console.log("lastResidence line 160: ", lastResidence);
+
+  // sorting through raceChild selections:
+  if(raceChild.length === 0) {
+    // somehow delete the query or make it blank or assume this is select all
+    raceQuery = "length is 0, nothing selected";
+  } else if(raceChild.length === 1) {
+    raceQuery = "(\"Members of Household\".\"Race Code\" = '" + raceChild[0] + "') AND ";
+  } else {
+    raceChild.forEach(function(race, i) {
+      //differences if there is a beginning '(' or ')' and ending with 'OR' or 'AND'
+      if(race === null) {
+        raceQuery += "(\"Members of Household\".\"Race Code\" IS NULL)) AND "
+      } else if(i === 0) {
+        raceQuery += "((\"Members of Household\".\"Race Code\" = '" + race + "') OR ";
+      } else if(i === (raceChild.length - 1)) {
+        raceQuery += "(\"Members of Household\".\"Race Code\" = '" + race + "')) AND ";
+      } else {
+          raceQuery += "(\"Members of Household\".\"Race Code\" = '" + race + "') OR ";
+        }
+    });
+  }
+  console.log("raceQuery for Children after if statement: ", raceQuery);
+
+  // sorting through gender selections:
+  if(gender.length === 0) {
+    // somehow delete the query or make it blank or assume this is select all
+    genderQuery = 'length is 0, nothing selected';
+  } else if(gender.length === 1) {
+    genderQuery = "(\"Members of Household\".\"Gender\" = '" + gender[0] + "') AND ";
+  } else {
+    gender.forEach(function(gen, i) {
+      if(i === (gender.length - 1)) {
+        genderQuery += "(\"Members of Household\".\"Gender\" = '" + gen + "')) AND ";
+      } else {
+          genderQuery += "((\"Members of Household\".\"Gender\" = '" + gen + "') OR ";
+        }
+    });
+  }
+  console.log("genderQuery for Children after if statement: ", genderQuery);
+
+  // // sorting through ageChild Selections:
+  // if(ageChild.length === 0) {
+  //
+  // } else if (ageChild.length === 1) {
+  //
+  // } else {
+  //
+  // }
+
+  // sorting through lastResidence Selections:
+  if(lastResidence.length === 0) {
+    // somehow delete the query or make it blank or assume this is select all
+    lastResidenceQuery = 'length is 0, nothing selected';
+  } else if(lastResidence.length === 1) {
+    lastResidenceQuery = "(\"Head of Household\".\"County of Last Residence\" = '" + lastResidence[0] + "') AND ";
+  } else {
+    lastResidence.forEach(function(county, i) {
+      if(i === 0) {
+        lastResidenceQuery += "((\"Head of Household\".\"County of Last Residence\" = '" + county + "') OR ";
+      } else if(i === (lastResidence.length - 1)) {
+        lastResidenceQuery += "(\"Head of Household\".\"County of Last Residence\" = '" + county + "')) AND ";
+      } else {
+        lastResidenceQuery += "(\"Head of Household\".\"County of Last Residence\" = '" + county + "') OR ";
+        }
+    });
+  }
+  console.log("lastResidenceQuery for Children after if statement: ", lastResidenceQuery);
+
 
   pool.connect(function(err, client, done) {
 
@@ -161,10 +240,12 @@ router.post('/dobchildren', function(req, res) {
     client.query("SELECT \"Members of Household\".\"Date of Birth\" as DOB, \"Head of Household\".\"Program\" " +
                 "FROM \"Members of Household\" " +
                 "LEFT JOIN \"Head of Household\" ON \"Members of Household\".\"Head of Household\" = \"Head of Household\".\"HoHID\" " +
-                "WHERE (\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
+                "WHERE " + raceQuery + genderQuery +
+                // + lastResidenceQuery +
+                "((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
                 "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
                 "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
-                "OR (\"Head of Household\".\"Program Entry Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') ",
+                "OR (\"Head of Household\".\"Program Entry Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "')) ",
       function(err, result) {
         done();
 
