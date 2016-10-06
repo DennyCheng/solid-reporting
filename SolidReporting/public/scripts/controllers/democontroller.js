@@ -313,211 +313,460 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       enddate: $scope.enddate
     }
 
-    $scope.demoFactory.dobAdults(selections).then(function(response) {
-      console.log("response dobAdults: ", response);
-    });
+    // $scope.demoFactory.dobAdults(selections).then(function(response) {
+    //   console.log("response dobAdults: ", response);
+    // });
+    //Come back for this last (logic is hard)
+    // $scope.demoFactory.dobChildren(selections).then(function(response) {
+    //   // console.log("response dobChildren: ", response);
+    // });
+    // //Jerry- Incomplete
+    // $scope.demoFactory.totalPeople(selections).then(function(response) {
+    //   // console.log("response totalPeople: ", response)
+    // });
+    // //Jerry- Incomplete
+    // $scope.demoFactory.allGender(selections).then(function(response) {
+    //   // console.log("response allGender: ", response);
+    // });
+    // //Jerry- Incomplete
+    // $scope.demoFactory.raceAdults(selections).then(function(response) {
+    //   // console.log("response raceAdults: ", response);
+    // });
 
-    $scope.demoFactory.dobChildren(selections).then(function(response) {
-      console.log("response dobChildren: ", response);
-    });
+    //Denny- Complete
+    // $scope.demoFactory.raceChildren(selections).then(function(response) {
+    //   console.log("response raceChildren from server: ", response);
+    //    var responseArray = response;
+    //
+    //    var raceChildEMP = {
+    //      african:0,
+    //      africanAmerican:0,
+    //      americanIndian:0,
+    //      asian:0,
+    //      caucasianWhite:0,
+    //      hispanicLatino:0,
+    //      multiracial:0,
+    //      other:0,
+    //      totalCount:0
+    //    };
+    //
+    //    var raceChildEMPII = {
+    //      african:0,
+    //      africanAmerican:0,
+    //      americanIndian:0,
+    //      asian:0,
+    //      caucasianWhite:0,
+    //      hispanicLatino:0,
+    //      multiracial:0,
+    //      other:0,
+    //      totalCount:0
+    //    };
+    //
+    //    var raceChildHomeSafe = {
+    //      african:0,
+    //      africanAmerican:0,
+    //      americanIndian:0,
+    //      asian:0,
+    //      caucasianWhite:0,
+    //      hispanicLatino:0,
+    //      multiracial:0,
+    //      other:0,
+    //      totalCount:0
+    //    };
+    //
+    //    var raceChildHomeAgain = {
+    //      african:0,
+    //      africanAmerican:0,
+    //      americanIndian:0,
+    //      asian:0,
+    //      caucasianWhite:0,
+    //      hispanicLatino:0,
+    //      multiracial:0,
+    //      other:0,
+    //      totalCount:0
+    //    };
+    //
+    //    var raceChildHomeFront = {
+    //      african:0,
+    //      africanAmerican:0,
+    //      americanIndian:0,
+    //      asian:0,
+    //      caucasianWhite:0,
+    //      hispanicLatino:0,
+    //      multiracial:0,
+    //      other:0,
+    //      totalCount:0
+    //    };
+    //
+    //    //Total of all children
+    //    var raceChildTotal = 0;
+    //
+    //
+    //    for (var i = 0; i < responseArray.length; i++) {
+    //      raceChildTotal += parseInt(responseArray[i].count)
+    //
+    //      if(responseArray[i].Program =="EMP"){
+    //        if(responseArray[i].race == "African"){
+    //          raceChildEMP.african += parseInt(responseArray[i].count)
+    //          raceChildEMP.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else if(responseArray[i].race =="African American"){
+    //          raceChildEMP.africanAmerican += parseInt(responseArray[i].count)
+    //          raceChildEMP.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else if(responseArray[i].race =="American Indian"){
+    //          raceChildEMP.americanIndian += parseInt(responseArray[i].count)
+    //          raceChildEMP.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else if(responseArray[i].race =="Asian/SE Asian/Pacific Islander"){
+    //          raceChildEMP.asian += parseInt(responseArray[i].count)
+    //          raceChildEMP.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else if(responseArray[i].race =="Caucasian/White"){
+    //          raceChildEMP.caucasianWhite += parseInt(responseArray[i].count)
+    //          raceChildEMP.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else if(responseArray[i].race =="Hispanic/Chicano"){
+    //          raceChildEMP.hispanicLatino += parseInt(responseArray[i].count)
+    //          raceChildEMP.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else if(responseArray[i].race =="Multiracial"){
+    //          raceChildEMP.multiracial += parseInt(responseArray[i].count)
+    //          raceChildEMP.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else{
+    //          raceChildEMP.other += parseInt(responseArray[i].count)
+    //          raceChildEMP.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //      }
+    //      else if(responseArray[i].Program =="EMPII"){
+    //        if(responseArray[i].race == "African"){
+    //          raceChildEMPII.african += parseInt(responseArray[i].count)
+    //          raceChildEMPII.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else if(responseArray[i].race =="African American"){
+    //          raceChildEMPII.africanAmerican += parseInt(responseArray[i].count)
+    //          raceChildEMPII.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else if(responseArray[i].race =="American Indian"){
+    //          raceChildEMPII.americanIndian += parseInt(responseArray[i].count)
+    //          raceChildEMPII.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else if(responseArray[i].race =="Asian/SE Asian/Pacific Islander"){
+    //          raceChildEMPII.asian += parseInt(responseArray[i].count)
+    //          raceChildEMPII.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else if(responseArray[i].race =="Caucasian/White"){
+    //          raceChildEMPII.caucasianWhite += parseInt(responseArray[i].count)
+    //          raceChildEMPII.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else if(responseArray[i].race =="Hispanic/Chicano"){
+    //          raceChildEMPII.hispanicLatino += parseInt(responseArray[i].count)
+    //          raceChildEMPII.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else if(responseArray[i].race =="Multiracial"){
+    //          raceChildEMPII.multiracial += parseInt(responseArray[i].count)
+    //          raceChildEMPII.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else{
+    //          raceChildEMPII.other += parseInt(responseArray[i].count)
+    //          raceChildEMPII.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //      }
+    //      else if(responseArray[i].Program =="HomeSafe"||responseArray[i].Program =="Home Safe"){
+    //        if(responseArray[i].race == "African"){
+    //          raceChildHomeSafe.african += parseInt(responseArray[i].count)
+    //          raceChildHomeSafe.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else if(responseArray[i].race =="African American"){
+    //          raceChildHomeSafe.africanAmerican += parseInt(responseArray[i].count)
+    //          raceChildHomeSafe.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else if(responseArray[i].race =="American Indian"){
+    //          raceChildHomeSafe.americanIndian += parseInt(responseArray[i].count)
+    //          raceChildHomeSafe.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else if(responseArray[i].race =="Asian/SE Asian/Pacific Islander"){
+    //          raceChildHomeSafe.asian += parseInt(responseArray[i].count)
+    //          raceChildHomeSafe.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else if(responseArray[i].race =="Caucasian/White"){
+    //          raceChildHomeSafe.caucasianWhite += parseInt(responseArray[i].count)
+    //          raceChildHomeSafe.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else if(responseArray[i].race =="Hispanic/Chicano"){
+    //          raceChildHomeSafe.hispanicLatino += parseInt(responseArray[i].count)
+    //          raceChildHomeSafe.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else if(responseArray[i].race =="Multiracial"){
+    //          raceChildHomeSafe.multiracial += parseInt(responseArray[i].count)
+    //          raceChildHomeSafe.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else{
+    //          raceChildHomeSafe.other += parseInt(responseArray[i].count)
+    //          raceChildHomeSafe.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //      }
+    //      else if(responseArray[i].Program =="HomeAgain"||responseArray[i].Program =="Home Again"){
+    //        if(responseArray[i].race == "African"){
+    //          raceChildHomeAgain.african += parseInt(responseArray[i].count)
+    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else if(responseArray[i].race =="African American"){
+    //          raceChildHomeAgain.africanAmerican += parseInt(responseArray[i].count)
+    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else if(responseArray[i].race =="American Indian"){
+    //          raceChildHomeAgain.americanIndian += parseInt(responseArray[i].count)
+    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else if(responseArray[i].race =="Asian/SE Asian/Pacific Islander"){
+    //          raceChildHomeAgain.asian += parseInt(responseArray[i].count)
+    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else if(responseArray[i].race =="Caucasian/White"){
+    //          raceChildHomeAgain.caucasianWhite += parseInt(responseArray[i].count)
+    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else if(responseArray[i].race =="Hispanic/Chicano"){
+    //          raceChildHomeAgain.hispanicLatino += parseInt(responseArray[i].count)
+    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else if(responseArray[i].race =="Multiracial"){
+    //          raceChildHomeAgain.multiracial += parseInt(responseArray[i].count)
+    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else{
+    //          raceChildHomeAgain.other += parseInt(responseArray[i].count)
+    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //      }
+    //      else if(responseArray[i].Program =="Home Front"||responseArray[i].Program =="HomeFront"){
+    //        if(responseArray[i].race == "African"){
+    //          raceChildHomeAgain.african += parseInt(responseArray[i].count)
+    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else if(responseArray[i].race =="African American"){
+    //          raceChildHomeAgain.africanAmerican += parseInt(responseArray[i].count)
+    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else if(responseArray[i].race =="American Indian"){
+    //          raceChildHomeAgain.americanIndian += parseInt(responseArray[i].count)
+    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else if(responseArray[i].race =="Asian/SE Asian/Pacific Islander"){
+    //          raceChildHomeAgain.asian += parseInt(responseArray[i].count)
+    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else if(responseArray[i].race =="Caucasian/White"){
+    //          raceChildHomeAgain.caucasianWhite += parseInt(responseArray[i].count)
+    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else if(responseArray[i].race =="Hispanic/Chicano"){
+    //          raceChildHomeAgain.hispanicLatino += parseInt(responseArray[i].count)
+    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else if(responseArray[i].race =="Multiracial"){
+    //          raceChildHomeAgain.multiracial += parseInt(responseArray[i].count)
+    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //        else{
+    //          raceChildHomeAgain.other += parseInt(responseArray[i].count)
+    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //        }
+    //      }
+    //    }//end of for statement
+    //   //  console.log('results EMP',raceChildEMP)
+    //   //  console.log('results EMPII',raceChildEMPII)
+    //   //  console.log('raceTotal HomeSafe',raceChildHomeSafe);
+    //   //  console.log('raceTotal HomeAgain',raceChildHomeAgain);
+    //   //  console.log('raceTotal',raceChildTotal);
+    // });//end of childRaceQuery
 
-    $scope.demoFactory.totalPeople(selections).then(function(response) {
-      console.log("response totalPeople: ", response);
-    });
+    //Denny- Incomplete
+    // $scope.demoFactory.householdIncome(selections).then(function(response) {
+    //   // console.log("response householdIncome: ", response);
+    // });
 
-    $scope.demoFactory.allGender(selections).then(function(response) {
-      console.log("response allGender: ", response);
-    });
+    // //Denny- Incomplete
+    // $scope.demoFactory.lastResidence(selections).then(function(response) {
+    //   // console.log("response lastResidence: ", response);
+    // });
 
-    $scope.demoFactory.raceAdults(selections).then(function(response) {
-      console.log("response raceAdults: ", response);
-    });
+    // //Denny- Incomplete
+    // $scope.demoFactory.famsExitHousing(selections).then(function(response) {
+    //   // console.log("response famsExitHousing: ", response);
+    // });
 
-    $scope.demoFactory.raceChildren(selections).then(function(response) {
-      console.log("response raceChildren: ", response);
-    });
-
-    $scope.demoFactory.householdIncome(selections).then(function(response) {
-      console.log("response householdIncome: ", response);
-    });
-
-    $scope.demoFactory.lastResidence(selections).then(function(response) {
-      console.log("response lastResidence: ", response);
-    });
-
-    $scope.demoFactory.famsExitHousing(selections).then(function(response) {
-      console.log("response famsExitHousing: ", response);
-    });
-    //start of denny function
-    $scope.demoFactory.dobAdults(selections).then(function(response) {
-
-      //------------------Birthday Logic--------------------------
-      var responseArray = response;
-
-      var dobemp = {
-        age18to22:0,
-        age23to30:0,
-        age31to40:0,
-        age41to54:0,
-        age55to64:0,
-        age65tobeyond:0
-      };
-      var dobempII= {
-        age18to22:0,
-        age23to30:0,
-        age31to40:0,
-        age41to54:0,
-        age55to64:0,
-        age65tobeyond:0
-      };
-      var dobhomeSafe = {
-        age18to22:0,
-        age23to30:0,
-        age31to40:0,
-        age41to54:0,
-        age55to64:0,
-        age65tobeyond:0
-      };
-      var dobhomeAgain = {
-        age18to22:0,
-        age23to30:0,
-        age31to40:0,
-        age41to54:0,
-        age55to64:0,
-        age65tobeyond:0
-      };
-      var dobhomeFront = {
-        age18to22:0,
-        age23to30:0,
-        age31to40:0,
-        age41to54:0,
-        age55to64:0,
-        age65tobeyond:0
-      };
-
-      for (var i = 0; i < responseArray.length; i++) {
-        responseArray[i]['Date of Birth'] = responseArray[i]['Date of Birth'].slice(0,10);//removes excess texts from DOB
-        var personDOB = new Date(responseArray[i]['Date of Birth']); //reformats persons DOB
-        var age = dateDiff(personDOB,$scope.enddate);//comparing persons DOB with selected end date
-
-        if(responseArray[i].Program == "EMP"){
-          if(age <= 22){
-            // console.log("hit the 18-22 for",responseArray[i])
-            dobemp.age18to22 = dobemp.age18to22+=1;
-          }
-          else if(age <=30 && age >= 23){
-          // console.log("hit the 23-30 for",responseArray[i])
-          dobemp.age23to30 = dobemp.age23to30+=1;
-          }
-          else if(age <=40 && age >= 31){
-          // console.log("hit the 31-40 for",responseArray[i])
-          dobemp.age31to40 = dobemp.age31to40+=1;
-          }
-          else if(age <=54 && age >= 41){
-          // console.log("hit the 41-54 fsor",responseArray[i])
-          dobemp.age41to54 = dobemp.age41to54+=1;
-          }
-          else if(age <=64 && age >= 55){
-          // console.log("hit the 55-64 for",responseArray[i])
-          dobemp.age55to64 = dobemp.age55to64+=1;
-          }
-          else if(age >=65){
-          // console.log("hit the 65+ for",responseArray[i])
-          dobemp.age65tobeyond = dobemp.age65tobeyond+=1;
-          }
-        }//end of EMP if
-        else if(responseArray[i].Program == "EMPII"){
-          if(age <= 22){
-            dobempII.age18to22 = dobempII.age18to22+=1;
-          }
-          else if(age <=30 && age >= 23){
-          dobempII.age23to30 = dobempII.age23to30+=1;
-          }
-          else if(age <=40 && age >= 31){
-          dobempII.age31to40 = dobempII.age31to40+=1;
-          }
-          else if(age <=54 && age >= 41){
-          dobempII.age41to54 = dobempII.age41to54+=1;
-          }
-          else if(age <=64 && age >= 55){
-          dobempII.age55to64 = dobempII.age55to64+=1;
-          }
-          else if(age >=65){
-          dobempII.age65tobeyond = dobempII.age65tobeyond+=1;
-          }
-        }
-        else if(responseArray[i].Program == "HomeSafe"){
-          if(age <= 22){
-            dobhomeSafe.age18to22 = dobhomeSafe.age18to22+=1;
-          }
-          else if(age <=30 && age >= 23){
-          dobhomeSafe.age23to30 = dobhomeSafe.age23to30+=1;
-          }
-          else if(age <=40 && age >= 31){
-          dobhomeSafe.age31to40 = dobhomeSafe.age31to40+=1;
-          }
-          else if(age <=54 && age >= 41){
-          dobhomeSafe.age41to54 = dobhomeSafe.age41to54+=1;
-          }
-          else if(age <=64 && age >= 55){
-          dobhomeSafe.age55to64 = dobhomeSafe.age55to64+=1;
-          }
-          else if(age >=65){
-          dobhomeSafe.age65tobeyond = dobhomeSafe.age65tobeyond+=1;
-          }
-        }
-        else if(responseArray[i].Program == "Home Again"){
-          if(age <= 22){
-            dobhomeAgain.age18to22 = dobhomeAgain.age18to22+=1;
-          }
-          else if(age <=30 && age >= 23){
-          dobhomeAgain.age23to30 = dobhomeAgain.age23to30+=1;
-          }
-          else if(age <=40 && age >= 31){
-          dobhomeAgain.age31to40 = dobhomeAgain.age31to40+=1;
-          }
-          else if(age <=54 && age >= 41){
-          dobhomeAgain.age41to54 = dobhomeAgain.age41to54+=1;
-          }
-          else if(age <=64 && age >= 55){
-          dobhomeAgain.age55to64 = dobhomeAgain.age55to64+=1;
-          }
-          else if(age >=65){
-          dobhomeSafe.age65tobeyond = dobhomeSafe.age65tobeyond+=1;
-          }
-        }
-        else if(responseArray[i].Program == "Home Front" || responseArray[i].Program == "HomeFront"){//need to make sure on spelling on DB since we have no data with the name (Home Front or HomeFront)
-          if(age <= 22){
-          dobhomeFront.age65tobeyond = dobhomeFront.age65tobeyond+=1;
-          }
-          else if(age <=30 && age >= 23){
-          dobhomeFront.age65tobeyond = dobhomeFront.age65tobeyond+=1;
-          }
-          else if(age <=40 && age >= 31){
-          dobhomeFront.age65tobeyond = dobhomeFront.age65tobeyond+=1;
-          }
-          else if(age <=54 && age >= 41){
-          dobhomeFront.age65tobeyond = dobhomeFront.age65tobeyond+=1;
-          }
-          else if(age <=64 && age >= 55){
-          dobhomeFront.age65tobeyond = dobhomeFront.age65tobeyond+=1;
-          }
-          else if(age >=65){
-          dobhomeFront.age65tobeyond = dobhomeFront.age65tobeyond+=1;
-          }
-        }
-      }//end of for statement
-      //these check for the objects to have values(these total values hsould equal response.length)
-      console.log('emp test',dobemp);
-      console.log('empII test',dobempII);
-      console.log('homeSafe test',dobhomeSafe);
-      console.log('homeFront test',dobhomeFront);
-      console.log('homeAgain test',dobhomeAgain);
-      console.log("response length: ", response.length);
-      // console.log("response.data: ", response.data);//this is the giant array response
-
-    console.log("selections: ", selections);
-  });
+    //Denny function-Complete
+    // $scope.demoFactory.dobAdults(selections).then(function(response) {
+    //
+    //   //------------------Birthday Logic--------------------------
+    //   var responseArray = response;
+    //
+    //   var dobEMP = {
+    //     age18to22:0,
+    //     age23to30:0,
+    //     age31to40:0,
+    //     age41to54:0,
+    //     age55to64:0,
+    //     age65tobeyond:0
+    //   };
+    //   var dobEMPII= {
+    //     age18to22:0,
+    //     age23to30:0,
+    //     age31to40:0,
+    //     age41to54:0,
+    //     age55to64:0,
+    //     age65tobeyond:0
+    //   };
+    //   var dobHomeSafe = {
+    //     age18to22:0,
+    //     age23to30:0,
+    //     age31to40:0,
+    //     age41to54:0,
+    //     age55to64:0,
+    //     age65tobeyond:0
+    //   };
+    //   var dobHomeAgain = {
+    //     age18to22:0,
+    //     age23to30:0,
+    //     age31to40:0,
+    //     age41to54:0,
+    //     age55to64:0,
+    //     age65tobeyond:0
+    //   };
+    //   var dobHomeFront = {
+    //     age18to22:0,
+    //     age23to30:0,
+    //     age31to40:0,
+    //     age41to54:0,
+    //     age55to64:0,
+    //     age65tobeyond:0
+    //   };
+    //
+    //   for (var i = 0; i < responseArray.length; i++) {
+    //     responseArray[i]['Date of Birth'] = responseArray[i]['Date of Birth'].slice(0,10);//removes excess texts from DOB
+    //     var personDOB = new Date(responseArray[i]['Date of Birth']); //reformats persons DOB
+    //     var age = dateDiff(personDOB,$scope.enddate);//comparing persons DOB with selected end date
+    //
+    //     if(responseArray[i].Program == "EMP"){
+    //       if(age <= 22){
+    //         // console.log("hit the 18-22 for",responseArray[i])
+    //       dobEMP.age18to22 = dobEMP.age18to22+=1;
+    //       }
+    //       else if(age <=30 && age >= 23){
+    //       // console.log("hit the 23-30 for",responseArray[i])
+    //       dobEMP.age23to30 = dobEMP.age23to30+=1;
+    //       }
+    //       else if(age <=40 && age >= 31){
+    //       // console.log("hit the 31-40 for",responseArray[i])
+    //       dobEMP.age31to40 = dobEMP.age31to40+=1;
+    //       }
+    //       else if(age <=54 && age >= 41){
+    //       // console.log("hit the 41-54 fsor",responseArray[i])
+    //       dobEMP.age41to54 = dobEMP.age41to54+=1;
+    //       }
+    //       else if(age <=64 && age >= 55){
+    //       // console.log("hit the 55-64 for",responseArray[i])
+    //       dobEMP.age55to64 = dobEMP.age55to64+=1;
+    //       }
+    //       else if(age >=65){
+    //       // console.log("hit the 65+ for",responseArray[i])
+    //       dobEMP.age65tobeyond = dobEMP.age65tobeyond+=1;
+    //       }
+    //     }//end of EMP if
+    //     else if(responseArray[i].Program == "EMPII"){
+    //       if(age <= 22){
+    //         dobEMPII.age18to22 = dobEMPII.age18to22+=1;
+    //       }
+    //       else if(age <=30 && age >= 23){
+    //       dobEMPII.age23to30 = dobEMPII.age23to30+=1;
+    //       }
+    //       else if(age <=40 && age >= 31){
+    //       dobEMPII.age31to40 = dobEMPII.age31to40+=1;
+    //       }
+    //       else if(age <=54 && age >= 41){
+    //       dobEMPII.age41to54 = dobEMPII.age41to54+=1;
+    //       }
+    //       else if(age <=64 && age >= 55){
+    //       dobEMPII.age55to64 = dobEMPII.age55to64+=1;
+    //       }
+    //       else if(age >=65){
+    //       dobEMPII.age65tobeyond = dobEMPII.age65tobeyond+=1;
+    //       }
+    //     }
+    //     else if(responseArray[i].Program == "HomeSafe"){
+    //       if(age <= 22){
+    //         dobHomeSafe.age18to22 = dobHomeSafe.age18to22+=1;
+    //       }
+    //       else if(age <=30 && age >= 23){
+    //       dobHomeSafe.age23to30 = dobHomeSafe.age23to30+=1;
+    //       }
+    //       else if(age <=40 && age >= 31){
+    //       dobHomeSafe.age31to40 = dobHomeSafe.age31to40+=1;
+    //       }
+    //       else if(age <=54 && age >= 41){
+    //       dobHomeSafe.age41to54 = dobHomeSafe.age41to54+=1;
+    //       }
+    //       else if(age <=64 && age >= 55){
+    //       dobHomeSafe.age55to64 = dobHomeSafe.age55to64+=1;
+    //       }
+    //       else if(age >=65){
+    //       dobHomeSafe.age65tobeyond = dobHomeSafe.age65tobeyond+=1;
+    //       }
+    //     }
+    //     else if(responseArray[i].Program == "Home Again"){
+    //       if(age <= 22){
+    //       dobHomeAgain.age18to22 = dobHomeAgain.age18to22+=1;
+    //       }
+    //       else if(age <=30 && age >= 23){
+    //       dobHomeAgain.age23to30 = dobHomeAgain.age23to30+=1;
+    //       }
+    //       else if(age <=40 && age >= 31){
+    //       dobHomeAgain.age31to40 = dobHomeAgain.age31to40+=1;
+    //       }
+    //       else if(age <=54 && age >= 41){
+    //       dobHomeAgain.age41to54 = dobHomeAgain.age41to54+=1;
+    //       }
+    //       else if(age <=64 && age >= 55){
+    //       dobHomeAgain.age55to64 = dobHomeAgain.age55to64+=1;
+    //       }
+    //       else if(age >=65){
+    //       dobHomeAgain.age65tobeyond = dobHomeAgain.age65tobeyond+=1;
+    //       }
+    //     }
+    //     else if(responseArray[i].Program == "Home Front" || responseArray[i].Program == "HomeFront"){//need to make sure on spelling on DB since we have no data with the name (Home Front or HomeFront)
+    //       if(age <= 22){
+    //       dobHomeFront.age65tobeyond = dobHomeFront.age65tobeyond+=1;
+    //       }
+    //       else if(age <=30 && age >= 23){
+    //       dobHomeFront.age65tobeyond = dobHomeFront.age65tobeyond+=1;
+    //       }
+    //       else if(age <=40 && age >= 31){
+    //       dobHomeFront.age65tobeyond = dobHomeFront.age65tobeyond+=1;
+    //       }
+    //       else if(age <=54 && age >= 41){
+    //       dobHomeFront.age65tobeyond = dobHomeFront.age65tobeyond+=1;
+    //       }
+    //       else if(age <=64 && age >= 55){
+    //       dobHomeFront.age65tobeyond = dobHomeFront.age65tobeyond+=1;
+    //       }
+    //       else if(age >=65){
+    //       dobHomeFront.age65tobeyond = dobHomeFront.age65tobeyond+=1;
+    //       }
+    //     }
+    //   }//end of for statement
+    //   //these check for the objects to have values(these total values hsould equal response.length)
+    //   console.log('emp test',dobEMP);
+    //   console.log('empII test',dobEMPII);
+    //   console.log('homeSafe test',dobHomeSafe);
+    //   console.log('homeFront test',dobHomeFront);
+    //   console.log('homeAgain test',dobHomeAgain);
+    //   console.log("response length: ", response.length);
+    //   // console.log("response.data: ", response.data);//this is the giant array response
+    // // console.log("selections: ", selections);
+    // });
   }
 
 
@@ -525,8 +774,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
 
 
   ///performs age calculations
-  function dateDiff(personDOB, endDate)
-  {
+  function dateDiff(personDOB, endDate){
     var personYear = endDate.getFullYear();
     var personMonth = endDate.getMonth();
     var personDate = endDate.getDate();
@@ -543,7 +791,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       }
     }
     return diff;
-  }
+  };
 
 
 
@@ -585,6 +833,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
         $scope.selectedexitReason = [];
         $scope.startdate = new Date();
         $scope.enddate = new Date();
+        //need to reset $scoped out sorting variables too?
     }
 
 
