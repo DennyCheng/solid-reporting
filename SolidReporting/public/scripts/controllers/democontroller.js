@@ -3,7 +3,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     var races = [];
     var residences = [];
     var programs = [];
-    var programsQuery =[];
+    var programDataEMP = [];
 
     $scope.dataFactory = DataFactory;
     $scope.dataFactory.currentSess();
@@ -17,7 +17,6 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     var ageAdultSelection;
     var ageChildrenSelection;
     var lastResidenceSelection;
-
 
     //----GET Massive Data ----------------------------------------------
     showData();
@@ -33,6 +32,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
 
                 if (races.indexOf(item['Race Code']) === -1 ) {
                     races.push(item['Race Code']);
+                    console.log('item------00000',item ['Race Code']);
                 }
                 if (residences.indexOf(item['County of Last Residence']) === -1 &&
                     item['County of Last Residence'] !== null &&
@@ -60,31 +60,11 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
                     item['Program'] !== 141
                 ) {
                     programs.push(item['Program']);
-                    // programsQuery.push(item['Program']);
                 }
             });
             $scope.items = angular.copy(programs);
         });
     }
-
-
-  //----- Programs ----------------------------
-
-  $scope.programs = ['EMP I', 'EMP II', 'Home Again', 'HomeSafe', 'HomeFront'];
-
-  //----- Logic for program checkboxes ----------------
-
-  $scope.selectedprogram = $scope.programs;
-  $scope.toggle = function (item, list) {
-    var idx = list.indexOf(item);
-    if (idx > -1) {
-      list.splice(idx, 1);
-    }
-    else {
-      list.push(item);
-    }
-  };
-
 
  $scope.dataFactory.currentSess();
 
@@ -101,63 +81,8 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
 
   //----- Programs ----------------------------
 
-  $scope.programs = ['EMP I', 'EMP II', 'Home Again', 'HomeSafe', 'HomeFront'];
-
-  //----- Logic for program checkboxes ----------------
-
-  $scope.selectedprogram = $scope.programs;
-  $scope.toggle = function (item, list) {
-    var idx = list.indexOf(item);
-    if (idx > -1) {
-      list.splice(idx, 1);
-    }
-    else {
-      list.push(item);
-    }
-  };
-
-  $scope.exists = function (item, list) {
-    return list.indexOf(item) > -1;
-  };
-
-  $scope.isIndeterminate = function() {
-    return ($scope.selectedprogram.length !== 0 &&
-        $scope.selectedprogram.length !== $scope.programs.length);
-  };
-
-  $scope.isChecked = function() {
-    return $scope.selectedprogram.length === $scope.programs.length;
-  };
-
-  $scope.toggleAll = function() {
-    if ($scope.selectedprogram.length === $scope.programs.length) {
-      $scope.selectedprogram = [];
-    } else if ($scope.selectedprogram.length === 0 || $scope.selectedprogram.length > 0) {
-      $scope.selectedprogram = $scope.programs.slice(0);
-    }
-  };
-
-    $scope.selectedProgram = [];
-    $scope.selected = programs;
     $scope.selectedprogram = programs;
 
-    $scope.toggle = function (item, list) {
-        var idx = list.indexOf(item);
-        if (idx > -1) {
-            var idxs = programsQuery.indexOf(item);
-                if(idxs === -1) {
-                    programsQuery.push(item);
-                } else {
-                    programsQuery.splice(idxs, 1);
-                }
-            $scope.toggleSelect != $scope.toggleSelect;
-        }
-        else {
-            programsQuery.push(item);
-        }
-    };
-
-    $scope.selected = programs;
     $scope.toggle = function (item, list) {
         var idx = list.indexOf(item);
         if (idx > -1) {
@@ -321,33 +246,75 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       console.log("response dobChildren: ", response);
     });
 
+
     $scope.demoFactory.totalPeople(selections).then(function(response) {
       console.log("response totalPeople: ", response);
-    });
+        var data = response;
 
-    $scope.demoFactory.allGender(selections).then(function(response) {
-      console.log("response allGender: ", response);
-    });
+        console.log('3204239438403324-23DATATAT------', data[2]['role']);
+        // console.log('3204239438403324-23------',dataProgram);
+       for (var i = 0; i < data.length; i++) {
+           var dataProgram = data[i]['Program'];
+           var dataRole = data[i]['role'];
 
-    $scope.demoFactory.raceAdults(selections).then(function(response) {
-      console.log("response raceAdults: ", response);
-    });
+           if(dataProgram === 'EMP' && dataRole === 'Adults') {
+               var empAdultSum = data[i]['sum'];
 
-    $scope.demoFactory.raceChildren(selections).then(function(response) {
-      console.log("response raceChildren: ", response);
-    });
+               console.log('total sum emp adult -------', empAdultSum);
+           }
+           if(dataProgram === 'EMP' && dataRole === 'Children') {
+               var empChildrenSum = data[i]['sum'];
+               console.log('total sum emp children -------', empChildrenSum);
+           }
+           if(dataProgram === 'EMPII' && dataRole === 'Adults') {
+               var emp2AdultrenSum = data[i]['sum'];
+               console.log('total sum empII adult -------', emp2AdultrenSum);
+           }
+           if(dataProgram === 'EMPII' && dataRole === 'Children') {
+               var emp2ChildrenSum = data[i]['sum'];
+               console.log('total sum empII children -------', emp2ChildrenSum);
+           }
+       }
+        // response.program.forEach(function (item) {});
+        // if(response.program === response.program["EMP"]) {
+        //     console.log("------EMP----- total");
+        // }
+        // if(response.program === response.program["EMPII"]) {
+        //     console.log("------EMPII----- total");
+        // }
+        // if(response.program === response.program["Home Again"]) {
+        //     console.log("------home again----- total");
+        // }
+        // if(response.program === response.program["HomeSafe"]) {
+        //     console.log("------Home safe----- total");
+        // }
 
-    $scope.demoFactory.householdIncome(selections).then(function(response) {
-      console.log("response householdIncome: ", response);
-    });
 
-    $scope.demoFactory.lastResidence(selections).then(function(response) {
-      console.log("response lastResidence: ", response);
     });
-
-    $scope.demoFactory.famsExitHousing(selections).then(function(response) {
-      console.log("response famsExitHousing: ", response);
-    });
+    //
+    // $scope.demoFactory.allGender(selections).then(function(response) {
+    //   console.log("response allGender: ", response);
+    // });
+    //
+    // $scope.demoFactory.raceAdults(selections).then(function(response) {
+    //   console.log("response raceAdults: ", response);
+    // });
+    //
+    // $scope.demoFactory.raceChildren(selections).then(function(response) {
+    //   console.log("response raceChildren: ", response);
+    // });
+    //
+    // $scope.demoFactory.householdIncome(selections).then(function(response) {
+    //   console.log("response householdIncome: ", response);
+    // });
+    //
+    // $scope.demoFactory.lastResidence(selections).then(function(response) {
+    //   console.log("response lastResidence: ", response);
+    // });
+    //
+    // $scope.demoFactory.famsExitHousing(selections).then(function(response) {
+    //   console.log("response famsExitHousing: ", response);
+    // });
     //start of denny function
     $scope.demoFactory.dobAdults(selections).then(function(response) {
 
