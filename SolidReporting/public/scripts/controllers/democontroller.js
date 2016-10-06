@@ -17,6 +17,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     var ageAdultSelection;
     var ageChildrenSelection;
     var lastResidenceSelection;
+    $scope.residences = residences;
 
 
     //----GET Massive Data ----------------------------------------------
@@ -34,9 +35,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
                 if (races.indexOf(item['Race Code']) === -1 ) {
                     races.push(item['Race Code']);
                 }
-                if (residences.indexOf(item['County of Last Residence']) === -1 &&
-                    item['County of Last Residence'] !== null &&
-                    item['County of Last Residence'] !== undefined) {
+                if (residences.indexOf(item['County of Last Residence']) === -1) {
                     residences.push(item['County of Last Residence']);
                 }
                 if (programs.indexOf(item['Program']) === -1 &&
@@ -233,7 +232,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
 
     $scope.adultAges = ['18-22', '23-30', '31-40', '41-54', '55-64', '65+'];
 
-    $scope.residences = ['Ramsey', 'Suburban Ramsey', 'Washington', 'Hennepin', 'Suburban Hennepin', 'Other Metro County', 'OutsideTwin Cities Metro', 'Outside of state', 'Other Twin Cities Metro'];
+    // $scope.residences = ['Ramsey', 'Suburban Ramsey', 'Washington', 'Hennepin', 'Suburban Hennepin', 'Other Metro County', 'OutsideTwin Cities Metro', 'Outside of state', 'Other Twin Cities Metro'];
 
     $scope.hhIncomes = ['At or below 100% Poverty', '101%-200% Poverty', 'At or above 200% Poverty'];
 
