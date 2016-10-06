@@ -209,7 +209,6 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       startdate: $scope.startdate,
       enddate: $scope.enddate
     };
-    }
 
     $scope.demoFactory.dobAdults(selections).then(function(response) {
       console.log("response dobAdults: ", response);
