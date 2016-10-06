@@ -21,6 +21,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     var residences = [];
     var programs = [];
     var programDataEMP = [];
+    var programsQuery =[];
 
     var selections;
     var programSelected;
@@ -30,6 +31,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     var ageAdultSelection;
     var ageChildrenSelection;
     var lastResidenceSelection;
+
 
     //----GET Massive Data ----------------------------------------------
     showData();
@@ -45,7 +47,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
 
                 if (races.indexOf(item['Race Code']) === -1 ) {
                     races.push(item['Race Code']);
-                    console.log('item------00000',item ['Race Code']);
+                    // console.log('item------00000',item ['Race Code']);
                 }
                 if (residences.indexOf(item['County of Last Residence']) === -1 &&
                     item['County of Last Residence'] !== null &&
@@ -154,12 +156,10 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
         $scope.searchTerm = '';
     };
 
-
     //------ Calendar -------------------------------------------------------
 
     // var startDate;
     // var endDate;
-
 
   $scope.enddate = new Date();
   console.log("$scope.enddate: ", $scope.enddate);
@@ -209,6 +209,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       startdate: $scope.startdate,
       enddate: $scope.enddate
     };
+    }
 
     $scope.demoFactory.dobAdults(selections).then(function(response) {
       console.log("response dobAdults: ", response);
@@ -218,75 +219,34 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       console.log("response dobChildren: ", response);
     });
 
-
     $scope.demoFactory.totalPeople(selections).then(function(response) {
       console.log("response totalPeople: ", response);
-        var data = response;
-
-        console.log('3204239438403324-23DATATAT------', data[2]['role']);
-        // console.log('3204239438403324-23------',dataProgram);
-       for (var i = 0; i < data.length; i++) {
-           var dataProgram = data[i]['Program'];
-           var dataRole = data[i]['role'];
-
-           if(dataProgram === 'EMP' && dataRole === 'Adults') {
-               var empAdultSum = data[i]['sum'];
-
-               console.log('total sum emp adult -------', empAdultSum);
-           }
-           if(dataProgram === 'EMP' && dataRole === 'Children') {
-               var empChildrenSum = data[i]['sum'];
-               console.log('total sum emp children -------', empChildrenSum);
-           }
-           if(dataProgram === 'EMPII' && dataRole === 'Adults') {
-               var emp2AdultrenSum = data[i]['sum'];
-               console.log('total sum empII adult -------', emp2AdultrenSum);
-           }
-           if(dataProgram === 'EMPII' && dataRole === 'Children') {
-               var emp2ChildrenSum = data[i]['sum'];
-               console.log('total sum empII children -------', emp2ChildrenSum);
-           }
-       }
-        // response.program.forEach(function (item) {});
-        // if(response.program === response.program["EMP"]) {
-        //     console.log("------EMP----- total");
-        // }
-        // if(response.program === response.program["EMPII"]) {
-        //     console.log("------EMPII----- total");
-        // }
-        // if(response.program === response.program["Home Again"]) {
-        //     console.log("------home again----- total");
-        // }
-        // if(response.program === response.program["HomeSafe"]) {
-        //     console.log("------Home safe----- total");
-        // }
-
-
     });
-    //
-    // $scope.demoFactory.allGender(selections).then(function(response) {
-    //   console.log("response allGender: ", response);
-    // });
-    //
-    // $scope.demoFactory.raceAdults(selections).then(function(response) {
-    //   console.log("response raceAdults: ", response);
-    // });
-    //
-    // $scope.demoFactory.raceChildren(selections).then(function(response) {
-    //   console.log("response raceChildren: ", response);
-    // });
-    //
-    // $scope.demoFactory.householdIncome(selections).then(function(response) {
-    //   console.log("response householdIncome: ", response);
-    // });
-    //
-    // $scope.demoFactory.lastResidence(selections).then(function(response) {
-    //   console.log("response lastResidence: ", response);
-    // });
-    //
-    // $scope.demoFactory.famsExitHousing(selections).then(function(response) {
-    //   console.log("response famsExitHousing: ", response);
-    // });
+
+    $scope.demoFactory.allGender(selections).then(function(response) {
+      console.log("response allGender: ", response);
+    });
+
+    $scope.demoFactory.raceAdults(selections).then(function(response) {
+      console.log("response raceAdults: ", response);
+    });
+
+    $scope.demoFactory.raceChildren(selections).then(function(response) {
+      console.log("response raceChildren: ", response);
+    });
+
+    $scope.demoFactory.householdIncome(selections).then(function(response) {
+      console.log("response householdIncome: ", response);
+    });
+
+    $scope.demoFactory.lastResidence(selections).then(function(response) {
+      console.log("response lastResidence: ", response);
+    });
+
+    $scope.demoFactory.famsExitHousing(selections).then(function(response) {
+      console.log("response famsExitHousing: ", response);
+    });
+
     //start of denny function
     $scope.demoFactory.dobAdults(selections).then(function(response) {
 
