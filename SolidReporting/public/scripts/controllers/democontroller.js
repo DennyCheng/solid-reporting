@@ -233,7 +233,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
 
     $scope.adultAges = ['18-22', '23-30', '31-40', '41-54', '55-64', '65+'];
 
-    $scope.residences = ['Ramsey', 'Suburban Ramsey Co.', 'Washington Co.', 'Hennepin', 'Suburban Hennepin Co.', 'Other Metro County', 'Outside Twin Cities Metro', 'Outside of State'];
+    $scope.residences = ['Ramsey', 'Suburban Ramsey', 'Washington', 'Hennepin', 'Suburban Hennepin', 'Other Metro County', 'OutsideTwin Cities Metro', 'Outside of state', 'Other Twin Cities Metro'];
 
     $scope.hhIncomes = ['At or below 100% Poverty', '101%-200% Poverty', 'At or above 200% Poverty'];
 
