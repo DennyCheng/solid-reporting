@@ -583,98 +583,106 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     //    console.log('raceTotal',$scope.raceChildTotal);
     // });//end of childRaceQuery
 
-    //Denny- WIP
-    // $scope.demoFactory.householdIncome(selections).then(function(response){
-    //   //Earned Income
-    //   var earnedIncomeEMP={
-    //     n0_499:0,
-    //     n500_999:0,
-    //     n1000_1999:0,
-    //     n2000_2999:0,
-    //     n3000_plus:0,
-    //     total:0
-    //   }
-    //   var earnedIncomeEMPII={
-    //     n0_499:0,
-    //     n500_999:0,
-    //     n1000_1999:0,
-    //     n2000_2999:0,
-    //     n3000_plus:0,
-    //     total:0
-    //   };
-    //   var earnedIncomeHomeSafe={
-    //     n0_499:0,
-    //     n500_999:0,
-    //     n1000_1999:0,
-    //     n2000_2999:0,
-    //     n3000_plus:0,
-    //     total:0
-    //   };
-    //   var earnedIncomeHomeAgain={
-    //     n0_499:0,
-    //     n500_999:0,
-    //     n1000_1999:0,
-    //     n2000_2999:0,
-    //     n3000_plus:0,
-    //     total:0
-    //   };
-    //   var earnedIncomeHomeFront={
-    //     n0_499:0,
-    //     n500_999:0,
-    //     n1000_1999:0,
-    //     n2000_2999:0,
-    //     n3000_plus:0,
-    //     total:0
-    //   };
-    //
-    //   //Unearned Income
-    //   var unearnedIncomeEMP={
-    //
-    //   };
-    //   var unearnedIncomeEMPII={
-    //
-    //   };
-    //   var unearnedIncomeHomeSafe={
-    //
-    //   };
-    //   var unearnedIncomeHomeAgain={
-    //
-    //   };
-    //   var unearnedIncomeHomeFront={
-    //
-    //   };
-    //
-    //   //Total Income Income
-    //   var totalIncomeEMP={
-    //
-    //   };
-    //   var totalIncomeEMPII={
-    //
-    //   };
-    //   var totalIncomeHomeSafe={
-    //
-    //   };
-    //   var totalIncomeHomeAgain={
-    //
-    //   };
-    //
-    //   var totalIncomeHomeFront={
-    //
-    //   };
-    //
-    //
-    //
-    //   console.log("response householdIncome: ", response);
-    //   var responseArray = response
-    //   for (var i = 0; i < responseArray.length; i++) {
-    //     console.log(responseArray[i]);
-    //     if(responseArray[i].Program =="EMP"){
-    //       console.log(responseArray[i]);
-    //
-    //     }
-    //   }//end of for loop
-    //
-    //   });
+    // Denny- WIP
+    $scope.demoFactory.householdIncome(selections).then(function(response){
+      //Earned Income
+      $scope.earnedIncomeEMP={
+        n0_499:0,
+        n500_999:0,
+        n1000_1999:0,
+        n2000_2999:0,
+        n3000_plus:0,
+        total:0
+      }
+      $scope.earnedIncomeEMPII={
+        n0_499:0,
+        n500_999:0,
+        n1000_1999:0,
+        n2000_2999:0,
+        n3000_plus:0,
+        total:0
+      };
+      $scope.earnedIncomeHomeSafe={
+        n0_499:0,
+        n500_999:0,
+        n1000_1999:0,
+        n2000_2999:0,
+        n3000_plus:0,
+        total:0
+      };
+      $scope.earnedIncomeHomeAgain={
+        n0_499:0,
+        n500_999:0,
+        n1000_1999:0,
+        n2000_2999:0,
+        n3000_plus:0,
+        total:0
+      };
+      $scope.earnedIncomeHomeFront={
+        n0_499:0,
+        n500_999:0,
+        n1000_1999:0,
+        n2000_2999:0,
+        n3000_plus:0,
+        total:0
+      };
+
+      //Unearned Income
+      $scope.unearnedIncomeEMP={
+
+      };
+      $scope.unearnedIncomeEMPII={
+
+      };
+      $scope.unearnedIncomeHomeSafe={
+
+      };
+      $scope.unearnedIncomeHomeAgain={
+
+      };
+      $scope.unearnedIncomeHomeFront={
+
+      };
+
+      //Total Income Income
+      $scope.totalIncomeEMP={
+
+      };
+      $scope.totalIncomeEMPII={
+
+      };
+      $scope.totalIncomeHomeSafe={
+
+      };
+      $scope.totalIncomeHomeAgain={
+
+      };
+
+      $scope.totalIncomeHomeFront={
+
+      };
+
+
+
+      console.log("response householdIncome: ", response);
+       var responseArray = response
+      for (var i = 0; i < responseArray.length; i++) {
+        // console.log(responseArray[i]);
+        if(responseArray[i].Program =="EMP"){
+          console.log(parseInt(responseArray[i]['HoH Mthly  Earned Income']));
+          if(parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=0 && parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=499){
+            console.log('below 499',responseArray[i]);
+            $scope.earnedIncomeEMP.n0_499+=1
+            $scope.total+=1
+          }
+
+
+
+        }
+
+      }//end of for loop
+      console.log('earnedincome total',$scope.earnedIncomeEMP);
+    });//end of HTTP
 
     // //Denny- Incomplete
     // $scope.demoFactory.lastResidence(selections).then(function(response) {
