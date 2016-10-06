@@ -338,7 +338,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     //   console.log("response raceChildren from server: ", response);
     //    var responseArray = response;
     //
-    //    var raceChildEMP = {
+    //    $scope.raceChildEMP = {
     //      african:0,
     //      africanAmerican:0,
     //      americanIndian:0,
@@ -350,7 +350,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     //      totalCount:0
     //    };
     //
-    //    var raceChildEMPII = {
+    //    $scope.raceChildEMPII = {
     //      african:0,
     //      africanAmerican:0,
     //      americanIndian:0,
@@ -362,7 +362,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     //      totalCount:0
     //    };
     //
-    //    var raceChildHomeSafe = {
+    //    $scope.raceChildHomeSafe = {
     //      african:0,
     //      africanAmerican:0,
     //      americanIndian:0,
@@ -374,7 +374,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     //      totalCount:0
     //    };
     //
-    //    var raceChildHomeAgain = {
+    //    $scope.raceChildHomeAgain = {
     //      african:0,
     //      africanAmerican:0,
     //      americanIndian:0,
@@ -386,7 +386,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     //      totalCount:0
     //    };
     //
-    //    var raceChildHomeFront = {
+    //    $scope.raceChildHomeFront = {
     //      african:0,
     //      africanAmerican:0,
     //      americanIndian:0,
@@ -399,194 +399,282 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     //    };
     //
     //    //Total of all children
-    //    var raceChildTotal = 0;
+    //   $scope.raceChildTotal = 0;
     //
     //
     //    for (var i = 0; i < responseArray.length; i++) {
-    //      raceChildTotal += parseInt(responseArray[i].count)
-    //
+    //      $scope.raceChildTotal += parseInt(responseArray[i].count)
+    //      console.log(responseArray[i]);
     //      if(responseArray[i].Program =="EMP"){
     //        if(responseArray[i].race == "African"){
-    //          raceChildEMP.african += parseInt(responseArray[i].count)
-    //          raceChildEMP.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMP.african += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMP.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else if(responseArray[i].race =="African American"){
-    //          raceChildEMP.africanAmerican += parseInt(responseArray[i].count)
-    //          raceChildEMP.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMP.africanAmerican += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMP.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else if(responseArray[i].race =="American Indian"){
-    //          raceChildEMP.americanIndian += parseInt(responseArray[i].count)
-    //          raceChildEMP.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMP.americanIndian += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMP.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else if(responseArray[i].race =="Asian/SE Asian/Pacific Islander"){
-    //          raceChildEMP.asian += parseInt(responseArray[i].count)
-    //          raceChildEMP.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMP.asian += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMP.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else if(responseArray[i].race =="Caucasian/White"){
-    //          raceChildEMP.caucasianWhite += parseInt(responseArray[i].count)
-    //          raceChildEMP.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMP.caucasianWhite += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMP.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else if(responseArray[i].race =="Hispanic/Chicano"){
-    //          raceChildEMP.hispanicLatino += parseInt(responseArray[i].count)
-    //          raceChildEMP.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMP.hispanicLatino += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMP.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else if(responseArray[i].race =="Multiracial"){
-    //          raceChildEMP.multiracial += parseInt(responseArray[i].count)
-    //          raceChildEMP.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMP.multiracial += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMP.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else{
-    //          raceChildEMP.other += parseInt(responseArray[i].count)
-    //          raceChildEMP.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMP.other += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMP.totalCount += parseInt(responseArray[i].count)
     //        }
     //      }
     //      else if(responseArray[i].Program =="EMPII"){
     //        if(responseArray[i].race == "African"){
-    //          raceChildEMPII.african += parseInt(responseArray[i].count)
-    //          raceChildEMPII.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMPII.african += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMPII.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else if(responseArray[i].race =="African American"){
-    //          raceChildEMPII.africanAmerican += parseInt(responseArray[i].count)
-    //          raceChildEMPII.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMPII.africanAmerican += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMPII.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else if(responseArray[i].race =="American Indian"){
-    //          raceChildEMPII.americanIndian += parseInt(responseArray[i].count)
-    //          raceChildEMPII.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMPII.americanIndian += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMPII.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else if(responseArray[i].race =="Asian/SE Asian/Pacific Islander"){
-    //          raceChildEMPII.asian += parseInt(responseArray[i].count)
-    //          raceChildEMPII.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMPII.asian += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMPII.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else if(responseArray[i].race =="Caucasian/White"){
-    //          raceChildEMPII.caucasianWhite += parseInt(responseArray[i].count)
-    //          raceChildEMPII.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMPII.caucasianWhite += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMPII.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else if(responseArray[i].race =="Hispanic/Chicano"){
-    //          raceChildEMPII.hispanicLatino += parseInt(responseArray[i].count)
-    //          raceChildEMPII.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMPII.hispanicLatino += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMPII.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else if(responseArray[i].race =="Multiracial"){
-    //          raceChildEMPII.multiracial += parseInt(responseArray[i].count)
-    //          raceChildEMPII.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMPII.multiracial += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMPII.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else{
-    //          raceChildEMPII.other += parseInt(responseArray[i].count)
-    //          raceChildEMPII.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMPII.other += parseInt(responseArray[i].count)
+    //          $scope.raceChildEMPII.totalCount += parseInt(responseArray[i].count)
     //        }
     //      }
     //      else if(responseArray[i].Program =="HomeSafe"||responseArray[i].Program =="Home Safe"){
     //        if(responseArray[i].race == "African"){
-    //          raceChildHomeSafe.african += parseInt(responseArray[i].count)
-    //          raceChildHomeSafe.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeSafe.african += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeSafe.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else if(responseArray[i].race =="African American"){
-    //          raceChildHomeSafe.africanAmerican += parseInt(responseArray[i].count)
-    //          raceChildHomeSafe.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeSafe.africanAmerican += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeSafe.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else if(responseArray[i].race =="American Indian"){
-    //          raceChildHomeSafe.americanIndian += parseInt(responseArray[i].count)
-    //          raceChildHomeSafe.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeSafe.americanIndian += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeSafe.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else if(responseArray[i].race =="Asian/SE Asian/Pacific Islander"){
-    //          raceChildHomeSafe.asian += parseInt(responseArray[i].count)
-    //          raceChildHomeSafe.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeSafe.asian += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeSafe.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else if(responseArray[i].race =="Caucasian/White"){
-    //          raceChildHomeSafe.caucasianWhite += parseInt(responseArray[i].count)
-    //          raceChildHomeSafe.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeSafe.caucasianWhite += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeSafe.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else if(responseArray[i].race =="Hispanic/Chicano"){
-    //          raceChildHomeSafe.hispanicLatino += parseInt(responseArray[i].count)
-    //          raceChildHomeSafe.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeSafe.hispanicLatino += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeSafe.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else if(responseArray[i].race =="Multiracial"){
-    //          raceChildHomeSafe.multiracial += parseInt(responseArray[i].count)
-    //          raceChildHomeSafe.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeSafe.multiracial += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeSafe.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else{
-    //          raceChildHomeSafe.other += parseInt(responseArray[i].count)
-    //          raceChildHomeSafe.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeSafe.other += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeSafe.totalCount += parseInt(responseArray[i].count)
     //        }
     //      }
     //      else if(responseArray[i].Program =="HomeAgain"||responseArray[i].Program =="Home Again"){
     //        if(responseArray[i].race == "African"){
-    //          raceChildHomeAgain.african += parseInt(responseArray[i].count)
-    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.african += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else if(responseArray[i].race =="African American"){
-    //          raceChildHomeAgain.africanAmerican += parseInt(responseArray[i].count)
-    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.africanAmerican += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else if(responseArray[i].race =="American Indian"){
-    //          raceChildHomeAgain.americanIndian += parseInt(responseArray[i].count)
-    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.americanIndian += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else if(responseArray[i].race =="Asian/SE Asian/Pacific Islander"){
-    //          raceChildHomeAgain.asian += parseInt(responseArray[i].count)
-    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.asian += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else if(responseArray[i].race =="Caucasian/White"){
-    //          raceChildHomeAgain.caucasianWhite += parseInt(responseArray[i].count)
-    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.caucasianWhite += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else if(responseArray[i].race =="Hispanic/Chicano"){
-    //          raceChildHomeAgain.hispanicLatino += parseInt(responseArray[i].count)
-    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.hispanicLatino += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else if(responseArray[i].race =="Multiracial"){
-    //          raceChildHomeAgain.multiracial += parseInt(responseArray[i].count)
-    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.multiracial += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else{
-    //          raceChildHomeAgain.other += parseInt(responseArray[i].count)
-    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.other += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
     //        }
     //      }
     //      else if(responseArray[i].Program =="Home Front"||responseArray[i].Program =="HomeFront"){
     //        if(responseArray[i].race == "African"){
-    //          raceChildHomeAgain.african += parseInt(responseArray[i].count)
-    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.african += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else if(responseArray[i].race =="African American"){
-    //          raceChildHomeAgain.africanAmerican += parseInt(responseArray[i].count)
-    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.africanAmerican += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else if(responseArray[i].race =="American Indian"){
-    //          raceChildHomeAgain.americanIndian += parseInt(responseArray[i].count)
-    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.americanIndian += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else if(responseArray[i].race =="Asian/SE Asian/Pacific Islander"){
-    //          raceChildHomeAgain.asian += parseInt(responseArray[i].count)
-    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.asian += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else if(responseArray[i].race =="Caucasian/White"){
-    //          raceChildHomeAgain.caucasianWhite += parseInt(responseArray[i].count)
-    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.caucasianWhite += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else if(responseArray[i].race =="Hispanic/Chicano"){
-    //          raceChildHomeAgain.hispanicLatino += parseInt(responseArray[i].count)
-    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.hispanicLatino += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else if(responseArray[i].race =="Multiracial"){
-    //          raceChildHomeAgain.multiracial += parseInt(responseArray[i].count)
-    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.multiracial += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
     //        }
     //        else{
-    //          raceChildHomeAgain.other += parseInt(responseArray[i].count)
-    //          raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.other += parseInt(responseArray[i].count)
+    //          $scope.raceChildHomeAgain.totalCount += parseInt(responseArray[i].count)
     //        }
     //      }
     //    }//end of for statement
-    //   //  console.log('results EMP',raceChildEMP)
-    //   //  console.log('results EMPII',raceChildEMPII)
-    //   //  console.log('raceTotal HomeSafe',raceChildHomeSafe);
-    //   //  console.log('raceTotal HomeAgain',raceChildHomeAgain);
-    //   //  console.log('raceTotal',raceChildTotal);
+    //    console.log('results EMP',$scope.raceChildEMP)
+    //    console.log('results EMPII',$scope.raceChildEMPII)
+    //    console.log('raceTotal HomeSafe',$scope.raceChildHomeSafe);
+    //    console.log('raceTotal HomeAgain',$scope.raceChildHomeAgain);
+    //    console.log('raceTotal',$scope.raceChildTotal);
     // });//end of childRaceQuery
 
-    //Denny- Incomplete
-    // $scope.demoFactory.householdIncome(selections).then(function(response) {
-    //   // console.log("response householdIncome: ", response);
-    // });
+    //Denny- WIP
+    // $scope.demoFactory.householdIncome(selections).then(function(response){
+    //   //Earned Income
+    //   var earnedIncomeEMP={
+    //     n0_499:0,
+    //     n500_999:0,
+    //     n1000_1999:0,
+    //     n2000_2999:0,
+    //     n3000_plus:0,
+    //     total:0
+    //   }
+    //   var earnedIncomeEMPII={
+    //     n0_499:0,
+    //     n500_999:0,
+    //     n1000_1999:0,
+    //     n2000_2999:0,
+    //     n3000_plus:0,
+    //     total:0
+    //   };
+    //   var earnedIncomeHomeSafe={
+    //     n0_499:0,
+    //     n500_999:0,
+    //     n1000_1999:0,
+    //     n2000_2999:0,
+    //     n3000_plus:0,
+    //     total:0
+    //   };
+    //   var earnedIncomeHomeAgain={
+    //     n0_499:0,
+    //     n500_999:0,
+    //     n1000_1999:0,
+    //     n2000_2999:0,
+    //     n3000_plus:0,
+    //     total:0
+    //   };
+    //   var earnedIncomeHomeFront={
+    //     n0_499:0,
+    //     n500_999:0,
+    //     n1000_1999:0,
+    //     n2000_2999:0,
+    //     n3000_plus:0,
+    //     total:0
+    //   };
+    //
+    //   //Unearned Income
+    //   var unearnedIncomeEMP={
+    //
+    //   };
+    //   var unearnedIncomeEMPII={
+    //
+    //   };
+    //   var unearnedIncomeHomeSafe={
+    //
+    //   };
+    //   var unearnedIncomeHomeAgain={
+    //
+    //   };
+    //   var unearnedIncomeHomeFront={
+    //
+    //   };
+    //
+    //   //Total Income Income
+    //   var totalIncomeEMP={
+    //
+    //   };
+    //   var totalIncomeEMPII={
+    //
+    //   };
+    //   var totalIncomeHomeSafe={
+    //
+    //   };
+    //   var totalIncomeHomeAgain={
+    //
+    //   };
+    //
+    //   var totalIncomeHomeFront={
+    //
+    //   };
+    //
+    //
+    //
+    //   console.log("response householdIncome: ", response);
+    //   var responseArray = response
+    //   for (var i = 0; i < responseArray.length; i++) {
+    //     console.log(responseArray[i]);
+    //     if(responseArray[i].Program =="EMP"){
+    //       console.log(responseArray[i]);
+    //
+    //     }
+    //   }//end of for loop
+    //
+    //   });
 
     // //Denny- Incomplete
     // $scope.demoFactory.lastResidence(selections).then(function(response) {
@@ -604,45 +692,50 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     //   //------------------Birthday Logic--------------------------
     //   var responseArray = response;
     //
-    //   var dobEMP = {
+    //   $scope.dobEMP = {
     //     age18to22:0,
     //     age23to30:0,
     //     age31to40:0,
     //     age41to54:0,
     //     age55to64:0,
-    //     age65tobeyond:0
+    //     age65tobeyond:0,
+    //     total:0
     //   };
-    //   var dobEMPII= {
+    //   $scope.dobEMPII= {
     //     age18to22:0,
     //     age23to30:0,
     //     age31to40:0,
     //     age41to54:0,
     //     age55to64:0,
-    //     age65tobeyond:0
+    //     age65tobeyond:0,
+    //     total:0
     //   };
-    //   var dobHomeSafe = {
+    //   $scope.dobHomeSafe = {
     //     age18to22:0,
     //     age23to30:0,
     //     age31to40:0,
     //     age41to54:0,
     //     age55to64:0,
-    //     age65tobeyond:0
+    //     age65tobeyond:0,
+    //     total:0
     //   };
-    //   var dobHomeAgain = {
+    //   $scope.dobHomeAgain = {
     //     age18to22:0,
     //     age23to30:0,
     //     age31to40:0,
     //     age41to54:0,
     //     age55to64:0,
-    //     age65tobeyond:0
+    //     age65tobeyond:0,
+    //     total:0
     //   };
-    //   var dobHomeFront = {
+    //   $scope.dobHomeFront = {
     //     age18to22:0,
     //     age23to30:0,
     //     age31to40:0,
     //     age41to54:0,
     //     age55to64:0,
-    //     age65tobeyond:0
+    //     age65tobeyond:0,
+    //     total:0
     //   };
     //
     //   for (var i = 0; i < responseArray.length; i++) {
@@ -653,121 +746,152 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     //     if(responseArray[i].Program == "EMP"){
     //       if(age <= 22){
     //         // console.log("hit the 18-22 for",responseArray[i])
-    //       dobEMP.age18to22 = dobEMP.age18to22+=1;
+    //       $scope.dobEMP.age18to22+=1;
+    //       $scope.dobEMP.total+=1;
     //       }
     //       else if(age <=30 && age >= 23){
     //       // console.log("hit the 23-30 for",responseArray[i])
-    //       dobEMP.age23to30 = dobEMP.age23to30+=1;
+    //       $scope.dobEMP.age23to30+=1;
+    //       $scope.dobEMP.total+=1;
     //       }
     //       else if(age <=40 && age >= 31){
     //       // console.log("hit the 31-40 for",responseArray[i])
-    //       dobEMP.age31to40 = dobEMP.age31to40+=1;
+    //       $scope.dobEMP.age31to40+=1;
+    //       $scope.dobEMP.total+=1;
     //       }
     //       else if(age <=54 && age >= 41){
     //       // console.log("hit the 41-54 fsor",responseArray[i])
-    //       dobEMP.age41to54 = dobEMP.age41to54+=1;
+    //       $scope.dobEMP.age41to54+=1;
+    //       $scope.dobEMP.total+=1;
     //       }
     //       else if(age <=64 && age >= 55){
     //       // console.log("hit the 55-64 for",responseArray[i])
-    //       dobEMP.age55to64 = dobEMP.age55to64+=1;
+    //       $scope.dobEMP.age55to64+=1;
+    //       $scope.dobEMP.total+=1;
     //       }
     //       else if(age >=65){
     //       // console.log("hit the 65+ for",responseArray[i])
-    //       dobEMP.age65tobeyond = dobEMP.age65tobeyond+=1;
+    //       $scope.dobEMP.age65tobeyond+=1;
+    //       $scope.dobEMP.total+=1;
     //       }
     //     }//end of EMP if
     //     else if(responseArray[i].Program == "EMPII"){
     //       if(age <= 22){
-    //         dobEMPII.age18to22 = dobEMPII.age18to22+=1;
+    //       $scope.dobEMPII.age18to22+=1;
+    //       $scope.dobEMPII.total+=1;
     //       }
     //       else if(age <=30 && age >= 23){
-    //       dobEMPII.age23to30 = dobEMPII.age23to30+=1;
+    //       $scope.dobEMPII.age23to30+=1;
+    //       $scope.dobEMPII.total+=1;
     //       }
     //       else if(age <=40 && age >= 31){
-    //       dobEMPII.age31to40 = dobEMPII.age31to40+=1;
+    //       $scope.dobEMPII.age31to40+=1;
+    //       $scope.dobEMPII.total+=1;
     //       }
     //       else if(age <=54 && age >= 41){
-    //       dobEMPII.age41to54 = dobEMPII.age41to54+=1;
+    //       $scope.dobEMPII.age41to54+=1;
+    //       $scope.dobEMPII.total+=1;
     //       }
     //       else if(age <=64 && age >= 55){
-    //       dobEMPII.age55to64 = dobEMPII.age55to64+=1;
+    //       $scope.dobEMPII.age55to64+=1;
+    //       $scope.dobEMPII.total+=1;
     //       }
     //       else if(age >=65){
-    //       dobEMPII.age65tobeyond = dobEMPII.age65tobeyond+=1;
+    //       $scope.dobEMPII.age65tobeyond+=1;
+    //       $scope.dobEMPII.total+=1;
     //       }
     //     }
     //     else if(responseArray[i].Program == "HomeSafe"){
     //       if(age <= 22){
-    //         dobHomeSafe.age18to22 = dobHomeSafe.age18to22+=1;
+    //       $scope.dobHomeSafe.age18to22+=1;
+    //       $scope.dobHomeSafe.total+=1;
     //       }
     //       else if(age <=30 && age >= 23){
-    //       dobHomeSafe.age23to30 = dobHomeSafe.age23to30+=1;
+    //       $scope.dobHomeSafe.age23to30+=1;
+    //       $scope.dobHomeSafe.total+=1;
     //       }
     //       else if(age <=40 && age >= 31){
-    //       dobHomeSafe.age31to40 = dobHomeSafe.age31to40+=1;
+    //       $scope.dobHomeSafe.age31to40+=1;
+    //       $scope.dobHomeSafe.total+=1;
     //       }
     //       else if(age <=54 && age >= 41){
-    //       dobHomeSafe.age41to54 = dobHomeSafe.age41to54+=1;
+    //       $scope.dobHomeSafe.age41to54+=1;
+    //       $scope.dobHomeSafe.total+=1;
     //       }
     //       else if(age <=64 && age >= 55){
-    //       dobHomeSafe.age55to64 = dobHomeSafe.age55to64+=1;
+    //       $scope.dobHomeSafe.age55to64+=1;
+    //       $scope.dobHomeSafe.total+=1;
     //       }
     //       else if(age >=65){
-    //       dobHomeSafe.age65tobeyond = dobHomeSafe.age65tobeyond+=1;
+    //       $scope.dobHomeSafe.age65tobeyond+=1;
+    //       $scope.dobHomeSafe.total+=1;
     //       }
     //     }
     //     else if(responseArray[i].Program == "Home Again"){
     //       if(age <= 22){
-    //       dobHomeAgain.age18to22 = dobHomeAgain.age18to22+=1;
+    //       $scope.dobHomeAgain.age18to22+=1;
+    //       $scope.dobHomeAgain.total+=1;
     //       }
     //       else if(age <=30 && age >= 23){
-    //       dobHomeAgain.age23to30 = dobHomeAgain.age23to30+=1;
+    //       $scope.dobHomeAgain.age23to30+=1;
+    //       $scope.dobHomeAgain.total+=1;
     //       }
     //       else if(age <=40 && age >= 31){
-    //       dobHomeAgain.age31to40 = dobHomeAgain.age31to40+=1;
+    //       $scope.dobHomeAgain.age31to40+=1;
+    //       $scope.dobHomeAgain.total+=1;
     //       }
     //       else if(age <=54 && age >= 41){
-    //       dobHomeAgain.age41to54 = dobHomeAgain.age41to54+=1;
+    //       $scope.dobHomeAgain.age41to54+=1;
+    //       $scope.dobHomeAgain.total+=1;
     //       }
     //       else if(age <=64 && age >= 55){
-    //       dobHomeAgain.age55to64 = dobHomeAgain.age55to64+=1;
+    //       $scope.dobHomeAgain.age55to64+=1;
+    //       $scope.dobHomeAgain.total+=1;
     //       }
     //       else if(age >=65){
-    //       dobHomeAgain.age65tobeyond = dobHomeAgain.age65tobeyond+=1;
+    //       $scope.dobHomeAgain.age65tobeyond+=1;
+    //       $scope.dobHomeAgain.total+=1;
     //       }
     //     }
     //     else if(responseArray[i].Program == "Home Front" || responseArray[i].Program == "HomeFront"){//need to make sure on spelling on DB since we have no data with the name (Home Front or HomeFront)
     //       if(age <= 22){
-    //       dobHomeFront.age65tobeyond = dobHomeFront.age65tobeyond+=1;
+    //       $scope.dobHomeFront.age65tobeyond+=1;
+    //       $scope.dobHomeFront.total+=1;
     //       }
     //       else if(age <=30 && age >= 23){
-    //       dobHomeFront.age65tobeyond = dobHomeFront.age65tobeyond+=1;
+    //       $scope.dobHomeFront.age65tobeyond+=1;
+    //       $scope.dobHomeFront.total+=1;
     //       }
     //       else if(age <=40 && age >= 31){
-    //       dobHomeFront.age65tobeyond = dobHomeFront.age65tobeyond+=1;
+    //       $scope.dobHomeFront.age65tobeyond+=1;
+    //       $scope.dobHomeFront.total+=1;
     //       }
     //       else if(age <=54 && age >= 41){
-    //       dobHomeFront.age65tobeyond = dobHomeFront.age65tobeyond+=1;
+    //       $scope.dobHomeFront.age65tobeyond+=1;
+    //       $scope.dobHomeFront.total+=1;
     //       }
     //       else if(age <=64 && age >= 55){
-    //       dobHomeFront.age65tobeyond = dobHomeFront.age65tobeyond+=1;
+    //       $scope.dobHomeFront.age65tobeyond+=1;
+    //       $scope.dobHomeFront.total+=1;
     //       }
     //       else if(age >=65){
-    //       dobHomeFront.age65tobeyond = dobHomeFront.age65tobeyond+=1;
+    //       $scope.dobHomeFront.age65tobeyond+=1;
+    //       $scope.dobHomeFront.total+=1;
     //       }
     //     }
     //   }//end of for statement
     //   //these check for the objects to have values(these total values hsould equal response.length)
-    //   console.log('emp test',dobEMP);
-    //   console.log('empII test',dobEMPII);
-    //   console.log('homeSafe test',dobHomeSafe);
-    //   console.log('homeFront test',dobHomeFront);
-    //   console.log('homeAgain test',dobHomeAgain);
+    //   console.log('emp test',$scope.dobEMP);
+    //   console.log('empII test',$scope.dobEMPII);
+    //   console.log('homeSafe test',$scope.dobHomeSafe);
+    //   console.log('homeFront test',$scope.dobHomeFront);
+    //   console.log('homeAgain test',$scope.dobHomeAgain);
     //   console.log("response length: ", response.length);
     //   // console.log("response.data: ", response.data);//this is the giant array response
     // // console.log("selections: ", selections);
     // });
-  }
+
+  }//end of click button function
 
 
 
