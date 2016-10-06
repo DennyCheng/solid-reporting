@@ -240,8 +240,7 @@ router.post('/dobchildren', function(req, res) {
     client.query("SELECT \"Members of Household\".\"Date of Birth\" as DOB, \"Head of Household\".\"Program\" " +
                 "FROM \"Members of Household\" " +
                 "LEFT JOIN \"Head of Household\" ON \"Members of Household\".\"Head of Household\" = \"Head of Household\".\"HoHID\" " +
-                "WHERE " + raceQuery + genderQuery +
-                // + lastResidenceQuery +
+                "WHERE " + raceQuery + genderQuery + lastResidenceQuery +
                 "((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
                 "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
                 "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
