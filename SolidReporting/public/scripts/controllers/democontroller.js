@@ -246,20 +246,23 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       console.log("response dobChildren: ", response);
     });
 
-      $scope.empTotal = {
+      $scope.programTotal = {
           adult: 0,
           children: 0,
-          totalperson1: 0,
-          totalperson2: 0,
-          total: 0
+          emp1: 0,
+          emp2: 0,
+          homeagain: 0,
+          homesafe: 0,
+          adultChildrenTotal: 0
       };
-      $scope.homeTotal = {
-          adult: 0,
-          children: 0,
-          totalperson1: 0,
-          totalperson2: 0,
-          total: 0
-      };
+
+      // $scope.homeTotal = {
+      //     adult: 0,
+      //     children: 0,
+      //     totalperson1: 0,
+      //     totalperson2: 0,
+      //     total: 0
+      // };
 
       $scope.emp1 = {
           adult: 0,
@@ -348,42 +351,69 @@ console.log('logggg--',$scope.emp);
             console.log('homeagianadult sum value',$scope.homeagian.adult);
             console.log('homeagianchildren sum value',$scope.homeagian.children);
 
+            // Adult Total
+            $scope.programTotal.adult = empSum + emp2Sum + homesafeSum + homeAgianSum;
+            console.log('Program adult total ', $scope.programTotal.adult);
 
-            // EMP1 and EMP2 Adults total
-            $scope.empTotal.adult = empSum + emp2Sum;
-            console.log('Total EMP1 and EMP2 Adult', $scope.empTotal.adult);
+            //Children Total
+            $scope.programTotal.children = empChildrenSum +  emp2ChildrenSum + homesafeChildrenSum + homeAgianChildrenSum;
+            console.log('Program children total ', $scope.programTotal.children);
 
-            // EMP1 and EMP2 children total
-            $scope.empTotal.children = empChildrenSum + emp2ChildrenSum;
-            console.log('Total EMP1 and EMP2 Children', $scope.empTotal.children);
+            //EMP1 Total
+            $scope.programTotal.emp1 = empSum + empChildrenSum;
+            console.log('Program EMP1 total ', $scope.programTotal.emp1);
 
-            // EMP1 and EMP2 Grand Total
-            $scope.empTotal.total =  $scope.empTotal.adult + $scope.empTotal.children;
-            console.log('Total EMP1 and EMP2', $scope.empTotal.total);
+            //EMP@ Total
+            $scope.programTotal.emp2 = emp2Sum + emp2ChildrenSum;
+            console.log('Program EMP2 total ', $scope.programTotal.emp2);
 
-            //EMP1 Grand Total
-            $scope.empTotaltotalperson1 = empSum + empChildrenSum;
+            //HomeAgain Total
+            $scope.programTotal.homeagain = homeAgianSum + homeAgianChildrenSum;
+            console.log('Program HomeAgain total ', $scope.programTotal.homeagain);
 
-            //EMP2 Grand Total
-            $scope.empTotaltotalperson2 = emp2Sum + emp2ChildrenSum;
+            //HomeSafe Total
+            $scope.programTotal.homesafe = homesafeSum + homesafeChildrenSum;
+            console.log('Program HomeSafe total ', $scope.programTotal.homesafe);
 
-            // homesafe and homeAgian Adults total
-            $scope.homeTotal.adult = homesafeSum + homeAgianSum;
-            console.log('Total homesafe and homeAgain Adult', $scope.homeTotal.adult);
+            //Program Adult and Children Total
+            $scope.programTotal.adultChildrenTotal = $scope.programTotal.adult + $scope.programTotal.children;
+            console.log('Program Adult and Children total ', $scope.programTotal.adultChildrenTotal);
 
-            // homesafe and homeAgian children total
-            $scope.homeTotal.children = homesafeChildrenSum + homeAgianChildrenSum;
-            console.log('Total homesafe and homeAgain Children', $scope.homeTotal.children);
-
-            // homesafe and homeAgain Grand Total
-            $scope.homeTotal.total = $scope.homeTotal.adult + $scope.homeTotal.children;
-            console.log('Total homesafe and homeAgain', $scope.homeTotal.total);
-
-            //EMP1 Grand Total
-            $scope.homeTotal.totalperson1 = homesafeSum + homesafeChildrenSum;
-
-            //EMP1 Grand Total
-            $scope.homeTotal.totalperson2 = homeAgianSum + homeAgianChildrenSum;
+            // // EMP1 and EMP2 Adults total
+            // $scope.empTotal.adult = empSum + emp2Sum;
+            // console.log('Total EMP1 and EMP2 Adult', $scope.empTotal.adult);
+            //
+            // // EMP1 and EMP2 children total
+            // $scope.empTotal.children = empChildrenSum + emp2ChildrenSum;
+            // console.log('Total EMP1 and EMP2 Children', $scope.empTotal.children);
+            //
+            // // EMP1 and EMP2 Grand Total
+            // $scope.empTotal.total =  $scope.empTotal.adult + $scope.empTotal.children;
+            // console.log('Total EMP1 and EMP2', $scope.empTotal.total);
+            //
+            // //EMP1 Grand Total
+            // $scope.empTotaltotalperson1 = empSum + empChildrenSum;
+            //
+            // //EMP2 Grand Total
+            // $scope.empTotaltotalperson2 = emp2Sum + emp2ChildrenSum;
+            //
+            // // homesafe and homeAgian Adults total
+            // $scope.homeTotal.adult = homesafeSum + homeAgianSum;
+            // console.log('Total homesafe and homeAgain Adult', $scope.homeTotal.adult);
+            //
+            // // homesafe and homeAgian children total
+            // $scope.homeTotal.children = homesafeChildrenSum + homeAgianChildrenSum;
+            // console.log('Total homesafe and homeAgain Children', $scope.homeTotal.children);
+            //
+            // // homesafe and homeAgain Grand Total
+            // $scope.homeTotal.total = $scope.homeTotal.adult + $scope.homeTotal.children;
+            // console.log('Total homesafe and homeAgain', $scope.homeTotal.total);
+            //
+            // //EMP1 Grand Total
+            // $scope.homeTotal.totalperson1 = homesafeSum + homesafeChildrenSum;
+            //
+            // //EMP1 Grand Total
+            // $scope.homeTotal.totalperson2 = homeAgianSum + homeAgianChildrenSum;
 
         });
 
