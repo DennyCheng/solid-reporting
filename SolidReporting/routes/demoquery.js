@@ -18,7 +18,9 @@ var config = {
 var pool = new pg.Pool(config);
 
 
-// Date of Birth - Adults only
+
+
+// Date of Birth - Adults only //
 router.post('/dobadults', function(req, res) {
   console.log("go DOB adult");
   // console.log("req.body line 09: ", req.body);
@@ -144,7 +146,9 @@ router.post('/dobadults', function(req, res) {
 });
 
 
-// Date of Birth - Children only
+
+
+// Date of Birth - Children only  //
 router.post('/dobchildren', function(req, res) {
   console.log("go DOB Child");
   // console.log("req.body line 70: ", req.body);
@@ -261,7 +265,9 @@ router.post('/dobchildren', function(req, res) {
 });
 
 
-// Total People - Adults and Children
+
+
+// Total People - Adults and Children //
 router.post('/totalpeople', function(req, res) {
   console.log("go total people");
   // console.log("req.body line 107: ", req.body);
@@ -275,10 +281,14 @@ router.post('/totalpeople', function(req, res) {
   var endDate = req.body.enddate;
   // Query variables to use in SQL Query
   var raceAdultQuery = '';
-  var ageAdultQuery = '';
+  var raceAdult_2Query = '';
   var raceChildQuery = '';
-  var genderQuery = '';
+  var ageAdultQuery = '';
+  var ageAdult_2Query = '';
   var ageChildQuery = '';
+  var genderAdultQuery = '';
+  var genderAdult_2Query = '';
+  var genderChildQuery = '';
   var lastResidenceQuery = '';
   console.log("lastResidence line 284: ", lastResidence);
 
@@ -287,7 +297,7 @@ router.post('/totalpeople', function(req, res) {
     // somehow delete the query or make it blank or assume this is select all
     raceAdultQuery = "length is 0, nothing selected";
   } else if(raceAdult.length === 1) {
-    raceAdultQuery = "\"Head of Household\".\"Race Code\" = '" + raceAdult[0] + "' AND ";
+    raceAdultQuery = "(\"Head of Household\".\"Race Code\" = '" + raceAdult[0] + "') AND ";
   } else {
     raceAdult.forEach(function(race, i) {
       //differences if there is a beginning '(' or ')' and ending with 'OR' or 'AND'
@@ -303,6 +313,28 @@ router.post('/totalpeople', function(req, res) {
     });
   }
   console.log("raceAdultQuery after if statement: ", raceAdultQuery);
+
+  // sorting through raceAdult for HOH-2 selections:
+  if(raceAdult.length === 0) {
+    // somehow delete the query or make it blank or assume this is select all
+    raceAdult_2Query = "length is 0, nothing selected";
+  } else if(raceAdult.length === 1) {
+    raceAdult_2Query = "(\"Head of Household-2\".\"Race Code\" = '" + raceAdult[0] + "') AND ";
+  } else {
+    raceAdult.forEach(function(race, i) {
+      //differences if there is a beginning '(' or ')' and ending with 'OR' or 'AND'
+      if(race === null) {
+        raceAdult_2Query += "(\"Head of Household-2\".\"Race Code\" IS NULL)) AND ";
+      } else if(i === 0) {
+        raceAdult_2Query += "((\"Head of Household-2\".\"Race Code\" = '" + race + "') OR ";
+      } else if(i === (raceAdult.length - 1)) {
+        raceAdult_2Query += "(\"Head of Household-2\".\"Race Code\" = '" + race + "')) AND ";
+      } else {
+          raceAdult_2Query += "(\"Head of Household-2\".\"Race Code\" = '" + race + "') OR ";
+        }
+    });
+  }
+  console.log("raceAdult_2Query after if statement: ", raceAdult_2Query);
 
   // // sorting through ageAdult Selections:
   // if(ageAdult.length === 0) {
@@ -335,22 +367,56 @@ router.post('/totalpeople', function(req, res) {
   }
   console.log("raceChildQuery after if statement: ", raceChildQuery);
 
-  // sorting through gender selections:
+  // sorting through gender for Adults in HOH selections:
   if(gender.length === 0) {
     // somehow delete the query or make it blank or assume this is select all
-    genderQuery = 'length is 0, nothing selected';
+    genderAdultQuery = 'length is 0, nothing selected';
   } else if(gender.length === 1) {
-    genderQuery = "(\"Members of Household\".\"Gender\" = '" + gender[0] + "') AND ";
+    genderAdultQuery = "(\"Head of Household\".\"Gender\" = '" + gender[0] + "') AND ";
   } else {
     gender.forEach(function(gen, i) {
       if(i === (gender.length - 1)) {
-        genderQuery += "(\"Members of Household\".\"Gender\" = '" + gen + "')) AND ";
+        genderAdultQuery += "(\"Head of Household\".\"Gender\" = '" + gen + "')) AND ";
       } else {
-          genderQuery += "((\"Members of Household\".\"Gender\" = '" + gen + "') OR ";
+          genderAdultQuery += "((\"Head of Household\".\"Gender\" = '" + gen + "') OR ";
         }
     });
   }
-  console.log("genderQuery for Children after if statement: ", genderQuery);
+  console.log("genderAdultQuery for HOH after if statement: ", genderAdultQuery);
+
+  // sorting through gender for Adults in HOH-2 selections:
+  if(gender.length === 0) {
+    // somehow delete the query or make it blank or assume this is select all
+    genderAdult_2Query = 'length is 0, nothing selected';
+  } else if(gender.length === 1) {
+    genderAdult_2Query = "(\"Head of Household-2\".\"Gender\" = '" + gender[0] + "') AND ";
+  } else {
+    gender.forEach(function(gen, i) {
+      if(i === (gender.length - 1)) {
+        genderAdult_2Query += "(\"Head of Household-2\".\"Gender\" = '" + gen + "')) AND ";
+      } else {
+          genderAdult_2Query += "((\"Head of Household-2\".\"Gender\" = '" + gen + "') OR ";
+        }
+    });
+  }
+  console.log("genderAdult_2Query for HOH-2 after if statement: ", genderAdult_2Query);
+
+  // sorting through gender for children in MOH selections:
+  if(gender.length === 0) {
+    // somehow delete the query or make it blank or assume this is select all
+    genderChildQuery = 'length is 0, nothing selected';
+  } else if(gender.length === 1) {
+    genderChildQuery = "(\"Members of Household\".\"Gender\" = '" + gender[0] + "') AND ";
+  } else {
+    gender.forEach(function(gen, i) {
+      if(i === (gender.length - 1)) {
+        genderChildQuery += "(\"Members of Household\".\"Gender\" = '" + gen + "')) AND ";
+      } else {
+          genderChildQuery += "((\"Members of Household\".\"Gender\" = '" + gen + "') OR ";
+        }
+    });
+  }
+  console.log("genderChildQuery for Children after if statement: ", genderChildQuery);
 
   // // sorting through ageChild Selections:
   // if(ageChild.length === 0) {
@@ -398,8 +464,8 @@ router.post('/totalpeople', function(req, res) {
                   "FROM( " +
                   "SELECT COUNT (*) as numberOfPeople, \"Program\" " +
                   "FROM \"Head of Household\" " +
-                  "WHERE " + raceAdultQuery +
-                  // + genderQuery + lastResidenceQuery +
+                  "WHERE " + raceAdultQuery + genderAdultQuery +
+                  // lastResidenceQuery +
                   "((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
                   "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
                   "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
@@ -409,8 +475,8 @@ router.post('/totalpeople', function(req, res) {
                   "SELECT COUNT (*) as numberOfPeople, \"Head of Household\".\"Program\" " +
                   "FROM \"Head of Household-2\" " +
                   "LEFT JOIN \"Head of Household\" ON \"Head of Household-2\".\"Head of Household\" = \"Head of Household\".\"HoHID\" " +
-                  "WHERE " + raceAdultQuery +
-                  // + raceAdultQuery + genderQuery + lastResidenceQuery +
+                  "WHERE " + raceAdult_2Query + genderAdult_2Query +
+                  // lastResidenceQuery +
                   "((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
                   "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
                   "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
@@ -422,8 +488,8 @@ router.post('/totalpeople', function(req, res) {
                   "SELECT COUNT (*) as numberOfPeople, 'Children' as role, \"Head of Household\".\"Program\" " +
                   "FROM \"Members of Household\" " +
                   "LEFT JOIN \"Head of Household\" ON \"Members of Household\".\"Head of Household\" = \"Head of Household\".\"HoHID\" " +
-                  "WHERE " + raceChildQuery +
-                  //genderQuery + lastResidenceQuery +
+                  "WHERE " + raceChildQuery + genderChildQuery +
+                  // lastResidenceQuery +
                   "((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
                   "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
                   "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
@@ -445,7 +511,9 @@ router.post('/totalpeople', function(req, res) {
 });
 
 
-// All Gender - Adults and Children
+
+
+// All Gender - Adults and Children //
 router.post('/allgender', function(req, res) {
   console.log("go all gender");
   // console.log("req.body line 170: ", req.body);
@@ -508,7 +576,9 @@ router.post('/allgender', function(req, res) {
 });
 
 
-// Race - only Adults
+
+
+// Race - only Adults //
 router.post('/raceadults', function(req, res) {
   console.log("go adult race");
   // console.log("req.body line 56: ", req.body);
@@ -560,7 +630,9 @@ router.post('/raceadults', function(req, res) {
 });
 
 
-// Race - only Children
+
+
+// Race - only Children //
 router.post('/racechildren', function(req, res) {
   console.log("go child race");
   // console.log("req.body line 56: ", req.body);
@@ -601,7 +673,9 @@ router.post('/racechildren', function(req, res) {
 });
 
 
-// Last Residence
+
+
+// Last Residence //
 router.post('/lastres', function(req, res) {
   console.log("go last res");
   // console.log("req.body line 56: ", req.body);
@@ -644,7 +718,9 @@ router.post('/lastres', function(req, res) {
 });
 
 
-// Household Income
+
+
+// Household Income  //
 router.post('/houseincome', function(req, res) {
   console.log("go house income");
   // console.log("req.body line 56: ", req.body);
@@ -687,7 +763,9 @@ router.post('/houseincome', function(req, res) {
 });
 
 
-// Families Exiting Housing
+
+
+// Families Exiting Housing  //
 router.post('/famsexit', function(req, res) {
   console.log("go fam exit");
   // console.log("req.body line 56: ", req.body);
