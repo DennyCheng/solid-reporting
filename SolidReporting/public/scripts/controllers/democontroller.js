@@ -761,8 +761,6 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       // console.log("response famsExitHousing: ", response);
     });
 
-
-
 }//end of click button function
 
 
