@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp',['ngMaterial','ngRoute', 'lfNgMdFileInput','ngAnimate','toaster']);
+var myApp = angular.module('myApp',['ngMaterial','ngRoute', 'lfNgMdFileInput','ngAnimate','toaster', 'md.data.table']);
 
 myApp.config(['$routeProvider', function($routeProvider){
 
@@ -26,6 +26,10 @@ myApp.config(['$routeProvider', function($routeProvider){
     .when('/demographics', {
       templateUrl: '/public/views/partials/demographics.html',
       controller: "DemoController"
+    })
+    .when('/outcomes', {
+      templateUrl: '/public/views/partials/outcomes.html',
+      controller: "OutcomesController"
     })
     .when('/upload', {
         templateUrl: '/public/views/partials/upload.html',
