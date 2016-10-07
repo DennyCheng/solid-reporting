@@ -256,14 +256,6 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
           adultChildrenTotal: 0
       };
 
-      // $scope.homeTotal = {
-      //     adult: 0,
-      //     children: 0,
-      //     totalperson1: 0,
-      //     totalperson2: 0,
-      //     total: 0
-      // };
-
       $scope.emp1 = {
           adult: 0,
           children: 0
@@ -281,165 +273,209 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
           children: 0
       };
 
-console.log('logggg--',$scope.emp);
-        $scope.demoFactory.totalPeople(selections).then(function (response) {
-            console.log("response totalPeople: ", response);
-            var data = response;
-            console.log('data---------', data);
+        // $scope.demoFactory.totalPeople(selections).then(function (response) {
+        //     console.log("response totalPeople: ", response);
+        //     var data = response;
+        //     console.log('data---------', data);
+        //
+        //     // console.log('3204239438403324-23------',dataProgram);
+        //     for (var i = 0; i < data.length; i++) {
+        //         console.log('3204239438403324-23DATATAT------', data[i]);
+        //         var dataProgram = data[i]['Program'];
+        //         var dataRole = data[i]['role'];
+        //
+        //         if (dataProgram === 'EMP' && dataRole === 'Adults') {
+        //             var empSum = Number(data[i]['sum']);
+        //             // console.log('total sum emp adult -------', empSum);
+        //         }
+        //         if (dataProgram === 'EMP' && dataRole === 'Children') {
+        //             var empChildrenSum = Number(data[i]['sum']);
+        //             // console.log('total sum emp children -------', empChildrenSum);
+        //         }
+        //         if (dataProgram === 'EMPII' && dataRole === 'Adults') {
+        //             var emp2Sum = Number(data[i]['sum']);
+        //             // console.log('total sum empII adult -------', emp2Sum);
+        //         }
+        //         if (dataProgram === 'EMPII' && dataRole === 'Children') {
+        //             var emp2ChildrenSum = Number(data[i]['sum']);
+        //             // console.log('total sum empII children -------', emp2ChildrenSum);
+        //         }
+        //
+        //         if (dataProgram === 'HomeSafe' && dataRole === 'Adults') {
+        //             var homesafeSum = Number(data[i]['sum']);
+        //             // console.log('total sum HomeSafe Adults -------', homesafeSum);
+        //         }
+        //         if (dataProgram === 'HomeSafe' && dataRole === 'Children') {
+        //             var homesafeChildrenSum = Number(data[i]['sum']);
+        //             // console.log('total sum HomeSafe children -------', homesafeChildrenSum);
+        //         }
+        //         if (dataProgram === 'Home Again' && dataRole === 'Adults') {
+        //             var homeAgianSum = Number(data[i]['sum']);
+        //             // console.log('total sum Home Again Adults -------', homeAgianSum);
+        //         }
+        //         if (dataProgram === 'Home Again' && dataRole === 'Children') {
+        //             var homeAgianChildrenSum = Number(data[i]['sum']);
+        //             // console.log('total sum Home Again children -------', homeAgianChildrenSum);
+        //         }
+        //     }
+        //     // EMP1
+        //     $scope.emp1.adult = empSum;
+        //     $scope.emp1.children = empChildrenSum;
+        //     console.log('emp1adult sum value',$scope.emp1.adult);
+        //     console.log('emp1children sum value',$scope.emp1.children);
+        //
+        //     // EMP2
+        //     $scope.emp2.adult = emp2Sum;
+        //     $scope.emp2.children = emp2ChildrenSum;
+        //     console.log('emp2adult sum value',$scope.emp2.adult);
+        //     console.log('emp2children sum value',$scope.emp2.children);
+        //
+        //     // HOMESAFE
+        //     $scope.homesafe.adult = homesafeSum;
+        //     $scope.homesafe.children = homesafeChildrenSum ;
+        //     console.log('homesafeadult sum value',$scope.homesafe.adult);
+        //     console.log('homesafechildren sum value',$scope.homesafe.children);
+        //
+        //     // HOMEAGAIN
+        //     $scope.homeagian.adult = homeAgianSum;
+        //     $scope.homeagian.children = homeAgianChildrenSum;
+        //     console.log('homeagianadult sum value',$scope.homeagian.adult);
+        //     console.log('homeagianchildren sum value',$scope.homeagian.children);
+        //
+        //     // Adult Total
+        //     $scope.programTotal.adult = empSum + emp2Sum + homesafeSum + homeAgianSum;
+        //     console.log('Program adult total ', $scope.programTotal.adult);
+        //
+        //     //Children Total
+        //     $scope.programTotal.children = empChildrenSum +  emp2ChildrenSum + homesafeChildrenSum + homeAgianChildrenSum;
+        //     console.log('Program children total ', $scope.programTotal.children);
+        //
+        //     //EMP1 Total
+        //     $scope.programTotal.emp1 = empSum + empChildrenSum;
+        //     console.log('Program EMP1 total ', $scope.programTotal.emp1);
+        //
+        //     //EMP2 Total
+        //     $scope.programTotal.emp2 = emp2Sum + emp2ChildrenSum;
+        //     console.log('Program EMP2 total ', $scope.programTotal.emp2);
+        //
+        //     //HomeAgain Total
+        //     $scope.programTotal.homeagain = homeAgianSum + homeAgianChildrenSum;
+        //     console.log('Program HomeAgain total ', $scope.programTotal.homeagain);
+        //
+        //     //HomeSafe Total
+        //     $scope.programTotal.homesafe = homesafeSum + homesafeChildrenSum;
+        //     console.log('Program HomeSafe total ', $scope.programTotal.homesafe);
+        //
+        //     //Program Adult and Children Total
+        //     $scope.programTotal.adultChildrenTotal = $scope.programTotal.adult + $scope.programTotal.children;
+        //     console.log('Program Adult and Children total ', $scope.programTotal.adultChildrenTotal);
+        //
+        // });
 
-            // console.log('3204239438403324-23------',dataProgram);
-            for (var i = 0; i < data.length; i++) {
-                console.log('3204239438403324-23DATATAT------', data[i]);
-                var dataProgram = data[i]['Program'];
-                var dataRole = data[i]['role'];
 
-                if (dataProgram === 'EMP' && dataRole === 'Adults') {
-                    var empSum = Number(data[i]['sum']);
-                    // console.log('total sum emp adult -------', empSum);
-                }
-                if (dataProgram === 'EMP' && dataRole === 'Children') {
-                    var empChildrenSum = Number(data[i]['sum']);
-                    // console.log('total sum emp children -------', empChildrenSum);
-                }
-                if (dataProgram === 'EMPII' && dataRole === 'Adults') {
-                    var emp2Sum = Number(data[i]['sum']);
-                    // console.log('total sum empII adult -------', emp2Sum);
-                }
-                if (dataProgram === 'EMPII' && dataRole === 'Children') {
-                    var emp2ChildrenSum = Number(data[i]['sum']);
-                    // console.log('total sum empII children -------', emp2ChildrenSum);
-                }
-
-                if (dataProgram === 'HomeSafe' && dataRole === 'Adults') {
-                    var homesafeSum = Number(data[i]['sum']);
-                    // console.log('total sum HomeSafe Adults -------', homesafeSum);
-                }
-                if (dataProgram === 'HomeSafe' && dataRole === 'Children') {
-                    var homesafeChildrenSum = Number(data[i]['sum']);
-                    // console.log('total sum HomeSafe children -------', homesafeChildrenSum);
-                }
-                if (dataProgram === 'Home Again' && dataRole === 'Adults') {
-                    var homeAgianSum = Number(data[i]['sum']);
-                    // console.log('total sum Home Again Adults -------', homeAgianSum);
-                }
-                if (dataProgram === 'Home Again' && dataRole === 'Children') {
-                    var homeAgianChildrenSum = Number(data[i]['sum']);
-                    // console.log('total sum Home Again children -------', homeAgianChildrenSum);
-                }
-            }
-            // EMP1
-            $scope.emp1.adult = empSum;
-            $scope.emp1.children = empChildrenSum;
-            console.log('emp1adult sum value',$scope.emp1.adult);
-            console.log('emp1children sum value',$scope.emp1.children);
-
-            // EMP2
-            $scope.emp2.adult = emp2Sum;
-            $scope.emp2.children = emp2ChildrenSum;
-            console.log('emp2adult sum value',$scope.emp2.adult);
-            console.log('emp2children sum value',$scope.emp2.children);
-
-            // HOMESAFE
-            $scope.homesafe.adult = homesafeSum;
-            $scope.homesafe.children = homesafeChildrenSum ;
-            console.log('homesafeadult sum value',$scope.homesafe.adult);
-            console.log('homesafechildren sum value',$scope.homesafe.children);
-
-            // HOMEAGAIN
-            $scope.homeagian.adult = homeAgianSum;
-            $scope.homeagian.children = homeAgianChildrenSum;
-            console.log('homeagianadult sum value',$scope.homeagian.adult);
-            console.log('homeagianchildren sum value',$scope.homeagian.children);
-
-            // Adult Total
-            $scope.programTotal.adult = empSum + emp2Sum + homesafeSum + homeAgianSum;
-            console.log('Program adult total ', $scope.programTotal.adult);
-
-            //Children Total
-            $scope.programTotal.children = empChildrenSum +  emp2ChildrenSum + homesafeChildrenSum + homeAgianChildrenSum;
-            console.log('Program children total ', $scope.programTotal.children);
-
-            //EMP1 Total
-            $scope.programTotal.emp1 = empSum + empChildrenSum;
-            console.log('Program EMP1 total ', $scope.programTotal.emp1);
-
-            //EMP@ Total
-            $scope.programTotal.emp2 = emp2Sum + emp2ChildrenSum;
-            console.log('Program EMP2 total ', $scope.programTotal.emp2);
-
-            //HomeAgain Total
-            $scope.programTotal.homeagain = homeAgianSum + homeAgianChildrenSum;
-            console.log('Program HomeAgain total ', $scope.programTotal.homeagain);
-
-            //HomeSafe Total
-            $scope.programTotal.homesafe = homesafeSum + homesafeChildrenSum;
-            console.log('Program HomeSafe total ', $scope.programTotal.homesafe);
-
-            //Program Adult and Children Total
-            $scope.programTotal.adultChildrenTotal = $scope.programTotal.adult + $scope.programTotal.children;
-            console.log('Program Adult and Children total ', $scope.programTotal.adultChildrenTotal);
-
-            // // EMP1 and EMP2 Adults total
-            // $scope.empTotal.adult = empSum + emp2Sum;
-            // console.log('Total EMP1 and EMP2 Adult', $scope.empTotal.adult);
-            //
-            // // EMP1 and EMP2 children total
-            // $scope.empTotal.children = empChildrenSum + emp2ChildrenSum;
-            // console.log('Total EMP1 and EMP2 Children', $scope.empTotal.children);
-            //
-            // // EMP1 and EMP2 Grand Total
-            // $scope.empTotal.total =  $scope.empTotal.adult + $scope.empTotal.children;
-            // console.log('Total EMP1 and EMP2', $scope.empTotal.total);
-            //
-            // //EMP1 Grand Total
-            // $scope.empTotaltotalperson1 = empSum + empChildrenSum;
-            //
-            // //EMP2 Grand Total
-            // $scope.empTotaltotalperson2 = emp2Sum + emp2ChildrenSum;
-            //
-            // // homesafe and homeAgian Adults total
-            // $scope.homeTotal.adult = homesafeSum + homeAgianSum;
-            // console.log('Total homesafe and homeAgain Adult', $scope.homeTotal.adult);
-            //
-            // // homesafe and homeAgian children total
-            // $scope.homeTotal.children = homesafeChildrenSum + homeAgianChildrenSum;
-            // console.log('Total homesafe and homeAgain Children', $scope.homeTotal.children);
-            //
-            // // homesafe and homeAgain Grand Total
-            // $scope.homeTotal.total = $scope.homeTotal.adult + $scope.homeTotal.children;
-            // console.log('Total homesafe and homeAgain', $scope.homeTotal.total);
-            //
-            // //EMP1 Grand Total
-            // $scope.homeTotal.totalperson1 = homesafeSum + homesafeChildrenSum;
-            //
-            // //EMP1 Grand Total
-            // $scope.homeTotal.totalperson2 = homeAgianSum + homeAgianChildrenSum;
-
-        });
+      $scope.empGender = {
+          male: 0,
+          female: 0,
+          unknown: 0
+      };
+      $scope.emp2Gender = {
+          male: 0,
+          female: 0,
+          unknown: 0
+      };
+      $scope.homesafeGender = {
+          male: 0,
+          female: 0,
+          unknown: 0
+      };
+      $scope.homeagianGender = {
+          male: 0,
+          female: 0,
+          unknown: 0
+      };
 
     $scope.demoFactory.allGender(selections).then(function(response) {
       console.log("response allGender: ", response);
+        var data = response;
+        for(var i = 0; i < data.length; i++) {
+            if (data[i]['Program'] === 'EMP' && data[i]['Gender'] === 'Female') {
+                var empFemale = parseInt(data[i]['sum']);
+                // console.log('total sum emp gender Female -------', empFemale );
+            }
+            if (data[i]['Program'] === 'EMP' && data[i]['Gender'] === 'Male') {
+                var empMale = parseInt(data[i]['sum']);
+                // console.log('total sum emp gender Male -------', empMale );
+            }
+            if (data[i]['Program'] === 'EMPII' && data[i]['Gender'] === 'Female') {
+                var emp2Female = parseInt(data[i]['sum']);
+                // console.log('total sum emp2 gender Female -------', emp2Female );
+            }
+            if (data[i]['Program'] === 'EMPII' && data[i]['Gender'] === 'Male') {
+                var emp2Male = parseInt(data[i]['sum']);
+                // console.log('total sum emp2 gender Male -------', emp2Male );
+            }
+            if (data[i]['Program'] === 'HomeSafe' && data[i]['Gender'] === 'Female') {
+                var homesafeFemale = parseInt(data[i]['sum']);
+                // console.log('total sum HomeSafe gender Female -------', homesafeFemale );
+            }
+            if (data[i]['Program'] === 'HomeSafe' && data[i]['Gender'] === 'Male') {
+                var homesafeMale = parseInt(data[i]['sum']);
+                // console.log('total sum HomeSafe gender Male -------', homesafeMale );
+            }
+            if (data[i]['Program'] === 'HomeSafe' && data[i]['Gender'] === null) {
+                var homesafeunknown = parseInt(data[i]['sum']);
+                // console.log('total sum HomeSafe gender unknown -------', homesafeunknown );
+            }
+            if (data[i]['Program'] === 'Home Again' && data[i]['Gender'] === 'Female') {
+                var homeagainFemale = parseInt(data[i]['sum']);
+                // console.log('total sum Home Again gender Female -------', homeagainFemale );
+            }
+            if (data[i]['Program'] === 'Home Again' && data[i]['Gender'] === 'Male') {
+                var homeagainMale = parseInt(data[i]['sum']);
+                // console.log('total sum Home Again gender Male -------', homeagainMale );
+            }
+
+        }
+
+        $scope.empGender.female = empFemale;
+        console.log('gender ----empfemale-',empFemale);
+        $scope.empGender.male = empMale;
+        console.log('gender -----empmale',empMale);
+        $scope.emp2Gender.female = emp2Female;
+        console.log('gender -----emp2female',emp2Female);
+        $scope.emp2Gender.male = emp2Male;
+        console.log('gender -----emp2male',emp2Male);
+        $scope.homesafeGender.female = homesafeFemale;
+        console.log('gender -----homesafeFemale',homesafeFemale);
+        $scope.homesafeGender.male = homesafeMale;
+        console.log('gender -----homesafeMale',homesafeMale);
+        $scope.homesafeGender.unknown = homesafeunknown;
+        console.log('gender -----homesafeunknown',homesafeunknown);
+        $scope.homeagianGender.female = homeagainFemale;
+        console.log('gender ----- homeagainfemale',homeagainFemale);
+        $scope.homeagianGender.male = homeagainMale ;
+        console.log('gender ----- homeagainmale',homeagainMale);
     });
 
-    $scope.demoFactory.raceAdults(selections).then(function(response) {
-      console.log("response raceAdults: ", response);
-    });
-
-    $scope.demoFactory.raceChildren(selections).then(function(response) {
-      console.log("response raceChildren: ", response);
-    });
-
-    $scope.demoFactory.householdIncome(selections).then(function(response) {
-      console.log("response householdIncome: ", response);
-    });
-
-    $scope.demoFactory.lastResidence(selections).then(function(response) {
-      console.log("response lastResidence: ", response);
-    });
-
-    $scope.demoFactory.famsExitHousing(selections).then(function(response) {
-      console.log("response famsExitHousing: ", response);
-    });
+    // $scope.demoFactory.raceAdults(selections).then(function(response) {
+    //   console.log("response raceAdults: ", response);
+    // });
+    //
+    // $scope.demoFactory.raceChildren(selections).then(function(response) {
+    //   console.log("response raceChildren: ", response);
+    // });
+    //
+    // $scope.demoFactory.householdIncome(selections).then(function(response) {
+    //   console.log("response householdIncome: ", response);
+    // });
+    //
+    // $scope.demoFactory.lastResidence(selections).then(function(response) {
+    //   console.log("response lastResidence: ", response);
+    // });
+    //
+    // $scope.demoFactory.famsExitHousing(selections).then(function(response) {
+    //   console.log("response famsExitHousing: ", response);
+    // });
     //start of denny function
     $scope.demoFactory.dobAdults(selections).then(function(response) {
 
