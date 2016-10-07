@@ -98,40 +98,6 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
         }
     };
 
-    // LOGIC FOR OTHER CHECKBOX OPTION------------------------
-
-    // $scope.exists = function (item, list) {
-    //     return list.indexOf(item) > -1;
-    // };
-    // $scope.isIndeterminate = function() {
-    //     return ($scope.selected.length !== 0 &&
-    //     $scope.selected.length !== $scope.items.length);
-    // };
-    // $scope.isIndeterminate = function() {
-    //     return ($scope.selectedprogram.length !== 0 &&
-    //     $scope.selectedprogram.length !== $scope.programs.length);
-    // };
-    // $scope.isChecked = function() {
-    //     return $scope.selected.length === $scope.items.length;
-    // };
-    // $scope.isChecked = function() {
-    //     return $scope.selectedprogram.length === $scope.programs.length;
-    // };
-    // $scope.toggleAll = function() {
-    //     if ($scope.selected.length === $scope.items.length) {
-    //         $scope.selected = [];
-    //     } else if ($scope.selected.length === 0 || $scope.selected.length > 0) {
-    //         $scope.selected = $scope.items.slice(0);
-    //     }
-    // };
-    // $scope.toggleAll = function() {
-    //     if ($scope.selectedprogram.length === $scope.programs.length) {
-    //         $scope.selectedprogram = [];
-    //     } else if ($scope.selectedprogram.length === 0 || $scope.selectedprogram.length > 0) {
-    //         $scope.selectedprogram = $scope.programs.slice(0);
-    //     }
-    // };
-
 
     //----- Dropdowns --------------------------------
     $scope.genders = ['Female', 'Male'];
@@ -185,7 +151,8 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
 
 //--------------------------------------------
 
-  $scope.newQuery = function (){
+  $scope.newQuery = function () {
+
 
     console.log("Program: " + $scope.selectedprogram + "\n"
       + "Gender: " + $scope.selectedgender + "\n"

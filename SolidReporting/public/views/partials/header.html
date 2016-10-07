@@ -2,9 +2,14 @@
 <md-toolbar layout="row" layout-align="center"><img class="logo" layout-align="center" src="http://www.solidgroundmn.org/wp-content/themes/theme1205/images/logo.png" /></md-toolbar>
 <div ng-controller="navigationController">
   <md-nav-bar md-selected-nav-item="currentNavItem" ng-hide="isActive('/login')">
+
+    <md-nav-item class="menu" ng-show="isActive('/demographics')" md-nav-click="toggleSide()">Toggle Sidebar
+    </md-nav-item>
+
     <md-nav-item md-nav-href="#upload" ng-hide="isActive('/upload')">Upload</md-nav-item>
-    <md-nav-item md-nav-href="#demographics" ng-hide="isActive('/demographics')">Demo</md-nav-item>
-    <md-nav-item md-nav-href="#outcomes">Outcomes</md-nav-item>
+    <md-nav-item md-nav-href="#demographics" ng-hide="isActive('/demographics')">Demographics</md-nav-item>
+    <md-nav-item md-nav-href="#outcomes" ng-hide="isActive('/outcomes')">Outcomes</md-nav-item>
    <md-nav-item md-nav-click="tologout()">LogOut</md-nav-item>
+   
 </md-nav-bar>
 </div>

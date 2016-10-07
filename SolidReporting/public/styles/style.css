@@ -12,7 +12,7 @@ p {
 
 /* header style */
 md-toolbar:not(.md-menu-toolbar) {
-  background-color: rgb(250,250,250);
+  background-color: rgba(12,106,169,.5);
 }
 .logo {
   width: 40%;
@@ -44,20 +44,6 @@ form {
 
 .inputIconDemo {
   min-height: 48px;
-}
-
-@font-face {
-  font-family: 'ui-grid';
-  src: url('ui-grid-fonts/ui-grid.eot');
-  src: url('ui-grid-fonts/ui-grid.eot#iefix') format('embedded-opentype'), url('ui-grid-fonts/ui-grid.woff') format('woff'), url('ui-grid-fonts/ui-grid.ttf?') format('truetype'), url('ui-grid-fonts/ui-grid.svg?#ui-grid') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
-fieldset {
-  border-style: solid;
-  border-width: 1px;
-  height: 100%;
 }
 
 .programinput {
@@ -98,6 +84,12 @@ fieldset {
 
 .calendar {
   padding: .5em;
+}
+
+fieldset {
+  border-style: solid;
+  border-width: 1px;
+  height: 100%;
 }
 
 .action-buttons {
@@ -179,9 +171,18 @@ md-select-menu md-content md-option[selected]:focus {
 md-select-menu md-content md-option[selected] {
   color: grey;
 }
+
+/* Data Table Display-----------------------*/
+
+h1.tablehead {
+  padding: 10px;
+}
+
+/* navigation menu---------------------------*/
+.md-button.md-accent {
+  color: rgb(18, 110, 171);
+}
 /* navigation menu*/
 .md-button.md-accent {
   color: rgb(18, 110, 171);
 }
-
-
