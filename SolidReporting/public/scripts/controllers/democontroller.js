@@ -779,22 +779,22 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
         console.log('Program total race Total', $scope.raceTotal.total);
 
     });  // end of race
-    //
-    // $scope.demoFactory.raceChildren(selections).then(function(response) {
-    //   console.log("response raceChildren: ", response);
-    // });
-    //
-    // $scope.demoFactory.householdIncome(selections).then(function(response) {
-    //   console.log("response householdIncome: ", response);
-    // });
-    //
-    // $scope.demoFactory.lastResidence(selections).then(function(response) {
-    //   console.log("response lastResidence: ", response);
-    // });
-    //
-    // $scope.demoFactory.famsExitHousing(selections).then(function(response) {
-    //   console.log("response famsExitHousing: ", response);
-    // });
+
+    $scope.demoFactory.raceChildren(selections).then(function(response) {
+      console.log("response raceChildren: ", response);
+    });
+
+    $scope.demoFactory.householdIncome(selections).then(function(response) {
+      console.log("response householdIncome: ", response);
+    });
+
+    $scope.demoFactory.lastResidence(selections).then(function(response) {
+      console.log("response lastResidence: ", response);
+    });
+
+    $scope.demoFactory.famsExitHousing(selections).then(function(response) {
+      console.log("response famsExitHousing: ", response);
+    });
     //start of denny function
     $scope.demoFactory.dobAdults(selections).then(function(response) {
 
