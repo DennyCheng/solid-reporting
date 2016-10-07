@@ -1,7 +1,7 @@
 var passport = require('passport');
 var localStrategy = require('passport-local').Strategy;
 var encryptLib = require('../modules/encryption');
-var connection = require('../modules/connection');
+//var connection = require('../modules/connection');
 var pg = require('pg');
 
 var config = {
