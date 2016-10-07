@@ -197,9 +197,279 @@ OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Househ
 OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
 OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
 GROUP BY "Achieve Housing Stability", "Program"
+ORDER BY "Program"
 ;
 
+Educational Advancement - ADULTS
+SELECT "Adult Edu Adv", COUNT(*), "Program"
+FROM "Head of Household"
+WHERE ("Head of Household"."Adult Edu Adv" != '') and (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "Adult Edu Adv", "Program"
+UNION
+SELECT "Head of Household-2"."Adult Edu Adv", COUNT (*), "Head of Household"."Program"
+FROM "Head of Household-2"
+LEFT JOIN "Head of Household" ON "Head of Household-2"."Head of Household" = "Head of Household"."HoHID"
+WHERE ("Head of Household"."Adult Edu Adv" != '') and (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "Head of Household-2"."Adult Edu Adv", "Head of Household"."Program"
+;
+
+Is There a Learning Disability - Adult
+SELECT "Is There a Learning Disability", COUNT(*), "Program"
+FROM "Head of Household"
+WHERE ("Head of Household"."Is There a Learning Disability" != '' and "Head of Household"."Is There a Learning Disability" != 'NO' ) and (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "Is There a Learning Disability", "Program"
+UNION
+SELECT "Head of Household-2"."Is There a Learning Disability", COUNT (*), "Head of Household"."Program"
+FROM "Head of Household-2"
+LEFT JOIN "Head of Household" ON "Head of Household-2"."Head of Household" = "Head of Household"."HoHID"
+WHERE ("Head of Household-2"."Is There a Learning Disability" != '' and "Head of Household-2"."Is There a Learning Disability" != 'NO' ) and (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "Head of Household-2"."Is There a Learning Disability", "Head of Household"."Program"
+;
+
+Is There a Learning Disability - Children
+SELECT "Members of Household"."Is There a Learning Disability", COUNT (*), "Head of Household"."Program"
+FROM "Members of Household"
+LEFT JOIN "Head of Household" ON "Members of Household"."Head of Household" = "Head of Household"."HoHID"
+WHERE ("Members of Household"."Is There a Learning Disability" != '' and "Members of Household"."Is There a Learning Disability" != 'NO' and "Members of Household"."Is There a Learning Disability" != 'No') and (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "Members of Household"."Is There a Learning Disability", "Head of Household"."Program"
+;
+
+Employment - Adults
+SELECT "Currently Employed", COUNT(*), "Program"
+FROM "Head of Household"
+WHERE(("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "Currently Employed", "Program";
 
 
+UNION
+SELECT "Head of Household-2"."Currently Employed", COUNT (*), "Head of Household"."Program"
+FROM "Head of Household-2"
+LEFT JOIN "Head of Household" ON "Head of Household-2"."Head of Household" = "Head of Household"."HoHID"
+WHERE ("Head of Household-2"."Currently Employed" IS NOT NULL and "Head of Household-2"."Currently Employed" != 'NO' ) and (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "Head of Household-2"."Currently Employed", "Head of Household"."Program"
+;
 
-Educational Advancement
+Improved Econ Stability
+SELECT "Improved Econ Stability", COUNT(*), "Program"
+FROM "Head of Household"
+WHERE("Improved Econ Stability" IS NOT NULL AND "Improved Econ Stability" != '') AND (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "Improved Econ Stability", "Program"
+
+
+UNION
+SELECT "Head of Household-2"."Improved Econ Stability", COUNT (*), "Head of Household"."Program"
+FROM "Head of Household-2"
+LEFT JOIN "Head of Household" ON "Head of Household-2"."Head of Household" = "Head of Household"."HoHID"
+WHERE ("Head of Household-2"."Improved Econ Stability" IS NOT NULL AND "Head of Household-2"."Improved Econ Stability" != '') and (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "Head of Household-2"."Improved Econ Stability", "Head of Household"."Program"
+;
+
+Disability - Adult
+SELECT "Is There a Disability", COUNT(*), "Program"
+FROM "Head of Household"
+WHERE("Is There a Disability" IS NOT FALSE) AND (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "Is There a Disability", "Program"
+UNION
+SELECT "Head of Household-2"."Is There a Disability", COUNT (*), "Head of Household"."Program"
+FROM "Head of Household-2"
+LEFT JOIN "Head of Household" ON "Head of Household-2"."Head of Household" = "Head of Household"."HoHID"
+WHERE ("Head of Household-2"."Is There a Disability" IS NOT FALSE) and (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "Head of Household-2"."Is There a Disability", "Head of Household"."Program"
+;
+
+SELECT "Is There a Diagnosed Mental Illness", COUNT(*), "Program"
+FROM "Head of Household"
+WHERE("Is There a Diagnosed Mental Illness" IS NOT NULL) AND (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "Is There a Diagnosed Mental Illness", "Program"
+UNION
+SELECT "Head of Household-2"."Is There a Diagnosed Mental Illness", COUNT (*), "Head of Household"."Program"
+FROM "Head of Household-2"
+LEFT JOIN "Head of Household" ON "Head of Household-2"."Head of Household" = "Head of Household"."HoHID"
+WHERE ("Head of Household-2"."Is There a Diagnosed Mental Illness" IS NOT NULL) and (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "Head of Household-2"."Is There a Diagnosed Mental Illness", "Head of Household"."Program"
+;
+
+Disability - Children
+
+SELECT "Members of Household"."Is There a Disability", COUNT (*), "Head of Household"."Program"
+FROM "Members of Household"
+LEFT JOIN "Head of Household" ON "Members of Household"."Head of Household" = "Head of Household"."HoHID"
+WHERE(("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "Members of Household"."Is There a Disability", "Head of Household"."Program"
+;
+
+SELECT "Members of Household"."Is There a Diagnosed Mental Illness", COUNT (*), "Head of Household"."Program"
+FROM "Members of Household"
+LEFT JOIN "Head of Household" ON "Members of Household"."Head of Household" = "Head of Household"."HoHID"
+WHERE ("Members of Household"."Is There a Diagnosed Mental Illness" != 'NO') and (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "Members of Household"."Is There a Diagnosed Mental Illness", "Head of Household"."Program"
+;
+
+Parenting Goal
+
+SELECT "Parenting Education", COUNT(*), "Program"
+FROM "Head of Household"
+WHERE("Parenting Education" IS NOT FALSE) AND (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "Parenting Education", "Program";
+
+SELECT COUNT(*) "Parenting Completed", "Program"
+FROM "Head of Household"
+WHERE("Head of Household"."Parenting Completed" >= '2015-01-01' AND "Head of Household"."Parenting Completed" <= '2015-12-31') AND (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "Program";
+
+SELECT COUNT(*) "Parenting Completed" , "Program"
+FROM "Head of Household"
+WHERE("Head of Household"."Parenting Completed" < '2015-01-01') AND (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "Program";
+
+Budgeting Goal
+
+SELECT "Budgeting Class", COUNT(*), "Program"
+FROM "Head of Household"
+WHERE("Budgeting Class" IS NOT FALSE) AND (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "Budgeting Class", "Program";
+
+SELECT COUNT(*) "Budgeting Completed", "Program"
+FROM "Head of Household"
+WHERE("Head of Household"."Budgeting Completed" >= '2015-01-01' AND "Head of Household"."Budgeting Completed" <= '2015-12-31') AND (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "Program";
+
+SELECT COUNT(*) "Budgeting Completed" , "Program"
+FROM "Head of Household"
+WHERE("Head of Household"."Budgeting Completed" < '2015-01-01') AND (("Head of Household"."Budgeting Completed" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "Program";
+
+Family Violence
+SELECT "Has or Had experienced or at risk for violence", COUNT(*), "Program"
+FROM "Head of Household"
+WHERE("Has or Had experienced or at risk for violence" IS NOT NULL AND "Has or Had experienced or at risk for violence" != 'NO' AND "Has or Had experienced or at risk for violence" != 'No') AND (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "Has or Had experienced or at risk for violence", "Program";
+
+Tenant Training
+
+SELECT "Tenant Training", COUNT(*), "Program"
+FROM "Head of Household"
+WHERE("Tenant Training" IS NOT FALSE) AND (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "Tenant Training", "Program";
+
+SELECT COUNT(*) "Tenant Training Completed", "Program"
+FROM "Head of Household"
+WHERE("Head of Household"."Tenant Training Completed" >= '2015-01-01' AND "Head of Household"."Tenant Training Completed" <= '2015-12-31') AND (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "Program";
+
+SELECT COUNT(*) "Tenant Training Completed" , "Program"
+FROM "Head of Household"
+WHERE("Head of Household"."Tenant Training Completed" < '2015-01-01') AND
+(("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "Program";
+
+
+DBT
+SELECT "DBT", COUNT(*), "Program"
+FROM "Head of Household"
+WHERE("DBT" IS NOT NULL AND "DBT" != 'No')  AND (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "DBT", "Program";
+
+SELECT COUNT(*) "DBT Completed", "Program"
+FROM "Head of Household"
+WHERE("Head of Household"."Tenant Training Completed" >= '2015-01-01' AND "Head of Household"."Tenant Training Completed" <= '2015-12-31') AND (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "Program";
+
+SELECT COUNT(*) "DBT Completed" , "Program"
+FROM "Head of Household"
+WHERE("Head of Household"."Tenant Training Completed" < '2015-01-01') AND
+(("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "Program";
+
+Improved Health
+SELECT "Has Health Improved", COUNT(*), "Program"
+FROM "Head of Household"
+WHERE("Has Health Improved" != '') AND (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "Has Health Improved", "Program";
