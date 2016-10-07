@@ -276,8 +276,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       $scope.homeagian = {
           adult: 0,
           children: 0
-      }
-
+      };
 
 console.log('logggg--',$scope.emp);
         $scope.demoFactory.totalPeople(selections).then(function (response) {
@@ -387,31 +386,31 @@ console.log('logggg--',$scope.emp);
             $scope.homeTotal.totalperson2 = homeAgianSum + homeAgianChildrenSum;
 
         });
-    //
-    // $scope.demoFactory.allGender(selections).then(function(response) {
-    //   console.log("response allGender: ", response);
-    // });
-    //
-    // $scope.demoFactory.raceAdults(selections).then(function(response) {
-    //   console.log("response raceAdults: ", response);
-    // });
-    //
-    // $scope.demoFactory.raceChildren(selections).then(function(response) {
-    //   console.log("response raceChildren: ", response);
-    // });
-    //
-    // $scope.demoFactory.householdIncome(selections).then(function(response) {
-    //   console.log("response householdIncome: ", response);
-    // });
-    //
-    // $scope.demoFactory.lastResidence(selections).then(function(response) {
-    //   console.log("response lastResidence: ", response);
-    // });
-    //
-    // $scope.demoFactory.famsExitHousing(selections).then(function(response) {
-    //   console.log("response famsExitHousing: ", response);
-    // });
-    //start of denny function
+
+    $scope.demoFactory.allGender(selections).then(function(response) {
+      console.log("response allGender: ", response);
+    });
+
+    $scope.demoFactory.raceAdults(selections).then(function(response) {
+      console.log("response raceAdults: ", response);
+    });
+
+    $scope.demoFactory.raceChildren(selections).then(function(response) {
+      console.log("response raceChildren: ", response);
+    });
+
+    $scope.demoFactory.householdIncome(selections).then(function(response) {
+      console.log("response householdIncome: ", response);
+    });
+
+    $scope.demoFactory.lastResidence(selections).then(function(response) {
+      console.log("response lastResidence: ", response);
+    });
+
+    $scope.demoFactory.famsExitHousing(selections).then(function(response) {
+      console.log("response famsExitHousing: ", response);
+    });
+    start of denny function
     $scope.demoFactory.dobAdults(selections).then(function(response) {
 
       //------------------Birthday Logic--------------------------
