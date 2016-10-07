@@ -405,7 +405,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
           }
         }
       }//end of for statement
-      //these check for the objects to have values(these total values hsould equal response.length)
+      //these check for the objects to have values(these total values should equal response.length)
       console.log('emp test',emp);
       console.log('empII test',empII);
       console.log('homeSafe test',homeSafe);
@@ -484,7 +484,6 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
         $scope.startdate = new Date();
         $scope.enddate = new Date();
     }
-
 
 // end controller
 }]);
