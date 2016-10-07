@@ -410,7 +410,7 @@ console.log('logggg--',$scope.emp);
     $scope.demoFactory.famsExitHousing(selections).then(function(response) {
       console.log("response famsExitHousing: ", response);
     });
-    start of denny function
+    //start of denny function
     $scope.demoFactory.dobAdults(selections).then(function(response) {
 
       //------------------Birthday Logic--------------------------
