@@ -1038,8 +1038,81 @@ router.post('/racechildren', function(req, res) {
   var raceChild = req.body.raceChildrenSelection;
   var gender = req.body.genderSelection;
   var ageChild = req.body.ageChildrenSelection;
+  var lastResidence = req.body.lastResidenceSelection;
   var startDate = req.body.startdate;
   var endDate = req.body.enddate;
+  // Query variables to use in SQL Query
+  var raceQuery = '';
+  var genderQuery = '';
+  var ageChildQuery = '';
+  var lastResidenceQuery = '';
+
+
+  // sorting through raceChild selections:
+  if(raceChild.length === 0) {
+    // somehow delete the query or make it blank or assume this is select all
+    raceQuery = "length is 0, nothing selected";
+  } else if(raceChild.length === 1) {
+    raceQuery = "(\"Members of Household\".\"Race Code\" = '" + raceChild[0] + "') AND ";
+  } else {
+    raceChild.forEach(function(race, i) {
+      //differences if there is a beginning '(' or ')' and ending with 'OR' or 'AND'
+      if(race === null) {
+        raceQuery += "(\"Members of Household\".\"Race Code\" IS NULL)) AND "
+      } else if(i === 0) {
+        raceQuery += "((\"Members of Household\".\"Race Code\" = '" + race + "') OR ";
+      } else if(i === (raceChild.length - 1)) {
+        raceQuery += "(\"Members of Household\".\"Race Code\" = '" + race + "')) AND ";
+      } else {
+          raceQuery += "(\"Members of Household\".\"Race Code\" = '" + race + "') OR ";
+        }
+    });
+  }
+
+  // sorting through gender selections:
+  if(gender.length === 0) {
+    // somehow delete the query or make it blank or assume this is select all
+    genderQuery = 'length is 0, nothing selected';
+  } else if(gender.length === 1) {
+    genderQuery = "(\"Members of Household\".\"Gender\" = '" + gender[0] + "') AND ";
+  } else {
+    gender.forEach(function(gen, i) {
+      if(i === (gender.length - 1)) {
+        genderQuery += "(\"Members of Household\".\"Gender\" = '" + gen + "')) AND ";
+      } else {
+          genderQuery += "((\"Members of Household\".\"Gender\" = '" + gen + "') OR ";
+        }
+    });
+  }
+
+
+  // // sorting through ageChild Selections:
+  // if(ageChild.length === 0) {
+  //
+  // } else if (ageChild.length === 1) {
+  //
+  // } else {
+  //
+  // }
+
+  // sorting through lastResidence Selections:
+  if(lastResidence.length === 0) {
+    // somehow delete the query or make it blank or assume this is select all
+    lastResidenceQuery = 'length is 0, nothing selected';
+  } else if(lastResidence.length === 1) {
+    lastResidenceQuery = "(\"Head of Household\".\"County of Last Residence\" = '" + lastResidence[0] + "') AND ";
+  } else {
+    lastResidence.forEach(function(county, i) {
+      if(i === 0) {
+        lastResidenceQuery += "((\"Head of Household\".\"County of Last Residence\" = '" + county + "') OR ";
+      } else if(i === (lastResidence.length - 1)) {
+        lastResidenceQuery += "(\"Head of Household\".\"County of Last Residence\" = '" + county + "')) AND ";
+      } else {
+        lastResidenceQuery += "(\"Head of Household\".\"County of Last Residence\" = '" + county + "') OR ";
+        }
+    });
+  }
+
 
   pool.connect(function(err, client, done) {
 
@@ -1051,10 +1124,11 @@ router.post('/racechildren', function(req, res) {
     client.query("SELECT \"Members of Household\".\"Race Code\" as Race, COUNT (*), \"Head of Household\".\"Program\" " +
                 "FROM \"Members of Household\" " +
                 "LEFT JOIN \"Head of Household\" ON \"Members of Household\".\"Head of Household\" = \"Head of Household\".\"HoHID\" " +
-                "WHERE (\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
+                "WHERE " + raceQuery + genderQuery + lastResidenceQuery +
+                "((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
                 "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
                 "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
-                "OR (\"Head of Household\".\"Program Entry Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
+                "OR (\"Head of Household\".\"Program Entry Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "')) " +
                 "GROUP BY \"Members of Household\".\"Race Code\", \"Head of Household\".\"Program\";",
       function(err, result) {
         done();
@@ -1096,10 +1170,10 @@ router.post('/lastres', function(req, res) {
 
     client.query("SELECT \"County of Last Residence\", COUNT (*), \"Program\" " +
     "FROM \"Head of Household\" " +
-    "WHERE (\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
+    "WHERE ((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
-    "OR (\"Head of Household\".\"Program Entry Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
+    "OR (\"Head of Household\".\"Program Entry Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "')) " +
     "GROUP BY \"County of Last Residence\", \"Program\";",
       function(err, result) {
         done();
