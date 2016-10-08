@@ -14,7 +14,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       });
     }
     $scope.toggleSide = function() {
-      $mdSidenav('left').togglehl();
+      $mdSidenav('left').toggle();
     };
 
     var races = [];
@@ -31,6 +31,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     var ageAdultSelection;
     var ageChildrenSelection;
     var lastResidenceSelection;
+
 
 
     //----GET Massive Data ----------------------------------------------
@@ -729,8 +730,6 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     });
 
 }//end of click button function
-
-
 
 
 
