@@ -246,37 +246,6 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       console.log("response dobChildren: ", response);
     });
 
-      $scope.programPeopleTotal = {
-          adult: 0,
-          children: 0,
-          emp1: 0,
-          emp2: 0,
-          homeagain: 0,
-          homesafe: 0,
-          homefront: 0,
-          adultChildrenTotal: 0
-      };
-
-      $scope.empPeople = {
-          adult: 0,
-          children: 0
-      };
-      $scope.emp2People = {
-          adult: 0,
-          children: 0
-      };
-      $scope.homesafePeople = {
-          adult: 0,
-          children: 0
-      };
-      $scope.homeagainPeople = {
-          adult: 0,
-          children: 0
-      };
-      $scope.homeafrontPeople = {
-          adult: 0,
-          children: 0
-      };
 
         $scope.demoFactory.totalPeople(selections).then(function (response) {
             console.log("response totalPeople: ", response);
@@ -362,106 +331,101 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
                 }
             }
 
-            // // EMP1
-            // $scope.empPeople.adult = empSum;
-            // $scope.empPeople.children = empChildrenSum;
-            // console.log('emp1adult sum value',$scope.empPeople.adult);
-            // console.log('emp1children sum value',$scope.empPeople.children);
-            //
-            // // EMP2
-            // $scope.emp2People.adult = emp2Sum;
-            // $scope.emp2People.children = emp2ChildrenSum;
-            // console.log('emp2adult sum value',$scope.emp2People.adult);
-            // console.log('emp2children sum value',$scope.emp2People.children);
-            //
-            // // HOMESAFE
-            // $scope.homesafePeople.adult = homesafeSum;
-            // $scope.homesafePeople.children = homesafeChildrenSum ;
-            // console.log('homesafeadult sum value',$scope.homesafePeople.adult);
-            // console.log('homesafechildren sum value',$scope.homesafePeople.children);
-            //
-            // // HOMEAGAIN People
-            // $scope.homeagainPeople.adult = homeAgainSum;
-            // $scope.homeagainPeople.children = homeAgainChildrenSum;
-            // console.log('homeagianadult sum value',$scope.homeagainPeople.adult);
-            // console.log('homeagianchildren sum value',$scope.homeagainPeople.children);
-            //
-            // // HOMEFRONT People
-            // $scope.homeafrontPeople.adult = homeFrontSum;
-            // $scope.homeafrontPeople.children = homeFrontChildrenSum;
-            // console.log('homefrontadult sum value',$scope.homeafrontPeople.adult);
-            // console.log('homefrontchildren sum value',$scope.homeafrontPeople.children);
-            //
-            // // Adult Total People
-            // $scope.programPeopleTotal.adult = empSum + emp2Sum + homesafeSum + homeAgainSum + homeFrontSum + homeFrontChildrenSum;
-            // console.log('Program adult total ', $scope.programPeopleTotal.adult);
-            //
-            // //Children Total People
-            // $scope.programPeopleTotal.children = empChildrenSum +  emp2ChildrenSum + homesafeChildrenSum + homeAgainChildrenSum;
-            // console.log('Program children total ', $scope.programPeopleTotal.children);
-            //
-            // //EMP1 Total People
-            // $scope.programPeopleTotal.emp1 = empSum + empChildrenSum;
-            // console.log('Program EMP1 total ', $scope.programPeopleTotal.emp1);
-            //
-            // //EMP2 Total People
-            // $scope.programPeopleTotal.emp2 = emp2Sum + emp2ChildrenSum;
-            // console.log('Program EMP2 total ', $scope.programPeopleTotal.emp2);
-            //
-            // //HomeAgain People Total
-            // $scope.programPeopleTotal.homeagain = homeAgainSum + homeAgainChildrenSum;
-            // console.log('Program HomeAgain total ', $scope.programPeopleTotal.homeagain);
-            //
-            // //HomeSafe People Total
-            // $scope.programPeopleTotal.homesafe = homesafeSum + homesafeChildrenSum;
-            // console.log('Program homesafe total ', $scope.programPeopleTotal.homesafe);
-            //
-            // //HomeFront People Total
-            // $scope.programPeopleTotal.homefront = homeFrontSum + homeFrontChildrenSum;
-            // console.log('Program homefront total ', $scope.programPeopleTotal.homefront);
-            //
-            // //Program Adult and Children People Total
-            // $scope.programPeopleTotal.adultChildrenTotal = $scope.programPeopleTotal.adult + $scope.programPeopleTotal.children;
-            // console.log('Program Adult and Children total ', $scope.programPeopleTotal.adultChildrenTotal);
+            $scope.programPeopleTotal = {
+                adult: 0,
+                children: 0,
+                emp1: 0,
+                emp2: 0,
+                homeagain: 0,
+                homesafe: 0,
+                homefront: 0,
+                adultChildrenTotal: 0
+            };
+
+            $scope.empPeople = {
+                adult: 0,
+                children: 0
+            };
+            $scope.emp2People = {
+                adult: 0,
+                children: 0
+            };
+            $scope.homesafePeople = {
+                adult: 0,
+                children: 0
+            };
+            $scope.homeagainPeople = {
+                adult: 0,
+                children: 0
+            };
+            $scope.homeafrontPeople = {
+                adult: 0,
+                children: 0
+            };
+            
+            // EMP1
+            $scope.empPeople.adult = empSum;
+            $scope.empPeople.children = empChildrenSum;
+            console.log('emp1adult sum value',$scope.empPeople.adult);
+            console.log('emp1children sum value',$scope.empPeople.children);
+
+            // EMP2
+            $scope.emp2People.adult = emp2Sum;
+            $scope.emp2People.children = emp2ChildrenSum;
+            console.log('emp2adult sum value',$scope.emp2People.adult);
+            console.log('emp2children sum value',$scope.emp2People.children);
+
+            // HOMESAFE
+            $scope.homesafePeople.adult = homesafeSum;
+            $scope.homesafePeople.children = homesafeChildrenSum ;
+            console.log('homesafeadult sum value',$scope.homesafePeople.adult);
+            console.log('homesafechildren sum value',$scope.homesafePeople.children);
+
+            // HOMEAGAIN People
+            $scope.homeagainPeople.adult = homeAgainSum;
+            $scope.homeagainPeople.children = homeAgainChildrenSum;
+            console.log('homeagianadult sum value',$scope.homeagainPeople.adult);
+            console.log('homeagianchildren sum value',$scope.homeagainPeople.children);
+
+            // HOMEFRONT People
+            $scope.homeafrontPeople.adult = homeFrontSum;
+            $scope.homeafrontPeople.children = homeFrontChildrenSum;
+            console.log('homefrontadult sum value',$scope.homeafrontPeople.adult);
+            console.log('homefrontchildren sum value',$scope.homeafrontPeople.children);
+
+            // Adult Total People
+            $scope.programPeopleTotal.adult = empSum + emp2Sum + homesafeSum + homeAgainSum + homeFrontSum + homeFrontChildrenSum;
+            console.log('Program adult total ', $scope.programPeopleTotal.adult);
+
+            //Children Total People
+            $scope.programPeopleTotal.children = empChildrenSum +  emp2ChildrenSum + homesafeChildrenSum + homeAgainChildrenSum;
+            console.log('Program children total ', $scope.programPeopleTotal.children);
+
+            //EMP1 Total People
+            $scope.programPeopleTotal.emp1 = empSum + empChildrenSum;
+            console.log('Program EMP1 total ', $scope.programPeopleTotal.emp1);
+
+            //EMP2 Total People
+            $scope.programPeopleTotal.emp2 = emp2Sum + emp2ChildrenSum;
+            console.log('Program EMP2 total ', $scope.programPeopleTotal.emp2);
+
+            //HomeAgain People Total
+            $scope.programPeopleTotal.homeagain = homeAgainSum + homeAgainChildrenSum;
+            console.log('Program HomeAgain total ', $scope.programPeopleTotal.homeagain);
+
+            //HomeSafe People Total
+            $scope.programPeopleTotal.homesafe = homesafeSum + homesafeChildrenSum;
+            console.log('Program homesafe total ', $scope.programPeopleTotal.homesafe);
+
+            //HomeFront People Total
+            $scope.programPeopleTotal.homefront = homeFrontSum + homeFrontChildrenSum;
+            console.log('Program homefront total ', $scope.programPeopleTotal.homefront);
+
+            //Program Adult and Children People Total
+            $scope.programPeopleTotal.adultChildrenTotal = $scope.programPeopleTotal.adult + $scope.programPeopleTotal.children;
+            console.log('Program Adult and Children total ', $scope.programPeopleTotal.adultChildrenTotal);
 
         });
-
-      $scope.empGender = {
-          male: 0,
-          female: 0,
-          unknown: 0,
-          total: 0
-      };
-      $scope.emp2Gender = {
-          male: 0,
-          female: 0,
-          unknown: 0,
-          total: 0
-      };
-      $scope.homesafeGender = {
-          male: 0,
-          female: 0,
-          unknown: 0,
-          total: 0
-      };
-      $scope.homeagainGender = {
-          male: 0,
-          female: 0,
-          unknown: 0,
-          total: 0
-      };
-      $scope.homefrontGender = {
-          female: 0,
-          male: 0,
-          total: 0
-      };
-
-      $scope.genderTotal = {
-          female: 0,
-          male: 0,
-          total: 0
-      };
-
 
     $scope.demoFactory.allGender(selections).then(function(response) {
       console.log("response allGender: ", response);
@@ -541,130 +505,94 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
             if(empMale === undefined) {
                 empMale = 0;
             }
-
         }
-        // // EMP 1 Gender
-        // $scope.empGender.female = empFemale;
-        // console.log('gender ----empfemale-', $scope.empGender.female);
-        // $scope.empGender.male = empMale;
-        // console.log('gender -----empmale', $scope.empGender.male);
-        // $scope.empGender.total = $scope.empGender.female + $scope.empGender.male;
-        // console.log('gender -----empGender total',$scope.empGender.total);
-        //
-        // // EMP 2 Gender
-        // $scope.emp2Gender.female = emp2Female;
-        // console.log('gender -----emp2female',emp2Female);
-        // $scope.emp2Gender.male = emp2Male;
-        // console.log('gender -----emp2male',emp2Male);
-        // $scope.emp2Gender.total = $scope.emp2Gender.female + $scope.emp2Gender.male;
-        // console.log('gender -----emp2Gender total',$scope.emp2Gender.total);
-        //
-        // // HomeSafeGender
-        // $scope.homesafeGender.female = homesafeFemale;
-        // console.log('gender -----homesafeFemale', $scope.homesafeGender.female);
-        // $scope.homesafeGender.male = homesafeMale;
-        // console.log('gender -----homesafeMale', $scope.homesafeGender.male);
-        // // $scope.homesafeGender.unknown = homesafeunknown;
-        // // console.log('gender -----homesafeunknown', $scope.homesafeGender.unknown);
-        // $scope.homesafeGender.total = $scope.homesafeGender.female + $scope.homesafeGender.male;
-        // console.log('gender -----homesafe total', $scope.homesafeGender.total);
-        //
-        // // //Home Front
-        // $scope.homefrontGender.female = homefrontFemale;
-        // console.log('gender ----- homefrontfemale', $scope.homefrontGender.female);
-        // $scope.homefrontGender.male = homefrontMale ;
-        // console.log('gender ----- homefrontmale', $scope.homefrontGender.male);
-        // $scope.homefrontGender.total = $scope.homefrontGender.female + $scope.homefrontGender.male;
-        // console.log('gender ----- homefronttotal', $scope.homefrontGender.total);
-        //
-        // //  HomeAgainGender
-        // $scope.homeagainGender.female = homeagainFemale;
-        // console.log('gender ----- homeagainfemale',homeagainFemale);
-        // $scope.homeagainGender.male = homeagainMale ;
-        // console.log('gender ----- homeagainmale',homeagainMale);
-        // $scope.homeagainGender.total = $scope.homeagainGender.female + $scope.homeagainGender.male;
-        // console.log('gender ----- homeagaintotal', $scope.homeagainGender.total);
-        //
-        // // Gender Total
-        // $scope.genderTotal.female = empFemale + emp2Female + homesafeFemale + homeagainFemale;
-        // console.log('All Program female total', $scope.genderTotal.female);
-        // $scope.genderTotal.male = empMale + emp2Male + homesafeMale + homeagainMale;
-        // console.log('All Program male t   otal', $scope.genderTotal.male);
-        // $scope.genderTotal.total = $scope.genderTotal.female + $scope.genderTotal.male;
-        // console.log('All Program grand total', $scope.genderTotal.total);
+
+        $scope.empGender = {
+            male: 0,
+            female: 0,
+            unknown: 0,
+            total: 0
+        };
+        $scope.emp2Gender = {
+            male: 0,
+            female: 0,
+            unknown: 0,
+            total: 0
+        };
+        $scope.homesafeGender = {
+            male: 0,
+            female: 0,
+            unknown: 0,
+            total: 0
+        };
+        $scope.homeagainGender = {
+            male: 0,
+            female: 0,
+            unknown: 0,
+            total: 0
+        };
+        $scope.homefrontGender = {
+            female: 0,
+            male: 0,
+            total: 0
+        };
+
+        $scope.genderTotal = {
+            female: 0,
+            male: 0,
+            total: 0
+        };
+
+        // EMP 1 Gender
+        $scope.empGender.female = empFemale;
+        console.log('gender ----empfemale-', $scope.empGender.female);
+        $scope.empGender.male = empMale;
+        console.log('gender -----empmale', $scope.empGender.male);
+        $scope.empGender.total = $scope.empGender.female + $scope.empGender.male;
+        console.log('gender -----empGender total',$scope.empGender.total);
+
+        // EMP 2 Gender
+        $scope.emp2Gender.female = emp2Female;
+        console.log('gender -----emp2female',emp2Female);
+        $scope.emp2Gender.male = emp2Male;
+        console.log('gender -----emp2male',emp2Male);
+        $scope.emp2Gender.total = $scope.emp2Gender.female + $scope.emp2Gender.male;
+        console.log('gender -----emp2Gender total',$scope.emp2Gender.total);
+
+        // HomeSafeGender
+        $scope.homesafeGender.female = homesafeFemale;
+        console.log('gender -----homesafeFemale', $scope.homesafeGender.female);
+        $scope.homesafeGender.male = homesafeMale;
+        console.log('gender -----homesafeMale', $scope.homesafeGender.male);
+        // $scope.homesafeGender.unknown = homesafeunknown;
+        // console.log('gender -----homesafeunknown', $scope.homesafeGender.unknown);
+        $scope.homesafeGender.total = $scope.homesafeGender.female + $scope.homesafeGender.male;
+        console.log('gender -----homesafe total', $scope.homesafeGender.total);
+
+        // //Home Front
+        $scope.homefrontGender.female = homefrontFemale;
+        console.log('gender ----- homefrontfemale', $scope.homefrontGender.female);
+        $scope.homefrontGender.male = homefrontMale ;
+        console.log('gender ----- homefrontmale', $scope.homefrontGender.male);
+        $scope.homefrontGender.total = $scope.homefrontGender.female + $scope.homefrontGender.male;
+        console.log('gender ----- homefronttotal', $scope.homefrontGender.total);
+
+        //  HomeAgainGender
+        $scope.homeagainGender.female = homeagainFemale;
+        console.log('gender ----- homeagainfemale',homeagainFemale);
+        $scope.homeagainGender.male = homeagainMale ;
+        console.log('gender ----- homeagainmale',homeagainMale);
+        $scope.homeagainGender.total = $scope.homeagainGender.female + $scope.homeagainGender.male;
+        console.log('gender ----- homeagaintotal', $scope.homeagainGender.total);
+
+        // Gender Total
+        $scope.genderTotal.female = empFemale + emp2Female + homesafeFemale + homeagainFemale;
+        console.log('All Program female total', $scope.genderTotal.female);
+        $scope.genderTotal.male = empMale + emp2Male + homesafeMale + homeagainMale;
+        console.log('All Program male t   otal', $scope.genderTotal.male);
+        $scope.genderTotal.total = $scope.genderTotal.female + $scope.genderTotal.male;
+        console.log('All Program grand total', $scope.genderTotal.total);
     });
-
-      // $scope.empRace = {
-      //     white: 0,
-      //     africanAmerican: 0,
-      //     multiracial: 0,
-      //     african: 0,
-      //     hispanic: 0,
-      //     asian: 0,
-      //     total: 0
-      // };
-
-      // $scope.empRace = {
-      //     african:0,
-      //     africanAmerican:0,
-      //     americanIndian:0,
-      //     asian:0,
-      //     caucasianWhite:0,
-      //     hispanicLatino:0,
-      //     multiracial:0,
-      //     other:0,
-      //     totalCount:0
-      // };
-      //
-      // $scope.emp2Race = {
-      //     white: 0,
-      //     africanAmerican: 0,
-      //     multiracial: 0,
-      //     african: 0,
-      //     hispanic: 0,
-      //     asian: 0,
-      //     total: 0
-      // };
-      //
-      // $scope.homesafeRace = {
-      //     white: 0,
-      //     africanAmerican: 0,
-      //     multiracial: 0,
-      //     african: 0,
-      //     hispanic: 0,
-      //     asian: 0,
-      //     total: 0
-      // };
-      //
-      // $scope.homeagainRace = {
-      //     white: 0,
-      //     africanAmerican: 0,
-      //     multiracial: 0,
-      //     african: 0,
-      //     hispanic: 0,
-      //     asian: 0,
-      //     total: 0
-      // };
-      // $scope.homefrontRace = {
-      //     white: 0,
-      //     africanAmerican: 0,
-      //     multiracial: 0,
-      //     african: 0,
-      //     hispanic: 0,
-      //     asian: 0,
-      //     total: 0
-      // };
-      //
-      // $scope.raceTotal = {
-      //     white: 0,
-      //     africanAmerican: 0,
-      //     multiracial: 0,
-      //     african: 0,
-      //     hispanic: 0,
-      //     asian: 0,
-      //     total: 0
-      //
-      // };
 
     $scope.demoFactory.raceAdults(selections).then(function(response) {
       console.log("response raceAdults: ", response);
