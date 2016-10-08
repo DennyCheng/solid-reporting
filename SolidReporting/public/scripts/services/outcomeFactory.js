@@ -1,5 +1,5 @@
-myApp.factory('DemoFactory', ['$http', '$location', function($http, $location) {
-  console.log("demoFactory is working");
+myApp.factory('OutcomeFactory', ['$http', '$location', function($http, $location) {
+  console.log("OutcomeFactory is working");
 
 
   var getData = function() {

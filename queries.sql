@@ -252,14 +252,12 @@ GROUP BY "Members of Household"."Is There a Learning Disability", "Head of House
 Employment - Adults
 SELECT "Currently Employed", COUNT(*), "Program"
 FROM "Head of Household"
-WHERE(("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+WHERE("Head of Household"."Currently Employed" IS NOT NULL AND "Head of Household"."Currently Employed" != '0' AND "Head of Household"."Currently Employed" != 'No' ) AND (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
 OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
 OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
 OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
-GROUP BY "Currently Employed", "Program";
+GROUP BY "Currently Employed", "Program"
 
-
-UNION
 SELECT "Head of Household-2"."Currently Employed", COUNT (*), "Head of Household"."Program"
 FROM "Head of Household-2"
 LEFT JOIN "Head of Household" ON "Head of Household-2"."Head of Household" = "Head of Household"."HoHID"
@@ -267,8 +265,7 @@ WHERE ("Head of Household-2"."Currently Employed" IS NOT NULL and "Head of House
 OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
 OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
 OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
-GROUP BY "Head of Household-2"."Currently Employed", "Head of Household"."Program"
-;
+GROUP BY "Head of Household-2"."Currently Employed", "Head of Household"."Program";
 
 Improved Econ Stability
 SELECT "Improved Econ Stability", COUNT(*), "Program"
@@ -310,9 +307,11 @@ OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Househo
 GROUP BY "Head of Household-2"."Is There a Disability", "Head of Household"."Program"
 ;
 
+Adult MI
+
 SELECT "Is There a Diagnosed Mental Illness", COUNT(*), "Program"
 FROM "Head of Household"
-WHERE("Is There a Diagnosed Mental Illness" IS NOT NULL) AND (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+WHERE("Is There a Diagnosed Mental Illness" IS NOT NULL AND "Is There a Diagnosed Mental Illness" != 'NO' AND "Is There a Diagnosed Mental Illness" != 'No') AND (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
 OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
 OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
 OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
@@ -321,7 +320,7 @@ UNION
 SELECT "Head of Household-2"."Is There a Diagnosed Mental Illness", COUNT (*), "Head of Household"."Program"
 FROM "Head of Household-2"
 LEFT JOIN "Head of Household" ON "Head of Household-2"."Head of Household" = "Head of Household"."HoHID"
-WHERE ("Head of Household-2"."Is There a Diagnosed Mental Illness" IS NOT NULL) and (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+WHERE ("Head of Household-2"."Is There a Diagnosed Mental Illness" IS NOT NULL AND "Head of Household-2"."Is There a Diagnosed Mental Illness" != 'NO' AND "Head of Household-2"."Is There a Diagnosed Mental Illness" != 'No') and (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
 OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
 OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
 OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
@@ -333,12 +332,14 @@ Disability - Children
 SELECT "Members of Household"."Is There a Disability", COUNT (*), "Head of Household"."Program"
 FROM "Members of Household"
 LEFT JOIN "Head of Household" ON "Members of Household"."Head of Household" = "Head of Household"."HoHID"
-WHERE(("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+WHERE("Members of Household"."Is There a Disability" IS NOT FALSE) AND (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
 OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
 OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
 OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
 GROUP BY "Members of Household"."Is There a Disability", "Head of Household"."Program"
 ;
+
+Child MI
 
 SELECT "Members of Household"."Is There a Diagnosed Mental Illness", COUNT (*), "Head of Household"."Program"
 FROM "Members of Household"
