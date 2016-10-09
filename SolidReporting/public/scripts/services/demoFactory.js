@@ -13,6 +13,8 @@ myApp.factory('DemoFactory', ['$http', '$location', function($http, $location) {
 
   var dobAdults = function(selections) {
 
+    console.log("selections: ", selections);
+
     var promise = $http.post('/demoquery/dobadults', selections).then(function (response) {
       var dobAdults = response.data;
       console.log("dobAdults: ", dobAdults);

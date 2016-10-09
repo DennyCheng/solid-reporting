@@ -164,6 +164,11 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     console.log("$scope.startdate newQuery: ", $scope.startdate);
     console.log("$scope.enddate newQuery: ", $scope.enddate);
 
+    // calculate age ranges for criteria selections:
+
+    var ageParamsDiff = ageParams($scope.selectedadultAge, $scope.enddate);
+    console.log("ageParamsDiff: ", ageParamsDiff);
+
     selections = {
       programSelected: $scope.selectedprogram,
       raceAdultSelection: $scope.selectedadultRace,
@@ -173,8 +178,10 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       ageChildrenSelection: $scope.selectedchildAge,
       lastResidenceSelection: $scope.selectedresidence,
       startdate: $scope.startdate,
-      enddate: $scope.enddate
+      enddate: $scope.enddate,
+      arrayDateRanges: ageParamsDiff,
     };
+
 
     // Denny function-Complete
     $scope.demoFactory.dobAdults(selections).then(function(response){
@@ -730,7 +737,49 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
 }//end of click button function
 
 
+  /// filters through age parameters and converts them to date ranges for queries to be sent to server:
+  function ageParams(selectedAgeRanges, endDate) {
+      console.log("selectedAgeRanges: ", selectedAgeRanges);
+      console.log("endDate: ", endDate);
+      var endYear = endDate.getFullYear();
+      var endMonth = endDate.getMonth();
+      var endDate = endDate.getDate();
+      var arrayOfDateRanges = [];
 
+      selectedAgeRanges.forEach(function(range, i) {
+          var rangeDates = {};
+          if(range.indexOf("-") == 2) {
+              var agesArray = range.split("-");
+              var firstYear = parseInt(agesArray[0]);
+              var secondYear = parseInt(agesArray[1]);
+              var year1Math = endYear - firstYear;
+              var year2Math = endYear - secondYear;
+              var dateRange1 = (year1Math + "-" + endMonth + "-" + endDate);
+              var dateRange2 = (year2Math + "-" + endMonth + "-" + endDate);
+
+              rangeDates = {
+                  ageRange: range,
+                  date1Range: dateRange1,
+                  date2Range: dateRange2,
+              };
+              arrayOfDateRanges.push(rangeDates);
+          }
+          if(range.indexOf("+") == 2) {
+              var ages2Array = range.split("+");
+              var firstYear = parseInt(ages2Array[0]);
+              var year1Math = endYear - firstYear;
+              var dateRange1 = (year1Math + "-" + endMonth + "-" + endDate);
+
+              rangeDates = {
+                  date1Range: dateRange1,
+                  date2Range: ""
+              }
+              arrayOfDateRanges.push(rangeDates);
+          }
+      });
+
+      return arrayOfDateRanges;
+  }
 
 
   ///performs age calculations
