@@ -405,7 +405,6 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     //Denny - Complete
 
     $scope.demoFactory.raceChildren(selections).then(function(response) {
-      console.log("response raceChildren from server: ", response);
        var responseArray = response;
 
        $scope.raceChildEMP = {
@@ -925,9 +924,9 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
               }
             }
         }//end of for loop
-    //
-    //
-    //     //filter for unearnedIncome
+
+
+        //filter for unearnedIncome
         for (var i = 0; i < responseArray.length; i++) {
           // console.log(responseArray[i]);
           if(responseArray[i].Program =="EMP"){
@@ -1066,9 +1065,9 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
               }
             }
         }//end of for loop for unearned
-    //
-    //
-    //     //filter for incomeTotals
+
+
+        //filter for incomeTotals
         for (var i = 0; i < responseArray.length; i++) {
 
           //remove null values from properties
@@ -1301,8 +1300,11 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
         total:0
       };
 
+      $scope.residenceTotal=0;
+
       var responseArray = response
       for (var i = 0; i < responseArray.length; i++) {
+        $scope.residenceTotal += parseInt(responseArray[i].count);
         //emp
         if(responseArray[i].Program == "EMP"){
           if(responseArray[i]['County of Last Residence']=="Ramsey"){
@@ -1506,11 +1508,161 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       console.log('residenceHomeSafe',$scope.residenceHomeSafe);
       console.log('residenceHomeAgain',$scope.residenceHomeAgain);
       console.log('residenceHomeFront',$scope.residenceHomeFront);
+      console.log('Total',$scope.residenceTotal);
+
     });//end of lastResidence request
 
-    // //Jerry- Incomplete
+    // //Denny Complete
     $scope.demoFactory.famsExitHousing(selections).then(function(response) {
-      // console.log("response famsExitHousing: ", response);
+      console.log("response famsExitHousing: ", response);
+
+      $scope.exitEMP = {
+        graduated:0,
+        leftVoluntarily:0,
+        terminated:0,
+        other:0,
+        total:0
+      };
+
+      $scope.exitEMPII = {
+        graduated:0,
+        leftVoluntarily:0,
+        terminated:0,
+        other:0,
+        total:0
+      };
+
+      $scope.exitHomeSafe = {
+        graduated:0,
+        leftVoluntarily:0,
+        terminated:0,
+        other:0,
+        total:0
+      };
+
+      $scope.exitHomeAgain = {
+        graduated:0,
+        leftVoluntarily:0,
+        terminated:0,
+        other:0,
+        total:0
+      };
+
+      $scope.exitHomeFront = {
+        graduated:0,
+        leftVoluntarily:0,
+        terminated:0,
+        other:0,
+        total:0
+      };
+
+      $scope.exitTotal = 0;
+
+      var responseArray = response
+
+      for (var i = 0; i < responseArray.length; i++) {
+        $scope.exitTotal+= parseInt(responseArray[i].count)
+        if (responseArray[i].Program== "EMP"){
+          if(responseArray[i]["Reason for Leaving"]=="Completed program" ||responseArray[i]["Reason for Leaving"]== "Completed program;Other"){
+            $scope.exitEMP.graduated += parseInt(responseArray[i].count)
+            $scope.exitEMP.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]["Reason for Leaving"]=="Left for housing opportunity before completing the program" ||responseArray[i]["Reason for Leaving"]== "Reached maximum time allowed"){
+            $scope.exitEMP.leftVoluntarily += parseInt(responseArray[i].count)
+            $scope.exitEMP.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]["Reason for Leaving"]=="Non-compliance w/program" ||responseArray[i]["Reason for Leaving"]== "Criminal activity/violence"||responseArray[i]["Reason for Leaving"]== "Disagreement with rules/persons;Other"||responseArray[i]["Reason for Leaving"]== " Criminal activity/violence;Non-compliance w/program"||responseArray[i]["Reason for Leaving"]== "Non-compliance w/program;Other_____________________________________________"||responseArray[i]["Reason for Leaving"]== "Criminal activity/violence;Non-compliance w/program"){
+            $scope.exitEMP.terminated += parseInt(responseArray[i].count)
+            $scope.exitEMP.total += parseInt(responseArray[i].count)
+          }
+          else{
+            $scope.exitEMP.other += parseInt(responseArray[i].count)
+            $scope.exitEMP.total += parseInt(responseArray[i].count)
+          }
+        }
+
+        else if (responseArray[i].Program== "EMPII"){
+          if(responseArray[i]["Reason for Leaving"]=="Completed program" ||responseArray[i]["Reason for Leaving"]== "Completed program;Other"){
+            $scope.exitEMPII.graduated += parseInt(responseArray[i].count)
+            $scope.exitEMPII.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]["Reason for Leaving"]=="Left for housing opportunity before completing the program" ||responseArray[i]["Reason for Leaving"]== "Reached maximum time allowed"){
+            $scope.exitEMPII.leftVoluntarily += parseInt(responseArray[i].count)
+            $scope.exitEMPII.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]["Reason for Leaving"]=="Non-compliance w/program" ||responseArray[i]["Reason for Leaving"]== "Criminal activity/violence"||responseArray[i]["Reason for Leaving"]== "Disagreement with rules/persons;Other"||responseArray[i]["Reason for Leaving"]== " Criminal activity/violence;Non-compliance w/program"||responseArray[i]["Reason for Leaving"]== "Non-compliance w/program;Other_____________________________________________"||responseArray[i]["Reason for Leaving"]== "Criminal activity/violence;Non-compliance w/program"){
+            $scope.exitEMPII.terminated += parseInt(responseArray[i].count)
+            $scope.exitEMPII.total += parseInt(responseArray[i].count)
+          }
+          else{
+            $scope.exitEMPII.other += parseInt(responseArray[i].count)
+            $scope.exitEMPII.total += parseInt(responseArray[i].count)
+          }
+        }
+
+        else if (responseArray[i].Program== "HomeSafe"||responseArray[i].Program== "Home Safe"){
+          if(responseArray[i]["Reason for Leaving"]=="Completed program" ||responseArray[i]["Reason for Leaving"]== "Completed program;Other"){
+            $scope.exitHomeSafe.graduated += parseInt(responseArray[i].count)
+            $scope.exitHomeSafe.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]["Reason for Leaving"]=="Left for housing opportunity before completing the program" ||responseArray[i]["Reason for Leaving"]== "Reached maximum time allowed"){
+            $scope.exitHomeSafe.leftVoluntarily += parseInt(responseArray[i].count)
+            $scope.exitHomeSafe.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]["Reason for Leaving"]=="Non-compliance w/program" ||responseArray[i]["Reason for Leaving"]== "Criminal activity/violence"||responseArray[i]["Reason for Leaving"]== "Disagreement with rules/persons;Other"||responseArray[i]["Reason for Leaving"]== " Criminal activity/violence;Non-compliance w/program"||responseArray[i]["Reason for Leaving"]== "Non-compliance w/program;Other_____________________________________________"||responseArray[i]["Reason for Leaving"]== "Criminal activity/violence;Non-compliance w/program"){
+            $scope.exitHomeSafe.terminated += parseInt(responseArray[i].count)
+            $scope.exitHomeSafe.total += parseInt(responseArray[i].count)
+          }
+          else{
+            $scope.exitHomeSafe.other += parseInt(responseArray[i].count)
+            $scope.exitHomeSafe.total += parseInt(responseArray[i].count)
+          }
+        }
+
+        else if (responseArray[i].Program== "HomeAgain"||responseArray[i].Program== "Home Again"){
+          if(responseArray[i]["Reason for Leaving"]=="Completed program" ||responseArray[i]["Reason for Leaving"]== "Completed program;Other"){
+            $scope.exitHomeAgain.graduated += parseInt(responseArray[i].count)
+            $scope.exitHomeAgain.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]["Reason for Leaving"]=="Left for housing opportunity before completing the program" ||responseArray[i]["Reason for Leaving"]== "Reached maximum time allowed"){
+            $scope.exitHomeAgain.leftVoluntarily += parseInt(responseArray[i].count)
+            $scope.exitHomeAgain.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]["Reason for Leaving"]=="Non-compliance w/program" ||responseArray[i]["Reason for Leaving"]== "Criminal activity/violence"||responseArray[i]["Reason for Leaving"]== "Disagreement with rules/persons;Other"||responseArray[i]["Reason for Leaving"]== " Criminal activity/violence;Non-compliance w/program"||responseArray[i]["Reason for Leaving"]== "Non-compliance w/program;Other_____________________________________________"||responseArray[i]["Reason for Leaving"]== "Criminal activity/violence;Non-compliance w/program"){
+            $scope.exitHomeAgain.terminated += parseInt(responseArray[i].count)
+            $scope.exitHomeAgain.total += parseInt(responseArray[i].count)
+          }
+          else{
+            $scope.exitHomeAgain.other += parseInt(responseArray[i].count)
+            $scope.exitHomeAgain.total += parseInt(responseArray[i].count)
+          }
+        }
+
+        else if (responseArray[i].Program== "HomeFront"||responseArray[i].Program== "Home Front"){
+          if(responseArray[i]["Reason for Leaving"]=="Completed program" ||responseArray[i]["Reason for Leaving"]== "Completed program;Other"){
+            $scope.exitHomeFront.graduated += parseInt(responseArray[i].count)
+            $scope.exitHomeFront.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]["Reason for Leaving"]=="Left for housing opportunity before completing the program" ||responseArray[i]["Reason for Leaving"]== "Reached maximum time allowed"){
+            $scope.exitHomeFront.leftVoluntarily += parseInt(responseArray[i].count)
+            $scope.exitHomeFront.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]["Reason for Leaving"]=="Non-compliance w/program" ||responseArray[i]["Reason for Leaving"]== "Criminal activity/violence"||responseArray[i]["Reason for Leaving"]== "Disagreement with rules/persons;Other"||responseArray[i]["Reason for Leaving"]== " Criminal activity/violence;Non-compliance w/program"||responseArray[i]["Reason for Leaving"]== "Non-compliance w/program;Other_____________________________________________"||responseArray[i]["Reason for Leaving"]== "Criminal activity/violence;Non-compliance w/program"){
+            $scope.exitHomeFront.terminated += parseInt(responseArray[i].count)
+            $scope.exitHomeFront.total += parseInt(responseArray[i].count)
+          }
+          else{
+            $scope.exitHomeFront.other += parseInt(responseArray[i].count)
+            $scope.exitHomeFront.total += parseInt(responseArray[i].count)
+          }
+        }
+      }//end for for loop
+      console.log('test EMP', $scope.exitEMP);
+      console.log('test EMPII', $scope.exitEMPII);
+      console.log('test Safe', $scope.exitHomeSafe);
+      console.log('test Again', $scope.exitHomeAgain);
+      console.log('test Front', $scope.exitHomeFront);
+      console.log('TOTAL', $scope.exitTotal);
     });//end of famsExitHousing
 
 }//end of click button function
