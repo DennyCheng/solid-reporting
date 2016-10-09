@@ -182,7 +182,7 @@
         <div class="action-buttons" layout="column">
             <md-button class="md-raised md-primary" ng-click="newQuery()">Submit Query</md-button>
             <md-button id="reset" class="md-raised" ng-click="resetQuery()">Reset Query</md-button>
-            <md-button id="export" class="md-raised export">Export to CSV</md-button>
+            <!--<md-button id="export"  class="md-raised export" ng-click="exportData()">Export to CSV</md-button>-->
         </div>
 
       </div>
@@ -341,8 +341,48 @@
         </table>
       </md-table-container>
 
-    </div>
 
     </md-content>
   </div>
 <!-- </div> -->
+
+
+<!--Excel data structure-->
+<button ng-click="exportData()" ng-show="(tests|filter:{selected: true}).length">Export</button>
+<br />
+<table width="100%">
+  <thead>
+  <tr>
+    <th></th>
+    <th>Name</th>
+    <th>Date</th>
+    <th>Terms</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="item in tests">
+    <td><input type="checkbox" ng-model="item.selected" /></td>
+    <td>{{item.Name}}</td>
+    <td>{{item.Date}}</td>
+    <td><span ng-repeat="term in item.Race">{{term}}{{!$last?', ':''}}</span></td>
+  </tr>
+  </tbody>
+</table>
+<div id="exportable" style="display:none">
+  <table width="100%">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Date</th>
+      <th>Race</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in tests|filter:{selected: true}">
+      <td>{{item.Name}}</td>
+      <td>{{item.Date}}</td>
+      <td><span ng-repeat="term in item.Race">{{term}}{{!$last?', ':''}}</span></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

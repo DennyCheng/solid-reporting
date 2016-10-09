@@ -1674,6 +1674,25 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     //
     // }
 
+
+    $scope.exportData = function () {
+      var blob = new Blob([document.getElementById('exportable').innerHTML], {
+        type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
+      });
+      saveAs(blob, "Solid_Ground_Report.xls");
+    };
+
+  $scope.tests = [{
+    "Name": "HomeFront",
+    "Date": "10/02/2014",
+    "Race": ["African", "White", "Asian"]
+  }, {
+    "Name": "Home Safe",
+    "Date": "10/02/2014",
+    "Race": ["Others", "Latinos", "African America"]
+  }]
+
+
     $scope.resetQuery = function () {
         $scope.selectedprogram = [];
         $scope.selectedgender = [];
@@ -1687,7 +1706,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
         $scope.startdate = new Date();
         $scope.enddate = new Date();
         //need to reset $scoped out sorting variables too?
-    }
+    };
 
 
 // end controller
