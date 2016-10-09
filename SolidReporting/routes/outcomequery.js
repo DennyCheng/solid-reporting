@@ -23,29 +23,13 @@ var pool = new pg.Pool(config);
 router.post('/houseStabil', function(req, res) {
   console.log("go house stabil");
   console.log("req.body line 09: ", req.body);
-  // var raceAdult = req.body.raceAdultSelection; //we won't have sorting based on this.
-  // var gender = req.body.genderSelection;
-  // var ageAdult = req.body.ageAdultSelection;
+  var raceAdult = req.body.raceAdultSelection; //we won't have sorting based on this.
+  var gender = req.body.genderSelection;
+  var ageAdult = req.body.ageAdultSelection;
   var startDate = req.body.startdate;
   var endDate = req.body.enddate;
   console.log("startDate: ", startDate);
   console.log("endDate: ", endDate);
-
-  // console.log("raceAdult: ", raceAdult);
-  // var raceQuery = '';
-  // if(raceAdult.length === 0) {
-  //   // somehow delete the query or make it blank or assume this is select all
-  //   raceQuery = "length is 0, nothing selected";
-  // } else if(raceAdult.length === 1) {
-  //   raceQuery = "\"Head of Household\".\"Race Code\" = '" + raceAdult[0] + "' AND ";
-  // } else {
-  //   // var raceAdultQuery = raceAdult.forEach(race, i) {
-  //   //
-  //   // }
-  //   raceQuery = "else statement";
-  // }
-
-  // console.log("raceQuery after if statement: ", raceQuery);
 
   pool.connect(function(err, client, done) {
 
@@ -58,7 +42,7 @@ router.post('/houseStabil', function(req, res) {
     "FROM \"Head of Household\" " +
     "WHERE (\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
-    "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "' " +
+    "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
     "GROUP BY \"Achieve Housing Stability\", \"Program\" " +
     "ORDER BY \"Program\"; ",
@@ -70,7 +54,7 @@ router.post('/houseStabil', function(req, res) {
           console.log("select error: ", err);
           res.sendStatus(500);
         }
-        // console.log('results.row: ', result.rows);
+        console.log('results.row: ', result.rows);
 
         res.send(result.rows);
     });
@@ -119,7 +103,7 @@ router.post('/adulteduadv', function(req, res) {
           console.log("select error: ", err);
           res.sendStatus(500);
         }
-        // console.log('results.row: ', result.rows);
+        console.log('results.row: ', result.rows);
 
         res.send(result.rows);
     });
@@ -170,7 +154,7 @@ router.post('/adultlearningdis', function(req, res) {
           console.log("select error: ", err);
           res.sendStatus(500);
         }
-        // console.log('results.row: ', result.rows);
+        console.log('results.row: ', result.rows);
 
         res.send(result.rows);
     });
@@ -201,7 +185,7 @@ router.post('/childlearndis', function(req, res) {
     client.query("SELECT \"Members of Household\".\"Is There a Learning Disability\", COUNT (*), \"Head of Household\".\"Program\" " +
     "FROM \"Members of Household\" " +
     "LEFT JOIN \"Head of Household\" ON \"Members of Household\".\"Head of Household\" = \"Head of Household\".\"HoHID\" " +
-    "WHERE (\"Members of Household|".\"Is There a Learning Disability\" != '' and \"Members of Household\".\"Is There a Learning Disability\" != 'NO' and \"Members of Household\".\"Is There a Learning Disability\" != 'No') and ((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
+    "WHERE (\"Members of Household\".\"Is There a Learning Disability\" != '' and \"Members of Household\".\"Is There a Learning Disability\" != 'NO' and \"Members of Household\".\"Is There a Learning Disability\" != 'No') and ((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "')) " +
@@ -213,7 +197,7 @@ router.post('/childlearndis', function(req, res) {
           console.log("select error: ", err);
           res.sendStatus(500);
         }
-        // console.log('results.row: ', result.rows);
+        console.log('results.row: ', result.rows);
 
         res.send(result.rows);
     });
@@ -241,7 +225,7 @@ router.post('/hhcurrentemp', function(req, res) {
 
     client.query("SELECT \"Currently Employed\", COUNT(*), \"Program\" " +
     "FROM \"Head of Household\" " +
-    "WHERE(\"Head of Household\".\"Currently Employed\" IS NOT NULL AND \"Head of Household\".\"Currently Employed\" != '0' AND \"Head of Household"."Currently Employed\" != 'No' ) AND ((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
+    "WHERE(\"Head of Household\".\"Currently Employed\" IS NOT NULL AND \"Head of Household\".\"Currently Employed\" != '0' AND \"Head of Household\".\"Currently Employed\" != 'No' ) AND ((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "')) " +
@@ -253,7 +237,7 @@ router.post('/hhcurrentemp', function(req, res) {
           console.log("select error: ", err);
           res.sendStatus(500);
         }
-        // console.log('results.row: ', result.rows);
+        console.log('results.row: ', result.rows);
 
         res.send(result.rows);
     });
@@ -294,7 +278,7 @@ router.post('/hh2currentemp', function(req, res) {
           console.log("select error: ", err);
           res.sendStatus(500);
         }
-        // console.log('results.row: ', result.rows);
+        console.log('results.row: ', result.rows);
 
         res.send(result.rows);
     });
@@ -304,7 +288,7 @@ router.post('/hh2currentemp', function(req, res) {
 
 
 // Improved Econ Stability
-router.post('/impeconstab', function(req, res) {
+router.post('/econstabil', function(req, res) {
   console.log("go Econ Stabil");
   // console.log("req.body line 56: ", req.body);
   // var raceAdult = req.body.raceAdultSelection;
@@ -336,7 +320,7 @@ router.post('/impeconstab', function(req, res) {
     "LEFT JOIN \"Head of Household\" ON \"Head of Household-2\".\"Head of Household\" = \"Head of Household\".\"HoHID\" " +
     "WHERE (\"Head of Household-2\".\"Improved Econ Stability\" IS NOT NULL AND \"Head of Household-2\".\"Improved Econ Stability\" != '') and ((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
-    "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household"."Program Exit Date\" >= '" + endDate + "') " +
+    "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "')) " +
     "GROUP BY \"Head of Household-2\".\"Improved Econ Stability\", \"Head of Household\".\"Program\"; ",
       function(err, result) {
@@ -346,7 +330,7 @@ router.post('/impeconstab', function(req, res) {
           console.log("select error: ", err);
           res.sendStatus(500);
         }
-        // console.log('results.row: ', result.rows);
+        console.log('results.row: ', result.rows);
 
         res.send(result.rows);
     });
@@ -399,7 +383,7 @@ router.post('/adultdisabil', function(req, res) {
           console.log("select error: ", err);
           res.sendStatus(500);
         }
-        // console.log('results.row: ', result.rows);
+        console.log('results.row: ', result.rows);
 
         res.send(result.rows);
     });
@@ -451,7 +435,7 @@ router.post('/adultmi', function(req, res) {
           console.log("select error: ", err);
           res.sendStatus(500);
         }
-        // console.log('results.row: ', result.rows);
+        console.log('results.row: ', result.rows);
 
         res.send(result.rows);
 
@@ -495,7 +479,7 @@ router.post('/childDis', function(req, res) {
           console.log("select error: ", err);
           res.sendStatus(500);
         }
-        // console.log('results.row: ', result.rows);
+        console.log('results.row: ', result.rows);
 
         res.send(result.rows);
 
@@ -539,7 +523,7 @@ router.post('/childmi', function(req, res) {
           console.log("select error: ", err);
           res.sendStatus(500);
         }
-        // console.log('results.row: ', result.rows);
+        console.log('results.row: ', result.rows);
 
         res.send(result.rows);
 
@@ -582,7 +566,7 @@ router.post('/parentedu', function(req, res) {
           console.log("select error: ", err);
           res.sendStatus(500);
         }
-        // console.log('results.row: ', result.rows);
+        console.log('results.row: ', result.rows);
 
         res.send(result.rows);
 
@@ -626,7 +610,50 @@ router.post('/parenteduthisyear', function(req, res) {
           console.log("select error: ", err);
           res.sendStatus(500);
         }
-        // console.log('results.row: ', result.rows);
+        console.log('results.row: ', result.rows);
+
+        res.send(result.rows);
+
+    });
+
+  });
+});
+
+// Parenting Education -- if they completed year before
+router.post('/parenteduyearbefore', function(req, res) {
+  console.log("go parent edu year before");
+  // console.log("req.body line 56: ", req.body);
+  // var raceAdult = req.body.raceAdultSelection;
+  // var ageAdult = req.body.ageAdultSelection;
+  // var raceChild = req.body.raceChildrenSelection;
+  // var gender = req.body.genderSelection;
+  // var ageChild = req.body.ageChildrenSelection;
+  var startDate = req.body.startdate;
+  var endDate = req.body.enddate;
+
+
+  pool.connect(function(err, client, done) {
+
+    if(err) {
+      console.log(err);
+      res.sendStatus(500);
+    }
+
+    client.query("SELECT COUNT(*) \"Parenting Completed\" , \"Program\" " +
+    "FROM \"Head of Household\" " +
+    "WHERE(\"Head of Household\".\"Parenting Completed\" < '2015-01-01') AND ((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
+    "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
+    "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
+    "OR (\"Head of Household\".\"Program Entry Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "')) " +
+    "GROUP BY \"Program\"; ",
+      function(err, result) {
+        done();
+
+        if(err) {
+          console.log("select error: ", err);
+          res.sendStatus(500);
+        }
+        console.log('results.row: ', result.rows);
 
         res.send(result.rows);
 
@@ -661,7 +688,7 @@ router.post('/budgetingedu', function(req, res) {
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "')) " +
-    "GROUP BY \"Program\"; ",
+    "GROUP BY \"Budgeting Class\", \"Program\"; ",
       function(err, result) {
         done();
 
@@ -669,7 +696,7 @@ router.post('/budgetingedu', function(req, res) {
           console.log("select error: ", err);
           res.sendStatus(500);
         }
-        // console.log('results.row: ', result.rows);
+        console.log('results.row: ', result.rows);
 
         res.send(result.rows);
 
@@ -704,7 +731,7 @@ router.post('/budgetingedusameyear', function(req, res) {
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "')) " +
-    "GROUP BY \"Budgeting Completed\", \"Program\"; ",
+    "GROUP BY \"Program\"; ",
       function(err, result) {
         done();
 
@@ -712,7 +739,7 @@ router.post('/budgetingedusameyear', function(req, res) {
           console.log("select error: ", err);
           res.sendStatus(500);
         }
-        // console.log('results.row: ', result.rows);
+        console.log('results.row: ', result.rows);
 
         res.send(result.rows);
 
@@ -756,7 +783,7 @@ router.post('/budgetingeduyearbefore', function(req, res) {
           console.log("select error: ", err);
           res.sendStatus(500);
         }
-        // console.log('results.row: ', result.rows);
+        console.log('results.row: ', result.rows);
 
         res.send(result.rows);
 
@@ -792,7 +819,7 @@ router.post('/violence', function(req, res) {
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "')) " +
-    "GROUP BY \"Program\"; ",
+    "GROUP BY \"Has or Had experienced or at risk for violence\", \"Program\"; ",
       function(err, result) {
         done();
 
@@ -800,7 +827,7 @@ router.post('/violence', function(req, res) {
           console.log("select error: ", err);
           res.sendStatus(500);
         }
-        // console.log('results.row: ', result.rows);
+        console.log('results.row: ', result.rows);
 
         res.send(result.rows);
 
@@ -844,7 +871,7 @@ router.post('/tenanttraining', function(req, res) {
           console.log("select error: ", err);
           res.sendStatus(500);
         }
-        // console.log('results.row: ', result.rows);
+        console.log('results.row: ', result.rows);
 
         res.send(result.rows);
 
@@ -876,7 +903,7 @@ router.post('/tenanttrainingsameyear', function(req, res) {
 
     client.query("SELECT COUNT(*) \"Tenant Training Completed\", \"Program\" " +
     "FROM \"Head of Household\" " +
-    "WHERE(\"Head of Household\".\"Tenant Training Completed\" >= '" + startDate + "' AND "Head of Household"."Tenant Training Completed" <= '" + endDate + "') AND ((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
+    "WHERE(\"Head of Household\".\"Tenant Training Completed\" >= '" + startDate + "' AND \"Head of Household\".\"Tenant Training Completed\" <= '" + endDate + "') AND ((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "')) " +
@@ -888,7 +915,7 @@ router.post('/tenanttrainingsameyear', function(req, res) {
           console.log("select error: ", err);
           res.sendStatus(500);
         }
-        // console.log('results.row: ', result.rows);
+        console.log('results.row: ', result.rows);
 
         res.send(result.rows);
 
@@ -921,7 +948,7 @@ router.post('/tenanttrainingprioryear', function(req, res) {
     client.query("SELECT COUNT(*) \"Tenant Training Completed\" , \"Program\" " +
     "FROM \"Head of Household\" " +
     "WHERE(\"Head of Household\".\"Tenant Training Completed\" < '" + startDate + "') AND " +
-    ((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
+    "((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "')) " +
@@ -933,7 +960,7 @@ router.post('/tenanttrainingprioryear', function(req, res) {
           console.log("select error: ", err);
           res.sendStatus(500);
         }
-        // console.log('results.row: ', result.rows);
+        console.log('results.row: ', result.rows);
 
         res.send(result.rows);
 
@@ -977,7 +1004,7 @@ router.post('/DBT', function(req, res) {
           console.log("select error: ", err);
           res.sendStatus(500);
         }
-        // console.log('results.row: ', result.rows);
+        console.log('results.row: ', result.rows);
 
         res.send(result.rows);
 
@@ -1021,7 +1048,7 @@ router.post('/DBTsameyear', function(req, res) {
           console.log("select error: ", err);
           res.sendStatus(500);
         }
-        // console.log('results.row: ', result.rows);
+        console.log('results.row: ', result.rows);
 
         res.send(result.rows);
 
@@ -1054,7 +1081,7 @@ router.post('/DBTprioryear', function(req, res) {
     client.query("SELECT COUNT(*) \"DBT Completed\" , \"Program\" " +
     "FROM \"Head of Household\" " +
     "WHERE(\"Head of Household\".\"Tenant Training Completed\" < '" + startDate + "') AND " +
-    ((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
+    "((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "')) " +
@@ -1066,7 +1093,7 @@ router.post('/DBTprioryear', function(req, res) {
           console.log("select error: ", err);
           res.sendStatus(500);
         }
-        // console.log('results.row: ', result.rows);
+        console.log('results.row: ', result.rows);
 
         res.send(result.rows);
 
@@ -1109,7 +1136,7 @@ router.post('/healthimproved', function(req, res) {
           console.log("select error: ", err);
           res.sendStatus(500);
         }
-        // console.log('results.row: ', result.rows);
+        console.log('results.row: ', result.rows);
 
         res.send(result.rows);
 

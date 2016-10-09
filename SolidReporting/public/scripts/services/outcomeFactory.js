@@ -11,92 +11,252 @@ myApp.factory('OutcomeFactory', ['$http', '$location', function($http, $location
   }
 
 
-  var dobAdults = function(selections) {
+  var houseStabil = function(selections) {
 
-    var promise = $http.post('/demoquery/dobadults', selections).then(function (response) {
-      var dobAdults = response.data;
-      console.log("dobAdults: ", dobAdults);
-      return dobAdults;
+    var promise = $http.post('/outcomequery/houseStabil', selections).then(function (response) {
+      var houseStabil = response.data;
+      console.log("houseStabil: ", houseStabil);
+      return houseStabil;
     });
     return promise;
   }
 
-  var dobChildren = function(selections) {
+  var adultEduAdv = function(selections) {
 
-    var promise = $http.post('/demoquery/dobchildren', selections).then(function (response) {
-      var dobChildren = response.data;
-      console.log("dobChildren: ", dobChildren);
-      return dobChildren;
+    var promise = $http.post('/outcomequery/adulteduadv', selections).then(function (response) {
+      var adultEduAdv = response.data;
+      console.log("adulteduadv: ", adultEduAdv);
+      return adultEduAdv;
     });
     return promise;
   }
 
-  var totalPeople = function(selections) {
+  var adultLearningDis = function(selections) {
 
-    var promise = $http.post('/demoquery/totalpeople', selections).then(function (response) {
-      var totalPeople = response.data;
-      console.log("totalPeople: ", totalPeople);
-      return totalPeople;
+    var promise = $http.post('/outcomequery/adultlearningdis', selections).then(function (response) {
+      var adultLearningDis = response.data;
+      console.log("adultLearningDis: ", adultLearningDis);
+      return adultLearningDis;
     });
     return promise;
   }
 
-  var allGender = function(selections) {
+  var childLearnDis = function(selections) {
 
-    var promise = $http.post('/demoquery/allgender', selections).then(function (response) {
-      var allGender = response.data;
-      console.log("allGender: ", allGender);
-      return allGender;
+    var promise = $http.post('/outcomequery/childlearndis', selections).then(function (response) {
+      var childLearnDis = response.data;
+      console.log("childLearnDis: ", childLearnDis);
+      return childLearnDis;
     });
     return promise;
   }
 
-  var raceAdults = function(selections) {
+  var hhCurrentEmp = function(selections) {
 
-    var promise = $http.post('/demoquery/raceadults', selections).then(function (response) {
-      var raceAdults = response.data;
-      console.log("raceAdults: ", raceAdults);
-      return raceAdults;
+    var promise = $http.post('/outcomequery/hhcurrentemp', selections).then(function (response) {
+      var hhCurrentEmp = response.data;
+      console.log("hhCurrentEmp: ", hhCurrentEmp);
+      return hhCurrentEmp;
     });
     return promise;
   }
 
-  var raceChildren = function(selections) {
+  var hh2CurrentEmp = function(selections) {
 
-    var promise = $http.post('/demoquery/racechildren', selections).then(function (response) {
-      var raceChildren = response.data;
-      console.log("raceChildren: ", raceChildren);
-      return raceChildren;
+    var promise = $http.post('/outcomequery/hh2currentemp', selections).then(function (response) {
+      var hh2CurrentEmp = response.data;
+      console.log("hh2CurrentEmp: ", hh2CurrentEmp);
+      return hh2CurrentEmp;
     });
     return promise;
   }
 
-  var lastResidence = function(selections) {
+  var econStabil = function(selections) {
 
-    var promise = $http.post('/demoquery/lastres', selections).then(function (response) {
-      var lastResidence = response.data;
-      console.log("lastResidence: ", lastResidence);
-      return lastResidence;
+    var promise = $http.post('/outcomequery/econstabil', selections).then(function (response) {
+      var econStabil = response.data;
+      console.log("econStabil: ", econStabil);
+      return econStabil;
     });
     return promise;
   }
 
-  var householdIncome = function(selections) {
+  var adultDisabil = function(selections) {
 
-    var promise = $http.post('/demoquery/houseincome', selections).then(function (response) {
-      var householdIncome = response.data;
-      console.log("householdIncome: ", householdIncome);
-      return householdIncome;
+    var promise = $http.post('/outcomequery/adultdisabil', selections).then(function (response) {
+      var adultDisabil = response.data;
+      console.log("adultDisabil: ", adultDisabil);
+      return adultDisabil;
     });
     return promise;
   }
 
-  var famsExitHousing = function(selections) {
+  var adultMI = function(selections) {
 
-    var promise = $http.post('/demoquery/famsexit', selections).then(function (response) {
-      var famsExitHousing = response.data;
-      console.log("famsExitHousing: ", famsExitHousing);
-      return famsExitHousing;
+    var promise = $http.post('/outcomequery/adultmi', selections).then(function (response) {
+      var adultMI = response.data;
+      console.log("adultMI: ", adultMI);
+      return adultMI;
+    });
+    return promise;
+  }
+
+  var childDis = function(selections) {
+
+    var promise = $http.post('/outcomequery/childDis', selections).then(function (response) {
+      var childDis = response.data;
+      console.log("childDis: ", childDis);
+      return childDis;
+    });
+    return promise;
+  }
+
+  var childMI = function(selections) {
+
+    var promise = $http.post('/outcomequery/childmi', selections).then(function (response) {
+      var childMI = response.data;
+      console.log("childMI: ", childMI);
+      return childMI;
+    });
+    return promise;
+  }
+
+  var parentEdu = function(selections) {
+
+    var promise = $http.post('/outcomequery/parentedu', selections).then(function (response) {
+      var parentEdu = response.data;
+      console.log("parentEdu: ", parentEdu);
+      return parentEdu;
+    });
+    return promise;
+  }
+
+  var parentEduThisYear = function(selections) {
+
+    var promise = $http.post('/outcomequery/parenteduthisyear', selections).then(function (response) {
+      var parentEduThisYear = response.data;
+      console.log("parentEduThisYear: ", parentEduThisYear);
+      return parentEduThisYear;
+    });
+    return promise;
+  }
+
+  var parentEduYearBefore = function(selections) {
+
+    var promise = $http.post('/outcomequery/parenteduyearbefore', selections).then(function (response) {
+      var parentEduYearBefore = response.data;
+      console.log("parentEduYearBefore: ", parentEduYearBefore);
+      return parentEduYearBefore;
+    });
+    return promise;
+  }
+
+  var budgetingEdu = function(selections) {
+
+    var promise = $http.post('/outcomequery/budgetingedu', selections).then(function (response) {
+      var budgetingEdu = response.data;
+      console.log("budgetingEdu: ", budgetingEdu);
+      return budgetingEdu;
+    });
+    return promise;
+  }
+
+  var budgetingEduSameYear = function(selections) {
+
+    var promise = $http.post('/outcomequery/budgetingedusameyear', selections).then(function (response) {
+      var budgetingEduSameYear = response.data;
+      console.log("budgetingEduSameYear: ", budgetingEduSameYear);
+      return budgetingEduSameYear;
+    });
+    return promise;
+  }
+
+  var budgetingEduYearBefore = function(selections) {
+
+    var promise = $http.post('/outcomequery/budgetingeduyearbefore', selections).then(function (response) {
+      var budgetingEduYearBefore = response.data;
+      console.log("budgetingEduYearBefore: ", budgetingEduYearBefore);
+      return budgetingEduYearBefore;
+    });
+    return promise;
+  }
+
+  var violence = function(selections) {
+
+    var promise = $http.post('/outcomequery/violence', selections).then(function (response) {
+      var violence = response.data;
+      console.log("violence: ", violence);
+      return violence;
+    });
+    return promise;
+  }
+
+  var tenantTraining = function(selections) {
+
+    var promise = $http.post('/outcomequery/tenanttraining', selections).then(function (response) {
+      var tenantTraining = response.data;
+      console.log("tenantTraining: ", tenantTraining);
+      return tenantTraining;
+    });
+    return promise;
+  }
+
+  var tenantTrainingSameYear = function(selections) {
+
+    var promise = $http.post('/outcomequery/tenanttrainingsameyear', selections).then(function (response) {
+      var tenantTrainingSameYear = response.data;
+      console.log("tenantTrainingSameYear: ", tenantTrainingSameYear);
+      return tenantTrainingSameYear;
+    });
+    return promise;
+  }
+
+  var tenantTrainingPriorYear = function(selections) {
+
+    var promise = $http.post('/outcomequery/tenanttrainingprioryear', selections).then(function (response) {
+      var tenantTrainingPriorYear = response.data;
+      console.log("tenantTrainingPriorYear: ", tenantTrainingPriorYear);
+      return tenantTrainingPriorYear;
+    });
+    return promise;
+  }
+
+  var dbt = function(selections) {
+
+    var promise = $http.post('/outcomequery/DBT', selections).then(function (response) {
+      var dbt = response.data;
+      console.log("DBT: ", dbt);
+      return dbt;
+    });
+    return promise;
+  }
+
+  var DBTsameyear = function(selections) {
+
+    var promise = $http.post('/outcomequery/DBTsameyear', selections).then(function (response) {
+      var DBTsameyear = response.data;
+      console.log("DBTsameyear: ", DBTsameyear);
+      return DBTsameyear;
+    });
+    return promise;
+  }
+
+  var DBTprioryear = function(selections) {
+
+    var promise = $http.post('/outcomequery/DBTprioryear', selections).then(function (response) {
+      var DBTprioryear = response.data;
+      console.log("DBTprioryear: ", DBTprioryear);
+      return DBTprioryear;
+    });
+    return promise;
+  }
+
+  var healthImproved = function(selections) {
+
+    var promise = $http.post('/outcomequery/healthimproved', selections).then(function (response) {
+      var healthImproved = response.data;
+      console.log("healthImproved: ", healthImproved);
+      return healthImproved;
     });
     return promise;
   }
@@ -105,32 +265,80 @@ myApp.factory('OutcomeFactory', ['$http', '$location', function($http, $location
     retrieveData: function () {
       return getData();
     },
-    dobAdults: function (selections) {
-      return dobAdults(selections);
+    houseStabil: function (selections) {
+      return houseStabil(selections);
     },
-    totalPeople: function (selections) {
-      return totalPeople(selections);
+    adultEduAdv: function (selections) {
+      return adultEduAdv(selections);
     },
-    allGender: function (selections) {
-      return allGender(selections);
+    adultLearningDis: function (selections) {
+      return adultLearningDis(selections);
     },
-    raceAdults: function (selections) {
-      return raceAdults(selections);
+    childLearnDis: function (selections) {
+      return childLearnDis(selections);
     },
-    raceChildren: function (selections) {
-      return raceChildren(selections);
+    hhCurrentEmp: function (selections) {
+      return hhCurrentEmp(selections);
     },
-    lastResidence: function (selections) {
-      return lastResidence(selections);
+    hh2CurrentEmp: function (selections) {
+      return hh2CurrentEmp(selections);
     },
-    householdIncome: function (selections) {
-      return householdIncome(selections);
+    econStabil: function (selections) {
+      return econStabil(selections);
     },
-    famsExitHousing: function (selections) {
-      return famsExitHousing(selections);
+    adultDisabil: function (selections) {
+      return adultDisabil(selections);
     },
-    dobChildren: function (selections) {
-      return dobChildren(selections);
+    adultMI: function (selections) {
+      return adultMI(selections);
+    },
+    childDis: function (selections) {
+      return childDis(selections);
+    },
+    childMI: function (selections) {
+      return childMI(selections);
+    },
+    parentEdu: function (selections) {
+      return parentEdu(selections);
+    },
+    parentEduThisYear: function (selections) {
+      return parentEduThisYear(selections);
+    },
+    parentEduYearBefore: function (selections) {
+      return parentEduYearBefore(selections);
+    },
+    budgetingEdu: function (selections) {
+      return budgetingEdu(selections);
+    },
+    budgetingEduSameYear: function (selections) {
+      return budgetingEduSameYear(selections);
+    },
+    budgetingEduYearBefore: function (selections) {
+      return budgetingEduYearBefore(selections);
+    },
+    violence: function (selections) {
+      return violence(selections);
+    },
+    tenantTraining: function (selections) {
+      return tenantTraining(selections);
+    },
+    tenantTrainingSameYear: function (selections) {
+      return tenantTrainingSameYear(selections);
+    },
+    tenantTrainingPriorYear: function (selections) {
+      return tenantTrainingPriorYear(selections);
+    },
+    dbt: function (selections) {
+      return dbt(selections);
+    },
+    DBTsameyear: function (selections) {
+      return DBTsameyear(selections);
+    },
+    DBTprioryear: function (selections) {
+      return DBTprioryear(selections);
+    },
+    healthImproved: function (selections) {
+      return healthImproved(selections);
     }
   };  //end of return scope
 

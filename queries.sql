@@ -351,7 +351,7 @@ OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Househo
 GROUP BY "Members of Household"."Is There a Diagnosed Mental Illness", "Head of Household"."Program"
 ;
 
-Parenting Goal
+Parenting Edu Goal
 
 SELECT "Parenting Education", COUNT(*), "Program"
 FROM "Head of Household"
