@@ -1,0 +1,364 @@
+<!-- Home Safe  --------------------------------->
+        <md-table-container ng-model="toggleSelect" class="homesafe" ng-show="selectedprogram.indexOf('HomeSafe') !== -1 || selectedprogram.indexOf('Home Safe') !== -1" flex>
+          <md-toolbar flex>
+            <h1 class="md-title tablehead" >{{"Home Safe"}}</h1>
+          </md-toolbar>
+
+<!-- Home Safe: Gender ----------------------------->
+          <table md-table >
+          <thead md-head>
+            <tr md-row >
+              <th md-column>Gender</th>
+              <th md-column md-numeric>Number</th>
+              <th md-column md-numeric>Percent</th>
+            </tr>
+          </thead>
+          <tbody md-body>
+            <tr md-row>
+              <td md-cell>Female</td>
+              <td ng-model="number" md-cell>{{10}}</td>
+              <td ng-model="percent" md-cell>{{50 + "%"}}</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Male</td>
+              <td ng-model="number" md-cell>{{}}</td>
+              <td ng-model="percent" md-cell>{{}}</td>
+            </tr>
+            <tr class="totalrow" md-row>
+              <td md-cell>Total</td>
+              <td ng-model="number" md-cell></td>
+              <td ng-model="percent" md-cell>{{}}</td>
+            </tr>
+          </tbody>
+<!-- Home Safe: Adult Race -------------------------->
+          <thead md-head>
+            <tr md-row >
+              <th md-column>Race: Adults</th>
+              <th md-column md-numeric>Number</th>
+              <th md-column md-numeric>Percent</th>
+            </tr>
+          </thead>
+          <tbody md-body>
+          <tr md-row>
+            <td md-cell>African</td>
+            <td ng-model="raceAdultHomeAgain" md-cell>{{ raceAdultHomeAgain.african }}</td>
+            <td ng-model="raceAdultHomeAgain" md-cell>{{ (100 * raceAdultHomeAgain.african / raceAdultHomeAgain.totalCount ) | number:2  }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>African American</td>
+            <td ng-model="raceAdultHomeAgain" md-cell>{{ raceAdultHomeAgain.africanAmerican }}</td>
+            <td ng-model="raceAdultHomeAgain" md-cell>{{ (100 * raceAdultHomeAgain.africanAmerican / raceAdultHomeAgain.totalCount ) | number:2  }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>American Indian</td>
+            <td ng-model="raceAdultHomeAgain" md-cell>{{ raceAdultHomeAgain.americanIndian }}</td>
+            <td ng-model="raceAdultHomeAgain" md-cell>{{ (100 * raceAdultHomeAgain.americanIndian / raceAdultHomeAgain.totalCount ) | number:2  }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>Asian/SE Asian/Pacific Islander</td>
+            <td ng-model="raceAdultHomeAgain" md-cell>{{ raceAdultHomeAgain.asian }}</td>
+            <td ng-model="raceAdultHomeAgain" md-cell>{{ (100 * raceAdultHomeAgain.asian / raceAdultHomeAgain.totalCount ) | number:2  }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>Caucasian/White</td>
+            <td ng-model="raceAdultHomeAgain" md-cell>{{ raceAdultHomeAgain.caucasianWhite }}</td>
+            <td ng-model="raceAdultHomeAgain" md-cell>{{ (100 * raceAdultHomeAgain.caucasianWhite / raceAdultHomeAgain.totalCount ) | number:2  }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>Hispanic/Chicano</td>
+            <td ng-model="raceAdultHomeAgain" md-cell>{{ raceAdultHomeAgain.hispanicLatino }}</td>
+            <td ng-model="raceAdultHomeAgain" md-cell>{{ (100 * raceAdultHomeAgain.hispanicLatino / raceAdultHomeAgain.totalCount ) | number:2  }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>Multiracial</td>
+            <td ng-model="raceAdultHomeAgain" md-cell>{{ raceAdultHomeAgain.multiracial }}</td>
+            <td ng-model="raceAdultHomeAgain" md-cell>{{ (100 * raceAdultHomeAgain.multiracial / raceAdultHomeAgain.totalCount ) | number:2  }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>Other/Unknown</td>
+            <td ng-model="raceAdultHomeAgain" md-cell>{{ raceAdultHomeAgain.other }}</td>
+            <td ng-model="raceAdultHomeAgain" md-cell>{{ (100 * raceAdultHomeAgain.other / raceAdultHomeAgain.totalCount ) | number:2  }}%</td>
+          </tr>
+          <tr class="totalrow" md-row>
+            <td md-cell>Total</td>
+            <td ng-model="raceAdultHomeAgain" md-cell>{{ raceAdultHomeAgain.totalCount }}</td>
+            <td ng-model="raceAdultHomeAgain" md-cell>{{ (100 * raceAdultHomeAgain.totalCount / raceAdultHomeAgain.totalCount ) | number:2  }}%</td>
+          </tr>
+          </tbody>
+
+<!-- Home Safe: Child Race ---------------------------->
+          <thead md-head>
+            <tr md-row >
+              <th md-column>Race: Children</th>
+              <th md-column md-numeric>Number</th>
+              <th md-column md-numeric>Percent</th>
+            </tr>
+          </thead>
+          <tbody md-body>
+            <tr md-row>
+              <td md-cell>African</td>
+              <td ng-model="raceChildHomeSafe" md-cell>{{ raceChildHomeSafe.african }}</td>
+              <td ng-model="raceChildHomeSafe" md-cell>{{ (100 * raceChildHomeSafe.african / raceChildHomeSafe.totalCount ) | number:2  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>African American</td>
+              <td ng-model="raceChildHomeSafe" md-cell>{{ raceChildHomeSafe.africanAmerican }}</td>
+              <td ng-model="raceChildHomeSafe" md-cell>{{ (100 * raceChildHomeSafe.africanAmerican / raceChildHomeSafe.totalCount ) | number:2  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>American Indian</td>
+              <td ng-model="raceChildHomeSafe" md-cell>{{ raceChildHomeSafe.americanIndian }}</td>
+              <td ng-model="raceChildHomeSafe" md-cell>{{ (100 * raceChildHomeSafe.americanIndian / raceChildHomeSafe.totalCount ) | number:2  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Asian/SE Asian/Pacific Islander</td>
+              <td ng-model="raceChildHomeSafe" md-cell>{{ raceChildHomeSafe.asian }}</td>
+              <td ng-model="raceChildHomeSafe" md-cell>{{ (100 * raceChildHomeSafe.asian / raceChildHomeSafe.totalCount ) | number:2  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Caucasian/White</td>
+              <td ng-model="raceChildHomeSafe" md-cell>{{ raceChildHomeSafe.caucasianWhite }}</td>
+              <td ng-model="raceChildHomeSafe" md-cell>{{ (100 * raceChildHomeSafe.caucasianWhite / raceChildHomeSafe.totalCount ) | number:2  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Hispanic/Chicano</td>
+              <td ng-model="raceChildHomeSafe" md-cell>{{ raceChildHomeSafe.hispanicLatino }}</td>
+              <td ng-model="raceChildHomeSafe" md-cell>{{ (100 * raceChildHomeSafe.hispanicLatino / raceChildHomeSafe.totalCount ) | number:2  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Multiracial</td>
+              <td ng-model="raceChildHomeSafe" md-cell>{{ raceChildHomeSafe.multiracial }}</td>
+              <td ng-model="raceChildHomeSafe" md-cell>{{ (100 * raceChildHomeSafe.multiracial / raceChildHomeSafe.totalCount ) | number:2  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Other/Unknown</td>
+              <td ng-model="raceChildHomeSafe" md-cell>{{ raceChildHomeSafe.other }}</td>
+              <td ng-model="raceChildHomeSafe" md-cell>{{ (100 * raceChildHomeSafe.other / raceChildHomeSafe.totalCount ) | number:2  }}%</td>
+            </tr>
+            <tr class="totalrow" md-row>
+              <td md-cell>Total</td>
+              <td ng-model="raceChildHomeSafe" md-cell>{{ raceChildHomeSafe.totalCount }}</td>
+              <td ng-model="raceChildHomeSafe" md-cell>{{ (100 * raceChildHomeSafe.totalCount / raceChildHomeSafe.totalCount ) | number:2  }}%</td>
+            </tr>
+          </tbody>
+
+<!-- HomeAgain: Adult Age ---------------------------->
+          <thead md-head>
+            <tr md-row >
+              <th md-column>Age: Adults</th>
+              <th md-column md-numeric>Number</th>
+              <th md-column md-numeric>Percent</th>
+            </tr>
+          </thead>
+          <tbody md-body>
+            <tr md-row>
+              <td md-cell>18-22</td>
+              <td ng-model="dobHomeAgain" md-cell>{{ dobHomeSafe.age18to22 }}</td>
+              <td ng-model="dobHomeSafe" md-cell>{{ (100 * dobHomeSafe.age18to22 / dobHomeSafe.total ) | number:2  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>23–30</td>
+              <td ng-model="dobHomeSafe" md-cell>{{ dobHomeSafe.age23to30 }}</td>
+              <td ng-model="dobHomeSafe" md-cell>{{ (100 * dobHomeSafe.age23to30 / dobHomeSafe.total ) | number:2  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>31–40</td>
+              <td ng-model="dobHomeSafe" md-cell>{{ dobHomeSafe.age31to40 }}</td>
+              <td ng-model="dobHomeSafe" md-cell>{{ (100 * dobHomeSafe.age31to40 / dobHomeSafe.total ) | number:2  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>41–54</td>
+              <td ng-model="dobHomeSafe" md-cell>{{ dobHomeSafe.age41to54 }}</td>
+              <td ng-model="dobHomeSafe" md-cell>{{ (100 * dobHomeSafe.age41to54 / dobHomeSafe.total ) | number:2  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>55–64</td>
+              <td ng-model="dobHomeSafe" md-cell>{{ dobHomeSafe.age55to64 }}</td>
+              <td ng-model="dobHomeSafe" md-cell>{{ (100 * dobHomeSafe.age55to64 / dobHomeSafe.total ) | number:2  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>65+</td>
+              <td ng-model="dobHomeSafe" md-cell>{{ dobHomeSafe.age65tobeyond }}</td>
+              <td ng-model="dobHomeSafe" md-cell> {{ (100 * dobHomeSafe.age65tobeyond / dobHomeSafe.total ) | number:2  }}%</td>
+            </tr>
+            <tr class="totalrow" md-row>
+              <td md-cell>Total</td>
+              <td ng-model="number" md-cell> {{ dobHomeSafe.total }}</td>
+              <td ng-model="percent" md-cell>{{ (100 * dobHomeSafe.total / dobHomeSafe.total ) | number:2  }}%</td>
+            </tr>
+
+          </tbody>
+
+<!-- Home Safe: Child Age ---------------------------->
+          <thead md-head>
+            <tr md-row >
+              <th md-column>Age: Children</th>
+              <th md-column md-numeric>Number</th>
+              <th md-column md-numeric>Percent</th>
+            </tr>
+          </thead>
+          <tbody md-body>
+            <tr md-row>
+              <td md-cell>0–18 mths</td>
+              <td ng-model="dobHomeSafe" md-cell>{{  }}</td>
+              <td ng-model="total" md-cell>90</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>19-35 mths</td>
+              <td ng-model="dobHomeSafe" md-cell>{{  }}</td>
+              <td ng-model="total" md-cell>90</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>36-59 mths</td>
+              <td ng-model="dobHomeSafe" md-cell>{{  }}</td>
+              <td ng-model="total" md-cell>90</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>60-71 mths (5 y.o.)</td>
+              <td ng-model="dobHomeSafe" md-cell>{{  }}</td>
+              <td ng-model="total" md-cell>90</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>6–9 yrs</td>
+              <td ng-model="dobHomeSafe" md-cell>{{  }}</td>
+              <td ng-model="total" md-cell>90</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>10–14 yrs</td>
+              <td ng-model="dobHomeSafe" md-cell>{{  }}</td>
+              <td ng-model="total" md-cell>90</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>15–17 yrs</td>
+              <td ng-model="dobHomeSafe" md-cell>{{  }}</td>
+              <td ng-model="total" md-cell>90</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>18+ child in home</td>
+              <td ng-model="dobHomeSafe" md-cell>{{  }}</td>
+              <td ng-model="total" md-cell>90</td>
+            </tr>
+            <tr class="totalrow" md-row>
+              <td md-cell>Total</td>
+              <td ng-model="number" md-cell></td>
+              <td ng-model="percent" md-cell>{{}}</td>
+            </tr>
+          </tbody>
+
+<!-- Home Safe: Last Residence ---------------------------->
+          <thead md-head>
+            <tr md-row >
+              <th md-column>Last Residence</th>
+              <th md-column md-numeric>Number</th>
+              <th md-column md-numeric>Percent</th>
+            </tr>
+          </thead>
+          <tbody md-body>
+            <tr md-row>
+              <td md-cell>Ramsey</td>
+              <td ng-model="dobHomeSafe" md-cell>{{  }}</td>
+              <td ng-model="total" md-cell>90</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Suburban Ramsey Co.</td>
+              <td ng-model="dobHomeSafe" md-cell>{{  }}</td>
+              <td ng-model="total" md-cell>90</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Washington Co.</td>
+              <td ng-model="dobHomeSafe" md-cell>{{  }}</td>
+              <td ng-model="dobHomeSafe" md-cell>90</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Hennepin</td>
+              <td ng-model="dobHomeSafe" md-cell>{{  }}</td>
+              <td ng-model="dobHomeSafe" md-cell>90</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Suburban Hennepin Co.</td>
+              <td ng-model="dobHomeSafe" md-cell>{{  }}</td>
+              <td ng-model="dobHomeSafe" md-cell>90</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Other Metro County</td>
+              <td ng-model="dobHomeSafe" md-cell>{{  }}</td>
+              <td ng-model="dobHomeSafe" md-cell>90</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Outside Twin Cities Metro</td>
+              <td ng-model="dobHomeSafe" md-cell>{{  }}</td>
+              <td ng-model="dobHomeSafe" md-cell>90</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Outside of State</td>
+              <td ng-model="dobHomeSafe" md-cell>{{  }}</td>
+              <td ng-model="dobHomeSafe" md-cell>90</td>
+            </tr>
+            <tr class="totalrow" md-row>
+              <td md-cell>Total</td>
+              <td ng-model="dobHomeSafe" md-cell></td>
+              <td ng-model="dobHomeSafe" md-cell>{{}}</td>
+            </tr>
+          </tbody>
+
+<!-- HomeSafe: Household Income ---------------------------->
+          <thead md-head>
+            <tr md-row >
+              <th md-column>Household Income</th>
+              <th md-column md-numeric>Number</th>
+              <th md-column md-numeric>Percent</th>
+            </tr>
+          </thead>
+          <tbody md-body>
+            <tr md-row>
+              <td ng-model="number" md-cell></td>
+              <td ng-model="percent" md-cell>{{  }}</td>
+              <td ng-model="total" md-cell>90</td>
+            </tr>
+            <tr class="totalrow" md-row>
+              <td md-cell>Total</td>
+              <td ng-model="number" md-cell></td>
+              <td ng-model="percent" md-cell>{{}}</td>
+            </tr>
+          </tbody>
+
+<!-- Home Safe: Persons Exiting Housing ---------------------------->
+          <thead md-head>
+            <tr md-row >
+              <th md-column>Persons Exiting Housing</th>
+              <th md-column md-numeric>Number</th>
+              <th md-column md-numeric>Percent</th>
+            </tr>
+          </thead>
+          <tbody md-body>
+            <tr md-row>
+              <td ng-model="number" md-cell>Graduated</td>
+              <td ng-model="percent" md-cell>{{  }}</td>
+              <td ng-model="total" md-cell>90</td>
+            </tr>
+            <tr md-row>
+              <td ng-model="number" md-cell>Left voluntarily (not grad)</td>
+              <td ng-model="percent" md-cell>{{  }}</td>
+              <td ng-model="total" md-cell>90</td>
+            </tr>
+            <tr md-row>
+              <td ng-model="number" md-cell>Terminated/Mutual termination</td>
+              <td ng-model="percent" md-cell>{{  }}</td>
+              <td ng-model="total" md-cell>90</td>
+            </tr>
+            <tr md-row>
+              <td ng-model="number" md-cell>Other (i.e. death)</td>
+              <td ng-model="percent" md-cell>{{  }}</td>
+              <td ng-model="total" md-cell>90</td>
+            </tr>
+            <tr class="totalrow" md-row>
+              <td md-cell>Total</td>
+              <td ng-model="number" md-cell></td>
+              <td ng-model="percent" md-cell>{{}}</td>
+            </tr>
+          </tbody>
+
+        </table>
+      </md-table-container>
+
+      <md-divider ng-if="!$last"></md-divider>

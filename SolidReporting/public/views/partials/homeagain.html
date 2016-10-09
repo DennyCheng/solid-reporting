@@ -1,7 +1,7 @@
-<!-- Home Again (EAST MANOR PLACE II) --------------------------------->
-        <md-table-container flex>
+<!-- Home Again  --------------------------------->
+        <md-table-container ng-model="toggleSelect" class="homeagain" ng-show="selectedprogram.indexOf('Home Again') !== -1" flex>
           <md-toolbar flex>
-            <h1 class="md-title tablehead" >{{"Home Again I"}}</h1>
+            <h1 class="md-title tablehead" >{{"Home Again"}}</h1>
           </md-toolbar>
 
 <!-- Home Again: Gender ----------------------------->
@@ -204,7 +204,7 @@
               <td ng-model="total" md-cell>90</td>
             </tr>
             <tr md-row>
-              <td md-cell>19-35mths</td>
+              <td md-cell>19-35 mths</td>
               <td ng-model="dobHomeAgain" md-cell>{{  }}</td>
               <td ng-model="total" md-cell>90</td>
             </tr>

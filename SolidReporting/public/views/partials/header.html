@@ -8,20 +8,14 @@
   <h1 ng-show="isActive('/outcomes')" class="pagetitle" flex-offset="33" flex="33">
       Outcomes
   </h1>
-  <md-nav-bar layout="row" layout-align="end center" flex="33" md-selected-nav-item="currentNavItem" ng-hide="isActive('/login')">
-
+  <md-nav-bar layout="row" layout-align="end center" flex md-selected-nav-item="currentNavItem" ng-hide="isActive('/login')">
     <md-nav-item class="togglesearch" ng-show="isActive('/demographics')" md-nav-click="toggleSide()">Search
     </md-nav-item>
-
     <md-nav-item class="togglesearch" ng-show="isActive('/outcomes')" md-nav-click="toggleSide()">Search
     </md-nav-item>
-
       <md-nav-item md-nav-href="#upload" ng-hide="isActive('/upload')">Upload</md-nav-item>
-
       <md-nav-item md-nav-href="#demographics" ng-hide="isActive('/demographics')">Demographics</md-nav-item>
-
       <md-nav-item md-nav-href="#outcomes" ng-hide="isActive('/outcomes')">Outcomes</md-nav-item>
-
       <md-nav-item md-nav-click="tologout()">LogOut</md-nav-item>
 
 </md-nav-bar>
