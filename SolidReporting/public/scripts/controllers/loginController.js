@@ -1,6 +1,6 @@
 myApp.controller('LoginController', ['$scope', '$http', 'DataFactory', '$location', 'toaster', function($scope, $http, DataFactory, $location, toaster) {
 console.log('logincontroller');
-    $scope.isDisabled = false
+    $scope.isDisabled = false;
 
     $scope.dataFactory = DataFactory;
     $scope.user = {
@@ -40,7 +40,7 @@ console.log('logincontroller');
                     toaster.pop('wait', "Please wait for your email");
                     $scope.message = "An e-mail has been sent to " + username + " with further instructions.";
                 } else {
-                    toaster.error("No account with that email address exists.");
+                    toaster.error(" No account with that email address exists.");
                 }
             });
         // } else {
