@@ -33,6 +33,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     var lastResidenceSelection;
 
 
+
     //----GET Massive Data ----------------------------------------------
     showData();
     function showData() {
@@ -2600,7 +2601,6 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
         $scope.enddate = new Date();
         //need to reset $scoped out sorting variables too?
     }
-
 
 // end controller
 }]);
