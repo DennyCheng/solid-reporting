@@ -16,7 +16,7 @@ console.log('logincontroller');
                 if(response) {
                     // location works with SPA (ng-route)
                     console.log('redirecting to user page');
-                    $location.path('/demographics');
+                    $location.path('/landing');
                 } else {
                     toaster.error("please try again!");
                 }

@@ -19,6 +19,10 @@ myApp.config(['$routeProvider', function($routeProvider){
       templateUrl: '/public/views/forgot.html',
       controller: "LoginController"
     })
+      .when('/landing', {
+        templateUrl: '/public/views/partials/landing.html',
+        controller: "landingController"
+      })  
     .when('/home', {
       templateUrl:'/public/views/partials/demographics.html',
       controller:'DemoController'
