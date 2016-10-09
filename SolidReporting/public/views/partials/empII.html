@@ -16,18 +16,18 @@
         <tbody md-body>
           <tr md-row>
             <td md-cell>Female</td>
-            <td ng-model="number" md-cell>{{10}}</td>
-            <td ng-model="percent" md-cell>{{50 + "%"}}</td>
+            <td ng-model="emp2Gender" md-cell>{{ emp2Gender.female }}</td>
+            <td ng-model="emp2Gender" md-cell>{{ (100 * emp2Gender.female / emp2Gender.total ) | number:2 }}%</td>
           </tr>
           <tr md-row>
             <td md-cell>Male</td>
-            <td ng-model="number" md-cell>{{}}</td>
-            <td ng-model="percent" md-cell>{{}}</td>
+            <td ng-model="emp2Gender" md-cell>{{ emp2Gender.male }}</td>
+            <td ng-model="emp2Gender" md-cell>{{ (100 * emp2Gender.male / emp2Gender.total ) | number:2 }}%</td>
           </tr>
           <tr class="totalrow" md-row>
             <td md-cell>Total</td>
-            <td ng-model="number" md-cell></td>
-            <td ng-model="percent" md-cell>{{}}</td>
+            <td ng-model="emp2Gender" md-cell>{{ emp2Gender.total }}</td>
+            <td ng-model="emp2Gender" md-cell>{{ (100 * emp2Gender.total / emp2Gender.total ) | number:2 }}%</td>
           </tr>
         </tbody>
 <!-- EMP II: Adult Race -------------------------->
@@ -39,51 +39,51 @@
           </tr>
         </thead>
         <tbody md-body>
-        <tr md-row>
-          <td md-cell>African</td>
-          <td ng-model="raceAdultEMPII" md-cell>{{ raceAdultEMPII.african }}</td>
-          <td ng-model="total" md-cell>90</td>
-        </tr>
-        <tr md-row>
-          <td md-cell>African American</td>
-          <td ng-model="raceAdultEMPII" md-cell>{{ raceAdultEMPII.africanAmerican }}</td>
-          <td ng-model="total" md-cell>90</td>
-        </tr>
-        <tr md-row>
-          <td md-cell>American Indian</td>
-          <td ng-model="raceAdultEMPII" md-cell>{{ raceAdultEMPII.americanIndian }}</td>
-          <td ng-model="total" md-cell>90</td>
-        </tr>
-        <tr md-row>
-          <td md-cell>Asian/SE Asian/Pacific Islander</td>
-          <td ng-model="raceAdultEMPII" md-cell>{{ raceAdultEMPII.asian }}</td>
-          <td ng-model="total" md-cell>90</td>
-        </tr>
-        <tr md-row>
-          <td md-cell>Caucasian/White</td>
-          <td ng-model="raceAdultEMPII" md-cell>{{ raceAdultEMPII.caucasianWhite }}</td>
-          <td ng-model="total" md-cell>90</td>
-        </tr>
-        <tr md-row>
-          <td md-cell>Hispanic/Chicano</td>
-          <td ng-model="raceAdultEMPII" md-cell>{{ raceAdultEMPII.hispanicLatino }}</td>
-          <td ng-model="total" md-cell>90</td>
-        </tr>
-        <tr md-row>
-          <td md-cell>Multiracial</td>
-          <td ng-model="raceAdultEMPII" md-cell>{{ raceAdultEMPII.multiracial }}</td>
-          <td ng-model="total" md-cell>90</td>
-        </tr>
-        <tr md-row>
-          <td md-cell>Other/Unknown</td>
-          <td ng-model="raceAdultEMPII" md-cell>{{ raceAdultEMPII.other }}</td>
-          <td ng-model="total" md-cell>90</td>
-        </tr>
-        <tr class="totalrow" md-row>
-          <td md-cell>Total</td>
-          <td ng-model="number" md-cell></td>
-          <td ng-model="percent" md-cell>{{  }}</td>
-        </tr>
+          <tr md-row>
+            <td md-cell>African</td>
+            <td ng-model="emp2Race" md-cell>{{ emp2Race.african }}</td>
+            <td ng-model="emp2Race" md-cell>{{ (100 * emp2Race.african / emp2Race.total ) | number:2 }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>African American</td>
+            <td ng-model="emp2Race" md-cell>{{ emp2Race.africanAmerican }}</td>
+            <td ng-model="emp2Race" md-cell>{{ (100 * emp2Race.africanAmerican / emp2Race.total ) | number:2 }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>American Indian</td>
+            <td ng-model="emp2Race" md-cell>{{ emp2Race.americanIndian }}</td>
+            <td ng-model="emp2Race" md-cell>{{ (100 * emp2Race.americanIndian / emp2Race.total ) | number:2 }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>Asian/SE Asian/Pacific Islander</td>
+            <td ng-model="emp2Race" md-cell>{{ emp2Race.asian }}</td>
+            <td ng-model="emp2Race" md-cell>{{ (100 * emp2Race.asian / emp2Race.total ) | number:2 }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>Caucasian/White</td>
+            <td ng-model="emp2Race" md-cell>{{ emp2Race.caucasianWhite }}</td>
+            <td ng-model="emp2Race" md-cell>{{ (100 * emp2Race.caucasianWhite / emp2Race.total ) | number:2 }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>Hispanic/Chicano</td>
+            <td ng-model="emp2Race" md-cell>{{ emp2Race.hispanicLatino }}</td>
+            <td ng-model="emp2Race" md-cell>{{ (100 * emp2Race.hispanicLatino / emp2Race.total ) | number:2 }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>Multiracial</td>
+            <td ng-model="emp2Race" md-cell>{{ emp2Race.multiracial }}</td>
+            <td ng-model="emp2Race" md-cell>{{ (100 * emp2Race.multiracial / emp2Race.total ) | number:2 }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>Other/Unknown</td>
+            <td ng-model="emp2Race" md-cell>{{ emp2Race.other }}</td>
+            <td ng-model="emp2Race" md-cell>{{ (100 * emp2Race.other / emp2Race.total ) | number:2 }}%</td>
+          </tr>
+          <tr class="totalrow" md-row>
+            <td md-cell>Total</td>
+            <td ng-model="emp2Race" md-cell>{{ emp2Race.total }}</td>
+            <td ng-model="emp2Race" md-cell>{{ (100 * emp2Race.total / emp2Race.total ) | number:2 }}%</td>
+          </tr>
         </tbody>
 
 <!-- EMP II: Child Race ---------------------------->
@@ -256,69 +256,176 @@
         <tbody md-body>
           <tr md-row>
             <td md-cell>Ramsey</td>
-            <td ng-model="dobEMPII" md-cell>{{  }}</td>
-            <td ng-model="total" md-cell>90</td>
+            <td ng-model="residenceEMPII" md-cell>{{ residenceEMPII.ramsey }}</td>
+            <td ng-model="residenceEMPII" md-cell>{{ (100 * residenceEMPII.ramsey / residenceEMPII.total ) | number:2  }}%</td>
           </tr>
           <tr md-row>
             <td md-cell>Suburban Ramsey Co.</td>
-            <td ng-model="dobEMPII" md-cell>{{  }}</td>
-            <td ng-model="total" md-cell>90</td>
+            <td ng-model="residenceEMPII" md-cell>{{ residenceEMPII.subRamsey }}</td>
+            <td ng-model="residenceEMPII" md-cell>{{ (100 * residenceEMPII.subRamsey / residenceEMPII.total ) | number:2  }}%</td>
           </tr>
           <tr md-row>
             <td md-cell>Washington Co.</td>
-            <td ng-model="dobEMPII" md-cell>{{  }}</td>
-            <td ng-model="dobEMPII" md-cell>90</td>
+            <td ng-model="residenceEMPII" md-cell>{{ residenceEMPII.washington }}</td>
+            <td ng-model="residenceEMPII" md-cell>{{ (100 * residenceEMPII.washington / residenceEMPII.total ) | number:2  }}%</td>
           </tr>
           <tr md-row>
             <td md-cell>Hennepin</td>
-            <td ng-model="dobEMPII" md-cell>{{  }}</td>
-            <td ng-model="dobEMPII" md-cell>90</td>
+            <td ng-model="residenceEMPII" md-cell>{{ residenceEMPII.hennepin }}</td>
+            <td ng-model="residenceEMPII" md-cell>{{ (100 * residenceEMPII.hennepin / residenceEMPII.total ) | number:2  }}%</td>
           </tr>
           <tr md-row>
             <td md-cell>Suburban Hennepin Co.</td>
-            <td ng-model="dobEMPII" md-cell>{{  }}</td>
-            <td ng-model="dobEMPII" md-cell>90</td>
+            <td ng-model="residenceEMPII" md-cell>{{ residenceEMPII.subHennepin }}</td>
+            <td ng-model="residenceEMPII" md-cell>{{ (100 * residenceEMPII.subHennepin / residenceEMPII.total ) | number:2  }}%</td>
           </tr>
           <tr md-row>
             <td md-cell>Other Metro County</td>
-            <td ng-model="dobEMPII" md-cell>{{  }}</td>
-            <td ng-model="dobEMPII" md-cell>90</td>
+            <td ng-model="residenceEMPII" md-cell>{{ residenceEMPII.otherMetroC }}</td>
+            <td ng-model="residenceEMPII" md-cell>{{ (100 * residenceEMPII.otherMetroC / residenceEMPII.total ) | number:2  }}%</td>
           </tr>
           <tr md-row>
             <td md-cell>Outside Twin Cities Metro</td>
-            <td ng-model="dobEMPII" md-cell>{{  }}</td>
-            <td ng-model="dobEMPII" md-cell>90</td>
+            <td ng-model="residenceEMPII" md-cell>{{ residenceEMPII.outsideTCMetro }}</td>
+            <td ng-model="residenceEMPII" md-cell>{{ (100 * residenceEMPII.outsideTCMetro / residenceEMPII.total ) | number:2  }}%</td>
           </tr>
           <tr md-row>
             <td md-cell>Outside of State</td>
-            <td ng-model="dobEMPII" md-cell>{{  }}</td>
-            <td ng-model="dobEMPII" md-cell>90</td>
+            <td ng-model="residenceEMPII" md-cell>{{ residenceEMPII.outsideState }}</td>
+            <td ng-model="residenceEMPII" md-cell>{{ (100 * residenceEMPII.outsideState / residenceEMPII.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>Other</td>
+            <td ng-model="residenceEMPII" md-cell>{{ residenceEMPII.other }}</td>
+            <td ng-model="residenceEMPII" md-cell>{{ (100 * residenceEMPII.other / residenceEMPII.total ) | number:2  }}%</td>
           </tr>
           <tr class="totalrow" md-row>
             <td md-cell>Total</td>
-            <td ng-model="dobEMPII" md-cell></td>
-            <td ng-model="dobEMPII" md-cell>{{}}</td>
+            <td ng-model="residenceEMPII" md-cell>{{ residenceEMPII.total }}</td>
+            <td ng-model="residenceEMPII" md-cell>{{ (100 * residenceEMPII.total / residenceEMPII.total ) | number:2  }}%</td>
           </tr>
         </tbody>
 
-<!-- EMPII: Household Income ---------------------------->
+<!-- EMP II: Earned Income ---------------------------->
         <thead md-head>
           <tr md-row >
-            <th md-column>Household Income</th>
+            <th md-column>Earned Income</th>
             <th md-column md-numeric>Number</th>
             <th md-column md-numeric>Percent</th>
           </tr>
         </thead>
         <tbody md-body>
           <tr md-row>
-            <td ng-model="number" md-cell></td>
-            <td ng-model="percent" md-cell>{{  }}</td>
-            <td ng-model="total" md-cell>90</td>
+            <td md-cell>$0 – $499</td>
+            <td ng-model="earnedIncomeEMPII" md-cell>{{ earnedIncomeEMPII.n0_499 }}</td>
+            <td ng-model="earnedIncomeEMPII" md-cell>{{ (100 * earnedIncomeEMPII.n0_499 / earnedIncomeEMPII.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>$500 – $999</td>
+            <td ng-model="earnedIncomeEMPII" md-cell>{{ earnedIncomeEMPII.n500_999 }}</td>
+            <td ng-model="earnedIncomeEMPII" md-cell>{{ (100 * earnedIncomeEMPII.n500_999 / earnedIncomeEMPII.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>$1000 – $1999</td>
+            <td ng-model="earnedIncomeEMPII" md-cell>{{ earnedIncomeEMPII.n1000_1999 }}</td>
+            <td ng-model="earnedIncomeEMPII" md-cell>{{ (100 * earnedIncomeEMPII.n1000_1999 / earnedIncomeEMPII.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>$2000 – $2999</td>
+            <td ng-model="earnedIncomeEMPII" md-cell>{{ earnedIncomeEMPII.n2000_2999 }}</td>
+            <td ng-model="earnedIncomeEMPII" md-cell>{{ (100 * earnedIncomeEMPII.n2000_2999 / earnedIncomeEMPII.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>$3000+</td>
+            <td ng-model="earnedIncomeEMPII" md-cell>{{ earnedIncomeEMPII.n3000_plus }}</td>
+            <td ng-model="earnedIncomeEMPII" md-cell>{{ (100 * earnedIncomeEMPII.n3000_plus / earnedIncomeEMPII.total ) | number:2  }}%</td>
           </tr>
           <tr class="totalrow" md-row>
             <td md-cell>Total</td>
-            <td ng-model="number" md-cell></td>
-            <td ng-model="percent" md-cell>{{}}</td>
+            <td ng-model="earnedIncomeEMPII" md-cell>{{ earnedIncomeEMPII.total }}</td>
+            <td ng-model="earnedIncomeEMPII" md-cell>{{ (100 * earnedIncomeEMPII.total / earnedIncomeEMPII.total ) | number:2  }}%</td>
+          </tr>
+        </tbody>
+
+<!-- EMP II: Unearned Income ---------------------------->
+        <thead md-head>
+          <tr md-row >
+            <th md-column>Unearned Income</th>
+            <th md-column md-numeric>Number</th>
+            <th md-column md-numeric>Percent</th>
+          </tr>
+        </thead>
+        <tbody md-body>
+          <tr md-row>
+            <td md-cell>$0 – $499</td>
+            <td ng-model="unearnedIncomeEMPII" md-cell>{{ unearnedIncomeEMPII.n0_499 }}</td>
+            <td ng-model="unearnedIncomeEMPII" md-cell>{{ (100 * unearnedIncomeEMPII.n0_499 / unearnedIncomeEMPII.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>$500 – $999</td>
+            <td ng-model="unearnedIncomeEMPII" md-cell>{{ earnedIncomeEMPII.n500_999 }}</td>
+            <td ng-model="unearnedIncomeEMPII" md-cell>{{ (100 * unearnedIncomeEMPII.n500_999 / unearnedIncomeEMPII.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>$1000 – $1999</td>
+            <td ng-model="unearnedIncomeEMPII" md-cell>{{ unearnedIncomeEMPII.n1000_1999 }}</td>
+            <td ng-model="unearnedIncomeEMPII" md-cell>{{ (100 * unearnedIncomeEMPII.n1000_1999 / unearnedIncomeEMPII.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>$2000 – $2999</td>
+            <td ng-model="unearnedIncomeEMPII" md-cell>{{ unearnedIncomeEMPII.n2000_2999 }}</td>
+            <td ng-model="unearnedIncomeEMPII" md-cell>{{ (100 * unearnedIncomeEMPII.n2000_2999 / unearnedIncomeEMPII.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>$3000+</td>
+            <td ng-model="unearnedIncomeEMPII" md-cell>{{ unearnedIncomeEMPII.n3000_plus }}</td>
+            <td ng-model="unearnedIncomeEMPII" md-cell>{{ (100 * unearnedIncomeEMPII.n3000_plus / unearnedIncomeEMPII.total ) | number:2  }}%</td>
+          </tr>
+          <tr class="totalrow" md-row>
+            <td md-cell>Total</td>
+            <td ng-model="unearnedIncomeEMPII" md-cell>{{ unearnedIncomeEMPII.total }}</td>
+            <td ng-model="unearnedIncomeEMPII" md-cell>{{ (100 * unearnedIncomeEMPII.total / unearnedIncomeEMPII.total ) | number:2  }}%</td>
+          </tr>
+        </tbody>
+
+<!-- EMP II: Total Income ---------------------------->
+        <thead md-head>
+          <tr md-row >
+            <th md-column>Total Income</th>
+            <th md-column md-numeric>Number</th>
+            <th md-column md-numeric>Percent</th>
+          </tr>
+        </thead>
+        <tbody md-body>
+          <tr md-row>
+            <td md-cell>$0 – $499</td>
+            <td ng-model="totalIncomeEMPII" md-cell>{{ totalIncomeEMPII.n0_499 }}</td>
+            <td ng-model="totalIncomeEMPII" md-cell>{{ (100 * totalIncomeEMPII.n0_499 / totalIncomeEMPII.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>$500 – $999</td>
+            <td ng-model="totalIncomeEMPII" md-cell>{{ totalIncomeEMPII.n500_999 }}</td>
+            <td ng-model="totalIncomeEMPII" md-cell>{{ (100 * totalIncomeEMPII.n500_999 / totalIncomeEMPII.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>$1000 – $1999</td>
+            <td ng-model="totalIncomeEMPII" md-cell>{{ totalIncomeEMPII.n1000_1999 }}</td>
+            <td ng-model="totalIncomeEMPII" md-cell>{{ (100 * totalIncomeEMPII.n1000_1999 / totalIncomeEMPII.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>$2000 – $2999</td>
+            <td ng-model="totalIncomeEMPII" md-cell>{{ totalIncomeEMPII.n2000_2999 }}</td>
+            <td ng-model="totalIncomeEMPII" md-cell>{{ (100 * totalIncomeEMPII.n2000_2999 / totalIncomeEMPII.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>$3000+</td>
+            <td ng-model="totalIncomeEMPII" md-cell>{{ totalIncomeEMPII.n3000_plus }}</td>
+            <td ng-model="totalIncomeEMPII" md-cell>{{ (100 * totalIncomeEMPII.n3000_plus / totalIncomeEMPII.total ) | number:2  }}%</td>
+          </tr>
+          <tr class="totalrow" md-row>
+            <td md-cell>Total</td>
+            <td ng-model="totalIncomeEMPII" md-cell>{{ totalIncomeEMPII.total }}</td>
+            <td ng-model="totalIncomeEMPII" md-cell>{{ (100 * totalIncomeEMPII.total / totalIncomeEMPII.total ) | number:2  }}%</td>
           </tr>
         </tbody>
 
@@ -332,29 +439,29 @@
         </thead>
         <tbody md-body>
           <tr md-row>
-            <td ng-model="number" md-cell>Graduated</td>
-            <td ng-model="percent" md-cell>{{  }}</td>
-            <td ng-model="total" md-cell>90</td>
+            <td md-cell>Graduated</td>
+            <td ng-model="exitEMPII" md-cell>{{ exitEMPII.graduated }}</td>
+            <td ng-model="exitEMPII" md-cell>{{ (100 * exitEMPII.graduated / exitEMPII.total ) | number:2  }}%</td>
           </tr>
           <tr md-row>
-            <td ng-model="number" md-cell>Left voluntarily (not grad)</td>
-            <td ng-model="percent" md-cell>{{  }}</td>
-            <td ng-model="total" md-cell>90</td>
+            <td md-cell>Left voluntarily (not grad)</td>
+            <td ng-model="exitEMPII" md-cell>{{ exitEMPII.leftVoluntarily }}</td>
+            <td ng-model="exitEMPII" md-cell>{{ (100 * exitEMPII.leftVoluntarily / exitEMPII.total ) | number:2  }}%</td>
           </tr>
           <tr md-row>
-            <td ng-model="number" md-cell>Terminated/Mutual termination</td>
-            <td ng-model="percent" md-cell>{{  }}</td>
-            <td ng-model="total" md-cell>90</td>
+            <td md-cell>Terminated/Mutual termination</td>
+            <td ng-model="exitEMPII" md-cell>{{ exitEMPII.terminated }}</td>
+            <td ng-model="exitEMPII" md-cell>{{ (100 * exitEMPII.terminated / exitEMPII.total ) | number:2  }}%</td>
           </tr>
           <tr md-row>
-            <td ng-model="number" md-cell>Other (i.e. death)</td>
-            <td ng-model="percent" md-cell>{{  }}</td>
-            <td ng-model="total" md-cell>90</td>
+            <td md-cell>Other (i.e. death)</td>
+            <td ng-model="exitEMPII" md-cell>{{ exitEMPII.other }}</td>
+            <td ng-model="exitEMPII" md-cell>{{ (100 * exitEMPII.other / exitEMPII.total ) | number:2  }}%</td>
           </tr>
           <tr class="totalrow" md-row>
             <td md-cell>Total</td>
-            <td ng-model="number" md-cell></td>
-            <td ng-model="percent" md-cell>{{}}</td>
+            <td ng-model="exitEMPII" md-cell>{{ exitEMPII.total }}</td>
+            <td ng-model="exitEMPII" md-cell>{{ (100 * exitEMPII.total / exitEMPII.total ) | number:2  }}%</td>
           </tr>
         </tbody>
 

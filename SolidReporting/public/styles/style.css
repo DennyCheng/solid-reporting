@@ -31,7 +31,8 @@ md-toolbar:not(.md-menu-toolbar) {
 
 .pagetitle {
   font-size: 36px;
-  color: #779b1f;
+  color: rgb(122,157,62);
+  /*color: #779b1f;*/
   text-align: center;
 }
 
@@ -191,10 +192,42 @@ h1.tablehead {
   padding: 14px;
 }
 
+md-table-container.EMPI > md-toolbar {
+  background-color: rgb(105,72,54);
+}
+md-table-container.EMPII > md-toolbar {
+  background-color: rgb(122,157,62);
+}
+md-table-container.homeagain > md-toolbar {
+  background-color: rgb(12,106,169);
+}
+md-table-container.homesafe > md-toolbar {
+  background-color: rgb(12,106,169);
+}
+md-table-container.homefront > md-toolbar {
+  background-color: rgb(12,106,169);
+}
+
 table.md-table th.md-column {
   font-size: 14px;
   white-space: normal;
-  background-color: rgba(132,179,210,.5);
+  /*background-color: rgba(132,179,210,.5);*/
+}
+
+md-table-container.EMPI > table.md-table th.md-column {
+  color: white;
+  background-color: rgba(105,72,54,0.5);
+}
+md-table-container.EMPII > table.md-table th.md-column {
+  color: white;
+  background-color: rgba(122,157,62,0.5);
+}
+md-table-container.homeagain > table.md-table th.md-column {
+  color: white;
+  background-color: rgba(12,106,169,0.5);
+}
+
+md-table-container.EMPI > th.md-column {
 }
 
 table.md-table td.md-cell.md-numeric {
@@ -202,14 +235,16 @@ table.md-table td.md-cell.md-numeric {
 }
 
 table.md-table tbody.md-body > tr.totalrow.md-row {
-  /*background-color: lightgreen;*/
-  /*border-bottom: 1px rgba(0,0,0,.12) solid*/
+  /*background-color: lightgreen;*/*/
+  /*border-bottom: 1px rgba(0,0,0,.12) solid
 }
 
 table.md-table td.md-cell {
   /*padding: 3em;*/
 }
 
+
+/*--------Number column background---------*/
 table.md-table td:nth-child(2) {
   background-color: linen;
   border-right: 1px rgba(0,0,0,.12) solid;
@@ -217,10 +252,12 @@ table.md-table td:nth-child(2) {
 
 }
 
+/*--------Percentage column background---------*/
 table.md-table td:nth-child(3) {
   background-color: papayawhip;
 }
 
+/*--------Total row ---------*/
 table.md-table tr:last-child {
   font-weight: bold;
   font-size: 14px;
