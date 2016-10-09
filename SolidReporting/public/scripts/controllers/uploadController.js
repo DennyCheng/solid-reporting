@@ -21,7 +21,7 @@ myApp.controller('uploadController', ['$scope', 'DataFactory', '$http', '$locati
         if (val && val.length ) {
             $scope.demo.showTooltip = true;
         }
-    });
+    })
 
     $scope.onSubmit = function(){
         var file = $scope.file[0];
@@ -42,10 +42,10 @@ myApp.controller('uploadController', ['$scope', 'DataFactory', '$http', '$locati
                     // do something
                         console.log(result);
                     if(result.status === 200) {
-                        // $scope.isDisabled = true;
+                        $scope.isDisabled = true;
                         toaster.success('You have successfully upload!');
                         setTimeout(function(){
-                            // $location.path("/demographics");
+                            $location.path("/demographics");
                         }, 500);
                     } else {
                         toaster.error('upload has fail');
