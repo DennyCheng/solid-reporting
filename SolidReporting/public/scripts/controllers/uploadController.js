@@ -1,7 +1,7 @@
 myApp.controller('uploadController', ['$scope', 'DataFactory', '$http', '$location', 'toaster', function($scope, DataFactory, $http, $location , toaster){
 
   $scope.dataFactory = DataFactory;
-
+    $scope.isDisabled = false;
 
   $scope.dataFactory.currentSess();
 
@@ -16,16 +16,25 @@ myApp.controller('uploadController', ['$scope', 'DataFactory', '$http', '$locati
                 var formData = new FormData();
                 angular.forEach($scope.file, function (obj) {
                     formData.append('file', obj.lfFile);
+                    console.log('obj file ---', obj.lfFile);
                 });
 
                 $http.post('./fileUpload', formData, {
                     transformRequest: angular.identity,
                     headers: {'Content-Type': undefined}
                 }).then(function (result) {
-                    // do someting
-                    $location.path("/demographics");
-                }, function (err) {
-                    // do someting
+                    // do something
+                        console.log(result);
+                    if(result.status === 200) {
+                        // $scope.isDisabled = true;
+                        toaster.success('You have successfully upload!');
+                        setTimeout(function(){
+                            // $location.path("/demographics");
+                        }, 500);
+                    } else {
+                        toaster.error('upload has fail');
+                    }
+
                 });
             } else {
                 toaster.error('Please insert sql file');
