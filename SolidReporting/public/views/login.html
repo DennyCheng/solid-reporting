@@ -1,9 +1,17 @@
+<style>
+    body {
+        background: white;
+    }
+
+</style>
+
+
 <md-toolbar layout="row" layout-align="center"><img class="logo" layout-align="center" src="http://www.solidgroundmn.org/wp-content/themes/theme1205/images/logo.png" /></md-toolbar>
 
 <div layout="row" layout-align="center center">
 
     <div class="login">
-        <h1 class="lead alert alert-danger" role="alert" ng-if="message != ''">{{message}}</h1>
+        <!--<h1 class="lead alert alert-danger" role="alert" ng-if="message != ''">{{message}}</h1>-->
 
         <form name="clientLogin" ng-submit="userLogin()" class="fadeInDown animated">
             <h1 class="lead sg-blue">Login</h1>
@@ -11,7 +19,7 @@
                 <md-icon class="fa fa-user sg-blue" aria-hidden="true"></md-icon>
                 <input ng-model="user.username" name="userName" type="text" placeholder="Name" ng-required="true">
                 <div ng-messages="clientLogin.userName.$error">
-                    <div ng-message="required">Your full name is required.</div>
+                    <!--<div ng-message="required">Your full name is required.</div>-->
                 </div>
             </md-input-container>
             <md-input-container md-no-float>
@@ -19,7 +27,7 @@
                 <md-icon class="fa fa-unlock-alt sg-blue" aria-hidden="true" ></md-icon>
                 <input ng-model="user.password" type="password" placeholder="Password" ng-required="true" name="userPassword">
                 <div ng-messages="clientLogin.userPassword.$error">
-                    <div ng-message="required">Your password is required.</div>
+                    <!--<div ng-message="required">Your password is required.</div>-->
                 </div>
             </md-input-container>
             <md-button class="md-raised md-primary" ng-click="userLogin()">Login</md-button>
