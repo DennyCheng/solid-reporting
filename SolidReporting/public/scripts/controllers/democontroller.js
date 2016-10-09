@@ -574,7 +574,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       $scope.programPeopleTotal.adultChildrenTotal = $scope.programPeopleTotal.adult + $scope.programPeopleTotal.children;
       console.log('Program Adult and Children total ', $scope.programPeopleTotal.adultChildrenTotal);
 
->>>>>>> master
+
     });
 
     $scope.demoFactory.allGender(selections).then(function(response) {
@@ -2585,31 +2585,6 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
 
 
 
-    //********** Second option selected function ****************
-
-    // $scope.newQuery = function() {
-    //     // get call to the server passing the data
-    //     $http.get('/uploadfile/data').then(function(response){
-    //         console.log('response', response.data);
-    //         $scope.selectedgender;
-    //         console.log($scope.selectedgender[0]);
-    //         $scope.selectedadultRace;
-    //         console.log($scope.selectedadultRace);
-    //         $scope.selectedchildAge;
-    //         console.log($scope.selectedchildAge);
-    //         $scope.selectedresidence;
-    //         console.log($scope.selectedresidence);
-    //         $scope.selectedhhIncome;
-    //         console.log($scope.selectedhhIncome);
-    //         $scope.selectedexitingPerson;
-    //         console.log($scope.selectedexitingPerson);
-    //         $scope.date1;
-    //         console.log('selectedDate', $scope.date1);
-    //         $scope.date2;
-    //         console.log('selectedDate', $scope.date2);
-    //     })
-    //
-    // }
 
     $scope.resetQuery = function () {
         $scope.selectedprogram = [];
