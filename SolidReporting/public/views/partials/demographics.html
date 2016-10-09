@@ -1,6 +1,6 @@
 <div ng-include="'public/views/partials/header.html'"> </div>
 
-<!-- <div layout="column"> -->
+<div layout="column">
   <div class="container" layout="row" flex ng-cloak>
     <md-sidenav layout="column" class="sidenav1 md-whiteframe-4dp" md-component-id="left">
       <div class="md-padding">
@@ -184,205 +184,66 @@
             <md-button id="reset" class="md-raised" ng-click="resetQuery()">Reset Query</md-button>
             <!--<md-button id="export"  class="md-raised export" ng-click="exportData()">Export to CSV</md-button>-->
         </div>
-
       </div>
 
     </md-sidenav>
+
+<!-- DATA DISPLAY TABLES ------------------------------------------------->
+
     <md-content layout="column" flex>
       <div class="datagrid" layout = "row" flex>
-      <md-table-container  flex>
-        <table md-table >
-          <md-toolbar flex>
-            <h1 class="md-title tablehead" >{{"EMP I"}}</h1>
-          </md-toolbar>
-          <thead md-head>
-            <tr md-row >
-              <!-- <th md-column md-order-by="nameToLower"><span>Dessert (100g serving)</span></th> -->
-              <th md-column>Gender</th>
-              <th md-column md-numeric>Number</th>
-              <th md-column md-numeric>Percent</th>
-            </tr>
-          </thead>
-          <tbody md-body>
-            <tr md-row>
-              <td md-cell>Female</td>
-              <td ng-model="number" md-cell>{{10}}</td>
-              <td ng-model="percent" md-cell>{{50 + "%"}}</td>
-            </tr>
-            <tr md-row>
-              <td md-cell>Male</td>
-              <td ng-model="number" md-cell>{{}}</td>
-              <td ng-model="percent" md-cell>{{}}</td>
-            </tr>
-            <tr md-row>
-              <td md-cell>Total</td>
-              <td ng-model="number" md-cell></td>
-              <td ng-model="percent" md-cell>{{}}</td>
-            </tr>
-          </tbody>
-
-          <thead md-head>
-            <tr md-row >
-              <!-- <th md-column md-order-by="nameToLower"><span>Dessert (100g serving)</span></th> -->
-              <th md-column>Race</th>
-              <th md-column md-numeric>Number</th>
-              <th md-column md-numeric>Percent</th>
-            </tr>
-          </thead>
-          <tbody md-body>
-            <tr md-row>
-              <td ng-model="number" md-cell></td>
-              <td ng-model="percent" md-cell>{{ 10/90 }}</td>
-              <td ng-model="total"md-cell>90</td>
-            </tr>
-
-          </tbody>
-
-        </table>
-      </md-table-container>
 
       <md-divider ng-if="!$last"></md-divider>
 
-      <md-table-container flex>
-        <md-toolbar>
-          <h1 class="md-title tablehead">{{"EMP II"}}</h1>
-        </md-toolbar>
-        <table md-table >
-          <thead md-head md-order="query.order" md-on-reorder="getDesserts">
-            <tr md-row>
-              <!-- <th md-column md-order-by="nameToLower"><span>Dessert (100g serving)</span></th> -->
-              <th md-column md-numeric>Metric</th>
-              <th md-column md-numeric>Number</th>
-              <th md-column md-numeric>Percent</th>
-            </tr>
-          </thead>
-          <tbody md-body>
-            <tr md-row ng-repeat="demo in demos">
-              <td ng-model="number" md-cell>{{10}}</td>
-              <td ng-model="percent" md-cell>{{ 10/90}}</td>
-              <td ng-model="total" md-cell>90</td>
-            </tr>
-          </tbody>
-        </table>
-      </md-table-container>
+        <div ng-include="'public/views/partials/emp.html'"> </div>
+        <div ng-include="'public/views/partials/empII.html'"> </div>
+        <div ng-include="'public/views/partials/homeagain.html'"> </div>
+        <div ng-include="'public/views/partials/homesafe.html'"> </div>
+        <div ng-include="'public/views/partials/homefront.html'"> </div>
 
-      <md-divider ng-if="!$last"></md-divider>
+<!--Excel data structure-->
+<!--<button ng-click="exportData()" ng-show="(tests|filter:{selected: true}).length">Export</button>-->
+<!--<br />-->
+<!--<table width="100%">-->
+  <!--<thead>-->
+  <!--<tr>-->
+    <!--<th></th>-->
+    <!--<th>Name</th>-->
+    <!--<th>Date</th>-->
+    <!--<th>Terms</th>-->
+  <!--</tr>-->
+  <!--</thead>-->
+  <!--<tbody>-->
+  <!--<tr ng-repeat="item in tests">-->
+    <!--<td><input type="checkbox" ng-model="item.selected" /></td>-->
+    <!--<td>{{item.Name}}</td>-->
+    <!--<td>{{item.Date}}</td>-->
+    <!--<td><span ng-repeat="term in item.Race">{{term}}{{!$last?', ':''}}</span></td>-->
+  <!--</tr>-->
+  <!--</tbody>-->
+<!--</table>-->
+<!--<div id="exportable" style="display:none">-->
+  <!--<table width="100%">-->
+    <!--<thead>-->
+    <!--<tr>-->
+      <!--<th>Name</th>-->
+      <!--<th>Date</th>-->
+      <!--<th>Race</th>-->
+    <!--</tr>-->
+    <!--</thead>-->
+    <!--<tbody>-->
+    <!--<tr ng-repeat="item in tests|filter:{selected: true}">-->
+      <!--<td>{{item.Name}}</td>-->
+      <!--<td>{{item.Date}}</td>-->
+      <!--<td><span ng-repeat="term in item.Race">{{term}}{{!$last?', ':''}}</span></td>-->
+    <!--</tr>-->
+    <!--</tbody>-->
+  <!--</table>-->
+<!--</div>-->
 
-      <md-table-container flex>
-        <md-toolbar>
-          <h1 class="md-title tablehead">{{"Home Again"}}</h1>
-        </md-toolbar>
-        <table md-table>
-          <thead md-head md-order="query.order" md-on-reorder="getDesserts">
-            <tr md-row>
-              <!-- <th md-column md-order-by="nameToLower"><span>Dessert (100g serving)</span></th> -->
-              <th md-column md-numeric>Metric</th>
-              <th md-column md-numeric>Number</th>
-              <th md-column md-numeric>Percent</th>
-            </tr>
-          </thead>
-          <tbody md-body>
-            <tr md-row ng-repeat="demo in demos">
-              <td ng-model="number" md-cell>{{10}}</td>
-              <td ng-model="percent" md-cell>{{ 10/90}}</td>
-              <td ng-model="total" md-cell>90</td>
-            </tr>
-          </tbody>
-        </table>
-      </md-table-container>
-
-      <md-divider ng-if="!$last"></md-divider>
-
-      <md-table-container flex>
-        <md-toolbar>
-          <h1 class="md-title tablehead">{{"HomeSafe"}}</h1>
-        </md-toolbar>
-        <table md-table>
-          <thead md-head md-order="query.order" md-on-reorder="getDesserts">
-            <tr md-row>
-              <!-- <th md-column md-order-by="nameToLower"><span>Dessert (100g serving)</span></th> -->
-              <th md-column md-numeric>Metric</th>
-              <th md-column md-numeric>Number</th>
-              <th md-column md-numeric>Percent</th>
-            </tr>
-          </thead>
-          <tbody md-body>
-            <tr md-row ng-repeat="demo in demos">
-              <td ng-model="number" md-cell>{{10}}</td>
-              <td ng-model="percent" md-cell>{{ 10/90}}</td>
-              <td ng-model="total" md-cell>90</td>
-            </tr>
-          </tbody>
-        </table>
-      </md-table-container>
-
-      <md-divider ng-if="!$last"></md-divider>
-
-      <md-table-container flex>
-        <md-toolbar>
-          <h1 class="md-title tablehead">{{"HomeFront"}}</h1>
-        </md-toolbar>
-        <table md-table >
-          <thead md-head md-order="query.order" md-on-reorder="getDesserts">
-            <tr md-row>
-              <!-- <th md-column md-order-by="nameToLower"><span>Dessert (100g serving)</span></th> -->
-              <th md-column md-numeric>Metric</th>
-              <th md-column md-numeric>Number</th>
-              <th md-column md-numeric>Percent</th>
-            </tr>
-          </thead>
-          <tbody md-body>
-            <tr md-row ng-repeat="demo in demos">
-              <td ng-model="number" md-cell>{{10}}</td>
-              <td ng-model="percent" md-cell>{{ 10/90}}</td>
-              <td ng-model="total" md-cell>90</td>
-            </tr>
-          </tbody>
-        </table>
-      </md-table-container>
-
+      </div>
 
     </md-content>
   </div>
-<!-- </div> -->
-
-
-<!--Excel data structure-->
-<button ng-click="exportData()" ng-show="(tests|filter:{selected: true}).length">Export</button>
-<br />
-<table width="100%">
-  <thead>
-  <tr>
-    <th></th>
-    <th>Name</th>
-    <th>Date</th>
-    <th>Terms</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr ng-repeat="item in tests">
-    <td><input type="checkbox" ng-model="item.selected" /></td>
-    <td>{{item.Name}}</td>
-    <td>{{item.Date}}</td>
-    <td><span ng-repeat="term in item.Race">{{term}}{{!$last?', ':''}}</span></td>
-  </tr>
-  </tbody>
-</table>
-<div id="exportable" style="display:none">
-  <table width="100%">
-    <thead>
-    <tr>
-      <th>Name</th>
-      <th>Date</th>
-      <th>Race</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="item in tests|filter:{selected: true}">
-      <td>{{item.Name}}</td>
-      <td>{{item.Date}}</td>
-      <td><span ng-repeat="term in item.Race">{{term}}{{!$last?', ':''}}</span></td>
-    </tr>
-    </tbody>
-  </table>
 </div>
+

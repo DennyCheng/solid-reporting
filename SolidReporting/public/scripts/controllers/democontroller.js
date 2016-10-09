@@ -31,6 +31,8 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     var ageAdultSelection;
     var ageChildrenSelection;
     var lastResidenceSelection;
+    $scope.residences = residences;
+
 
 
     //----GET Massive Data ----------------------------------------------
@@ -49,9 +51,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
                     races.push(item['Race Code']);
                     // console.log('item------00000',item ['Race Code']);
                 }
-                if (residences.indexOf(item['County of Last Residence']) === -1 &&
-                    item['County of Last Residence'] !== null &&
-                    item['County of Last Residence'] !== undefined) {
+                if (residences.indexOf(item['County of Last Residence']) === -1) {
                     residences.push(item['County of Last Residence']);
                 }
                 if (programs.indexOf(item['Program']) === -1 &&
@@ -109,7 +109,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
 
     $scope.adultAges = ['18-22', '23-30', '31-40', '41-54', '55-64', '65+'];
 
-    $scope.residences = ['Ramsey', 'Suburban Ramsey Co.', 'Washington Co.', 'Hennepin', 'Suburban Hennepin Co.', 'Other Metro County', 'Outside Twin Cities Metro', 'Outside of State'];
+    // $scope.residences = ['Ramsey', 'Suburban Ramsey', 'Washington', 'Hennepin', 'Suburban Hennepin', 'Other Metro County', 'OutsideTwin Cities Metro', 'Outside of state', 'Other Twin Cities Metro'];
 
     $scope.hhIncomes = ['At or below 100% Poverty', '101%-200% Poverty', 'At or above 200% Poverty'];
 
@@ -160,10 +160,15 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       + "Adult Age: " + $scope.selectedadultAge + "\n"
       + "Children Race: " + $scope.selectedchildRace + "\n"
       + "Children Age: " + $scope.selectedchildAge + "\n"
-      + "Last Residence: " + $scope.lastResidenceSelection + "\n")
+      + "Last Residence: " + $scope.selectedresidence + "\n")
 
     console.log("$scope.startdate newQuery: ", $scope.startdate);
     console.log("$scope.enddate newQuery: ", $scope.enddate);
+
+    // calculate age ranges for criteria selections:
+
+    var ageParamsDiff = ageParams($scope.selectedadultAge, $scope.enddate);
+    console.log("ageParamsDiff: ", ageParamsDiff);
 
     selections = {
       programSelected: $scope.selectedprogram,
@@ -174,10 +179,12 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       ageChildrenSelection: $scope.selectedchildAge,
       lastResidenceSelection: $scope.selectedresidence,
       startdate: $scope.startdate,
-      enddate: $scope.enddate
+      enddate: $scope.enddate,
+      arrayDateRanges: ageParamsDiff,
     };
 
-    // Denny function-Complete
+    //Denny- Complete
+
     $scope.demoFactory.dobAdults(selections).then(function(response){
       //------------------Birthday Logic--------------------------
       var responseArray = response;
@@ -292,7 +299,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
           $scope.dobEMPII.total+=1;
           }
         }
-        else if(responseArray[i].Program == "HomeSafe"){
+        else if(responseArray[i].Program == "HomeSafe" ||responseArray[i].Program == "Home Safe"){
           if(age <= 22){
           $scope.dobHomeSafe.age18to22+=1;
           $scope.dobHomeSafe.total+=1;
@@ -318,7 +325,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
           $scope.dobHomeSafe.total+=1;
           }
         }
-        else if(responseArray[i].Program == "Home Again"){
+        else if(responseArray[i].Program == "Home Again" ||responseArray[i].Program == "HomeAgain"){
           if(age <= 22){
           $scope.dobHomeAgain.age18to22+=1;
           $scope.dobHomeAgain.total+=1;
@@ -573,6 +580,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
 
       $scope.programPeopleTotal.adultChildrenTotal = $scope.programPeopleTotal.adult + $scope.programPeopleTotal.children;
       console.log('Program Adult and Children total ', $scope.programPeopleTotal.adultChildrenTotal);
+
 
     });
 
@@ -1297,9 +1305,9 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       console.log('Program total race Total', $scope.raceTotal.total);
     });  // end of race
 
-    // Denny- Complete
+    //Denny - Complete
+
     $scope.demoFactory.raceChildren(selections).then(function(response) {
-      console.log("response raceChildren from server: ", response);
        var responseArray = response;
 
        $scope.raceChildEMP = {
@@ -1547,8 +1555,10 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
        console.log('raceTotal',$scope.raceChildTotal);
     });//end of childRaceQuery
 
-    // Denny- WIP
+      //Denny- Complete
+
     $scope.demoFactory.householdIncome(selections).then(function(response){
+
       //Earned Income
       $scope.earnedIncomeEMP={
         n0_499:0,
@@ -1593,39 +1603,1018 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
 
       //Unearned Income
       $scope.unearnedIncomeEMP={
-
+        n0_499:0,
+        n500_999:0,
+        n1000_1999:0,
+        n2000_2999:0,
+        n3000_plus:0,
+        total:0
       };
       $scope.unearnedIncomeEMPII={
-
+        n0_499:0,
+        n500_999:0,
+        n1000_1999:0,
+        n2000_2999:0,
+        n3000_plus:0,
+        total:0
       };
       $scope.unearnedIncomeHomeSafe={
-
+        n0_499:0,
+        n500_999:0,
+        n1000_1999:0,
+        n2000_2999:0,
+        n3000_plus:0,
+        total:0
       };
       $scope.unearnedIncomeHomeAgain={
-
+        n0_499:0,
+        n500_999:0,
+        n1000_1999:0,
+        n2000_2999:0,
+        n3000_plus:0,
+        total:0
       };
       $scope.unearnedIncomeHomeFront={
-
+        n0_499:0,
+        n500_999:0,
+        n1000_1999:0,
+        n2000_2999:0,
+        n3000_plus:0,
+        total:0
       };
 
       //Total Income Income
       $scope.totalIncomeEMP={
-
+        n0_499:0,
+        n500_999:0,
+        n1000_1999:0,
+        n2000_2999:0,
+        n3000_plus:0,
+        total:0
       };
+      $scope.totalIncomeEMPII={
+        n0_499:0,
+        n500_999:0,
+        n1000_1999:0,
+        n2000_2999:0,
+        n3000_plus:0,
+        total:0
+      };
+      $scope.totalIncomeHomeSafe={
+        n0_499:0,
+        n500_999:0,
+        n1000_1999:0,
+        n2000_2999:0,
+        n3000_plus:0,
+        total:0
+      };
+      $scope.totalIncomeHomeAgain={
+        n0_499:0,
+        n500_999:0,
+        n1000_1999:0,
+        n2000_2999:0,
+        n3000_plus:0,
+        total:0
+      };
+
+      $scope.totalIncomeHomeFront={
+        n0_499:0,
+        n500_999:0,
+        n1000_1999:0,
+        n2000_2999:0,
+        n3000_plus:0,
+        total:0
+      };
+
+        var responseArray = response
+
+        //filter for earnedIncome
+        for (var i = 0; i < responseArray.length; i++) {
+          // console.log(responseArray[i]);
+          if(responseArray[i].Program =="EMP"){
+            if(parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=0 && parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=499){
+              $scope.earnedIncomeEMP.n0_499+=1
+              $scope.earnedIncomeEMP.total+=1
+            }
+            else if(parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=500 && parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=999){
+              $scope.earnedIncomeEMP.n500_999+=1
+              $scope.earnedIncomeEMP.total+=1
+            }
+            else if(parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=1000 && parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=1999){
+              $scope.earnedIncomeEMP.n1000_1999+=1
+              $scope.earnedIncomeEMP.total+=1
+            }
+            else if(parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=2000 && parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=2999){
+              $scope.earnedIncomeEMP.n2000_2999+=1
+              $scope.earnedIncomeEMP.total+=1
+            }
+            else if(parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=3000){
+              $scope.earnedIncomeEMP.n3000_plus+=1
+              $scope.earnedIncomeEMP.total+=1
+            }
+            else {
+              //if null then it means they have no income or $0
+              $scope.earnedIncomeEMP.n0_499+=1
+              $scope.earnedIncomeEMP.total+=1
+            }
+          }
+            else if(responseArray[i].Program =="EMPII"){
+              if(parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=0 && parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=499){
+                $scope.earnedIncomeEMPII.n0_499+=1
+                $scope.earnedIncomeEMPII.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=500 && parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=999){
+                $scope.earnedIncomeEMPII.n500_999+=1
+                $scope.earnedIncomeEMPII.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=1000 && parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=1999){
+                $scope.earnedIncomeEMPII.n1000_1999+=1
+                $scope.earnedIncomeEMPII.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=2000 && parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=2999){
+                $scope.earnedIncomeEMPII.n2000_2999+=1
+                $scope.earnedIncomeEMPII.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=3000){
+                $scope.earnedIncomeEMPII.n3000_plus+=1
+                $scope.earnedIncomeEMPII.total+=1
+              }
+              else {
+                //if null then it means they have no income or $0
+                $scope.earnedIncomeEMPII.n0_499+=1
+                $scope.earnedIncomeEMPII.total+=1
+              }
+            }
+            else if(responseArray[i].Program =="HomeSafe"||responseArray[i].Program =="Home Safe"){
+              if(parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=0 && parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=499){
+                $scope.earnedIncomeHomeSafe.n0_499+=1
+                $scope.earnedIncomeHomeSafe.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=500 && parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=999){
+                $scope.earnedIncomeHomeSafe.n500_999+=1
+                $scope.earnedIncomeHomeSafe.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=1000 && parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=1999){
+                $scope.earnedIncomeHomeSafe.n1000_1999+=1
+                $scope.earnedIncomeHomeSafe.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=2000 && parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=2999){
+                $scope.earnedIncomeHomeSafe.n2000_2999+=1
+                $scope.earnedIncomeHomeSafe.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=3000){
+                $scope.earnedIncomeHomeSafe.n3000_plus+=1
+                $scope.earnedIncomeHomeSafe.total+=1
+              }
+              else {
+                //if null then it means they have no income or $0
+                $scope.earnedIncomeHomeSafe.n0_499+=1
+                $scope.earnedIncomeHomeSafe.total+=1
+              }
+            }
+            else if(responseArray[i].Program =="HomeAgain"||responseArray[i].Program =="Home Again"){
+              if(parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=0 && parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=499){
+                $scope.earnedIncomeHomeAgain.n0_499+=1
+                $scope.earnedIncomeHomeAgain.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=500 && parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=999){
+                $scope.earnedIncomeHomeAgain.n500_999+=1
+                $scope.earnedIncomeHomeAgain.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=1000 && parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=1999){
+                $scope.earnedIncomeHomeAgain.n1000_1999+=1
+                $scope.earnedIncomeHomeAgain.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=2000 && parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=2999){
+                $scope.earnedIncomeHomeAgain.n2000_2999+=1
+                $scope.earnedIncomeHomeAgain.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=3000){
+                $scope.earnedIncomeHomeAgain.n3000_plus+=1
+                $scope.earnedIncomeHomeAgain.total+=1
+              }
+              else {
+                //if null then it means they have no income or $0
+                $scope.earnedIncomeHomeAgain.n0_499+=1
+                $scope.earnedIncomeHomeAgain.total+=1
+              }
+            }
+            else if(responseArray[i].Program =="HomeFront"||responseArray[i].Program =="Home Front"){
+              if(parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=0 && parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=499){
+                $scope.earnedIncomeHomeFront.n0_499+=1
+                $scope.earnedIncomeHomeFront.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=500 && parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=999){
+                $scope.earnedIncomeHomeFront.n500_999+=1
+                $scope.earnedIncomeHomeFront.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=1000 && parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=1999){
+                $scope.earnedIncomeHomeFront.n1000_1999+=1
+                $scope.earnedIncomeHomeFront.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=2000 && parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=2999){
+                $scope.earnedIncomeHomeFront.n2000_2999+=1
+                $scope.earnedIncomeHomeFront.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=3000){
+                $scope.earnedIncomeHomeFront.n3000_plus+=1
+                $scope.earnedIncomeHomeFront.total+=1
+              }
+              else {
+                //if null then it means they have no income or $0
+                $scope.earnedIncomeHomeFront.n0_499+=1
+                $scope.earnedIncomeHomeFront.total+=1
+              }
+            }
+        }//end of for loop
+
+
+        //filter for unearnedIncome
+        for (var i = 0; i < responseArray.length; i++) {
+          // console.log(responseArray[i]);
+          if(responseArray[i].Program =="EMP"){
+            if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])>=0 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])<=499){
+              $scope.unearnedIncomeEMP.n0_499+=1
+              $scope.unearnedIncomeEMP.total+=1
+            }
+            else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])>=500 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])<=999){
+              $scope.unearnedIncomeEMP.n500_999+=1
+              $scope.unearnedIncomeEMP.total+=1
+            }
+            else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])>=1000 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])<=1999){
+              $scope.unearnedIncomeEMP.n1000_1999+=1
+              $scope.unearnedIncomeEMP.total+=1
+            }
+            else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])>=2000 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])<=2999){
+              $scope.unearnedIncomeEMP.n2000_2999+=1
+              $scope.unearnedIncomeEMP.total+=1
+            }
+            else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])>=3000){
+              $scope.unearnedIncomeEMP.n3000_plus+=1
+              $scope.unearnedIncomeEMP.total+=1
+            }
+            else {
+              //if null then it means they have no income or $0
+              $scope.unearnedIncomeEMP.n0_499+=1
+              $scope.unearnedIncomeEMP.total+=1
+            }
+          }
+            else if(responseArray[i].Program =="EMPII"){
+              if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])>=0 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])<=499){
+                $scope.unearnedIncomeEMPII.n0_499+=1
+                $scope.unearnedIncomeEMPII.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])>=500 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])<=999){
+                $scope.unearnedIncomeEMPII.n500_999+=1
+                $scope.unearnedIncomeEMPII.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])>=1000 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])<=1999){
+                $scope.unearnedIncomeEMPII.n1000_1999+=1
+                $scope.unearnedIncomeEMPII.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])>=2000 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])<=2999){
+                $scope.unearnedIncomeEMPII.n2000_2999+=1
+                $scope.unearnedIncomeEMPII.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])>=3000){
+                $scope.unearnedIncomeEMPII.n3000_plus+=1
+                $scope.unearnedIncomeEMPII.total+=1
+              }
+              else {
+                //if null then it means they have no income or $0
+                $scope.unearnedIncomeEMPII.n0_499+=1
+                $scope.unearnedIncomeEMPII.total+=1
+              }
+            }
+            else if(responseArray[i].Program =="HomeSafe"||responseArray[i].Program =="Home Safe"){
+              if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])>=0 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])<=499){
+                $scope.unearnedIncomeHomeSafe.n0_499+=1
+                $scope.unearnedIncomeHomeSafe.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])>=500 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])<=999){
+                $scope.unearnedIncomeHomeSafe.n500_999+=1
+                $scope.unearnedIncomeHomeSafe.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])>=1000 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])<=1999){
+                $scope.unearnedIncomeHomeSafe.n1000_1999+=1
+                $scope.unearnedIncomeHomeSafe.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])>=2000 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])<=2999){
+                $scope.unearnedIncomeHomeSafe.n2000_2999+=1
+                $scope.unearnedIncomeHomeSafe.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])>=3000){
+                $scope.unearnedIncomeHomeSafe.n3000_plus+=1
+                $scope.unearnedIncomeHomeSafe.total+=1
+              }
+              else {
+                //if null then it means they have no income or $0
+                $scope.unearnedIncomeHomeSafe.n0_499+=1
+                $scope.unearnedIncomeHomeSafe.total+=1
+              }
+            }
+            else if(responseArray[i].Program =="HomeAgain"||responseArray[i].Program =="Home Again"){
+              if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])>=0 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])<=499){
+                $scope.unearnedIncomeHomeAgain.n0_499+=1
+                $scope.unearnedIncomeHomeAgain.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])>=500 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])<=999){
+                $scope.unearnedIncomeHomeAgain.n500_999+=1
+                $scope.unearnedIncomeHomeAgain.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])>=1000 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])<=1999){
+                $scope.unearnedIncomeHomeAgain.n1000_1999+=1
+                $scope.unearnedIncomeHomeAgain.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])>=2000 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])<=2999){
+                $scope.unearnedIncomeHomeAgain.n2000_2999+=1
+                $scope.unearnedIncomeHomeAgain.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])>=3000){
+                $scope.unearnedIncomeHomeAgain.n3000_plus+=1
+                $scope.unearnedIncomeHomeAgain.total+=1
+              }
+              else {
+                //if null then it means they have no income or $0
+                $scope.unearnedIncomeHomeAgain.n0_499+=1
+                $scope.unearnedIncomeHomeAgain.total+=1
+              }
+            }
+            else if(responseArray[i].Program =="HomeFront"||responseArray[i].Program =="Home Front"){
+              if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])>=0 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])<=499){
+                $scope.unearnedIncomeHomeFront.n0_499+=1
+                $scope.unearnedIncomeHomeFront.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])>=500 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])<=999){
+                $scope.unearnedIncomeHomeFront.n500_999+=1
+                $scope.unearnedIncomeHomeFront.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])>=1000 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])<=1999){
+                $scope.unearnedIncomeHomeFront.n1000_1999+=1
+                $scope.unearnedIncomeHomeFront.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])>=2000 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])<=2999){
+                $scope.unearnedIncomeHomeFront.n2000_2999+=1
+                $scope.unearnedIncomeHomeFront.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])>=3000){
+                $scope.unearnedIncomeHomeFront.n3000_plus+=1
+                $scope.unearnedIncomeHomeFront.total+=1
+              }
+              else {
+                //if null then it means they have no income or $0
+                $scope.unearnedIncomeHomeFront.n0_499+=1
+                $scope.unearnedIncomeHomeFront.total+=1
+              }
+            }
+        }//end of for loop for unearned
+
+
+        //filter for incomeTotals
+        for (var i = 0; i < responseArray.length; i++) {
+
+          //remove null values from properties
+          if(responseArray[i]['HoH Mthly  Earned Income'] == null){
+            responseArray[i]['HoH Mthly  Earned Income']= "0"
+          }
+          if (responseArray[i]['HoH Mthly UnEarned Incom'] == null){
+            responseArray[i]['HoH Mthly UnEarned Incom']= "0"
+          }
+
+          if(responseArray[i].Program =="EMP"){
+            if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=0 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=499){
+              $scope.totalIncomeEMP.n0_499+=1
+              $scope.totalIncomeEMP.total+=1
+            }
+            else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=500 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=999){
+              $scope.totalIncomeEMP.n500_999+=1
+              $scope.totalIncomeEMP.total+=1
+            }
+            else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=1000 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=1999){
+              $scope.totalIncomeEMP.n1000_1999+=1
+              $scope.totalIncomeEMP.total+=1
+            }
+            else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=2000 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=2999){
+              $scope.totalIncomeEMP.n2000_2999+=1
+              $scope.totalIncomeEMP.total+=1
+            }
+            else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=3000){
+              $scope.totalIncomeEMP.n3000_plus+=1
+              $scope.totalIncomeEMP.total+=1
+            }
+            else {
+              //if null then it means they have no income or $0
+              $scope.totalIncomeEMP.n0_499+=1
+              $scope.totalIncomeEMP.total+=1
+            }
+          }
+            else if(responseArray[i].Program =="EMPII"){
+              if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=0 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=499){
+                $scope.totalIncomeEMPII.n0_499+=1
+                $scope.totalIncomeEMPII.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=500 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=999){
+                $scope.totalIncomeEMPII.n500_999+=1
+                $scope.totalIncomeEMPII.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=1000 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=1999){
+                $scope.totalIncomeEMPII.n1000_1999+=1
+                $scope.totalIncomeEMPII.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=2000 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=2999){
+                $scope.totalIncomeEMPII.n2000_2999+=1
+                $scope.totalIncomeEMPII.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=3000){
+                $scope.totalIncomeEMPII.n3000_plus+=1
+                $scope.totalIncomeEMPII.total+=1
+              }
+              else {
+                //if null then it means they have no income or $0
+                $scope.totalIncomeEMPII.n0_499+=1
+                $scope.totalIncomeEMPII.total+=1
+              }
+            }
+            else if(responseArray[i].Program =="HomeSafe"||responseArray[i].Program =="Home Safe"){
+              if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=0 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=499){
+                $scope.totalIncomeHomeSafe.n0_499+=1
+                $scope.totalIncomeHomeSafe.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=500 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=999){
+                $scope.totalIncomeHomeSafe.n500_999+=1
+                $scope.totalIncomeHomeSafe.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=1000 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=1999){
+                $scope.totalIncomeHomeSafe.n1000_1999+=1
+                $scope.totalIncomeHomeSafe.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=2000 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=2999){
+                $scope.totalIncomeHomeSafe.n2000_2999+=1
+                $scope.totalIncomeHomeSafe.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=3000){
+                $scope.totalIncomeHomeSafe.n3000_plus+=1
+                $scope.totalIncomeHomeSafe.total+=1
+              }
+              else {
+                //if null then it means they have no income or $0
+                $scope.totalIncomeHomeSafe.n0_499+=1
+                $scope.totalIncomeHomeSafe.total+=1
+              }
+            }
+            else if(responseArray[i].Program =="HomeAgain"||responseArray[i].Program =="Home Again"){
+              if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=0 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=499){
+                $scope.totalIncomeHomeAgain.n0_499+=1
+                $scope.totalIncomeHomeAgain.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=500 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=999){
+                $scope.totalIncomeHomeAgain.n500_999+=1
+                $scope.totalIncomeHomeAgain.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=1000 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=1999){
+                $scope.totalIncomeHomeAgain.n1000_1999+=1
+                $scope.totalIncomeHomeAgain.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=2000 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=2999){
+                $scope.totalIncomeHomeAgain.n2000_2999+=1
+                $scope.totalIncomeHomeAgain.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=3000){
+                $scope.totalIncomeHomeAgain.n3000_plus+=1
+                $scope.totalIncomeHomeAgain.total+=1
+              }
+              else {
+                //if null then it means they have no income or $0
+                $scope.totalIncomeHomeAgain.n0_499+=1
+                $scope.totalIncomeHomeAgain.total+=1
+              }
+            }
+            else if(responseArray[i].Program =="HomeFront"||responseArray[i].Program =="Home Front"){
+              if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=0 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=499){
+                $scope.totalIncomeHomeFront.n0_499+=1
+                $scope.totalIncomeHomeFront.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=500 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=999){
+                $scope.totalIncomeHomeFront.n500_999+=1
+                $scope.totalIncomeHomeFront.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=1000 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=1999){
+                $scope.totalIncomeHomeFront.n1000_1999+=1
+                $scope.totalIncomeHomeFront.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=2000 && parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])<=2999){
+                $scope.totalIncomeHomeFront.n2000_2999+=1
+                $scope.totalIncomeHomeFront.total+=1
+              }
+              else if(parseInt(responseArray[i]['HoH Mthly UnEarned Incom'])+parseInt(responseArray[i]['HoH Mthly  Earned Income'])>=3000){
+                $scope.totalIncomeHomeFront.n3000_plus+=1
+                $scope.totalIncomeHomeFront.total+=1
+              }
+              else {
+                //if null then it means they have no income or $0
+                $scope.totalIncomeHomeFront.n0_499+=1
+                $scope.totalIncomeHomeFront.total+=1
+              }
+            }
+        }//end of FOR loop for totals
+
+        console.log('earnedincome total',$scope.earnedIncomeEMP);
+        console.log('earnedincome total',$scope.earnedIncomeEMPII);
+        console.log('earnedincome total',$scope.earnedIncomeHomeSafe);
+        console.log('earnedincome total',$scope.earnedIncomeHomeAgain);
+        console.log('earnedincome total',$scope.earnedIncomeHomeFront);
+
+
+        console.log('unearnedincome total',$scope.unearnedIncomeEMP);
+        console.log('unearnedincome total',$scope.unearnedIncomeEMPII);
+        console.log('unearnedincome total',$scope.unearnedIncomeHomeSafe);
+        console.log('unearnedincome total',$scope.unearnedIncomeHomeAgain);
+        console.log('unearnedincome total',$scope.unearnedIncomeHomeFront);
+
+        console.log('EMP',$scope.totalIncomeEMP);
+        console.log('EMPII',$scope.totalIncomeEMPII);
+        console.log('Safe',$scope.totalIncomeHomeSafe);
+        console.log('Again',$scope.totalIncomeHomeAgain);
+        console.log('Front',$scope.totalIncomeHomeFront);
     });//end of householdincome call
 
-    //Denny- Incomplete
-    $scope.demoFactory.lastResidence(selections).then(function(response) {
-      // console.log("response lastResidence: ", response);
-    });
+    //Denny- Complete
 
-    //Denny- Incomplete
+    $scope.demoFactory.lastResidence(selections).then(function(response) {
+
+      $scope.residenceEMP={
+        ramsey:0,
+        subRamsey:0,
+        washington:0,
+        hennepin:0,
+        subHennepin:0,
+        otherMetroC:0,
+        outsideTCMetro:0,
+        outsideState:0,
+        other:0,
+        total:0
+      };
+      $scope.residenceEMPII={
+        ramsey:0,
+        subRamsey:0,
+        washington:0,
+        hennepin:0,
+        subHennepin:0,
+        otherMetroC:0,
+        outsideTCMetro:0,
+        outsideState:0,
+        other:0,
+        total:0
+      };
+      $scope.residenceHomeSafe={
+        ramsey:0,
+        subRamsey:0,
+        washington:0,
+        hennepin:0,
+        subHennepin:0,
+        otherMetroC:0,
+        outsideTCMetro:0,
+        outsideState:0,
+        other:0,
+        total:0
+      };
+      $scope.residenceHomeAgain={
+        ramsey:0,
+        subRamsey:0,
+        washington:0,
+        hennepin:0,
+        subHennepin:0,
+        otherMetroC:0,
+        outsideTCMetro:0,
+        outsideState:0,
+        other:0,
+        total:0
+      };
+      $scope.residenceHomeFront={
+        ramsey:0,
+        subRamsey:0,
+        washington:0,
+        hennepin:0,
+        subHennepin:0,
+        otherMetroC:0,
+        outsideTCMetro:0,
+        outsideState:0,
+        other:0,
+        total:0
+      };
+
+      $scope.residenceTotal=0;
+
+      var responseArray = response
+      for (var i = 0; i < responseArray.length; i++) {
+        $scope.residenceTotal += parseInt(responseArray[i].count);
+        //emp
+        if(responseArray[i].Program == "EMP"){
+          if(responseArray[i]['County of Last Residence']=="Ramsey"){
+            $scope.residenceEMP.ramsey += parseInt(responseArray[i].count)
+            $scope.residenceEMP.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="Suburban Ramsey"){
+            $scope.residenceEMP.subRamsey += parseInt(responseArray[i].count)
+            $scope.residenceEMP.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="Washington"){
+            $scope.residenceEMP.washington += parseInt(responseArray[i].count)
+            $scope.residenceEMP.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="Hennepin"){
+            $scope.residenceEMP.hennepin += parseInt(responseArray[i].count)
+            $scope.residenceEMP.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="Suburban Hennepin"){
+            $scope.residenceEMP.subHennepin += parseInt(responseArray[i].count)
+            $scope.residenceEMP.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="Other Twin Cities Metro"){
+            $scope.residenceEMP.otherMetroC += parseInt(responseArray[i].count)
+            $scope.residenceEMP.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="OutsideTwin Cities Metro"){
+            $scope.residenceEMP.outsideTCMetro += parseInt(responseArray[i].count)
+            $scope.residenceEMP.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="Outside of state"){
+            $scope.residenceEMP.otherMetroC += parseInt(responseArray[i].count)
+            $scope.residenceEMP.total += parseInt(responseArray[i].count)
+          }
+          else{
+            $scope.residenceEMP.other += parseInt(responseArray[i].count)
+            $scope.residenceEMP.total += parseInt(responseArray[i].count)
+          }
+        }
+        //empII
+        if(responseArray[i].Program == "EMPII"){
+          if(responseArray[i]['County of Last Residence']=="Ramsey"){
+            $scope.residenceEMPII.ramsey += parseInt(responseArray[i].count)
+            $scope.residenceEMPII.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="Suburban Ramsey"){
+            $scope.residenceEMPII.subRamsey += parseInt(responseArray[i].count)
+            $scope.residenceEMPII.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="Washington"){
+            $scope.residenceEMPII.washington += parseInt(responseArray[i].count)
+            $scope.residenceEMPII.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="Hennepin"){
+            $scope.residenceEMPII.hennepin += parseInt(responseArray[i].count)
+            $scope.residenceEMPII.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="Suburban Hennepin"){
+            $scope.residenceEMPII.subHennepin += parseInt(responseArray[i].count)
+            $scope.residenceEMPII.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="Other Twin Cities Metro"){
+            $scope.residenceEMPII.otherMetroC += parseInt(responseArray[i].count)
+            $scope.residenceEMPII.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="OutsideTwin Cities Metro"){
+            $scope.residenceEMPII.outsideTCMetro += parseInt(responseArray[i].count)
+            $scope.residenceEMPII.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="Outside of state"){
+            $scope.residenceEMPII.otherMetroC += parseInt(responseArray[i].count)
+            $scope.residenceEMPII.total += parseInt(responseArray[i].count)
+          }
+          else{
+            $scope.residenceEMPII.other += parseInt(responseArray[i].count)
+            $scope.residenceEMPII.total += parseInt(responseArray[i].count)
+          }
+        }
+
+        //homesafe
+        else if(responseArray[i].Program == "HomeSafe"||responseArray[i].Program == "Home Safe"){
+          if(responseArray[i]['County of Last Residence']=="Ramsey"){
+            $scope.residenceHomeSafe.ramsey += parseInt(responseArray[i].count)
+            $scope.residenceHomeSafe.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="Suburban Ramsey"){
+            $scope.residenceHomeSafe.subRamsey += parseInt(responseArray[i].count)
+            $scope.residenceHomeSafe.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="Washington"){
+            $scope.residenceHomeSafe.washington += parseInt(responseArray[i].count)
+            $scope.residenceHomeSafe.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="Hennepin"){
+            $scope.residenceHomeSafe.hennepin += parseInt(responseArray[i].count)
+            $scope.residenceHomeSafe.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="Suburban Hennepin"){
+            $scope.residenceHomeSafe.subHennepin += parseInt(responseArray[i].count)
+            $scope.residenceHomeSafe.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="Other Twin Cities Metro"){
+            $scope.residenceHomeSafe.otherMetroC += parseInt(responseArray[i].count)
+            $scope.residenceHomeSafe.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="OutsideTwin Cities Metro"){
+            $scope.residenceHomeSafe.outsideTCMetro += parseInt(responseArray[i].count)
+            $scope.residenceHomeSafe.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="Outside of state"){
+            $scope.residenceHomeSafe.otherMetroC += parseInt(responseArray[i].count)
+            $scope.residenceHomeSafe.total += parseInt(responseArray[i].count)
+          }
+          else{
+            $scope.residenceHomeSafe.other += parseInt(responseArray[i].count)
+            $scope.residenceHomeSafe.total += parseInt(responseArray[i].count)
+          }
+        }
+
+        //homeAgain
+        else if(responseArray[i].Program == "HomeAgain"||responseArray[i].Program == "Home Again"){
+          if(responseArray[i]['County of Last Residence']=="Ramsey"){
+            $scope.residenceHomeAgain.ramsey += parseInt(responseArray[i].count)
+            $scope.residenceHomeAgain.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="Suburban Ramsey"){
+            $scope.residenceHomeAgain.subRamsey += parseInt(responseArray[i].count)
+            $scope.residenceHomeAgain.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="Washington"){
+            $scope.residenceHomeAgain.washington += parseInt(responseArray[i].count)
+            $scope.residenceHomeAgain.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="Hennepin"){
+            $scope.residenceHomeAgain.hennepin += parseInt(responseArray[i].count)
+            $scope.residenceHomeAgain.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="Suburban Hennepin"){
+            $scope.residenceHomeAgain.subHennepin += parseInt(responseArray[i].count)
+            $scope.residenceHomeAgain.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="Other Twin Cities Metro"){
+            $scope.residenceHomeAgain.otherMetroC += parseInt(responseArray[i].count)
+            $scope.residenceHomeAgain.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="OutsideTwin Cities Metro"){
+            $scope.residenceHomeAgain.outsideTCMetro += parseInt(responseArray[i].count)
+            $scope.residenceHomeAgain.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="Outside of state"){
+            $scope.residenceHomeAgain.otherMetroC += parseInt(responseArray[i].count)
+            $scope.residenceHomeAgain.total += parseInt(responseArray[i].count)
+          }
+          else{
+            $scope.residenceHomeAgain.other += parseInt(responseArray[i].count)
+            $scope.residenceHomeAgain.total += parseInt(responseArray[i].count)
+          }
+        }
+        //homefront
+        else if(responseArray[i].Program == "HomeFront"||responseArray[i].Program == "Home Front"){
+          if(responseArray[i]['County of Last Residence']=="Ramsey"){
+            $scope.residenceHomeFront.ramsey += parseInt(responseArray[i].count)
+            $scope.residenceHomeFront.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="Suburban Ramsey"){
+            $scope.residenceHomeFront.subRamsey += parseInt(responseArray[i].count)
+            $scope.residenceHomeFront.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="Washington"){
+            $scope.residenceHomeFront.washington += parseInt(responseArray[i].count)
+            $scope.residenceHomeFront.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="Hennepin"){
+            $scope.residenceHomeFront.hennepin += parseInt(responseArray[i].count)
+            $scope.residenceHomeFront.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="Suburban Hennepin"){
+            $scope.residenceHomeFront.subHennepin += parseInt(responseArray[i].count)
+            $scope.residenceHomeFront.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="Other Twin Cities Metro"){
+            $scope.residenceHomeFront.otherMetroC += parseInt(responseArray[i].count)
+            $scope.residenceHomeFront.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="OutsideTwin Cities Metro"){
+            $scope.residenceHomeFront.outsideTCMetro += parseInt(responseArray[i].count)
+            $scope.residenceHomeFront.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]['County of Last Residence']=="Outside of state"){
+            $scope.residenceHomeFront.otherMetroC += parseInt(responseArray[i].count)
+            $scope.residenceHomeFront.total += parseInt(responseArray[i].count)
+          }
+          else{
+            $scope.residenceHomeFront.other += parseInt(responseArray[i].count)
+            $scope.residenceHomeFront.total += parseInt(responseArray[i].count)
+          }
+        }
+      }//end of for statement
+      console.log('residenceEMP',$scope.residenceEMP);
+      console.log('residenceEMPII',$scope.residenceEMPII);
+      console.log('residenceHomeSafe',$scope.residenceHomeSafe);
+      console.log('residenceHomeAgain',$scope.residenceHomeAgain);
+      console.log('residenceHomeFront',$scope.residenceHomeFront);
+      console.log('Total',$scope.residenceTotal);
+
+    });//end of lastResidence request
+
+    // //Denny Complete
     $scope.demoFactory.famsExitHousing(selections).then(function(response) {
-      // console.log("response famsExitHousing: ", response);
-    });
+      console.log("response famsExitHousing: ", response);
+
+      $scope.exitEMP = {
+        graduated:0,
+        leftVoluntarily:0,
+        terminated:0,
+        other:0,
+        total:0
+      };
+
+      $scope.exitEMPII = {
+        graduated:0,
+        leftVoluntarily:0,
+        terminated:0,
+        other:0,
+        total:0
+      };
+
+      $scope.exitHomeSafe = {
+        graduated:0,
+        leftVoluntarily:0,
+        terminated:0,
+        other:0,
+        total:0
+      };
+
+      $scope.exitHomeAgain = {
+        graduated:0,
+        leftVoluntarily:0,
+        terminated:0,
+        other:0,
+        total:0
+      };
+
+      $scope.exitHomeFront = {
+        graduated:0,
+        leftVoluntarily:0,
+        terminated:0,
+        other:0,
+        total:0
+      };
+
+      $scope.exitTotal = 0;
+
+      var responseArray = response
+
+      for (var i = 0; i < responseArray.length; i++) {
+        $scope.exitTotal+= parseInt(responseArray[i].count)
+        if (responseArray[i].Program== "EMP"){
+          if(responseArray[i]["Reason for Leaving"]=="Completed program" ||responseArray[i]["Reason for Leaving"]== "Completed program;Other"){
+            $scope.exitEMP.graduated += parseInt(responseArray[i].count)
+            $scope.exitEMP.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]["Reason for Leaving"]=="Left for housing opportunity before completing the program" ||responseArray[i]["Reason for Leaving"]== "Reached maximum time allowed"){
+            $scope.exitEMP.leftVoluntarily += parseInt(responseArray[i].count)
+            $scope.exitEMP.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]["Reason for Leaving"]=="Non-compliance w/program" ||responseArray[i]["Reason for Leaving"]== "Criminal activity/violence"||responseArray[i]["Reason for Leaving"]== "Disagreement with rules/persons;Other"||responseArray[i]["Reason for Leaving"]== " Criminal activity/violence;Non-compliance w/program"||responseArray[i]["Reason for Leaving"]== "Non-compliance w/program;Other_____________________________________________"||responseArray[i]["Reason for Leaving"]== "Criminal activity/violence;Non-compliance w/program"){
+            $scope.exitEMP.terminated += parseInt(responseArray[i].count)
+            $scope.exitEMP.total += parseInt(responseArray[i].count)
+          }
+          else{
+            $scope.exitEMP.other += parseInt(responseArray[i].count)
+            $scope.exitEMP.total += parseInt(responseArray[i].count)
+          }
+        }
+
+        else if (responseArray[i].Program== "EMPII"){
+          if(responseArray[i]["Reason for Leaving"]=="Completed program" ||responseArray[i]["Reason for Leaving"]== "Completed program;Other"){
+            $scope.exitEMPII.graduated += parseInt(responseArray[i].count)
+            $scope.exitEMPII.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]["Reason for Leaving"]=="Left for housing opportunity before completing the program" ||responseArray[i]["Reason for Leaving"]== "Reached maximum time allowed"){
+            $scope.exitEMPII.leftVoluntarily += parseInt(responseArray[i].count)
+            $scope.exitEMPII.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]["Reason for Leaving"]=="Non-compliance w/program" ||responseArray[i]["Reason for Leaving"]== "Criminal activity/violence"||responseArray[i]["Reason for Leaving"]== "Disagreement with rules/persons;Other"||responseArray[i]["Reason for Leaving"]== " Criminal activity/violence;Non-compliance w/program"||responseArray[i]["Reason for Leaving"]== "Non-compliance w/program;Other_____________________________________________"||responseArray[i]["Reason for Leaving"]== "Criminal activity/violence;Non-compliance w/program"){
+            $scope.exitEMPII.terminated += parseInt(responseArray[i].count)
+            $scope.exitEMPII.total += parseInt(responseArray[i].count)
+          }
+          else{
+            $scope.exitEMPII.other += parseInt(responseArray[i].count)
+            $scope.exitEMPII.total += parseInt(responseArray[i].count)
+          }
+        }
+
+        else if (responseArray[i].Program== "HomeSafe"||responseArray[i].Program== "Home Safe"){
+          if(responseArray[i]["Reason for Leaving"]=="Completed program" ||responseArray[i]["Reason for Leaving"]== "Completed program;Other"){
+            $scope.exitHomeSafe.graduated += parseInt(responseArray[i].count)
+            $scope.exitHomeSafe.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]["Reason for Leaving"]=="Left for housing opportunity before completing the program" ||responseArray[i]["Reason for Leaving"]== "Reached maximum time allowed"){
+            $scope.exitHomeSafe.leftVoluntarily += parseInt(responseArray[i].count)
+            $scope.exitHomeSafe.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]["Reason for Leaving"]=="Non-compliance w/program" ||responseArray[i]["Reason for Leaving"]== "Criminal activity/violence"||responseArray[i]["Reason for Leaving"]== "Disagreement with rules/persons;Other"||responseArray[i]["Reason for Leaving"]== " Criminal activity/violence;Non-compliance w/program"||responseArray[i]["Reason for Leaving"]== "Non-compliance w/program;Other_____________________________________________"||responseArray[i]["Reason for Leaving"]== "Criminal activity/violence;Non-compliance w/program"){
+            $scope.exitHomeSafe.terminated += parseInt(responseArray[i].count)
+            $scope.exitHomeSafe.total += parseInt(responseArray[i].count)
+          }
+          else{
+            $scope.exitHomeSafe.other += parseInt(responseArray[i].count)
+            $scope.exitHomeSafe.total += parseInt(responseArray[i].count)
+          }
+        }
+
+        else if (responseArray[i].Program== "HomeAgain"||responseArray[i].Program== "Home Again"){
+          if(responseArray[i]["Reason for Leaving"]=="Completed program" ||responseArray[i]["Reason for Leaving"]== "Completed program;Other"){
+            $scope.exitHomeAgain.graduated += parseInt(responseArray[i].count)
+            $scope.exitHomeAgain.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]["Reason for Leaving"]=="Left for housing opportunity before completing the program" ||responseArray[i]["Reason for Leaving"]== "Reached maximum time allowed"){
+            $scope.exitHomeAgain.leftVoluntarily += parseInt(responseArray[i].count)
+            $scope.exitHomeAgain.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]["Reason for Leaving"]=="Non-compliance w/program" ||responseArray[i]["Reason for Leaving"]== "Criminal activity/violence"||responseArray[i]["Reason for Leaving"]== "Disagreement with rules/persons;Other"||responseArray[i]["Reason for Leaving"]== " Criminal activity/violence;Non-compliance w/program"||responseArray[i]["Reason for Leaving"]== "Non-compliance w/program;Other_____________________________________________"||responseArray[i]["Reason for Leaving"]== "Criminal activity/violence;Non-compliance w/program"){
+            $scope.exitHomeAgain.terminated += parseInt(responseArray[i].count)
+            $scope.exitHomeAgain.total += parseInt(responseArray[i].count)
+          }
+          else{
+            $scope.exitHomeAgain.other += parseInt(responseArray[i].count)
+            $scope.exitHomeAgain.total += parseInt(responseArray[i].count)
+          }
+        }
+
+        else if (responseArray[i].Program== "HomeFront"||responseArray[i].Program== "Home Front"){
+          if(responseArray[i]["Reason for Leaving"]=="Completed program" ||responseArray[i]["Reason for Leaving"]== "Completed program;Other"){
+            $scope.exitHomeFront.graduated += parseInt(responseArray[i].count)
+            $scope.exitHomeFront.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]["Reason for Leaving"]=="Left for housing opportunity before completing the program" ||responseArray[i]["Reason for Leaving"]== "Reached maximum time allowed"){
+            $scope.exitHomeFront.leftVoluntarily += parseInt(responseArray[i].count)
+            $scope.exitHomeFront.total += parseInt(responseArray[i].count)
+          }
+          else if(responseArray[i]["Reason for Leaving"]=="Non-compliance w/program" ||responseArray[i]["Reason for Leaving"]== "Criminal activity/violence"||responseArray[i]["Reason for Leaving"]== "Disagreement with rules/persons;Other"||responseArray[i]["Reason for Leaving"]== " Criminal activity/violence;Non-compliance w/program"||responseArray[i]["Reason for Leaving"]== "Non-compliance w/program;Other_____________________________________________"||responseArray[i]["Reason for Leaving"]== "Criminal activity/violence;Non-compliance w/program"){
+            $scope.exitHomeFront.terminated += parseInt(responseArray[i].count)
+            $scope.exitHomeFront.total += parseInt(responseArray[i].count)
+          }
+          else{
+            $scope.exitHomeFront.other += parseInt(responseArray[i].count)
+            $scope.exitHomeFront.total += parseInt(responseArray[i].count)
+          }
+        }
+      }//end for for loop
+      console.log('test EMP', $scope.exitEMP);
+      console.log('test EMPII', $scope.exitEMPII);
+      console.log('test Safe', $scope.exitHomeSafe);
+      console.log('test Again', $scope.exitHomeAgain);
+      console.log('test Front', $scope.exitHomeFront);
+      console.log('TOTAL', $scope.exitTotal);
+    });//end of famsExitHousing
 
 }; //end of click button function
-  
+
+    /// filters through age parameters and converts them to date ranges for queries to be sent to server:
+    function ageParams(selectedAgeRanges, endDate) {
+        console.log("selectedAgeRanges: ", selectedAgeRanges);
+        console.log("endDate: ", endDate);
+        var endYear = endDate.getFullYear();
+        var endMonth = endDate.getMonth();
+        var endDate = endDate.getDate();
+        var arrayOfDateRanges = [];
+
+        selectedAgeRanges.forEach(function(range, i) {
+            var rangeDates = {};
+            if(range.indexOf("-") == 2) {
+                var agesArray = range.split("-");
+                var firstYear = parseInt(agesArray[0]);
+                var secondYear = parseInt(agesArray[1]);
+                var year1Math = endYear - firstYear;
+                var year2Math = endYear - secondYear;
+                var dateRange1 = (year1Math + "-" + endMonth + "-" + endDate);
+                var dateRange2 = (year2Math + "-" + endMonth + "-" + endDate);
+
+                rangeDates = {
+                    ageRange: range,
+                    date1Range: dateRange1,
+                    date2Range: dateRange2,
+                };
+                arrayOfDateRanges.push(rangeDates);
+            }
+            if(range.indexOf("+") == 2) {
+                var ages2Array = range.split("+");
+                var firstYear = parseInt(ages2Array[0]);
+                var year1Math = endYear - firstYear;
+                var dateRange1 = (year1Math + "-" + endMonth + "-" + endDate);
+
+                rangeDates = {
+                    ageRange: range,
+                    date1Range: dateRange1,
+                    date2Range: ""
+                }
+                arrayOfDateRanges.push(rangeDates);
+            }
+        });
+
+        return arrayOfDateRanges;
+    }
+
   ///performs age calculations
   function dateDiff(personDOB, endDate){
     var personYear = endDate.getFullYear();
@@ -1645,34 +2634,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     }
     return diff;
   };
-
-
-
-    //********** Second option selected function ****************
-
-    // $scope.newQuery = function() {
-    //     // get call to the server passing the data
-    //     $http.get('/uploadfile/data').then(function(response){
-    //         console.log('response', response.data);
-    //         $scope.selectedgender;
-    //         console.log($scope.selectedgender[0]);
-    //         $scope.selectedadultRace;
-    //         console.log($scope.selectedadultRace);
-    //         $scope.selectedchildAge;
-    //         console.log($scope.selectedchildAge);
-    //         $scope.selectedresidence;
-    //         console.log($scope.selectedresidence);
-    //         $scope.selectedhhIncome;
-    //         console.log($scope.selectedhhIncome);
-    //         $scope.selectedexitingPerson;
-    //         console.log($scope.selectedexitingPerson);
-    //         $scope.date1;
-    //         console.log('selectedDate', $scope.date1);
-    //         $scope.date2;
-    //         console.log('selectedDate', $scope.date2);
-    //     })
-    //
-    // }
+  
 
 
     $scope.exportData = function () {
@@ -1690,8 +2652,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     "Name": "Home Safe",
     "Date": "10/02/2014",
     "Race": ["Others", "Latinos", "African America"]
-  }]
-
+  }];
 
     $scope.resetQuery = function () {
         $scope.selectedprogram = [];
@@ -1707,7 +2668,6 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
         $scope.enddate = new Date();
         //need to reset $scoped out sorting variables too?
     };
-
 
 // end controller
 }]);
