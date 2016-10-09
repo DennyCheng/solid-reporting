@@ -209,6 +209,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
         age65tobeyond:0,
         total:0
       };
+      
       $scope.dobHomeAgain = {
         age18to22:0,
         age23to30:0,
@@ -1048,7 +1049,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       console.log('emp race other', $scope.empRace.other);
 
       // EMP Total
-      $scope.empRace.total = empWhite + empAfricanAmerican + empAsian + empMultiracial +  empAfrican + empHispanic;
+      $scope.empRace.total = empWhite + empAfricanAmerican + empAsian + empMultiracial +  empAfrican + empHispanic + $scope.empRace.other + $scope.empRace.americanIndian;
       console.log('emp race Total', $scope.empRace.total);
 
       // EMP2 Race
@@ -1236,11 +1237,11 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
 
       // Home Again Indian
       $scope.homefrontRace.americanIndian = homefrontIndian;
-      console.log('HomeAgain race indian', $scope.homefrontRace.americanIndian);
+      console.log('Homefront race indian', $scope.homefrontRace.americanIndian);
 
       // Home Again other
       $scope.homefrontRace.other = homefrontOther;
-      console.log('HomeAgain race other', $scope.homefrontRace.other);
+      console.log('Homefront race other', $scope.homefrontRace.other);
 
       // HomeFront Total
       $scope.homefrontRace.total = homefrontWhite + homefrontAfricanAmerican + homefrontAsian + homefrontMultiracial +  homefrontAfrican + homefrontHispanic + homefrontOther + homefrontIndian;
@@ -1291,7 +1292,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       $scope.raceTotal.other = empOther + emp2Other + homeSafeOther + homeAgainOther + homefrontOther;
       console.log('Program total race other', $scope.raceTotal.other);
 
-      //Grand  Total
+      // Grand  Total
       $scope.raceTotal.total = $scope.raceTotal.caucasianWhite + $scope.raceTotal.africanAmerican + $scope.raceTotal.multiracial + $scope.raceTotal.african + $scope.raceTotal.hispanicLatino + $scope.raceTotal.asian + $scope.homefrontRace.total + $scope.raceTotal.americanIndian + $scope.raceTotal.other;
       console.log('Program total race Total', $scope.raceTotal.total);
     });  // end of race
