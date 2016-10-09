@@ -771,6 +771,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
               var dateRange1 = (year1Math + "-" + endMonth + "-" + endDate);
 
               rangeDates = {
+                  ageRange: range,
                   date1Range: dateRange1,
                   date2Range: ""
               }

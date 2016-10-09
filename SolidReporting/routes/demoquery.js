@@ -4,8 +4,8 @@ var pg = require('pg');
 // var connection = require('../modules/connection');
 
 var config = {
-  user: 'elizabethhaakenson', //env var: PGUSER
-  database: 'solidGround4', //env var: PGDATABASE
+  user: '', //env var: PGUSER
+  database: 'omicron', //env var: PGDATABASE
   password: '', //env var: PGPASSWORD
   port: 5432, //env var: PGPORT
   max: 100, // max number of clients in the pool
@@ -30,6 +30,7 @@ router.post('/dobadults', function(req, res) {
   var lastResidence = req.body.lastResidenceSelection;
   var startDate = req.body.startdate;
   var endDate = req.body.enddate;
+  var ageRangesArray = req.body.arrayDateRanges;
   // Query variables to use in SQL Query
   var raceAdultQuery = '';
   var raceAdult_2Query = '';
@@ -39,8 +40,10 @@ router.post('/dobadults', function(req, res) {
   var genderAdult_2Query = '';
   var lastResidenceQuery = '';
   var lastResidence_2Query = '';
+  var ageRangesAdultQuery = '';
+  var ageRangesAdult_2Query = '';
 
-
+  console.log("ageRangesArray: ", ageRangesArray);
   // sorting through raceAdult in HOH selections:
     if(raceAdult.length === 0) {
       // somehow delete the query or make it blank or assume this is select all
@@ -61,7 +64,7 @@ router.post('/dobadults', function(req, res) {
           }
       });
     }
-    console.log("raceAdultQuery after if statement: ", raceAdultQuery);
+    // console.log("raceAdultQuery after if statement: ", raceAdultQuery);
 
     // sorting through raceAdult for HOH-2 selections:
   if(raceAdult.length === 0) {
@@ -83,7 +86,7 @@ router.post('/dobadults', function(req, res) {
         }
     });
   }
-  console.log("raceAdult_2Query after if statement: ", raceAdult_2Query);
+  // console.log("raceAdult_2Query after if statement: ", raceAdult_2Query);
 
   // sorting through gender for Adults in HOH selections:
   if(gender.length === 0) {
@@ -100,7 +103,7 @@ router.post('/dobadults', function(req, res) {
         }
     });
   }
-  console.log("genderAdultQuery for HOH after if statement: ", genderAdultQuery);
+  // console.log("genderAdultQuery for HOH after if statement: ", genderAdultQuery);
 
   // sorting through gender for Adults in HOH-2 selections:
   if(gender.length === 0) {
@@ -117,16 +120,40 @@ router.post('/dobadults', function(req, res) {
         }
     });
   }
-  console.log("genderAdult_2Query for HOH-2 after if statement: ", genderAdult_2Query);
+  // console.log("genderAdult_2Query for HOH-2 after if statement: ", genderAdult_2Query);
 
-  // // sorting through ageAdult Selections:
-  // if(ageAdult.length === 0) {
-  //
-  // } else if (ageAdult.length === 1) {
-  //
-  // } else {
-  //
-  // }
+  // sorting through ageAdults in HOH selections:
+    if(ageRangesArray.length === 0) {
+      // somehow delete the query or make it blank or assume this is select all
+      ageRangesAdultQuery = "length is 0, nothing selected";
+    } else if(ageRangesArray.length === 1) {
+      console.log("ageRangesArray[0] line 130: ", ageRangesArray[0]);
+      var newDateRange1 = ageRangesArray[0].date1Range;
+      var newDateRange2 = ageRangesArray[0].date2Range;
+      console.log("newDateRange1: ", newDateRange1);
+      console.log("newDateRange2: ", newDateRange2);
+      if(newDateRange2 == "") {
+        ageRangesAdultQuery = "(\"Head of Household\".\"Date of Birth\" >= '" + newDateRange1 + "') AND ";
+      } else {
+        ageRangesAdultQuery = "(\"Head of Household\".\"Date of Birth\" >= '" + newDateRange1 + "' AND \"Head of Household\".\"Date of Birth\" <= '" + newDateRange2 + "') AND ";
+        console.log("ageRangesAdultQuery line 139: ", ageRangesAdultQuery);
+      }
+    } else {
+      ageRangesArray.forEach(function(ageRange, i) {
+        //differences if there is a beginning '(' or ')' and ending with 'OR' or 'AND'
+        if(ageRange === null) {
+          ageRangesAdultQuery += "(\"Head of Household\".\"Date of Birth\" IS NULL)) AND ";
+        } else if(i === 0) {
+          ageRangesAdultQuery += "((\"Head of Household\".\"Date of Birth\" = '" + ageRange + "') OR ";
+        } else if(i === (ageRangesArray.length - 1)) {
+          ageRangesAdultQuery += "(\"Head of Household\".\"Date of Birth\" = '" + ageRange + "')) AND ";
+        } else {
+            ageRangesAdultQuery += "(\"Head of Household\".\"Date of Birth\" = '" + ageRange + "') OR ";
+          }
+      });
+    }
+    console.log("ageRangesAdultQuery after if statement: ", ageRangesAdultQuery);
+
 
   // sorting through lastResidence for HOH Selections:
   if(lastResidence.length === 0) {
@@ -145,7 +172,7 @@ router.post('/dobadults', function(req, res) {
         }
     });
   }
-  console.log("lastResidenceQuery HOH & MOH after if statement: ", lastResidenceQuery);
+  // console.log("lastResidenceQuery HOH & MOH after if statement: ", lastResidenceQuery);
 
   // sorting through lastResidence for HOH-2 Selections:
   if(lastResidence.length === 0) {
@@ -164,7 +191,7 @@ router.post('/dobadults', function(req, res) {
         }
     });
   }
-  console.log("lastResidence_2Query for HOH-2 after if statement: ", lastResidence_2Query);
+  // console.log("lastResidence_2Query for HOH-2 after if statement: ", lastResidence_2Query);
 
 
   pool.connect(function(err, client, done) {
@@ -177,6 +204,7 @@ router.post('/dobadults', function(req, res) {
     client.query("SELECT \"Date of Birth\", \"Program\" " +
                   "FROM \"Head of Household\" " +
                   "WHERE " + raceAdultQuery + genderAdultQuery + lastResidenceQuery +
+                  // ageRangesAdultQuery +
                   "((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
                   "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
                   "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
