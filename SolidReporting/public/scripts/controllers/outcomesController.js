@@ -101,7 +101,15 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', '$mdSiden
 
   $scope.sql = {};
 
+  $scope.firstOfTheYear = '';
+
   $scope.newQuery = function () {
+
+        var justStartYear = $scope.startdate.getFullYear();
+
+        $scope.firstOfTheYear = justStartYear + '-1-1';
+
+        console.log("This is the data at the first of the year", $scope.firstOfTheYear);
 
         console.log("Program: " + $scope.selectedprogram + "\n"
           + "Gender: " + $scope.selectedgender + "\n"
@@ -109,7 +117,8 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', '$mdSiden
           + "Adult Age: " + $scope.selectedadultAge + "\n"
           + "Children Race: " + $scope.selectedchildRace + "\n"
           + "Children Age: " + $scope.selectedchildAge + "\n"
-          + "Last Residence: " + $scope.lastResidenceSelection + "\n")
+          + "Last Residence: " + $scope.lastResidenceSelection + "\n"
+          + "first day of the year: " + $scope.firstOfTheYear + "\n")
 
         console.log("$scope.startdate newQuery: ", $scope.startdate);
         console.log("$scope.enddate newQuery: ", $scope.enddate);
@@ -123,7 +132,8 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', '$mdSiden
           ageChildrenSelection: $scope.selectedchildAge,
           lastResidenceSelection: $scope.selectedresidence,
           startdate: $scope.startdate,
-          enddate: $scope.enddate
+          enddate: $scope.enddate,
+          firstDayOfTheYear: $scope.firstOfTheYear
         };
 
 

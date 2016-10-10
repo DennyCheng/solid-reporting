@@ -587,6 +587,8 @@ router.post('/parenteduthisyear', function(req, res) {
   // var ageChild = req.body.ageChildrenSelection;
   var startDate = req.body.startdate;
   var endDate = req.body.enddate;
+  var firstOfYear = req.body.firstDayOfTheYear;
+  console.log("First of the year", firstOfYear);
 
 
   pool.connect(function(err, client, done) {
@@ -598,7 +600,7 @@ router.post('/parenteduthisyear', function(req, res) {
 
     client.query("SELECT COUNT(*) \"Parenting Completed\", \"Program\" " +
     "FROM \"Head of Household\" " +
-    "WHERE(\"Head of Household\".\"Parenting Completed\" >= '" + startDate + "' AND \"Head of Household\".\"Parenting Completed\" <= '" + endDate + "') AND ((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
+    "WHERE(\"Head of Household\".\"Parenting Completed\" >= '" + firstOfYear + "' AND \"Head of Household\".\"Parenting Completed\" <= '" + endDate + "') AND ((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "')) " +
@@ -630,6 +632,7 @@ router.post('/parenteduyearbefore', function(req, res) {
   // var ageChild = req.body.ageChildrenSelection;
   var startDate = req.body.startdate;
   var endDate = req.body.enddate;
+  var firstOfYear = req.body.firstDayOfTheYear;
 
 
   pool.connect(function(err, client, done) {
@@ -641,7 +644,7 @@ router.post('/parenteduyearbefore', function(req, res) {
 
     client.query("SELECT COUNT(*) \"Parenting Completed\" , \"Program\" " +
     "FROM \"Head of Household\" " +
-    "WHERE(\"Head of Household\".\"Parenting Completed\" < '2015-01-01') AND ((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
+    "WHERE(\"Head of Household\".\"Parenting Completed\" < '" + firstOfYear + "') AND ((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "')) " +
@@ -716,7 +719,7 @@ router.post('/budgetingedusameyear', function(req, res) {
   // var ageChild = req.body.ageChildrenSelection;
   var startDate = req.body.startdate;
   var endDate = req.body.enddate;
-
+  var firstOfYear = req.body.firstDayOfTheYear;
 
   pool.connect(function(err, client, done) {
 
@@ -727,7 +730,7 @@ router.post('/budgetingedusameyear', function(req, res) {
 
     client.query("SELECT COUNT(*) \"Budgeting Completed\", \"Program\" " +
     "FROM \"Head of Household\" " +
-    "WHERE(\"Head of Household\".\"Budgeting Completed\" >= '" + startDate + "' AND \"Head of Household\".\"Budgeting Completed\" <= '" + endDate + "') AND ((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
+    "WHERE(\"Head of Household\".\"Budgeting Completed\" >= '" + firstOfYear + "' AND \"Head of Household\".\"Budgeting Completed\" <= '" + endDate + "') AND ((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "')) " +
@@ -760,6 +763,7 @@ router.post('/budgetingeduyearbefore', function(req, res) {
   // var ageChild = req.body.ageChildrenSelection;
   var startDate = req.body.startdate;
   var endDate = req.body.enddate;
+  var firstOfYear = req.body.firstDayOfTheYear;
 
 
   pool.connect(function(err, client, done) {
@@ -771,7 +775,7 @@ router.post('/budgetingeduyearbefore', function(req, res) {
 
     client.query("SELECT COUNT(*) \"Budgeting Completed\" , \"Program\" " +
     "FROM \"Head of Household\" " +
-    "WHERE(\"Head of Household\".\"Budgeting Completed\" < '" + startDate + "') AND ((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
+    "WHERE(\"Head of Household\".\"Budgeting Completed\" < '" + firstOfYear + "') AND ((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "')) " +
@@ -804,6 +808,7 @@ router.post('/violence', function(req, res) {
   // var ageChild = req.body.ageChildrenSelection;
   var startDate = req.body.startdate;
   var endDate = req.body.enddate;
+  var firstOfYear = req.body.firstDayOfTheYear;
 
 
   pool.connect(function(err, client, done) {
@@ -848,6 +853,7 @@ router.post('/tenanttraining', function(req, res) {
   // var ageChild = req.body.ageChildrenSelection;
   var startDate = req.body.startdate;
   var endDate = req.body.enddate;
+  var firstOfYear = req.body.firstDayOfTheYear;
 
 
   pool.connect(function(err, client, done) {
@@ -892,6 +898,7 @@ router.post('/tenanttrainingsameyear', function(req, res) {
   // var ageChild = req.body.ageChildrenSelection;
   var startDate = req.body.startdate;
   var endDate = req.body.enddate;
+  var firstOfYear = req.body.firstDayOfTheYear;
 
 
   pool.connect(function(err, client, done) {
@@ -903,7 +910,7 @@ router.post('/tenanttrainingsameyear', function(req, res) {
 
     client.query("SELECT COUNT(*) \"Tenant Training Completed\", \"Program\" " +
     "FROM \"Head of Household\" " +
-    "WHERE(\"Head of Household\".\"Tenant Training Completed\" >= '" + startDate + "' AND \"Head of Household\".\"Tenant Training Completed\" <= '" + endDate + "') AND ((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
+    "WHERE(\"Head of Household\".\"Tenant Training Completed\" >= '" + firstOfYear + "' AND \"Head of Household\".\"Tenant Training Completed\" <= '" + endDate + "') AND ((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "')) " +
@@ -936,6 +943,7 @@ router.post('/tenanttrainingprioryear', function(req, res) {
   // var ageChild = req.body.ageChildrenSelection;
   var startDate = req.body.startdate;
   var endDate = req.body.enddate;
+  var firstOfYear = req.body.firstDayOfTheYear;
 
 
   pool.connect(function(err, client, done) {
@@ -947,7 +955,7 @@ router.post('/tenanttrainingprioryear', function(req, res) {
 
     client.query("SELECT COUNT(*) \"Tenant Training Completed\" , \"Program\" " +
     "FROM \"Head of Household\" " +
-    "WHERE(\"Head of Household\".\"Tenant Training Completed\" < '" + startDate + "') AND " +
+    "WHERE(\"Head of Household\".\"Tenant Training Completed\" < '" + firstOfYear + "') AND " +
     "((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
@@ -981,6 +989,7 @@ router.post('/DBT', function(req, res) {
   // var ageChild = req.body.ageChildrenSelection;
   var startDate = req.body.startdate;
   var endDate = req.body.enddate;
+  var firstOfYear = req.body.firstDayOfTheYear;
 
 
   pool.connect(function(err, client, done) {
@@ -1025,6 +1034,7 @@ router.post('/DBTsameyear', function(req, res) {
   // var ageChild = req.body.ageChildrenSelection;
   var startDate = req.body.startdate;
   var endDate = req.body.enddate;
+  var firstOfYear = req.body.firstDayOfTheYear;
 
 
   pool.connect(function(err, client, done) {
@@ -1036,7 +1046,7 @@ router.post('/DBTsameyear', function(req, res) {
 
     client.query("SELECT COUNT(*) \"DBT Completed\", \"Program\" " +
     "FROM \"Head of Household\" " +
-    "WHERE(\"Head of Household\".\"Tenant Training Completed\" >= '" + startDate + "' AND \"Head of Household\".\"Tenant Training Completed\" <= '" + endDate + "') AND ((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
+    "WHERE(\"Head of Household\".\"Tenant Training Completed\" >= '" + firstOfYear + "' AND \"Head of Household\".\"Tenant Training Completed\" <= '" + endDate + "') AND ((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "')) " +
@@ -1069,6 +1079,7 @@ router.post('/DBTprioryear', function(req, res) {
   // var ageChild = req.body.ageChildrenSelection;
   var startDate = req.body.startdate;
   var endDate = req.body.enddate;
+  var firstOfYear = req.body.firstDayOfTheYear;
 
 
   pool.connect(function(err, client, done) {
@@ -1080,7 +1091,7 @@ router.post('/DBTprioryear', function(req, res) {
 
     client.query("SELECT COUNT(*) \"DBT Completed\" , \"Program\" " +
     "FROM \"Head of Household\" " +
-    "WHERE(\"Head of Household\".\"Tenant Training Completed\" < '" + startDate + "') AND " +
+    "WHERE(\"Head of Household\".\"Tenant Training Completed\" < '" + firstOfYear + "') AND " +
     "((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
@@ -1113,6 +1124,7 @@ router.post('/healthimproved', function(req, res) {
   // var ageChild = req.body.ageChildrenSelection;
   var startDate = req.body.startdate;
   var endDate = req.body.enddate;
+  var firstOfYear = req.body.firstDayOfTheYear;
 
 
   pool.connect(function(err, client, done) {
@@ -1156,6 +1168,7 @@ router.post('/socialsupport', function(req, res) {
   // var ageChild = req.body.ageChildrenSelection;
   var startDate = req.body.startdate;
   var endDate = req.body.enddate;
+  var firstOfYear = req.body.firstDayOfTheYear;
 
 
   pool.connect(function(err, client, done) {
@@ -1199,6 +1212,8 @@ router.post('/selfgoals', function(req, res) {
   // var ageChild = req.body.ageChildrenSelection;
   var startDate = req.body.startdate;
   var endDate = req.body.enddate;
+  var firstOfYear = req.body.firstDayOfTheYear;
+
 
 
   pool.connect(function(err, client, done) {
