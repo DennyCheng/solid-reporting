@@ -3,6 +3,9 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
 
   $scope.outcomeFactory = OutcomeFactory;
   $scope.demoFactory = DemoFactory;
+  $scope.dataFactory = DataFactory;
+  $scope.dataFactory.currentSess();
+  $scope.userName = $scope.dataFactory.varUsername();
 
   $scope.toggleSide = function() {
     $mdSidenav('left').toggle();

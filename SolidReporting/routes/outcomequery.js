@@ -1,22 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var pg = require('pg');
-// var connection = require('../modules/connection');
+var connection = require('../modules/connection');
 
-var config = {
-  user: '', //env var: PGUSER
-  database: 'omicron', //env var: PGDATABASE
-  password: '', //env var: PGPASSWORD
-  port: 5432, //env var: PGPORT
-  max: 100, // max number of clients in the pool
-  idleTimeoutMillis: 1000, // how long a client is allowed to remain idle before being closed
-};
-
-
-//this initializes a connection pool
+//this initializes a connection pool from ../modules/connection
 //it will keep idle connections open for a 1 second
-//and set a limit of maximum 1000 idle clients
-var pool = new pg.Pool(config);
+//and set a limit of maximum 100 idle clients
+var pool = new pg.Pool(connection);
 
 
 // Houseing Stability
