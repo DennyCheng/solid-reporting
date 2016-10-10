@@ -11,6 +11,7 @@ myApp.controller('uploadController', ['$scope', 'DataFactory', '$http', '$locati
         showTooltip : false,
         tipDirection : ''
     };
+  $scope.loading = false;
 
     $scope.demo.delayTooltip = undefined;
     $scope.$watch('demo.delayTooltip',function(val) {
@@ -29,6 +30,7 @@ myApp.controller('uploadController', ['$scope', 'DataFactory', '$http', '$locati
         if (file) {
             var textFile = file.lfFileName.substr(file.lfFileName.length - 4);
             if (textFile == '.sql') {
+                $scope.loading = true;
                 var formData = new FormData();
                 angular.forEach($scope.file, function (obj) {
                     formData.append('file', obj.lfFile);
@@ -62,4 +64,3 @@ myApp.controller('uploadController', ['$scope', 'DataFactory', '$http', '$locati
     };
 
 }]);
-

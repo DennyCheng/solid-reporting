@@ -367,3 +367,12 @@ md-tooltip p {
   border: none;
   transform: none;
   -webkit-transform: none; }
+
+.loadingGif {
+    width: 10%;
+    z-index: 1;
+    position: fixed;
+    -webkit-transform: translate(-50%, 0);
+    left: 52%;
+    top: 35%;
+  }

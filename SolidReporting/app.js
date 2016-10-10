@@ -2,7 +2,6 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
-var test = require('./routes/test');
 
 var passport = require('./strategies/user_sql.js');
 var session = require('express-session');
