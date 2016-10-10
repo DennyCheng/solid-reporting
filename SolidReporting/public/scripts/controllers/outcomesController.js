@@ -1,4 +1,4 @@
-myApp.controller("OutcomesController", ["$scope",'$http', '$location', '$mdSidenav', 'DataFactory', 'OutcomeFactory', function ($scope, $http, DataFactory, $location, $mdSidenav, OutcomeFactory) {
+myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFactory', '$mdSidenav', 'OutcomeFactory', function ($scope, $http, $location, DataFactory, $mdSidenav, OutcomeFactory) {
   console.log("hello from OutcomesController");
 
   $scope.outcomeFactory = OutcomeFactory;
