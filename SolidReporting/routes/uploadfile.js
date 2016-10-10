@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var pg = require('pg');
-// var connectionString = 'postgres://localhost:5432/solidground';
 var connection = require('../modules/connection');
 const fs = require('fs');
 var multer  = require('multer');
