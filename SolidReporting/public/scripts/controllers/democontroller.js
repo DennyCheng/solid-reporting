@@ -31,6 +31,8 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     var ageAdultSelection;
     var ageChildrenSelection;
     var lastResidenceSelection;
+    $scope.residences = residences;
+
 
 
     //----GET Massive Data ----------------------------------------------
@@ -49,9 +51,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
                     races.push(item['Race Code']);
                     // console.log('item------00000',item ['Race Code']);
                 }
-                if (residences.indexOf(item['County of Last Residence']) === -1 &&
-                    item['County of Last Residence'] !== null &&
-                    item['County of Last Residence'] !== undefined) {
+                if (residences.indexOf(item['County of Last Residence']) === -1) {
                     residences.push(item['County of Last Residence']);
                 }
                 if (programs.indexOf(item['Program']) === -1 &&
@@ -109,7 +109,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
 
     $scope.adultAges = ['18-22', '23-30', '31-40', '41-54', '55-64', '65+'];
 
-    $scope.residences = ['Ramsey', 'Suburban Ramsey Co.', 'Washington Co.', 'Hennepin', 'Suburban Hennepin Co.', 'Other Metro County', 'Outside Twin Cities Metro', 'Outside of State'];
+    // $scope.residences = ['Ramsey', 'Suburban Ramsey', 'Washington', 'Hennepin', 'Suburban Hennepin', 'Other Metro County', 'OutsideTwin Cities Metro', 'Outside of state', 'Other Twin Cities Metro'];
 
     $scope.hhIncomes = ['At or below 100% Poverty', '101%-200% Poverty', 'At or above 200% Poverty'];
 
@@ -160,10 +160,15 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       + "Adult Age: " + $scope.selectedadultAge + "\n"
       + "Children Race: " + $scope.selectedchildRace + "\n"
       + "Children Age: " + $scope.selectedchildAge + "\n"
-      + "Last Residence: " + $scope.lastResidenceSelection + "\n")
+      + "Last Residence: " + $scope.selectedresidence + "\n")
 
     console.log("$scope.startdate newQuery: ", $scope.startdate);
     console.log("$scope.enddate newQuery: ", $scope.enddate);
+
+    // calculate age ranges for criteria selections:
+
+    var ageParamsDiff = ageParams($scope.selectedadultAge, $scope.enddate);
+    console.log("ageParamsDiff: ", ageParamsDiff);
 
     selections = {
       programSelected: $scope.selectedprogram,
@@ -174,7 +179,8 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       ageChildrenSelection: $scope.selectedchildAge,
       lastResidenceSelection: $scope.selectedresidence,
       startdate: $scope.startdate,
-      enddate: $scope.enddate
+      enddate: $scope.enddate,
+      arrayDateRanges: ageParamsDiff,
     };
 
     //Denny- Complete
@@ -210,6 +216,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
         age65tobeyond:0,
         total:0
       };
+      
       $scope.dobHomeAgain = {
         age18to22:0,
         age23to30:0,
@@ -1273,7 +1280,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       console.log('emp race other', $scope.empRace.other);
 
       // EMP Total
-      $scope.empRace.total = empWhite + empAfricanAmerican + empAsian + empMultiracial +  empAfrican + empHispanic;
+      $scope.empRace.total = empWhite + empAfricanAmerican + empAsian + empMultiracial +  empAfrican + empHispanic + $scope.empRace.other + $scope.empRace.americanIndian;
       console.log('emp race Total', $scope.empRace.total);
 
       // EMP2 Race
@@ -1461,11 +1468,11 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
 
       // Home Again Indian
       $scope.homefrontRace.americanIndian = homefrontIndian;
-      console.log('HomeAgain race indian', $scope.homefrontRace.americanIndian);
+      console.log('Homefront race indian', $scope.homefrontRace.americanIndian);
 
       // Home Again other
       $scope.homefrontRace.other = homefrontOther;
-      console.log('HomeAgain race other', $scope.homefrontRace.other);
+      console.log('Homefront race other', $scope.homefrontRace.other);
 
       // HomeFront Total
       $scope.homefrontRace.total = homefrontWhite + homefrontAfricanAmerican + homefrontAsian + homefrontMultiracial +  homefrontAfrican + homefrontHispanic + homefrontOther + homefrontIndian;
@@ -1516,7 +1523,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       $scope.raceTotal.other = empOther + emp2Other + homeSafeOther + homeAgainOther + homefrontOther;
       console.log('Program total race other', $scope.raceTotal.other);
 
-      //Grand  Total
+      // Grand  Total
       $scope.raceTotal.total = $scope.raceTotal.caucasianWhite + $scope.raceTotal.africanAmerican + $scope.raceTotal.multiracial + $scope.raceTotal.african + $scope.raceTotal.hispanicLatino + $scope.raceTotal.asian + $scope.homefrontRace.total + $scope.raceTotal.americanIndian + $scope.raceTotal.other;
       console.log('Program total race Total', $scope.raceTotal.total);
     });  // end of race
@@ -2786,6 +2793,51 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
 
 }; //end of click button function
 
+    /// filters through age parameters and converts them to date ranges for queries to be sent to server:
+    function ageParams(selectedAgeRanges, endDate) {
+        console.log("selectedAgeRanges: ", selectedAgeRanges);
+        console.log("endDate: ", endDate);
+        var endYear = endDate.getFullYear();
+        var endMonth = endDate.getMonth();
+        var endDate = endDate.getDate();
+        var arrayOfDateRanges = [];
+
+        selectedAgeRanges.forEach(function(range, i) {
+            var rangeDates = {};
+            if(range.indexOf("-") == 2) {
+                var agesArray = range.split("-");
+                var firstYear = parseInt(agesArray[0]);
+                var secondYear = parseInt(agesArray[1]);
+                var year1Math = endYear - firstYear;
+                var year2Math = endYear - secondYear;
+                var dateRange1 = (year1Math + "-" + endMonth + "-" + endDate);
+                var dateRange2 = (year2Math + "-" + endMonth + "-" + endDate);
+
+                rangeDates = {
+                    ageRange: range,
+                    date1Range: dateRange1,
+                    date2Range: dateRange2,
+                };
+                arrayOfDateRanges.push(rangeDates);
+            }
+            if(range.indexOf("+") == 2) {
+                var ages2Array = range.split("+");
+                var firstYear = parseInt(ages2Array[0]);
+                var year1Math = endYear - firstYear;
+                var dateRange1 = (year1Math + "-" + endMonth + "-" + endDate);
+
+                rangeDates = {
+                    ageRange: range,
+                    date1Range: dateRange1,
+                    date2Range: ""
+                }
+                arrayOfDateRanges.push(rangeDates);
+            }
+        });
+
+        return arrayOfDateRanges;
+    }
+
   ///performs age calculations
   function dateDiff(personDOB, endDate){
     var personYear = endDate.getFullYear();
@@ -2805,34 +2857,25 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     }
     return diff;
   };
+  
 
 
+    $scope.exportData = function () {
+      var blob = new Blob([document.getElementById('exportable').innerHTML], {
+        type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
+      });
+      saveAs(blob, "Solid_Ground_Report.xls");
+    };
 
-    //********** Second option selected function ****************
-
-    // $scope.newQuery = function() {
-    //     // get call to the server passing the data
-    //     $http.get('/uploadfile/data').then(function(response){
-    //         console.log('response', response.data);
-    //         $scope.selectedgender;
-    //         console.log($scope.selectedgender[0]);
-    //         $scope.selectedadultRace;
-    //         console.log($scope.selectedadultRace);
-    //         $scope.selectedchildAge;
-    //         console.log($scope.selectedchildAge);
-    //         $scope.selectedresidence;
-    //         console.log($scope.selectedresidence);
-    //         $scope.selectedhhIncome;
-    //         console.log($scope.selectedhhIncome);
-    //         $scope.selectedexitingPerson;
-    //         console.log($scope.selectedexitingPerson);
-    //         $scope.date1;
-    //         console.log('selectedDate', $scope.date1);
-    //         $scope.date2;
-    //         console.log('selectedDate', $scope.date2);
-    //     })
-    //
-    // }
+  $scope.tests = [{
+    "Name": "HomeFront",
+    "Date": "10/02/2014",
+    "Race": ["African", "White", "Asian"]
+  }, {
+    "Name": "Home Safe",
+    "Date": "10/02/2014",
+    "Race": ["Others", "Latinos", "African America"]
+  }];
 
     $scope.resetQuery = function () {
         $scope.selectedprogram = [];
@@ -2847,8 +2890,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
         $scope.startdate = new Date();
         $scope.enddate = new Date();
         //need to reset $scoped out sorting variables too?
-    }
-
+    };
 
 // end controller
 }]);

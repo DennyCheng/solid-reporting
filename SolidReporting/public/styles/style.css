@@ -12,6 +12,7 @@ p {
 
 /* header style */
 md-toolbar:not(.md-menu-toolbar) {
+  background-color: #87CEFA;
   background-color: rgba(12,106,169,.5);
 }
 .logo {
@@ -19,6 +20,22 @@ md-toolbar:not(.md-menu-toolbar) {
   height: 40%;
   /*margin: 20px auto 20px auto;*/
 }
+
+/*._md-nav-bar {
+  align: right;
+}*/
+
+.togglesearch {
+  float: left;
+}
+
+.pagetitle {
+  font-size: 36px;
+  color: rgb(122,157,62);
+  /*color: #779b1f;*/
+  text-align: center;
+}
+
 
 /* end of header style */
 .login {
@@ -39,7 +56,7 @@ form {
   padding: 3em 2em 2em 2em;
   background: #fafafa;
   border: 1px solid #ebebeb;
-  box-shadow: rgba(0, 0, 0, 0.14902) 0px 1px 1px 0px, rgba(0, 0, 0, 0.09804) 0px 1px 2px 0px;
+  box-shadow: rgba(0, 0, 0, 0.14902) 0 1px 1px 0, rgba(0, 0, 0, 0.09804) 0 1px 2px 0;
 }
 
 .inputIconDemo {
@@ -57,11 +74,6 @@ form {
 .checkboxdemoSelectAll .program-select-all-checkboxes {
   padding-left: 30px;
 }
-
-/*.demoGrid {
-    width: 500px;
-    height: 250px;
-  }*/
 
 .demoDropdown {
   /* Please note: All these selectors are only applied to children of elements with the 'demoDropdown' class */ }
@@ -122,6 +134,11 @@ md-input-container.md-input-invalid > md-icon.email,
   color: red;
 }
 
+
+ /*Login "name" input*/
+/*md-input-container:not(.md-input-has-value) input:not(:focus) {
+}*/
+
 md-input-container ng-messages,
 md-input-container [ng-messages] {
   padding-left: 36px;
@@ -148,9 +165,6 @@ md-sidenav {
    /*background-color: #6bc7cc;*/
  }
 
-md-select {
-}
-
 md-content {
  /*height: 100%;
  padding: 20px;
@@ -175,8 +189,93 @@ md-select-menu md-content md-option[selected] {
 /* Data Table Display-----------------------*/
 
 h1.tablehead {
+  padding: 14px;
+}
+
+md-table-container.EMPI > md-toolbar {
+  background-color: rgb(105,72,54);
+}
+md-table-container.EMPII > md-toolbar {
+  background-color: rgb(122,157,62);
+}
+md-table-container.homeagain > md-toolbar {
+  background-color: rgb(12,106,169);
+}
+md-table-container.homesafe > md-toolbar {
+  background-color: rgb(12,106,169);
+}
+md-table-container.homefront > md-toolbar {
+  background-color: rgb(12,106,169);
+}
+
+table.md-table th.md-column {
+  font-size: 14px;
+  white-space: normal;
+  /*background-color: rgba(132,179,210,.5);*/
+}
+
+md-table-container.EMPI > table.md-table th.md-column {
+  color: white;
+  background-color: rgba(105,72,54,0.5);
+}
+md-table-container.EMPII > table.md-table th.md-column {
+  color: white;
+  background-color: rgba(122,157,62,0.5);
+}
+md-table-container.homeagain > table.md-table th.md-column {
+  color: white;
+  background-color: rgba(12,106,169,0.5);
+}
+
+md-table-container.EMPI > th.md-column {
+}
+
+table.md-table td.md-cell.md-numeric {
   padding: 10px;
 }
+
+table.md-table tbody.md-body > tr.totalrow.md-row {
+  /*background-color: lightgreen;*/*/
+  /*border-bottom: 1px rgba(0,0,0,.12) solid
+}
+
+table.md-table td.md-cell {
+  /*padding: 3em;*/
+}
+
+
+/*--------Number column background---------*/
+table.md-table td:nth-child(2) {
+  background-color: linen;
+  border-right: 1px rgba(0,0,0,.12) solid;
+  border-left: 1px rgba(0,0,0,.12) solid;
+
+}
+
+/*--------Percentage column background---------*/
+table.md-table td:nth-child(3) {
+  background-color: papayawhip;
+}
+
+/*--------Total row ---------*/
+table.md-table tr:last-child {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+
+thead {
+
+}
+
+
+/*tr.totalrow > md-cell: {
+  border-bottom: 2px rgba(0,0,0,.12) solid;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(0, 0, 0, 0.117647);
+}*/
+
 
 /* navigation menu---------------------------*/
 .md-button.md-accent {
@@ -186,3 +285,60 @@ h1.tablehead {
 .md-button.md-accent {
   color: rgb(18, 110, 171);
 }
+/*landing page style*/
+.buttondemoBasicUsage section {
+  background: #f7f7f7;
+  border-radius: 3px;
+  text-align: center;
+  margin: 1em;
+  position: relative !important;
+  padding-bottom: 10px; }
+
+.buttondemoBasicUsage md-content {
+  margin-right: 7px; }
+
+.buttondemoBasicUsage section .md-button {
+  margin-top: 16px;
+  margin-bottom: 16px; }
+
+.buttondemoBasicUsage .label {
+  position: absolute;
+  bottom: 5px;
+  left: 7px;
+}
+.carddemoBasicUsage .card-media {
+  background-color: #999999; }
+
+/* tool tips */
+
+md-tooltip {
+  top: 18em;
+}
+
+md-tooltip .md-content {
+  height: 38em;
+  line-height: 1em;
+  padding-left: 14em;
+  padding-right: 14em;
+}
+md-tooltip h3 {
+  color: white;
+  font-size: 2em;
+}
+md-tooltip p {
+  color: white;
+  font-size: 2em;
+}
+.md-button.md-fab:not([disabled]){
+  background-color: rgb(12, 106, 169);
+}
+.md-button.md-fab:not([disabled]):hover {
+  background-color: rgb(122, 157, 62);
+}
+
+.tooltipdemoBasicUsage md-toolbar .md-toolbar-tools .md-button,
+.tooltipdemoBasicUsage md-toolbar .md-toolbar-tools .md-button:hover {
+  box-shadow: none;
+  border: none;
+  transform: none;
+  -webkit-transform: none; }
