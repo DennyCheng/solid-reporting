@@ -2635,8 +2635,6 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     return diff;
   };
   
-
-
     $scope.exportData = function () {
       var blob = new Blob([document.getElementById('exportable').innerHTML], {
         type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
