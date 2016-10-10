@@ -192,54 +192,72 @@ md-select-menu md-content md-option[selected] {
 
 /* Data Table Display-----------------------*/
 
-h1.tablehead {
+.tablehead {
   padding: 14px;
+  white-space: nowrap;
 }
 
 /*md-table-container.homesafe > .tablehead {
   color: gray;
 }*/
 
-md-table-container.EMPI > md-toolbar {
+md-table-container.EMPI > md-toolbar,
+md-table-container.health > md-toolbar {
   background-color: rgb(105,72,54);
 }
-md-table-container.EMPII > md-toolbar {
+md-table-container.EMPII > md-toolbar,
+md-table-container.families > md-toolbar {
   background-color: rgb(122,157,62);
 }
-md-table-container.homeagain > md-toolbar {
+md-table-container.homeagain > md-toolbar,
+md-table-container.education > md-toolbar {
   background-color: rgb(12,106,169);
 }
-md-table-container.homesafe > md-toolbar {
+md-table-container.homesafe > md-toolbar,
+md-table-container.econ > md-toolbar{
   background-color: rgb(167,192,124);
 }
-md-table-container.homefront > md-toolbar {
+md-table-container.homefront > md-toolbar,
+md-table-container.housing > md-toolbar {
   background-color: rgb(165,100,54);
 }
-
+md-table-container.community > md-toolbar {
+  background-color: rgb(73,143,191);
+}
 table.md-table th.md-column {
   font-size: 14px;
   white-space: normal;
   /*background-color: rgba(132,179,210,.5);*/
 }
 
-md-table-container.EMPI > table.md-table th.md-column {
+md-table-container.EMPI > table.md-table th.md-column,
+md-table-container.health > table.md-table th.md-column {
   /*color: white;*/
   background-color: rgba(105,72,54,0.5);
 }
-md-table-container.EMPII > table.md-table th.md-column {
+md-table-container.EMPII > table.md-table th.md-column,
+md-table-container.families > table.md-table th.md-column {
   /*color: white;*/
   background-color: rgba(122,157,62,0.5);
 }
-md-table-container.homeagain > table.md-table th.md-column {
+md-table-container.homeagain > table.md-table th.md-column,
+md-table-container.education > table.md-table th.md-column {
   /*color: white;*/
   background-color: rgba(12,106,169,0.5);
 }
-md-table-container.homesafe > table.md-table th.md-column {
+md-table-container.homesafe > table.md-table th.md-column,
+md-table-container.econ > table.md-table th.md-column {
   background-color: rgba(167,192,124,0.4);
 }
-md-table-container.homefront > table.md-table th.md-column {
+md-table-container.homefront > table.md-table th.md-column,
+md-table-container.housing > table.md-table th.md-column {
   /*color: white;*/
   background-color: rgba(165,100,54,0.5);
+}
+
+md-table-container.community > table.md-table th.md-column {
+  background-color: rgba(73,143,191,0.5);
+
 }
 
 table.md-table td.md-cell.md-numeric {
@@ -270,23 +288,18 @@ table.md-table td:nth-child(3) {
 }
 
 /*--------Total row ---------*/
-table.md-table tr:last-child {
+/*table.md-table tr:last-child {
   font-weight: bold;
   font-size: 14px;
-}
+}*/
 
 md-table-container {
   border: 1px rgba(0,0,0,.12) solid;
 }
 
-
-
-/*tr.totalrow > md-cell: {
-  border-bottom: 2px rgba(0,0,0,.12) solid;
-  border-bottom-width: 2px;
-  border-bottom-style: solid;
-  border-bottom-color: rgba(0, 0, 0, 0.117647);
-}*/
+.boldrow.md-row {
+  font-weight: bold;
+}
 
 
 /* navigation menu---------------------------*/
