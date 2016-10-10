@@ -209,49 +209,44 @@
           </thead>
           <tbody md-body>
             <tr md-row>
-              <td md-cell>0–18 mths</td>
-              <td ng-model="dobEMP" md-cell>{{  }}</td>
-              <td ng-model="dobEMP" md-cell>90</td>
+              <td md-cell>0–1 yr</td>
+              <td ng-model="childdobEMP" md-cell>{{ childdobEMP.age0to1 }}</td>
+              <td ng-model="childdobEMP" md-cell>{{ (100 * childdobEMP.age0to1 / childdobEMP.total ) | number:2  }}%</td>
             </tr>
             <tr md-row>
-              <td md-cell>19-35 mths</td>
-              <td ng-model="dobEMP" md-cell>{{  }}</td>
-              <td ng-model="dobEMP" md-cell>90</td>
+              <td md-cell>2-3 yrs</td>
+              <td ng-model="childdobEMP" md-cell>{{ childdobEMP.age2to3 }}</td>
+              <td ng-model="childdobEMP" md-cell>{{ (100 * childdobEMP.age2to3 / childdobEMP.total ) | number:2  }}%</td>
             </tr>
             <tr md-row>
-              <td md-cell>36-59 mths</td>
-              <td ng-model="dobEMP" md-cell>{{  }}</td>
-              <td ng-model="dobEMP" md-cell>90</td>
-            </tr>
-            <tr md-row>
-              <td md-cell>60-71 mths (5 y.o.)</td>
-              <td ng-model="dobEMP" md-cell>{{  }}</td>
-              <td ng-model="dobEMP" md-cell>90</td>
+              <td md-cell>4-5 yrs</td>
+              <td ng-model="childdobEMP" md-cell>{{ childdobEMP.age4to5 }}</td>
+              <td ng-model="childdobEMP" md-cell>{{ (100 * childdobEMP.age4to5 / childdobEMP.total ) | number:2  }}%</td>
             </tr>
             <tr md-row>
               <td md-cell>6–9 yrs</td>
-              <td ng-model="dobEMP" md-cell>{{  }}</td>
-              <td ng-model="dobEMP" md-cell>90</td>
+              <td ng-model="childdobEMP" md-cell>{{ childdobEMP.age6to9 }}</td>
+              <td ng-model="childdobEMP" md-cell>{{ (100 * childdobEMP.age6to9 / childdobEMP.total ) | number:2  }}%</td>
             </tr>
             <tr md-row>
               <td md-cell>10–14 yrs</td>
-              <td ng-model="dobEMP" md-cell>{{  }}</td>
-              <td ng-model="dobEMP" md-cell>90</td>
+              <td ng-model="childdobEMP" md-cell>{{ childdobEMP.age10to14 }}</td>
+              <td ng-model="childdobEMP" md-cell>{{ (100 * childdobEMP.age10to14 / childdobEMP.total ) | number:2  }}%</td>
             </tr>
             <tr md-row>
               <td md-cell>15–17 yrs</td>
-              <td ng-model="dobEMP" md-cell>{{  }}</td>
-              <td ng-model="dobEMP" md-cell>90</td>
+              <td ng-model="childdobEMP" md-cell>{{ childdobEMP.age15to17 }}</td>
+              <td ng-model="childdobEMP" md-cell>{{ (100 * childdobEMP.age15to17 / childdobEMP.total ) | number:2  }}%</td>
             </tr>
             <tr md-row>
               <td md-cell>18+ child in home</td>
-              <td ng-model="dobEMP" md-cell>{{  }}</td>
-              <td ng-model="dobEMP" md-cell>90</td>
+              <td ng-model="childdobEMP" md-cell>{{ childdobEMP.age18tobeyond }}</td>
+              <td ng-model="childdobEMP" md-cell>{{ (100 * childdobEMP.age18tobeyond / childdobEMP.total ) | number:2  }}%</td>
             </tr>
             <tr class="totalrow" md-row>
               <td md-cell>Total</td>
-              <td ng-model="number" md-cell></td>
-              <td ng-model="percent" md-cell>{{}}</td>
+              <td ng-model="childdobEMP" md-cell>{{ childdobEMP.total }}</td>
+              <td ng-model="childdobEMP" md-cell>{{ (100 * childdobEMP.total / childdobEMP.total ) | number:2  }}%</td>
             </tr>
           </tbody>
 

@@ -1,7 +1,8 @@
-myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFactory', '$mdSidenav', 'OutcomeFactory', function ($scope, $http, $location, DataFactory, $mdSidenav, OutcomeFactory) {
+myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFactory', '$mdSidenav', 'OutcomeFactory', 'DemoFactory', function ($scope, $http, $location, DataFactory, $mdSidenav, OutcomeFactory, DemoFactory) {
   console.log("hello from OutcomesController");
 
   $scope.outcomeFactory = OutcomeFactory;
+  $scope.demoFactory = DemoFactory;
 
   $scope.toggleSide = function() {
     $mdSidenav('left').toggle();
@@ -15,13 +16,67 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
     });
   }
 
+  var programs = [];
 
   //----- Programs & Outcomes Checkboxes --------------
-  $scope.programs = ['EMP I', 'EMP II', 'Home Again', 'HomeSafe', 'HomeFront'];
+  // $scope.programs = ['EMP I', 'EMP II', 'Home Again', 'HomeSafe', 'HomeFront'];
 
   $scope.outcomes = ['Housing Stability', 'Educational Advancement', 'Economic Stability', 'Strengthened Families', 'Improved Health', 'Community Connections'];
 
-  //----- Logic for program checkboxes ----------------
+  showData();
+  function showData() {
+
+      $scope.demoFactory.retrieveData().then(function(response) {
+          $scope.data = response;
+          // console.log('type of number?', typeof Number());
+          $scope.data.forEach(function (item) {
+              // indexOf checks from index 0 to end of index every loop
+
+              //  console.log('sg data -----', $scope.data);
+
+              if (programs.indexOf(item['Program']) === -1 &&
+                  item['Program'] !== null &&
+                  item['Program'] !== 2 &&
+                  item['Program'] !== 9 &&
+                  item['Program'] !== 51 &&
+                  item['Program'] !== 114 &&
+                  item['Program'] !== 73 &&
+                  item['Program'] !== 15 &&
+                  item['Program'] !== 17 &&
+                  item['Program'] !== 16 &&
+                  item['Program'] !== 77 &&
+                  item['Program'] !== 78 &&
+                  item['Program'] !== 58 &&
+                  item['Program'] !== 52 &&
+                  item['Program'] !== 10 &&
+                  item['Program'] !== 142 &&
+                  item['Program'] !== 59 &&
+                  item['Program'] !== 53 &&
+                  item['Program'] !== 141
+              ) {
+                  programs.push(item['Program']);
+              }
+          });
+          $scope.items = angular.copy(programs);
+      });
+  }
+
+
+//----- Programs ----------------------------
+
+  $scope.selectedprogram = programs;
+
+  $scope.toggle = function (item, list) {
+      var idx = list.indexOf(item);
+      if (idx > -1) {
+          console.log('array ----', $scope.items);
+          list.splice(idx, 1);
+      }
+      else {
+          list.push(item);
+          console.log('array ----', $scope.items);
+      }
+  };
 
 
 
@@ -166,10 +221,6 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
         });
 
 
-    // $http.get('/demoquery').then(function(response) {
-    // console.log('data', response.data);
-    // $scope.data = response.data;
-    // });
   }
 
   $scope.resetQuery = function () {
