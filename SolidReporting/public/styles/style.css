@@ -354,3 +354,27 @@ md-tooltip p {
   border: none;
   transform: none;
   -webkit-transform: none; }
+
+.instruction {
+  background-color: rgba(0, 0, 0, 0.54);
+  border-radius: 5px;
+  position: absolute;
+  top: 6em;
+  left: 10em;
+  width: 45em;
+  padding-left: 0.5em;
+  transform: scale(1);
+  opacity: 9999;
+  margin-left: -7em;
+}
+.instruction p, h3 {
+  color: white;
+  font-size: 1.2em;
+  font-family: Roboto,Helvetica Neue,sans-serif;
+  line-height: 1.5em;
+  font-weight: 500;
+}
+.instruction h3 {
+  margin: 0 auto 0 auto;
+  font-size: 1.2em;
+}

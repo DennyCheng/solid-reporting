@@ -3,8 +3,9 @@ myApp.controller('uploadController', ['$scope', 'DataFactory', '$http', '$locati
   $scope.dataFactory = DataFactory;
     $scope.isDisabled = false;
 
+    $scope.isReplyFormOpen = true;
   $scope.dataFactory.currentSess();
-
+    // $scope.showTooltip = true;
   $scope.userName = $scope.dataFactory.varUsername();
 
     $scope.demo = {
@@ -13,6 +14,7 @@ myApp.controller('uploadController', ['$scope', 'DataFactory', '$http', '$locati
     };
 
     $scope.demo.delayTooltip = undefined;
+
     $scope.$watch('demo.delayTooltip',function(val) {
         $scope.demo.delayTooltip = parseInt(val, 10) || 0;
     });

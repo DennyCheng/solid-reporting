@@ -9,23 +9,26 @@
 
 <md-content layout-padding>
     <div layout="row">
-        <md-button class="md-fab" aria-label="Photos with Tooltip Delay" style="margin-top: 1em;" >
+        <!--<md-button class="md-fab" aria-label="Photos with Tooltip Delay" style="margin-top: 1em;" >-->
+            <!--<i class="fa fa-question-circle-o" aria-hidden="true" style="color: white; font-size: 2em; margin-top: 14px;"></i>-->
+            <!--<md-tooltip md-delay="demo.delayTooltip" >-->
+                <!--<h3>Instruction</h3>-->
+                <!--<p>1. MS Access to Postgresql local database into SQL format</p>-->
+                <!--<p>2. Follow MS Access to export file</p>-->
+                <!--<p>3. Drag and drop SQL file into application</p>-->
+                <!--<p>4. Press Submit</p>-->
+            <!--</md-tooltip>-->
+        <!--</md-button>-->
+        <md-button class="md-fab" aria-label="Photos with Tooltip Delay" style="margin-top: 1em;"  ng-click="isReplyFormOpen = !isReplyFormOpen">
             <i class="fa fa-question-circle-o" aria-hidden="true" style="color: white; font-size: 2em; margin-top: 14px;"></i>
-            <md-tooltip md-delay="demo.delayTooltip" >
-                <h3>Instruction</h3>
-                <p>1. Open Ms Access to Postgresql application on your computer.</p>
-                <p>2.Within MS Access to Postgresql</p>
-                <p>3. Click next</p>
-                <p>4. Filename will be set to the Access Database file</p>
-                <p>5. Click next</p>
-                <p>6. select Create dump file field</p>
-                <p>7. Make sure destination Database input field reads: movedb</p>
-                <p>8. Click Next</p>
-                <p>9. Make sure all checkboxes are selected or click Selected or click select  all to do this</p>
-                <p>10. Click next</p>
-                <p>11. Click run Now button</p>
-            </md-tooltip>
+
         </md-button>
+        <div class="instruction" ng-hide="isReplyFormOpen" style="transform-origin: center top 0px;">
+            <h3>Instruction</h3>
+            <p>1. Open MS Access to Postgresql application to convert MS Access database to SQL</p>
+            <p>2. Click Next all the way to Run now to export file into SQL format</p>
+            <p>3. Upload new SQL file into Solid Ground Reporting application</p>
+        </div>
         <div flex>
             <form layout="column" layout-align="center center" class="uploadform">
             <lf-ng-md-file-input lf-files="file"  lf-placeholder="sql file" lf-drag-and-drop-label="Drag and Drop SQL file"  drag preview> </lf-ng-md-file-input>
