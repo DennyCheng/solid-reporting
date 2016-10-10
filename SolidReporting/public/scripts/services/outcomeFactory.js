@@ -261,6 +261,26 @@ myApp.factory('OutcomeFactory', ['$http', '$location', function($http, $location
     return promise;
   }
 
+  var socialSupport = function(selections) {
+
+    var promise = $http.post('/outcomequery/socialsupport', selections).then(function (response) {
+      var socialsupport = response.data;
+      console.log("socialsupport: ", socialsupport);
+      return socialsupport;
+    });
+    return promise;
+  }
+
+    var selfGoals = function(selections) {
+
+      var promise = $http.post('/outcomequery/selfgoals', selections).then(function (response) {
+        var selfGoals = response.data;
+        console.log("selfGoals: ", selfGoals);
+        return selfGoals;
+      });
+      return promise;
+    }
+
   return {  //start of return scope
     retrieveData: function () {
       return getData();
@@ -339,6 +359,12 @@ myApp.factory('OutcomeFactory', ['$http', '$location', function($http, $location
     },
     healthImproved: function (selections) {
       return healthImproved(selections);
+    },
+    socialSupport: function (selections) {
+      return socialSupport(selections);
+    },
+    selfGoals: function (selections) {
+      return selfGoals(selections);
     }
   };  //end of return scope
 

@@ -474,3 +474,21 @@ OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Househ
 OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
 OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
 GROUP BY "Has Health Improved", "Program";
+
+Incresed Social Support
+SELECT "Increased their Social Support", COUNT(*), "Program"
+FROM "Head of Household"
+WHERE("Increased their Social Support" IS NOT FALSE) AND (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "Increased their Social Support", "Program";
+
+Self-Defined Goals
+SELECT "Progressed on a Self-Defined Goal", COUNT(*), "Program"
+FROM "Head of Household"
+WHERE("Progressed on a Self-Defined Goal" IS NOT FALSE) AND (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "Progressed on a Self-Defined Goal", "Program";

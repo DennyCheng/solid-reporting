@@ -2,7 +2,18 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', '$mdSiden
   console.log("hello from OutcomesController");
 
   $scope.dataFactory = DataFactory;
+  $scope.dataFactory.currentSess();
+  $scope.userName = $scope.dataFactory.varUsername();
   $scope.outcomeFactory = OutcomeFactory;
+
+
+  $scope.tologout = function() {
+    $scope.dataFactory.logout().then(function(response) {
+      console.log('logged out');
+      console.log('i redirected you to the home page');
+      $location.path("/login");
+    });
+  }
 
   // $scope.test = $scope.dataFactory.testVar();
   // console.log($scope.test);
@@ -196,6 +207,12 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', '$mdSiden
         });
         $scope.outcomeFactory.healthImproved(selections).then(function(response) {
           console.log("response healthImproved: ", response);
+        });
+        $scope.outcomeFactory.socialSupport(selections).then(function(response) {
+          console.log("response socialSupport: ", response);
+        });
+        $scope.outcomeFactory.selfGoals(selections).then(function(response) {
+          console.log("response selfGoals: ", response);
         });
 
 

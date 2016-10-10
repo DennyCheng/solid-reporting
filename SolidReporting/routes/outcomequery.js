@@ -1144,4 +1144,90 @@ router.post('/healthimproved', function(req, res) {
 
   });
 });
+
+// Increas social support
+router.post('/socialsupport', function(req, res) {
+  console.log("go social support");
+  // console.log("req.body line 56: ", req.body);
+  // var raceAdult = req.body.raceAdultSelection;
+  // var ageAdult = req.body.ageAdultSelection;
+  // var raceChild = req.body.raceChildrenSelection;
+  // var gender = req.body.genderSelection;
+  // var ageChild = req.body.ageChildrenSelection;
+  var startDate = req.body.startdate;
+  var endDate = req.body.enddate;
+
+
+  pool.connect(function(err, client, done) {
+
+    if(err) {
+      console.log(err);
+      res.sendStatus(500);
+    }
+
+    client.query("SELECT \"Increased their Social Support\", COUNT(*), \"Program\" " +
+    "FROM \"Head of Household\" " +
+    "WHERE(\"Increased their Social Support\" IS NOT FALSE) AND ((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
+    "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
+    "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
+    "OR (\"Head of Household\".\"Program Entry Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "')) " +
+    "GROUP BY \"Increased their Social Support\", \"Program\"; ",
+      function(err, result) {
+        done();
+
+        if(err) {
+          console.log("select error: ", err);
+          res.sendStatus(500);
+        }
+        console.log('results.row: ', result.rows);
+
+        res.send(result.rows);
+
+    });
+
+  });
+});
+
+// Self-Defined Goals
+router.post('/selfgoals', function(req, res) {
+  console.log("go Self-Defined goals");
+  // console.log("req.body line 56: ", req.body);
+  // var raceAdult = req.body.raceAdultSelection;
+  // var ageAdult = req.body.ageAdultSelection;
+  // var raceChild = req.body.raceChildrenSelection;
+  // var gender = req.body.genderSelection;
+  // var ageChild = req.body.ageChildrenSelection;
+  var startDate = req.body.startdate;
+  var endDate = req.body.enddate;
+
+
+  pool.connect(function(err, client, done) {
+
+    if(err) {
+      console.log(err);
+      res.sendStatus(500);
+    }
+
+    client.query("SELECT \"Progressed on a Self-Defined Goal\", COUNT(*), \"Program\" " +
+    "FROM \"Head of Household\" " +
+    "WHERE (\"Progressed on a Self-Defined Goal\" IS NOT FALSE) AND ((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
+    "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
+    "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
+    "OR (\"Head of Household\".\"Program Entry Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "')) " +
+    "GROUP BY \"Progressed on a Self-Defined Goal\", \"Program\"; ",
+      function(err, result) {
+        done();
+
+        if(err) {
+          console.log("select error: ", err);
+          res.sendStatus(500);
+        }
+        console.log('results.row: ', result.rows);
+
+        res.send(result.rows);
+
+    });
+
+  });
+});
 module.exports = router;
