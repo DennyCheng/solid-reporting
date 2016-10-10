@@ -21,7 +21,7 @@ myApp.controller('uploadController', ['$scope', 'DataFactory', '$http', '$locati
         if (val && val.length ) {
             $scope.demo.showTooltip = true;
         }
-    })
+    });
 
     $scope.onSubmit = function(){
         var file = $scope.file[0];
@@ -50,7 +50,6 @@ myApp.controller('uploadController', ['$scope', 'DataFactory', '$http', '$locati
                     } else {
                         toaster.error('upload has fail');
                     }
-
                 });
             } else {
                 toaster.error('Please insert sql file');
