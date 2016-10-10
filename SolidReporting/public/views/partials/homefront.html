@@ -1,6 +1,6 @@
-<!-- ng-show="selectedprogram.indexOf('HomeFront') !== -1"  -->
 <!-- HomeFront --------------------------------->
-        <md-table-container ng-model="toggleSelect" class="homefront" flex>
+        <md-table-container ng-model="toggleSelect" ng-show="selectedprogram.indexOf('HomeFront') !== -1"
+class="homefront" flex>
           <md-toolbar flex>
             <h1 class="md-title tablehead" >{{"HomeFront"}}</h1>
           </md-toolbar>
@@ -200,49 +200,44 @@
           </thead>
           <tbody md-body>
             <tr md-row>
-              <td md-cell>0–18 mths</td>
-              <td ng-model="dobHomeFront" md-cell>{{  }}</td>
-              <td ng-model="total" md-cell>90</td>
+              <td md-cell>0–1 yr</td>
+              <td ng-model="childdobHomeFront" md-cell>{{ childdobHomeFront.age0to1 }}</td>
+              <td ng-model="childdobHomeFront" md-cell>{{ (100 * childdobHomeFront.age0to1 / childdobHomeFront.total ) | number:2  }}%</td>
             </tr>
             <tr md-row>
-              <td md-cell>19-35 mths</td>
-              <td ng-model="dobHomeFront" md-cell>{{  }}</td>
-              <td ng-model="total" md-cell>90</td>
+              <td md-cell>2-3 yrs</td>
+              <td ng-model="childdobHomeFront" md-cell>{{ childdobHomeFront.age2to3 }}</td>
+              <td ng-model="childdobHomeFront" md-cell>{{ (100 * childdobHomeFront.age2to3 / childdobHomeFront.total ) | number:2  }}%</td>
             </tr>
             <tr md-row>
-              <td md-cell>36-59 mths</td>
-              <td ng-model="dobHomeFront" md-cell>{{  }}</td>
-              <td ng-model="total" md-cell>90</td>
-            </tr>
-            <tr md-row>
-              <td md-cell>60-71 mths (5 y.o.)</td>
-              <td ng-model="dobHomeFront" md-cell>{{  }}</td>
-              <td ng-model="total" md-cell>90</td>
+              <td md-cell>4-5 yrs</td>
+              <td ng-model="childdobHomeFront" md-cell>{{ childdobHomeFront.age4to5 }}</td>
+              <td ng-model="childdobHomeFront" md-cell>{{ (100 * childdobHomeFront.age4to5 / childdobHomeFront.total ) | number:2  }}%</td>
             </tr>
             <tr md-row>
               <td md-cell>6–9 yrs</td>
-              <td ng-model="dobHomeFront" md-cell>{{  }}</td>
-              <td ng-model="total" md-cell>90</td>
+              <td ng-model="childdobHomeFront" md-cell>{{ childdobHomeFront.age6to9 }}</td>
+              <td ng-model="childdobHomeFront" md-cell>{{ (100 * childdobHomeFront.age6to9 / childdobHomeFront.total ) | number:2  }}%</td>
             </tr>
             <tr md-row>
               <td md-cell>10–14 yrs</td>
-              <td ng-model="dobHomeFront" md-cell>{{  }}</td>
-              <td ng-model="total" md-cell>90</td>
+              <td ng-model="childdobHomeFront" md-cell>{{ childdobHomeFront.age10to14 }}</td>
+              <td ng-model="childdobHomeFront" md-cell>{{ (100 * childdobHomeFront.age10to14 / childdobHomeFront.total ) | number:2  }}%</td>
             </tr>
             <tr md-row>
               <td md-cell>15–17 yrs</td>
-              <td ng-model="dobHomeFront" md-cell>{{  }}</td>
-              <td ng-model="total" md-cell>90</td>
+              <td ng-model="childdobHomeFront" md-cell>{{ childdobHomeFront.age15to17 }}</td>
+              <td ng-model="childdobHomeFront" md-cell>{{ (100 * childdobHomeFront.age15to17 / childdobHomeFront.total ) | number:2  }}%</td>
             </tr>
             <tr md-row>
               <td md-cell>18+ child in home</td>
-              <td ng-model="dobHomeFront" md-cell>{{  }}</td>
-              <td ng-model="total" md-cell>90</td>
+              <td ng-model="childdobHomeFront" md-cell>{{ childdobHomeFront.age18tobeyond }}</td>
+              <td ng-model="childdobHomeFront" md-cell>{{ (100 * childdobHomeFront.age18tobeyond / childdobHomeFront.total ) | number:2  }}%</td>
             </tr>
             <tr class="totalrow" md-row>
               <td md-cell>Total</td>
-              <td ng-model="number" md-cell></td>
-              <td ng-model="percent" md-cell>{{}}</td>
+              <td ng-model="childdobHomeFront" md-cell>{{ childdobHomeFront.total }}</td>
+              <td ng-model="childdobHomeFront" md-cell>{{ (100 * childdobHomeFront.total / childdobHomeFront.total ) | number:2  }}%</td>
             </tr>
           </tbody>
 

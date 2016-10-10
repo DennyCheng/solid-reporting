@@ -105,7 +105,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     $scope.adultRaces = races;
     $scope.childRaces = races;
 
-    $scope.childAges = ['0-18 mths', '19-35 mths', '36-59 mths', '60-71 mths (5 y.o.)', '6-9 yrs', '10-14 yrs', '15-17 yrs', '18+ child in home'];
+    $scope.childAges = ['0-1 yr', '2-3 yrs)', '4-5 yrs)', '6-9 yrs', '10-14 yrs', '15-17 yrs', '18+ child in home'];
 
     $scope.adultAges = ['18-22', '23-30', '31-40', '41-54', '55-64', '65+'];
 
@@ -216,7 +216,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
         age65tobeyond:0,
         total:0
       };
-      
+
       $scope.dobHomeAgain = {
         age18to22:0,
         age23to30:0,
@@ -2859,8 +2859,6 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     }
     return diff;
   };
-  
-
 
     $scope.exportData = function () {
       var blob = new Blob([document.getElementById('exportable').innerHTML], {

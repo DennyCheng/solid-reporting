@@ -22,148 +22,6 @@
           </md-input-container>
       </div>
 
-        <h1 class="md-title">Gender</h1>
-        <div layout="row" layout-wrap>
-          <md-input-container flex="100">
-            <label>Select Gender</label>
-            <md-select  ng-model="selectedgender"
-                        ng-init="selectedgender = genders"
-                        md-on-close="clearSearchTerm()"  data-md-container-class="demoDropdown"
-                        multiple="">
-              <md-optgroup label="Gender">
-                <button ng-click= "selectedgender = genders">Select All</button>
-                <button ng-click="selectedgender=[]">Clear</button>
-                <md-option ng-value="gender" ng-repeat="gender in genders">{{gender}}</md-option>
-              </md-optgroup>
-            </md-select>
-          </md-input-container>
-        </div>
-
-        <h1 class="md-title">Race: Adults</h1>
-        <div layout="row" layout-wrap>
-          <md-input-container flex="100">
-            <label>Select Race(s)</label>
-            <md-select  ng-model="selectedadultRace"
-                        ng-init="selectedadultRace = adultRaces"
-                        md-on-close="clearSearchTerm()"  data-md-container-class="demoDropdown"
-                        multiple="">
-              <md-select-header class="demo-select-header">
-                <input ng-model="searchTerm"
-                       type="search"
-                       placeholder="Search"
-                       class="demo-header-searchbox md-text">
-              </md-select-header>
-              <md-optgroup label="Race: Adults">
-                <button ng-click= "selectedadultRace = adultRaces">Select All</button>
-                <button ng-click="selectedadultRace=[]">Clear</button>
-                <md-option ng-value="adultRace" ng-repeat="adultRace in adultRaces">{{adultRace}}</md-option>
-              </md-optgroup>
-            </md-select>
-          </md-input-container>
-        </div>
-
-        <h1 class="md-title">Race: Children</h1>
-        <div layout="row" layout-wrap>
-          <md-input-container flex="100">
-            <label>Select Race(s)</label>
-            <md-select ng-model="selectedchildRace"
-                        ng-init="selectedchildRace = childRaces"
-                        md-on-close="clearSearchTerm()"  data-md-container-class="demoDropdown"
-                        multiple="">
-              <md-optgroup label="Race: Children">
-                <button ng-click="selectedchildRace = childRaces">Select All</button>
-                <button ng-click="selectedchildRace=[]">Clear</button>
-                <md-option ng-value="childRace" ng-repeat="childRace in childRaces">{{childRace}}</md-option>
-              </md-optgroup>
-            </md-select>
-          </md-input-container>
-        </div>
-
-        <h1 class="md-title">Age: Adults</h1>
-        <div layout="row" layout-wrap>
-          <md-input-container flex="100">
-            <label>Select Ages</label>
-            <md-select  ng-model="selectedadultAge"
-                        ng-init="selectedadultAge = adultAges"
-                        md-on-close="clearSearchTerm()"  data-md-container-class="demoDropdown"
-                        multiple="">
-              <md-optgroup label="Age: Adults">
-                <button ng-click="selectedadultAge = adultAges">Select All</button>
-                <button ng-click="selectedadultAge=[]">Clear</button>
-                <md-option ng-value="adultAge" ng-repeat="adultAge in adultAges">{{adultAge}}</md-option>
-              </md-optgroup>
-            </md-select>
-          </md-input-container>
-        </div>
-
-        <h1 class="md-title">Age: Children</h1>
-        <div layout="row" layout-wrap>
-          <md-input-container flex="100">
-            <label>Select Ages</label>
-            <md-select  ng-model="selectedchildAge"
-                        ng-init="selectedchildAge = childAges"
-                        md-on-close="clearSearchTerm()"  data-md-container-class="demoDropdown"
-                        multiple="">
-              <md-optgroup label="Age: Children">
-                <button ng-click="selectedchildAge = childAges">Select All</button>
-                <button ng-click="selectedchildAge=[]">Clear</button>
-                <md-option ng-value="childAge" ng-repeat="childAge in childAges">{{childAge}}</md-option>
-              </md-optgroup>
-            </md-select>
-          </md-input-container>
-        </div>
-
-        <h1 class="md-title">Last Residence</h1>
-        <div layout="row" layout-wrap>
-          <md-input-container flex="100">
-            <label>Select Residence</label>
-            <md-select  ng-model="selectedresidence"
-                        ng-init="selectedresidence = residences"
-                        md-on-close="clearSearchTerm()"  data-md-container-class="demoDropdown"
-                        multiple="">
-              <md-optgroup label="Last Residence">
-                <button ng-click="selectedresidence = residences">Select All</button>
-                <button ng-click="selectedresidence=[]">Clear</button>
-                <md-option ng-value="residence" ng-repeat="residence in residences">{{residence}}</md-option>
-              </md-optgroup>
-            </md-select>
-          </md-input-container>
-        </div>
-
-        <h1 class="md-title">Household Income</h1>
-        <div layout="row" layout-wrap>
-          <md-input-container flex="100">
-            <label>Select Income Level(s)</label>
-            <md-select  ng-model="selectedhhIncome"
-                        ng-init="selectedhhIncome = hhIncomes"
-                        md-on-close="clearSearchTerm()"  data-md-container-class="demoDropdown"
-                        multiple="">
-              <md-optgroup label="Household Income">
-                <button ng-click="selectedhhIncome = hhIncomes">Select All</button>
-                <button ng-click="selectedhhIncome=[]">Clear</button>
-                <md-option ng-value="hhIncome" ng-repeat="hhIncome in hhIncomes">{{hhIncome}}</md-option>
-              </md-optgroup>
-            </md-select>
-          </md-input-container>
-        </div>
-
-        <h1 class="md-title">Persons Exiting Housing</h1>
-        <div layout="row" layout-wrap>
-          <md-input-container flex="100">
-            <label>Select Reason(s)</label>
-            <md-select  ng-model="selectedexitReason"
-                        ng-init="selectedexitReason = exitReasons"
-                        md-on-close="clearSearchTerm()"
-                        data-md-container-class="demoDropdown"
-                        multiple="">
-              <md-optgroup label="Select Reason">
-                <button ng-click="selectedexitReason = exitReasons">Select All</button>
-                <button ng-click="selectedexitReason=[]">Clear</button>
-                <md-option ng-value="exitReason" ng-repeat="exitReason in exitReasons">{{exitReason}}</md-option>
-              </md-optgroup>
-            </md-select>
-          </md-input-container>
-        </div>
 
         <fieldset class="dateSelect">
             <h1 class="md-title">Reporting Period</h1>
@@ -195,11 +53,12 @@
 
       <md-divider ng-if="!$last"></md-divider>
 
-        <div ng-include="'public/views/partials/emp.html'"> </div>
-        <div ng-include="'public/views/partials/empII.html'"> </div>
-        <div ng-include="'public/views/partials/homeagain.html'"> </div>
-        <div ng-include="'public/views/partials/homesafe.html'"> </div>
-        <div ng-include="'public/views/partials/homefront.html'"> </div>
+        <div ng-include="'public/views/partials/OutcomeHousing.html'"> </div>
+        <div ng-include="'public/views/partials/outcomeecon.html'"> </div>
+        <div ng-include="'public/views/partials/outcomeedu.html'"> </div>
+        <div ng-include="'public/views/partials/outcomefamily.html'"> </div>
+        <div ng-include="'public/views/partials/outcomehealth.html'"> </div>
+        <div ng-include="'public/views/partials/outcomecommunity.html'"> </div>
 
       </div>
 
