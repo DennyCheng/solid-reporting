@@ -81,8 +81,8 @@ router.post('/', function(req, res, next) {
     var smtpTransport = nodemailer.createTransport('SMTP', {
       service: 'SendGrid',
       auth: {
-        user: 'lhaak123',
-        pass: 'SGR5L2djn*'
+        user: '',
+        pass: ''
       }
     });
     var mailOptions = {
@@ -185,8 +185,8 @@ router.post('/reset', function(req, res) {
       var smtpTransport = nodemailer.createTransport('SMTP', {
         service: 'SendGrid',
         auth: {
-          user: 'lhaak123',
-          pass: 'SGR5L2djn*'
+          user: '',
+          pass: ''
         }
       });
       var mailOptions = {

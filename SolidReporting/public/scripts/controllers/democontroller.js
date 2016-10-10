@@ -391,8 +391,231 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
 
     // Come back for this last (logic is hard)
     $scope.demoFactory.dobChildren(selections).then(function(response) {
-      // console.log("response dobChildren: ", response);
-    });
+      console.log("SHITresponse dobChildren: ", response);
+      var responseArray = response
+      $scope.childdobEMP = {
+        age0to1:0,
+        age2to3:0,
+        age4to5:0,
+        age6to9:0,
+        age10to14:0,
+        age15to17:0,
+        age18tobeyond:0,
+        total:0
+      };
+
+      $scope.childdobEMPII = {
+        age0to1:0,
+        age2to3:0,
+        age4to5:0,
+        age6to9:0,
+        age10to14:0,
+        age15to17:0,
+        age18tobeyond:0,
+        total:0
+      };
+
+      $scope.childdobHomeSafe = {
+        age0to1:0,
+        age2to3:0,
+        age4to5:0,
+        age6to9:0,
+        age10to14:0,
+        age15to17:0,
+        age18tobeyond:0,
+        total:0
+      };
+
+      $scope.childdobHomeAgain = {
+        age0to1:0,
+        age2to3:0,
+        age4to5:0,
+        age6to9:0,
+        age10to14:0,
+        age15to17:0,
+        age18tobeyond:0,
+        total:0
+      };
+
+      $scope.childdobHomeFront = {
+        age0to1:0,
+        age2to3:0,
+        age4to5:0,
+        age6to9:0,
+        age10to14:0,
+        age15to17:0,
+        age18tobeyond:0,
+        total:0
+      };
+
+      for (var i = 0; i < responseArray.length; i++) {
+        console.log('SHIT',responseArray.length);
+        responseArray[i]['dob'] = responseArray[i]['dob'].slice(0,10);
+        var personDOB = new Date(responseArray[i]['dob']); //reformats persons DOB
+        var age = dateDiff(personDOB,$scope.enddate);
+
+        if(responseArray[i].Program =="EMP"){
+            if(age <= 1){
+              $scope.childdobEMP.age0to1+=1;
+              $scope.childdobEMP.total+=1;
+              }
+              else if(age <=3 && age >= 2){
+              $scope.childdobEMP.age2to3+=1;
+              $scope.childdobEMP.total+=1;
+              }
+              else if(age <=5 && age >= 4){
+              $scope.childdobEMP.age4to5+=1;
+              $scope.childdobEMP.total+=1;
+              }
+              else if(age <=9 && age >= 6){
+              $scope.childdobEMP.age6to9+=1;
+              $scope.childdobEMP.total+=1;
+              }
+              else if(age <=14 && age >= 10){
+              $scope.childdobEMP.age10to14+=1;
+              $scope.childdobEMP.total+=1;
+              }
+              else if(age <=17 && age >= 15){
+              $scope.childdobEMP.age15to17+=1;
+              $scope.childdobEMP.total+=1;
+              }
+              else if(age >=18){
+              $scope.childdobEMP.age18tobeyond+=1;
+              $scope.childdobEMP.total+=1;
+              }
+            }//end of EMP if
+
+            else if(responseArray[i].Program =="EMPII"){
+                if(age <= 1){
+                  $scope.childdobEMPII.age0to1+=1;
+                  $scope.childdobEMPII.total+=1;
+                  }
+                  else if(age <=3 && age >= 2){
+                  $scope.childdobEMPII.age2to3+=1;
+                  $scope.childdobEMPII.total+=1;
+                  }
+                  else if(age <=5 && age >= 4){
+                  $scope.childdobEMPII.age4to5+=1;
+                  $scope.childdobEMPII.total+=1;
+                  }
+                  else if(age <=9 && age >= 6){
+                  $scope.childdobEMPII.age6to9+=1;
+                  $scope.childdobEMPII.total+=1;
+                  }
+                  else if(age <=14 && age >= 10){
+                  $scope.childdobEMPII.age10to14+=1;
+                  $scope.childdobEMPII.total+=1;
+                  }
+                  else if(age <=17 && age >= 15){
+                  $scope.childdobEMPII.age15to17+=1;
+                  $scope.childdobEMPII.total+=1;
+                  }
+                  else if(age >=18){
+                  $scope.childdobEMPII.age18tobeyond+=1;
+                  $scope.childdobEMPII.total+=1;
+                  }
+                }
+
+                else if(responseArray[i].Program =="HomeSafe"||responseArray[i].Program =="Home Safe"){
+                    if(age <= 1){
+                      $scope.childdobHomeSafe.age0to1+=1;
+                      $scope.childdobHomeSafe.total+=1;
+                      }
+                      else if(age <=3 && age >= 2){
+                      $scope.childdobHomeSafe.age2to3+=1;
+                      $scope.childdobHomeSafe.total+=1;
+                      }
+                      else if(age <=5 && age >= 4){
+                      $scope.childdobHomeSafe.age4to5+=1;
+                      $scope.childdobHomeSafe.total+=1;
+                      }
+                      else if(age <=9 && age >= 6){
+                      $scope.childdobHomeSafe.age6to9+=1;
+                      $scope.childdobHomeSafe.total+=1;
+                      }
+                      else if(age <=14 && age >= 10){
+                      $scope.childdobHomeSafe.age10to14+=1;
+                      $scope.childdobHomeSafe.total+=1;
+                      }
+                      else if(age <=17 && age >= 15){
+                      $scope.childdobHomeSafe.age15to17+=1;
+                      $scope.childdobHomeSafe.total+=1;
+                      }
+                      else if(age >=18){
+                      $scope.childdobHomeSafe.age18tobeyond+=1;
+                      $scope.childdobHomeSafe.total+=1;
+                      }
+                    }
+
+                    else if(responseArray[i].Program =="HomeAgain"||responseArray[i].Program =="Home Again"){
+                        if(age <= 1){
+                          $scope.childdobHomeAgain.age0to1+=1;
+                          $scope.childdobHomeAgain.total+=1;
+                          }
+                          else if(age <=3 && age >= 2){
+                          $scope.childdobHomeAgain.age2to3+=1;
+                          $scope.childdobHomeAgain.total+=1;
+                          }
+                          else if(age <=5 && age >= 4){
+                          $scope.childdobHomeAgain.age4to5+=1;
+                          $scope.childdobHomeAgain.total+=1;
+                          }
+                          else if(age <=9 && age >= 6){
+                          $scope.childdobHomeAgain.age6to9+=1;
+                          $scope.childdobHomeAgain.total+=1;
+                          }
+                          else if(age <=14 && age >= 10){
+                          $scope.childdobHomeAgain.age10to14+=1;
+                          $scope.childdobHomeAgain.total+=1;
+                          }
+                          else if(age <=17 && age >= 15){
+                          $scope.childdobHomeAgain.age15to17+=1;
+                          $scope.childdobHomeAgain.total+=1;
+                          }
+                          else if(age >=18){
+                          $scope.childdobHomeAgain.age18tobeyond+=1;
+                          $scope.childdobHomeAgain.total+=1;
+                          }
+                        }
+
+                        else if(responseArray[i].Program =="HomeFront"||responseArray[i].Program =="Home Front"){
+                            if(age <= 1){
+                              $scope.childdobHomeFront.age0to1+=1;
+                              $scope.childdobHomeFront.total+=1;
+                              }
+                              else if(age <=3 && age >= 2){
+                              $scope.childdobHomeFront.age2to3+=1;
+                              $scope.childdobHomeFront.total+=1;
+                              }
+                              else if(age <=5 && age >= 4){
+                              $scope.childdobHomeFront.age4to5+=1;
+                              $scope.childdobHomeFront.total+=1;
+                              }
+                              else if(age <=9 && age >= 6){
+                              $scope.childdobHomeFront.age6to9+=1;
+                              $scope.childdobHomeFront.total+=1;
+                              }
+                              else if(age <=14 && age >= 10){
+                              $scope.childdobHomeFront.age10to14+=1;
+                              $scope.childdobHomeFront.total+=1;
+                              }
+                              else if(age <=17 && age >= 15){
+                              $scope.childdobHomeFront.age15to17+=1;
+                              $scope.childdobHomeFront.total+=1;
+                              }
+                              else if(age >=18){
+                              $scope.childdobHomeFront.age18tobeyond+=1;
+                              $scope.childdobHomeFront.total+=1;
+                              }
+                            }
+      }//end of for loop
+      console.log("MEOWSZEMP TEST", $scope.childdobEMP);
+      console.log("MEOWSZEMP TEST", $scope.childdobEMPII);
+      console.log("MEOWSZEMP TEST", $scope.childdobHomeFront);
+      console.log("MEOWSZEMP TEST", $scope.childdobHomeAgain);
+      console.log("MEOWSZEMP TEST", $scope.childdobHomeSafe);
+
+    });//end of dobChildren
 
     $scope.demoFactory.totalPeople(selections).then(function (response) {
       console.log("response totalPeople: ", response);
@@ -2567,6 +2790,8 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       console.log('test Front', $scope.exitHomeFront);
       console.log('TOTAL', $scope.exitTotal);
     });//end of famsExitHousing
+
+    $scope.toggleSide();
 
 }; //end of click button function
 
