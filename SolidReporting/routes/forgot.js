@@ -11,8 +11,8 @@ var connection = require('../modules/connection');
 var pg = require('pg');
 
 var config = {
-  user: 'nmatecki', //env var: PGUSER
-  database: 'solidground', //env var: PGDATABASE
+  user: '', //env var: PGUSER
+  database: 'omicron', //env var: PGDATABASE
   password: '', //env var: PGPASSWORD
   port: 5432, //env var: PGPORT
   max: 100, // max number of clients in the pool
@@ -81,8 +81,8 @@ router.post('/', function(req, res, next) {
     var smtpTransport = nodemailer.createTransport('SMTP', {
       service: 'SendGrid',
       auth: {
-        user: 'lhaak123',
-        pass: 'SGR5L2djn*'
+        user: '',
+        pass: ''
       }
     });
     var mailOptions = {
@@ -185,8 +185,8 @@ router.post('/reset', function(req, res) {
       var smtpTransport = nodemailer.createTransport('SMTP', {
         service: 'SendGrid',
         auth: {
-          user: 'lhaak123',
-          pass: 'SGR5L2djn*'
+          user: '',
+          pass: ''
         }
       });
       var mailOptions = {

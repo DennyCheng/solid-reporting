@@ -8,9 +8,13 @@ myApp.controller('landingController', ['$scope', '$location', function($scope, $
 
     $scope.upload = function () {
         $location.path('/upload');
-        console.log('uploading dfdsfdsf');
-    }
+        console.log('uploading page');
+    };
 
+    $scope.outcome = function () {
+        $location.path('/outcomes');
+        console.log('outcome page');
+    }
 
     }])
     .config(function($mdThemingProvider) {

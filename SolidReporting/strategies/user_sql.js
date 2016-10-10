@@ -5,8 +5,8 @@ var encryptLib = require('../modules/encryption');
 var pg = require('pg');
 
 var config = {
-  user: 'nmatecki', //env var: PGUSER
-  database: 'solidground', //env var: PGDATABASE
+  user: '', //env var: PGUSER
+  database: 'omicron', //env var: PGDATABASE
   password: '', //env var: PGPASSWORD
   port: 5432, //env var: PGPORT
   max: 1000, // max number of clients in the pool

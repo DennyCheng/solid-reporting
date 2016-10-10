@@ -1,63 +1,26 @@
 <div ng-include="'public/views/partials/header.html'"> </div>
+
 <div layout="column">
   <div class="container" layout="row" flex ng-cloak>
-    <md-sidenav layout="column" class="sidenav1" md-is-locked-open="true">
+    <md-sidenav layout="column" class="sidenav1 md-whiteframe-4dp" md-component-id="left">
       <div class="md-padding">
-
         <h1 class="md-title">Program</h1>
         <div layout="row" layout-wrap>
-          <md-input-container class="boxesinput" flex="100">
-            <p class="selectboxes"><label>Select Program(s)</label></p>
-              <div flex-xs flex="100">
-
-                <!-- Select All -->
-                <md-checkbox aria-label="Select All"
-                             ng-checked="isCheckedProgram()"
-                             md-indeterminate="isIndeterminateProgram()"
-                             ng-click="toggleAllProgram()"
-                             class="md-primary">
-                  <span ng-if="isChecked()">Un-</span>Select All
-                </md-checkbox>
-              </div>
-              <!-- Program Select -->
-              <div class="program-select-all-checkboxes"
-                   flex="100"
-                   ng-repeat="program in programs">
-                <md-checkbox
-                    ng-checked="exists(program, selectedprogram)"
-                    ng-click="toggle(program, selectedprogram)"
-                    class="md-primary">
-                 {{ program }}
-                </md-checkbox>
-              </div>
+          <md-input-container class="programinput" flex="100">
+            <p class="selectprogram"><label>Select Program(s)</label></p>
+            <!--<div flex-xs="" flex="50">-->
+              <!--<md-checkbox aria-label="Select All" ng-checked="isChecked()" md-indeterminate="isIndeterminate()" ng-click="toggleAll()">-->
+                <!--<span ng-if="isChecked()">Un-</span>Select All-->
+              <!--</md-checkbox>-->
+            <!--</div>-->
+            <div class="demo-select-all-checkboxes" flex="100" ng-repeat="item in items">
+              <md-checkbox ng-model="toggleSelect" ng-init="toggleSelect = true"
+                       ng-click="toggle(item, selectedprogram)" class="md-primary">
+                {{ item }}
+              </md-checkbox>
+            </div>
           </md-input-container>
       </div>
-
-      <h1 class="md-title">Outcome</h1>
-      <div layout="row" layout-wrap>
-        <md-input-container class="boxesinput" flex="100">
-          <p class="selectboxes"><label>Select Outcome(s)</label></p>
-            <div flex-xs flex="100">
-              <md-checkbox aria-label="Select All"
-                           ng-checked="isCheckedOutcome()"
-                           md-indeterminate="isIndeterminateOutcome()"
-                           ng-click="toggleAllOutcome()"
-                           class="md-primary">
-                <span ng-if="isChecked()">Un-</span>Select All
-              </md-checkbox>
-            </div>
-            <div class="program-select-all-checkboxes"
-                 flex="100"
-                 ng-repeat="outcome in outcomes">
-              <md-checkbox
-                  ng-checked="exists(outcome, selectedoutcome)"
-                  ng-click="toggle(outcome, selectedoutcome)"
-                  class="md-primary">
-               {{ outcome }}
-              </md-checkbox>
-            </div>
-        </md-input-container>
-    </div>
 
 
         <fieldset class="dateSelect">
@@ -80,30 +43,25 @@
             <md-button id="export" class="md-raised export">Export to CSV</md-button>
         </div>
       </div>
-            <!-- <div ng-messages="myOtherForm.dateField.$error">
-              <div ng-message="valid">The entered value is not a date!</div>
-              <div ng-message="required">This date is required!</div>
-              <div ng-message="mindate">Date is too early!</div>
-              <div ng-message="maxdate">Date is too late!</div>
-            </div> -->
+
     </md-sidenav>
+
+<!-- DATA DISPLAY TABLES ------------------------------------------------->
+
     <md-content layout="column" flex>
-      <table>
-        <tr ng-repeat="user in users">
-            <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">
-                {{user.name}}</td>
-            <td title="'Age'" filter="{ age: 'number'}" sortable="'age'">
-                {{user.age}}</td>
-        </tr>
-      </table>
-    <!-- <table ng-table="vm.tableParams" class="table" show-filter="true">
-      <tr ng-repeat="user in users">
-          <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">
-              {{user.name}}</td>
-          <td title="'Age'" filter="{ age: 'number'}" sortable="'age'">
-              {{user.age}}</td>
-      </tr>
-    </table> -->
+      <div class="datagrid" layout = "row" flex>
+
+      <md-divider ng-if="!$last"></md-divider>
+
+        <div ng-include="'public/views/partials/OutcomeHousing.html'"> </div>
+        <div ng-include="'public/views/partials/outcomeecon.html'"> </div>
+        <div ng-include="'public/views/partials/outcomeedu.html'"> </div>
+        <div ng-include="'public/views/partials/outcomefamily.html'"> </div>
+        <div ng-include="'public/views/partials/outcomehealth.html'"> </div>
+        <div ng-include="'public/views/partials/outcomecommunity.html'"> </div>
+
+      </div>
+
     </md-content>
   </div>
 </div>
