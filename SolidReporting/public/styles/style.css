@@ -297,3 +297,60 @@ md-table-container {
 .md-button.md-accent {
   color: rgb(18, 110, 171);
 }
+/*landing page style*/
+.buttondemoBasicUsage section {
+  background: #f7f7f7;
+  border-radius: 3px;
+  text-align: center;
+  margin: 1em;
+  position: relative !important;
+  padding-bottom: 10px; }
+
+.buttondemoBasicUsage md-content {
+  margin-right: 7px; }
+
+.buttondemoBasicUsage section .md-button {
+  margin-top: 16px;
+  margin-bottom: 16px; }
+
+.buttondemoBasicUsage .label {
+  position: absolute;
+  bottom: 5px;
+  left: 7px;
+}
+.carddemoBasicUsage .card-media {
+  background-color: #999999; }
+
+/* tool tips */
+
+md-tooltip {
+  top: 18em;
+}
+
+md-tooltip .md-content {
+  height: 38em;
+  line-height: 1em;
+  padding-left: 14em;
+  padding-right: 14em;
+}
+md-tooltip h3 {
+  color: white;
+  font-size: 2em;
+}
+md-tooltip p {
+  color: white;
+  font-size: 2em;
+}
+.md-button.md-fab:not([disabled]){
+  background-color: rgb(12, 106, 169);
+}
+.md-button.md-fab:not([disabled]):hover {
+  background-color: rgb(122, 157, 62);
+}
+
+.tooltipdemoBasicUsage md-toolbar .md-toolbar-tools .md-button,
+.tooltipdemoBasicUsage md-toolbar .md-toolbar-tools .md-button:hover {
+  box-shadow: none;
+  border: none;
+  transform: none;
+  -webkit-transform: none; }
