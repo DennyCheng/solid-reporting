@@ -103,6 +103,15 @@ myApp.factory('DemoFactory', ['$http', '$location', function($http, $location) {
     return promise;
   }
 
+  var exportData = function() {
+    var promise = $http.post('/demoquery/export', selection).then(function(response) {
+      var exported = response.data;
+        console.log('re', exportData);
+      return exportData;
+    });
+    return promise;
+  }
+
   return {  //start of return scope
     retrieveData: function () {
       return getData();
@@ -133,7 +142,11 @@ myApp.factory('DemoFactory', ['$http', '$location', function($http, $location) {
     },
     dobChildren: function (selections) {
       return dobChildren(selections);
+    },
+    exportdemo: function (selections) {
+      return exportData(selections);
     }
+
   };  //end of return scope
 
 }]);

@@ -43,7 +43,7 @@
         <div layout="row" layout-wrap>
           <md-input-container flex="100">
             <label>Select Race(s)</label>
-            <md-select  md-no-ink ng-model="selectedadultRace"
+            <md-select  ng-model="selectedadultRace"
                         ng-init="selectedadultRace = adultRaces"
                         md-on-close="clearSearchTerm()"  data-md-container-class="demoDropdown"
                         multiple="">
@@ -182,7 +182,7 @@
         <div class="action-buttons" layout="column">
             <md-button class="md-raised md-primary" ng-click="newQuery()">Submit Query</md-button>
             <md-button id="reset" class="md-raised" ng-click="resetQuery()">Reset Query</md-button>
-            <md-button id="export" class="md-raised export">Export to CSV</md-button>
+            <!--<md-button id="export"  class="md-raised export" ng-click="exportData()">Export to CSV</md-button>-->
         </div>
       </div>
 
@@ -201,8 +201,49 @@
         <div ng-include="'public/views/partials/homesafe.html'"> </div>
         <div ng-include="'public/views/partials/homefront.html'"> </div>
 
+<!--Excel data structure-->
+<!--<button ng-click="exportData()" ng-show="(tests|filter:{selected: true}).length">Export</button>-->
+<!--<br />-->
+<!--<table width="100%">-->
+  <!--<thead>-->
+  <!--<tr>-->
+    <!--<th></th>-->
+    <!--<th>Name</th>-->
+    <!--<th>Date</th>-->
+    <!--<th>Terms</th>-->
+  <!--</tr>-->
+  <!--</thead>-->
+  <!--<tbody>-->
+  <!--<tr ng-repeat="item in tests">-->
+    <!--<td><input type="checkbox" ng-model="item.selected" /></td>-->
+    <!--<td>{{item.Name}}</td>-->
+    <!--<td>{{item.Date}}</td>-->
+    <!--<td><span ng-repeat="term in item.Race">{{term}}{{!$last?', ':''}}</span></td>-->
+  <!--</tr>-->
+  <!--</tbody>-->
+<!--</table>-->
+<!--<div id="exportable" style="display:none">-->
+  <!--<table width="100%">-->
+    <!--<thead>-->
+    <!--<tr>-->
+      <!--<th>Name</th>-->
+      <!--<th>Date</th>-->
+      <!--<th>Race</th>-->
+    <!--</tr>-->
+    <!--</thead>-->
+    <!--<tbody>-->
+    <!--<tr ng-repeat="item in tests|filter:{selected: true}">-->
+      <!--<td>{{item.Name}}</td>-->
+      <!--<td>{{item.Date}}</td>-->
+      <!--<td><span ng-repeat="term in item.Race">{{term}}{{!$last?', ':''}}</span></td>-->
+    <!--</tr>-->
+    <!--</tbody>-->
+  <!--</table>-->
+<!--</div>-->
+
       </div>
 
     </md-content>
   </div>
 </div>
+

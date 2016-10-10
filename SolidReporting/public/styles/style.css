@@ -12,8 +12,9 @@ p {
 
 /* header style */
 md-toolbar:not(.md-menu-toolbar) {
-  background-color: #87CEFA;
-  background-color: rgba(12,106,169,.5);
+  background-color: #e1dad7;
+  /*background-color: #87CEFA;
+  background-color: rgba(12,106,169,.5);*/
 }
 .logo {
   width: 40%;
@@ -63,6 +64,9 @@ form {
   min-height: 48px;
 }
 
+.lf-ng-md-file-input-drag-text-container {
+  padding: 3em;
+}
 .programinput {
   margin-top: 0;
 }
@@ -192,6 +196,10 @@ h1.tablehead {
   padding: 14px;
 }
 
+/*md-table-container.homesafe > .tablehead {
+  color: gray;
+}*/
+
 md-table-container.EMPI > md-toolbar {
   background-color: rgb(105,72,54);
 }
@@ -202,10 +210,10 @@ md-table-container.homeagain > md-toolbar {
   background-color: rgb(12,106,169);
 }
 md-table-container.homesafe > md-toolbar {
-  background-color: rgb(12,106,169);
+  background-color: rgb(167,192,124);
 }
 md-table-container.homefront > md-toolbar {
-  background-color: rgb(12,106,169);
+  background-color: rgb(165,100,54);
 }
 
 table.md-table th.md-column {
@@ -215,19 +223,23 @@ table.md-table th.md-column {
 }
 
 md-table-container.EMPI > table.md-table th.md-column {
-  color: white;
+  /*color: white;*/
   background-color: rgba(105,72,54,0.5);
 }
 md-table-container.EMPII > table.md-table th.md-column {
-  color: white;
+  /*color: white;*/
   background-color: rgba(122,157,62,0.5);
 }
 md-table-container.homeagain > table.md-table th.md-column {
-  color: white;
+  /*color: white;*/
   background-color: rgba(12,106,169,0.5);
 }
-
-md-table-container.EMPI > th.md-column {
+md-table-container.homesafe > table.md-table th.md-column {
+  background-color: rgba(167,192,124,0.4);
+}
+md-table-container.homefront > table.md-table th.md-column {
+  /*color: white;*/
+  background-color: rgba(165,100,54,0.5);
 }
 
 table.md-table td.md-cell.md-numeric {
@@ -263,10 +275,10 @@ table.md-table tr:last-child {
   font-size: 14px;
 }
 
-
-thead {
-
+md-table-container {
+  border: 1px rgba(0,0,0,.12) solid;
 }
+
 
 
 /*tr.totalrow > md-cell: {
@@ -285,3 +297,60 @@ thead {
 .md-button.md-accent {
   color: rgb(18, 110, 171);
 }
+/*landing page style*/
+.buttondemoBasicUsage section {
+  background: #f7f7f7;
+  border-radius: 3px;
+  text-align: center;
+  margin: 1em;
+  position: relative !important;
+  padding-bottom: 10px; }
+
+.buttondemoBasicUsage md-content {
+  margin-right: 7px; }
+
+.buttondemoBasicUsage section .md-button {
+  margin-top: 16px;
+  margin-bottom: 16px; }
+
+.buttondemoBasicUsage .label {
+  position: absolute;
+  bottom: 5px;
+  left: 7px;
+}
+.carddemoBasicUsage .card-media {
+  background-color: #999999; }
+
+/* tool tips */
+
+md-tooltip {
+  top: 18em;
+}
+
+md-tooltip .md-content {
+  height: 38em;
+  line-height: 1em;
+  padding-left: 14em;
+  padding-right: 14em;
+}
+md-tooltip h3 {
+  color: white;
+  font-size: 2em;
+}
+md-tooltip p {
+  color: white;
+  font-size: 2em;
+}
+.md-button.md-fab:not([disabled]){
+  background-color: rgb(12, 106, 169);
+}
+.md-button.md-fab:not([disabled]):hover {
+  background-color: rgb(122, 157, 62);
+}
+
+.tooltipdemoBasicUsage md-toolbar .md-toolbar-tools .md-button,
+.tooltipdemoBasicUsage md-toolbar .md-toolbar-tools .md-button:hover {
+  box-shadow: none;
+  border: none;
+  transform: none;
+  -webkit-transform: none; }

@@ -7,6 +7,22 @@ myApp.controller('uploadController', ['$scope', 'DataFactory', '$http', '$locati
 
   $scope.userName = $scope.dataFactory.varUsername();
 
+    $scope.demo = {
+        showTooltip : false,
+        tipDirection : ''
+    };
+
+    $scope.demo.delayTooltip = undefined;
+    $scope.$watch('demo.delayTooltip',function(val) {
+        $scope.demo.delayTooltip = parseInt(val, 10) || 0;
+    });
+
+    $scope.$watch('demo.tipDirection',function(val) {
+        if (val && val.length ) {
+            $scope.demo.showTooltip = true;
+        }
+    })
+
     $scope.onSubmit = function(){
         var file = $scope.file[0];
         console.log(file);
@@ -26,10 +42,10 @@ myApp.controller('uploadController', ['$scope', 'DataFactory', '$http', '$locati
                     // do something
                         console.log(result);
                     if(result.status === 200) {
-                        // $scope.isDisabled = true;
+                        $scope.isDisabled = true;
                         toaster.success('You have successfully upload!');
                         setTimeout(function(){
-                            // $location.path("/demographics");
+                            $location.path("/demographics");
                         }, 500);
                     } else {
                         toaster.error('upload has fail');
