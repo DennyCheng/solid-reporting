@@ -3,8 +3,9 @@ myApp.controller("OutcomesController", ["$scope",'$http','DataFactory', '$locati
 
   $scope.dataFactory = DataFactory;
 
-  $scope.test = $scope.dataFactory.testVar();
-  console.log($scope.test);
+  $scope.toggleSide = function() {
+    $mdSidenav('left').toggle();
+  };
 
   //----- Programs & Outcomes Checkboxes --------------
   $scope.programs = ['EMP I', 'EMP II', 'Home Again', 'HomeSafe', 'HomeFront'];
@@ -13,55 +14,7 @@ myApp.controller("OutcomesController", ["$scope",'$http','DataFactory', '$locati
 
   //----- Logic for program checkboxes ----------------
 
-  $scope.selectedprogram = $scope.programs;
-  $scope.selectedoutcome = $scope.outcomes;
 
-  $scope.toggle = function (item, list) {
-    var idx = list.indexOf(item);
-    if (idx > -1) {
-      list.splice(idx, 1);
-    }
-    else {
-      list.push(item);
-    }
-  };
-
-  $scope.exists = function (item, list) {
-    return list.indexOf(item) > -1;
-  };
-
-  $scope.isIndeterminateProgram = function() {
-    return ($scope.selectedprogram.length !== 0 &&
-        $scope.selectedprogram.length !== $scope.programs.length);
-  };
-
-  $scope.isIndeterminateOutcome = function() {
-    return ($scope.selectedoutcome.length !== 0 &&
-        $scope.selectedoutcome.length !== $scope.outcomes.length);
-  };
-  $scope.isCheckedProgram = function() {
-    return $scope.selectedprogram.length === $scope.programs.length;
-  };
-  $scope.isCheckedOutcome = function() {
-    return $scope.selectedoutcome.length === $scope.outcomes.length;
-  };
-
-  $scope.toggleAllProgram = function() {
-    if ($scope.selectedprogram.length === $scope.programs.length) {
-      $scope.selectedprogram = [];
-    } else if ($scope.selectedprogram.length === 0 || $scope.selectedprogram.length > 0) {
-      $scope.selectedprogram = $scope.programs.slice(0);
-    }
-    console.log($scope.selectedprogram);
-  };
-  $scope.toggleAllOutcome = function() {
-    if ($scope.selectedoutcome.length === $scope.outcomes.length) {
-      $scope.selectedoutcome = [];
-    } else if ($scope.selectedoutcome.length === 0 || $scope.selectedoutcome.length > 0) {
-      $scope.selectedoutcome = $scope.outcomes.slice(0);
-    }
-    console.log($scope.selectedoutcome);
-  };
 
  //------ Calendar -------------------------------------------------------
 

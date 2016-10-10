@@ -2562,6 +2562,8 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       console.log('TOTAL', $scope.exitTotal);
     });//end of famsExitHousing
 
+    $scope.toggleSide();
+
 }; //end of click button function
 
   ///performs age calculations
