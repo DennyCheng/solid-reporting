@@ -167,6 +167,154 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
         });
         $scope.outcomeFactory.adultMI(selections).then(function(response) {
           console.log("response adultMI: ", response);
+          $scope.adultMI_EMP = {
+               yesAndBeingTreated:0,
+               yesAndNotBeingTreated:0,
+               yesAndReferredForAssessment:0,
+               undiagnosedReferredForAssessment:0,
+               total:0
+             };
+
+             $scope.adultMI_EMPII = {
+               yesAndBeingTreated:0,
+               yesAndNotBeingTreated:0,
+               yesAndReferredForAssessment:0,
+               undiagnosedReferredForAssessment:0,
+               total:0
+             };
+
+             $scope.adultMI_HomeSafe = {
+               yesAndBeingTreated:0,
+               yesAndNotBeingTreated:0,
+               yesAndReferredForAssessment:0,
+               undiagnosedReferredForAssessment:0,
+               total:0
+             };
+
+             $scope.adultMI_HomeAgain = {
+               yesAndBeingTreated:0,
+               yesAndNotBeingTreated:0,
+               yesAndReferredForAssessment:0,
+               undiagnosedReferredForAssessment:0,
+               total:0
+             };
+
+             $scope.adultMI_HomeFront = {
+               yesAndBeingTreated:0,
+               yesAndNotBeingTreated:0,
+               yesAndReferredForAssessment:0,
+               undiagnosedReferredForAssessment:0,
+               total:0
+             };
+
+             $scope.adultMI_Total = 0;
+
+             var responseArray = response
+
+             for (var i = 0; i < responseArray.length; i++) {
+                  $scope.adultMI_Total += parseInt(responseArray[i].count);
+                  if (responseArray[i].Program == "EMP"){
+                    if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES and Being Treated"){
+                      $scope.adultMI_EMP.yesAndBeingTreated += parseInt(responseArray[i].count);
+                      $scope.adultMI_EMP.total += parseInt(responseArray[i].count);
+                    }
+                    else if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES Not Being Treated"){
+                      $scope.adultMI_EMP.yesAndNotBeingTreated += parseInt(responseArray[i].count);
+                      $scope.adultMI_EMP.total += parseInt(responseArray[i].count);
+                    }
+                    else if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES and referred for assessment"){
+                      $scope.adultMI_EMP.yesAndReferredForAssessment += parseInt(responseArray[i].count);
+                      $scope.adultMI_EMP.total += parseInt(responseArray[i].count);
+                    }
+                    else if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "Undiagnosed referred for assessment"){
+                      $scope.adultMI_EMP.undiagnosedReferredForAssessment += parseInt(responseArray[i].count);
+                      $scope.adultMI_EMP.total += parseInt(responseArray[i].count);
+                    }
+                  }
+
+                  else if (responseArray[i].Program == "EMPII"){
+                    if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES and Being Treated"){
+                      $scope.adultMI_EMPII.yesAndBeingTreated += parseInt(responseArray[i].count);
+                      $scope.adultMI_EMPII.total += parseInt(responseArray[i].count);
+                    }
+                    else if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES Not Being Treated"){
+                      $scope.adultMI_EMPII.yesAndNotBeingTreated += parseInt(responseArray[i].count);
+                      $scope.adultMI_EMPII.total += parseInt(responseArray[i].count);
+                    }
+                    else if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES and referred for assessment"){
+                      $scope.adultMI_EMPII.yesAndReferredForAssessment += parseInt(responseArray[i].count);
+                      $scope.adultMI_EMPII.total += parseInt(responseArray[i].count);
+                    }
+                    else if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "Undiagnosed referred for assessment"){
+                      $scope.adultMI_EMPII.undiagnosedReferredForAssessment += parseInt(responseArray[i].count);
+                      $scope.adultMI_EMPII.total += parseInt(responseArray[i].count);
+                    }
+                  }
+
+                  else if (responseArray[i].Program == "HomeSafe"||responseArray[i].Program == "Home Safe"){
+                    if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES and Being Treated"){
+                      $scope.adultMI_HomeSafe.yesAndBeingTreated += parseInt(responseArray[i].count);
+                      $scope.adultMI_HomeSafe.total += parseInt(responseArray[i].count);
+                    }
+                    else if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES Not Being Treated"){
+                      $scope.adultMI_HomeSafe.yesAndNotBeingTreated += parseInt(responseArray[i].count);
+                      $scope.adultMI_HomeSafe.total += parseInt(responseArray[i].count);
+                    }
+                    else if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES and referred for assessment"){
+                      $scope.adultMI_HomeSafe.yesAndReferredForAssessment += parseInt(responseArray[i].count);
+                      $scope.adultMI_HomeSafe.total += parseInt(responseArray[i].count);
+                    }
+                    else if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "Undiagnosed referred for assessment"){
+                      $scope.adultMI_HomeSafe.undiagnosedReferredForAssessment += parseInt(responseArray[i].count);
+                      $scope.adultMI_HomeSafe.total += parseInt(responseArray[i].count);
+                    }
+                  }
+
+                  else if (responseArray[i].Program == "HomeAgain" || responseArray[i].Program == "Home Again"){
+                    if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES and Being Treated"){
+                      $scope.adultMI_HomeAgain.yesAndBeingTreated += parseInt(responseArray[i].count);
+                      $scope.adultMI_HomeAgain.total += parseInt(responseArray[i].count);
+                    }
+                    else if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES Not Being Treated"){
+                      $scope.adultMI_HomeAgain.yesAndNotBeingTreated += parseInt(responseArray[i].count);
+                      $scope.adultMI_HomeAgain.total += parseInt(responseArray[i].count);
+                    }
+                    else if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES and referred for assessment"){
+                      $scope.adultMI_HomeAgain.yesAndReferredForAssessment += parseInt(responseArray[i].count);
+                      $scope.adultMI_HomeAgain.total += parseInt(responseArray[i].count);
+                    }
+                    else if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "Undiagnosed referred for assessment"){
+                      $scope.adultMI_HomeAgain.undiagnosedReferredForAssessment += parseInt(responseArray[i].count);
+                      $scope.adultMI_HomeAgain.total += parseInt(responseArray[i].count);
+                    }
+                  }
+
+                  else if (responseArray[i].Program == "HomeFront"|| responseArray[i].Program == "Home Front"){
+                    if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES and Being Treated"){
+                      $scope.adultMI_HomeFront.yesAndBeingTreated += parseInt(responseArray[i].count);
+                      $scope.adultMI_HomeFront.total += parseInt(responseArray[i].count);
+                    }
+                    else if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES Not Being Treated"){
+                      $scope.adultMI_HomeFront.yesAndNotBeingTreated += parseInt(responseArray[i].count);
+                      $scope.adultMI_HomeFront.total += parseInt(responseArray[i].count);
+                    }
+                    else if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES and referred for assessment"){
+                      $scope.adultMI_HomeFront.yesAndReferredForAssessment += parseInt(responseArray[i].count);
+                      $scope.adultMI_HomeFront.total += parseInt(responseArray[i].count);
+                    }
+                    else if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "Undiagnosed referred for assessment"){
+                      $scope.adultMI_HomeFront.undiagnosedReferredForAssessment += parseInt(responseArray[i].count);
+                      $scope.adultMI_HomeFront.total += parseInt(responseArray[i].count);
+                    }
+                  }
+                }//end for for loop
+                console.log('test EMP', $scope.adultMI_EMP);
+                console.log('test EMPII', $scope.adultMI_EMPII);
+                console.log('test Safe', $scope.adultMI_HomeSafe);
+                console.log('test Again', $scope.adultMI_HomeAgain);
+                console.log('test Front', $scope.adultMI_HomeFront);
+                console.log('TOTAL', $scope.adultMI_Total);
+
         });
         $scope.outcomeFactory.childDis(selections).then(function(response) {
           console.log("response childDis: ", response);
@@ -179,6 +327,51 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
         });
         $scope.outcomeFactory.parentEduThisYear(selections).then(function(response) {
           console.log("response parentEduThisYear: ", response);
+            $scope.parentEduThisYear_EMP = {
+                 total:0
+               };
+
+               $scope.parentEduThisYear_EMPII = {
+                 total:0
+               };
+
+               $scope.parentEduThisYear_HomeSafe = {
+                 total:0
+               };
+
+               $scope.parentEduThisYear_HomeAgain = {
+                 total:0
+               };
+
+               $scope.parentEduThisYear_HomeFront = {
+                 total:0
+               };
+
+               $scope.parentEduThisYear_Total = 0;
+
+               var responseArray = response
+
+               for (var i = 0; i < responseArray.length; i++) {
+                    $scope.parentEduThisYear_Total += parseInt(responseArray[i]["Parenting Completed"]);
+
+                    if (responseArray[i].Program == "EMP"){
+                        $scope.parentEduThisYear_EMP.total += parseInt(responseArray[i]["Parenting Completed"]);
+                    }
+                    else if (responseArray[i].Program == "EMPII"){
+                        $scope.parentEduThisYear_EMPII.total += parseInt(responseArray[i]["Parenting Completed"]);
+                    }
+                    else if (responseArray[i].Program == "HomeSafe"||responseArray[i].Program == "Home Safe"){
+                        $scope.parentEduThisYear_HomeSafe.total += parseInt(responseArray[i]["Parenting Completed"]);
+                    }
+
+                    else if (responseArray[i].Program == "HomeAgain" || responseArray[i].Program == "Home Again"){
+                        $scope.parentEduThisYear_HomeAgain.total += parseInt(responseArray[i]["Parenting Completed"]);
+                    }
+
+                    else if (responseArray[i].Program == "HomeFront"|| responseArray[i].Program == "Home Front"){
+                        $scope.parentEduThisYear_HomeFront += parseInt(responseArray[i]["Parenting Completed"]);
+                    }
+                } // end for loop
         });
         $scope.outcomeFactory.parentEduYearBefore(selections).then(function(response) {
           console.log("response parentEduYearBefore: ", response);
