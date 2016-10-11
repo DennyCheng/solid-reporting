@@ -182,7 +182,7 @@
         <div class="action-buttons" layout="column">
             <md-button class="md-raised md-primary" ng-click="newQuery()">Submit Query</md-button>
             <md-button id="reset" class="md-raised" ng-click="resetQuery()">Reset Query</md-button>
-            <!--<md-button id="export"  class="md-raised export" ng-click="exportData()">Export to CSV</md-button>-->
+            <md-button id="export"  class="md-raised export" ng-click="exportData()">Export to CSV</md-button>
         </div>
       </div>
 
@@ -191,7 +191,7 @@
 <!-- DATA DISPLAY TABLES ------------------------------------------------->
 
     <md-content layout="column" flex>
-      <div class="datagrid" layout = "row" flex>
+      <div class="datagrid" layout = "row" flex id="exportable">
 
       <md-divider ng-if="!$last"></md-divider>
 

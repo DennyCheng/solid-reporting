@@ -12,7 +12,8 @@ myApp.controller('uploadController', ['$scope', 'DataFactory', '$http', '$locati
         showTooltip : false,
         tipDirection : ''
     };
-  $scope.loading = false;
+
+    $scope.loading = false;
 
     $scope.demo.delayTooltip = undefined;
 

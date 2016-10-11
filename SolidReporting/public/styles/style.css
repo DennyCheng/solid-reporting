@@ -247,7 +247,7 @@ table.md-table td.md-cell.md-numeric {
 }
 
 table.md-table tbody.md-body > tr.totalrow.md-row {
-  /*background-color: lightgreen;*/*/
+  /*background-color: lightgreen;*/
   /*border-bottom: 1px rgba(0,0,0,.12) solid
 }
 
@@ -275,7 +275,7 @@ table.md-table tr:last-child {
   font-size: 14px;
 }
 
-md-table-container {
+.md-table-container {
   border: 1px rgba(0,0,0,.12) solid;
 }
 
@@ -306,7 +306,7 @@ md-table-container {
   position: relative !important;
   padding-bottom: 10px; }
 
-.buttondemoBasicUsage md-content {
+.buttondemoBasicUsage .md-content {
   margin-right: 7px; }
 
 .buttondemoBasicUsage section .md-button {
@@ -323,21 +323,21 @@ md-table-container {
 
 /* tool tips */
 
-md-tooltip {
+.md-tooltip {
   top: 18em;
 }
 
-md-tooltip .md-content {
+.md-tooltip .md-content {
   height: 38em;
   line-height: 1em;
   padding-left: 14em;
   padding-right: 14em;
 }
-md-tooltip h3 {
+.md-tooltip h3 {
   color: white;
   font-size: 2em;
 }
-md-tooltip p {
+.md-tooltip p {
   color: white;
   font-size: 2em;
 }
@@ -348,8 +348,8 @@ md-tooltip p {
   background-color: rgb(122, 157, 62);
 }
 
-.tooltipdemoBasicUsage md-toolbar .md-toolbar-tools .md-button,
-.tooltipdemoBasicUsage md-toolbar .md-toolbar-tools .md-button:hover {
+.tooltipdemoBasicUsage .md-toolbar .md-toolbar-tools .md-button,
+.tooltipdemoBasicUsage .md-toolbar .md-toolbar-tools .md-button:hover {
   box-shadow: none;
   border: none;
   transform: none;
