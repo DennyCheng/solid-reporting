@@ -1,23 +1,14 @@
 var passport = require('passport');
 var localStrategy = require('passport-local').Strategy;
 var encryptLib = require('../modules/encryption');
-//var connection = require('../modules/connection');
+var connection = require('../modules/connection');
 var pg = require('pg');
 
-var config = {
-  user: 'nmatecki', //env var: PGUSER
-  database: 'solidground', //env var: PGDATABASE
-  password: '', //env var: PGPASSWORD
-  port: 5432, //env var: PGPORT
-  max: 1000, // max number of clients in the pool
-  idleTimeoutMillis: 1000, // how long a client is allowed to remain idle before being closed
-};
 
-
-//this initializes a connection pool
-//it will keep idle connections open for a 5 minutes
-//and set a limit of maximum 1000 idle clients
-var pool = new pg.Pool(config);
+//this initializes a connection pool from ../modules/connection
+//it will keep idle connections open for a 1 second
+//and set a limit of maximum 100 idle clients
+var pool = new pg.Pool(connection);
 
 passport.serializeUser(function(user, done) {
   console.log('serialized', user);
