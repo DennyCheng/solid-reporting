@@ -378,3 +378,13 @@ md-tooltip p {
   margin: 0 auto 0 auto;
   font-size: 1.2em;
 }
+
+.loadingGif {
+    width: 10%;
+    z-index: 1;
+    position: fixed;
+    -webkit-transform: translate(-50%, 0);
+    left: 52%;
+    top: 35%;
+  }
+
