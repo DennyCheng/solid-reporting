@@ -2867,15 +2867,15 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       saveAs(blob, "Solid_Ground_Report.xls");
     };
 
-  $scope.tests = [{
-    "Name": "HomeFront",
-    "Date": "10/02/2014",
-    "Race": ["African", "White", "Asian"]
-  }, {
-    "Name": "Home Safe",
-    "Date": "10/02/2014",
-    "Race": ["Others", "Latinos", "African America"]
-  }];
+  // $scope.tests = [{
+  //   "Name": "HomeFront",
+  //   "Date": "10/02/2014",
+  //   "Race": ["African", "White", "Asian"]
+  // }, {
+  //   "Name": "Home Safe",
+  //   "Date": "10/02/2014",
+  //   "Race": ["Others", "Latinos", "African America"]
+  // }];
 
     $scope.resetQuery = function () {
         $scope.selectedprogram = [];

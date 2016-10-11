@@ -4,6 +4,7 @@ var encryptLib = require('../modules/encryption');
 var connection = require('../modules/connection');
 var pg = require('pg');
 
+
 //this initializes a connection pool from ../modules/connection
 //it will keep idle connections open for a 1 second
 //and set a limit of maximum 100 idle clients
