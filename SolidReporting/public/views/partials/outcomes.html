@@ -20,6 +20,16 @@
               </md-checkbox>
             </div>
           </md-input-container>
+
+          <md-input-container class="programinput" flex="100">
+            <p class="selectprogram"><label>Select Outcome(s)</label></p>
+            <div class="demo-select-all-checkboxes" flex="100" ng-repeat="outcome in outcomes">
+              <md-checkbox ng-model="toggleSelect" ng-init="toggleSelect = true"
+                       ng-click="toggle(outcome, selectedoutcome)" class="md-primary">
+                {{ outcome }}
+              </md-checkbox>
+            </div>
+          </md-input-container>
       </div>
 
 
@@ -54,11 +64,11 @@
       <md-divider ng-if="!$last"></md-divider>
 
         <div ng-include="'public/views/partials/programoutcomes/outcomeemp.html'"> </div>
-        <div ng-include="'public/views/partials/outcomeecon.html'"> </div>
-        <div ng-include="'public/views/partials/outcomeedu.html'"> </div>
-        <div ng-include="'public/views/partials/outcomefamily.html'"> </div>
-        <div ng-include="'public/views/partials/outcomehealth.html'"> </div>
-        <div ng-include="'public/views/partials/outcomecommunity.html'"> </div>
+        <div ng-include="'public/views/partials/programoutcomes/outcomeempII.html'"> </div>
+        <div ng-include="'public/views/partials/programoutcomes/outcomehomeagain.html'"> </div>
+        <div ng-include="'public/views/partials/programoutcomes/outcomehomefront.html'"> </div>
+        <div ng-include="'public/views/partials/programoutcomes/outcomehomesafe.html'"> </div>
+        <div ng-include="'public/views/partials/programoutcomes/outcometotals.html'"> </div>
 
       </div>
 

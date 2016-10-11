@@ -79,11 +79,17 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
           list.push(item);
           console.log('array ----', $scope.items);
       }
+      console.log("selected programs: ", $scope.selectedprogram);
   };
 
 
+//------ Outcomes Checkboxes -------------------------------------------------------
 
- //------ Calendar -------------------------------------------------------
+
+  $scope.outcomes = ['Housing Stability', 'Educational Advancement', 'Economic Stability', 'Strengthened Families', 'Improved Health', 'Community Connections'];
+
+
+//------ Calendar -------------------------------------------------------
 
   var startDate;
   var endDate;

@@ -4,8 +4,8 @@
             <h1 class="md-title tablehead" >EMP</h1>
           </md-toolbar>
 
-<!-- EMP: Gender ----------------------------->
-          <table md-table >
+<!-- EMP: Housing Stability ----------------------------->
+          <table md-table>
           <thead md-head>
             <tr md-row >
               <th md-column>Housing Stability</th>
@@ -50,8 +50,11 @@
               <td ng-model="empGender" md-cell>{{ (100 * empGender.total / empGender.total ) | number:2 }}%</td>
             </tr>
           </tbody>
-<!-- EMP: Adult Race -------------------------->
-          <thead md-head>
+        </table>
+
+<!-- EMP: Educational Advancement -------------------------->
+        <table md-table>
+            <thead md-head>
             <tr md-row >
               <th md-column>Educational Advancement</th>
               <th md-column md-numeric>Number</th>
@@ -84,11 +87,12 @@
             <td ng-model="empRace" md-cell>{{ empRace.caucasianWhite }}</td>
             <td ng-model="empRace" md-cell>{{ (100 * empRace.caucasianWhite / empRace.total ) | number:2 }}%</td>
           </tr>
-          <tr md-row class="boldrow">
+          <tr md-row class="boldrow bottomdivider">
             <td md-cell>Adults who completed/continued education</td>
             <td ng-model="empRace" md-cell>{{ empRace.hispanicLatino }}</td>
             <td ng-model="empRace" md-cell>{{ (100 * empRace.hispanicLatino / empRace.total ) | number:2 }}%</td>
           </tr>
+          <md-divider></md-divider>
           <tr md-row>
             <td md-cell>School-age children</td>
             <td ng-model="empRace" md-cell>{{ empRace.multiracial }}</td>
