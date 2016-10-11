@@ -182,7 +182,7 @@
         <div class="action-buttons" layout="column">
             <md-button class="md-raised md-primary" ng-click="newQuery()">Submit Query</md-button>
             <md-button id="reset" class="md-raised" ng-click="resetQuery()">Reset Query</md-button>
-            <!--<md-button id="export"  class="md-raised export" ng-click="exportData()">Export to CSV</md-button>-->
+            <md-button id="export"  class="md-raised export" ng-click="exportData()">Export to CSV</md-button>
         </div>
       </div>
 
@@ -190,8 +190,8 @@
 
 <!-- DATA DISPLAY TABLES ------------------------------------------------->
 
-    <md-content layout="column" flex>
-      <div class="datagrid" layout = "row" flex>
+    <md-content layout="column" flex >
+      <div class="datagrid" layout = "row" flex >
 
       <md-divider ng-if="!$last"></md-divider>
 
@@ -222,24 +222,28 @@
   <!--</tr>-->
   <!--</tbody>-->
 <!--</table>-->
-<!--<div id="exportable" style="display:none">-->
-  <!--<table width="100%">-->
-    <!--<thead>-->
-    <!--<tr>-->
-      <!--<th>Name</th>-->
-      <!--<th>Date</th>-->
-      <!--<th>Race</th>-->
-    <!--</tr>-->
-    <!--</thead>-->
-    <!--<tbody>-->
-    <!--<tr ng-repeat="item in tests|filter:{selected: true}">-->
-      <!--<td>{{item.Name}}</td>-->
-      <!--<td>{{item.Date}}</td>-->
-      <!--<td><span ng-repeat="term in item.Race">{{term}}{{!$last?', ':''}}</span></td>-->
-    <!--</tr>-->
-    <!--</tbody>-->
-  <!--</table>-->
-<!--</div>-->
+<div id="exportable" style="display:none">
+  <table >
+    <thead>
+    <tr>
+      <th>Program 1</th>
+      <th>Program 2</th>
+      <th>Program 3</th>
+      <th>Program 4</th>
+      <th>Program 5</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr >
+      <td ng-include="'public/views/partials/emp.html'"> </td>
+      <td ng-include="'public/views/partials/empII.html'"> </td>
+      <td ng-include="'public/views/partials/homeagain.html'"> </td>
+      <td ng-include="'public/views/partials/homesafe.html'"> </td>
+      <td ng-include="'public/views/partials/homefront.html'"> </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
 
       </div>
 

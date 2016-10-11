@@ -1,23 +1,27 @@
-
+<style>
+    .layout-fill {
+        margin-top: 5em;
+    }
+</style>
 <md-toolbar layout="row" layout-align="center"><img class="logo" layout-align="center" src="http://www.solidgroundmn.org/wp-content/themes/theme1205/images/logo.png" /></md-toolbar>
 <div ng-controller="landingController" ng-cloak="" class="carddemoBasicUsage" >
     <div layout="row" layout-sm="column">
-        <div flex layout-fill style="height: 100%">
+        <div flex layout-fill>
                 <div class=" animated fadeInLeft">
                     <div class="overlay">
                         <form >
-                            <h2>View Demographic Reports on a table chart</h2>
+                            <h2>View Demographic Reports on a table</h2>
                             <md-button class="md-raised md-primary" ng-click="demo()">Demographics</md-button>
                             <!--<a class="info" href="#">link here</a>-->
                         </form>
                     </div>
                 </div>
         </div>
-        <div flex layout-fill style="height: 100%">
+        <div flex layout-fill >
             <div class="animated fadeInUp">
                 <div class="overlay">
                     <form>
-                        <h2>View Demographic Reports on a table chart</h2>
+                        <h2>View Outcome Reports on a table</h2>
                         <md-button class="md-raised md-primary" ng-click="outcome()">Outcome</md-button>
                         <!--<a class="info" href="#">link here</a>-->
                     </form>
@@ -25,11 +29,11 @@
             </div>
         </div>
 
-        <div flex layout-fill style="height: 100%">
+        <div flex layout-fill>
             <div class="animated fadeInRight">
                 <div class="overlay">
                     <form>
-                        <h2>Upload Microsoft Access file into the Application </h2>
+                        <h2>Upload Microsoft Access file into the Application</h2>
                         <md-button class="md-raised md-primary" ng-click="upload()">Upload</md-button>
                         <!--<a class="info" href="#">link here</a>-->
                     </form>
