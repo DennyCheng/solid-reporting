@@ -1383,6 +1383,12 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
         // });
     } //end of click
 
+    $scope.exportDataOutcome = function () {
+        var blob = new Blob([document.getElementById('exportableOutcome').innerHTML], {
+            type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
+        });
+        saveAs(blob, "Solid_Ground_Report.xls");
+    };
 
     $scope.resetQuery = function () {
         $scope.selectedprogram = [];

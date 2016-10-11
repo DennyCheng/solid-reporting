@@ -50,7 +50,7 @@ myApp.controller('uploadController', ['$scope', 'DataFactory', '$http', '$locati
                         $scope.isDisabled = true;
                         toaster.success('You have successfully upload!');
                         setTimeout(function(){
-                            $location.path("/demographics");
+                            $location.path("/landing");
                         }, 500);
                     } else {
                         toaster.error('upload has fail');

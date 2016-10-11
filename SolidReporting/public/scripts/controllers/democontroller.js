@@ -2860,8 +2860,8 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     return diff;
   };
 
-    $scope.exportData = function () {
-      var blob = new Blob([document.getElementById('exportable').innerHTML], {
+    $scope.exportDataDemo = function () {
+      var blob = new Blob([document.getElementById('exportableDemo').innerHTML], {
         type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
       });
       saveAs(blob, "Solid_Ground_Report.xls");
