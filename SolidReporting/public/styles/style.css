@@ -28,6 +28,21 @@ md-toolbar:not(.md-menu-toolbar) {
 
 .togglesearch {
   float: left;
+  background-color: #3c89ec;
+  border-radius: 5px;
+}
+.togglesearch span.ng-scope {
+  color: white;
+}
+
+.togglesearch:hover {
+  float: left;
+  background-color: rgb(122,157,62);
+  border-radius: 5px;
+}
+
+.opacityTables {
+  opacity: 0.5;
 }
 
 .pagetitle {

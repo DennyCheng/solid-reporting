@@ -180,17 +180,17 @@
         </fieldset>
 
         <div class="action-buttons" layout="column">
-            <md-button class="md-raised md-primary" ng-click="newQuery()">Submit Query</md-button>
+            <md-button class="md-raised md-primary" ng-click="newQuery()"  toggle-class="opacityTables">Submit Query</md-button>
             <md-button id="reset" class="md-raised" ng-click="resetQuery()">Reset Query</md-button>
-            <md-button id="export"  class="md-raised export" ng-click="exportDataDemo()">Export to CSV</md-button>
+            <md-button id="export"  class="md-raised export" ng-click="exportDataDemo()" toggle-class="active">Export to CSV</md-button>
         </div>
       </div>
 
     </md-sidenav>
 
 <!-- DATA DISPLAY TABLES ------------------------------------------------->
-
-    <md-content layout="column" flex >
+    <!--ng-class="{'opacityTables' : toggle}"-->
+    <md-content layout="column" flex toggle-class="opacityTables" ng-class="{'opacityTables': isActive}">
       <div class="datagrid" layout = "row" flex >
 
       <md-divider ng-if="!$last"></md-divider>
