@@ -130,7 +130,7 @@
           </md-input-container>
         </div>
 
-        <h1 class="md-title">Household Income</h1>
+        <!-- <h1 class="md-title">Household Income</h1>
         <div layout="row" layout-wrap>
           <md-input-container flex="100">
             <label>Select Income Level(s)</label>
@@ -145,9 +145,9 @@
               </md-optgroup>
             </md-select>
           </md-input-container>
-        </div>
+        </div> -->
 
-        <h1 class="md-title">Persons Exiting Housing</h1>
+        <!-- <h1 class="md-title">Persons Exiting Housing</h1>
         <div layout="row" layout-wrap>
           <md-input-container flex="100">
             <label>Select Reason(s)</label>
@@ -163,7 +163,7 @@
               </md-optgroup>
             </md-select>
           </md-input-container>
-        </div>
+        </div> -->
 
         <fieldset class="dateSelect">
             <h1 class="md-title">Reporting Period</h1>
@@ -195,11 +195,11 @@
 
       <md-divider ng-if="!$last"></md-divider>
 
-        <div ng-include="'public/views/partials/emp.html'"> </div>
-        <div ng-include="'public/views/partials/empII.html'"> </div>
-        <div ng-include="'public/views/partials/homeagain.html'"> </div>
-        <div ng-include="'public/views/partials/homesafe.html'"> </div>
-        <div ng-include="'public/views/partials/homefront.html'"> </div>
+        <div ng-include="'public/views/partials/programdemos/emp.html'"> </div>
+        <div ng-include="'public/views/partials/programdemos/empII.html'"> </div>
+        <div ng-include="'public/views/partials/programdemos/homeagain.html'"> </div>
+        <div ng-include="'public/views/partials/programdemos/homesafe.html'"> </div>
+        <div ng-include="'public/views/partials/programdemos/homefront.html'"> </div>
 
 <!--Excel data structure-->
 <!--<button ng-click="exportData()" ng-show="(tests|filter:{selected: true}).length">Export</button>-->
@@ -235,11 +235,13 @@
     </thead>
     <tbody>
     <tr >
-      <td ng-include="'public/views/partials/emp.html'"> </td>
-      <td ng-include="'public/views/partials/empII.html'"> </td>
-      <td ng-include="'public/views/partials/homeagain.html'"> </td>
-      <td ng-include="'public/views/partials/homesafe.html'"> </td>
-      <td ng-include="'public/views/partials/homefront.html'"> </td>
+      <td ng-include="'public/views/partials/programdemos/emp.html'"> </td>
+      <td ng-include="'public/views/partials/programdemos/empII.html'"> </td>
+      <td ng-include="'public/views/partials/programdemos/homeagain.html'"> </td>
+      <td ng-include="'public/views/partials/programdemos/homesafe.html'"> </td>
+      <td ng-include="'public/views/partials/programdemos/homefront.html'"> </td>
+      <td ng-include="'public/views/partials/programdemos/demototals.html'"> </td>
+
     </tr>
     </tbody>
   </table>
@@ -250,4 +252,3 @@
     </md-content>
   </div>
 </div>
-

@@ -69,21 +69,27 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
 
     $scope.selectedprogram = programs;
 
-    $scope.toggle = function (item, list) {
-        var idx = list.indexOf(item);
-        if (idx > -1) {
-            console.log('array ----', $scope.items);
-            list.splice(idx, 1);
-        }
-        else {
-            list.push(item);
-            console.log('array ----', $scope.items);
-        }
-    };
+  $scope.toggle = function (item, list) {
+      var idx = list.indexOf(item);
+      if (idx > -1) {
+          console.log('array ----', $scope.items);
+          list.splice(idx, 1);
+      }
+      else {
+          list.push(item);
+          console.log('array ----', $scope.items);
+      }
+      console.log("selected programs: ", $scope.selectedprogram);
+  };
 
 
+//------ Outcomes Checkboxes -------------------------------------------------------
 
-    //------ Calendar -------------------------------------------------------
+
+  $scope.outcomes = ['Housing Stability', 'Educational Advancement', 'Economic Stability', 'Strengthened Families', 'Improved Health', 'Community Connections'];
+
+
+//------ Calendar -------------------------------------------------------
 
     var startDate;
     var endDate;
@@ -105,12 +111,6 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
         console.log('endDate: ', endDate);
     };
 //--------------------------------------------
-
-// var self = this;
-// var users = [{name: "Moroni", age: 50} /*,*/];
-// self.tableParams = new NgTableParams({}, { dataset: users});
-
-    $scope.sql = {};
 
     $scope.firstOfTheYear = '';
 
@@ -160,7 +160,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                 achieveStability:0,
                 exited:0,
                 entered:0,
-                securePermenant:0,
+                securePermanent:0,
                 other:0,
                 total:0
             };
@@ -171,7 +171,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                 achieveStability:0,
                 exited:0,
                 entered:0,
-                securePermenant:0,
+                securePermanent:0,
                 other:0,
                 total:0
             };
@@ -182,7 +182,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                 achieveStability:0,
                 exited:0,
                 entered:0,
-                securePermenant:0,
+                securePermanent:0,
                 other:0,
                 total:0
             };
@@ -193,7 +193,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                 achieveStability:0,
                 exited:0,
                 entered:0,
-                securePermenant:0,
+                securePermanent:0,
                 other:0,
                 total:0
             };
@@ -204,7 +204,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                 achieveStability:0,
                 exited:0,
                 entered:0,
-                securePermenant:0,
+                securePermanent:0,
                 other:0,
                 total:0
             };
@@ -235,7 +235,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                         $scope.houseEMP.total += parseInt(responseArray[i].count);
                     }
                     else if(responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing for at least 1 year;Secured Permanent Housing upon exit"){
-                        $scope.houseEMP.securePermenant += parseInt(responseArray[i].count);
+                        $scope.houseEMP.securePermanent += parseInt(responseArray[i].count);
                         $scope.houseEMP.total += parseInt(responseArray[i].count);
                     }
                     else if(responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Other;Remain in Housing < 1 year (ex: 7 months)Enter EMWC Housing during current year"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year;Remain in EMWC Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report"){
@@ -274,7 +274,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                         $scope.houseEMPII.total += parseInt(responseArray[i].count);
                     }
                     else if(responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing for at least 1 year;Secured Permanent Housing upon exit"){
-                        $scope.houseEMPII.securePermenant += parseInt(responseArray[i].count);
+                        $scope.houseEMPII.securePermanent += parseInt(responseArray[i].count);
                         $scope.houseEMPII.total += parseInt(responseArray[i].count);
                     }
                     else if(responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Other;Remain in Housing < 1 year (ex: 7 months)Enter EMWC Housing during current year"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year;Remain in EMWC Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report"){
@@ -321,7 +321,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                         $scope.houseHomeSafe.total += parseInt(responseArray[i].count);
                     }
                     else if(responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing for at least 1 year;Secured Permanent Housing upon exit"){
-                        $scope.houseHomeSafe.securePermenant += parseInt(responseArray[i].count);
+                        $scope.houseHomeSafe.securePermanent += parseInt(responseArray[i].count);
                         $scope.houseHomeSafe.total += parseInt(responseArray[i].count);
                     }
                     else if(responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Other;Remain in Housing < 1 year (ex: 7 months)Enter EMWC Housing during current year"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year;Remain in EMWC Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report"){
@@ -368,7 +368,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                         $scope.houseHomeAgain.total += parseInt(responseArray[i].count);
                     }
                     else if(responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing for at least 1 year;Secured Permanent Housing upon exit"){
-                        $scope.houseHomeAgain.securePermenant += parseInt(responseArray[i].count);
+                        $scope.houseHomeAgain.securePermanent += parseInt(responseArray[i].count);
                         $scope.houseHomeAgain.total += parseInt(responseArray[i].count);
                     }
                     else if(responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Other;Remain in Housing < 1 year (ex: 7 months)Enter EMWC Housing during current year"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year;Remain in EMWC Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report"){
@@ -418,7 +418,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                         $scope.houseHomeFront.total += parseInt(responseArray[i].count);
                     }
                     else if(responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing for at least 1 year;Secured Permanent Housing upon exit"){
-                        $scope.houseHomeFront.securePermenant += parseInt(responseArray[i].count);
+                        $scope.houseHomeFront.securePermanent += parseInt(responseArray[i].count);
                         $scope.houseHomeFront.total += parseInt(responseArray[i].count);
                     }
                     else if(responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Other;Remain in Housing < 1 year (ex: 7 months)Enter EMWC Housing during current year"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year;Remain in EMWC Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report"){
@@ -1027,43 +1027,43 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
             var data = response;
 
 
-            $scope.empParentEdu = {
+            $scope.empParentEdu_priorYr = {
                 completed: 0
             };
 
-            $scope.emp2ParentEdu = {
+            $scope.emp2ParentEdu_priorYr = {
                 completed: 0
             };
 
-            $scope.homeagainParentEdu = {
+            $scope.homeagainParentEdu_priorYr = {
                 completed: 0
             };
 
-            $scope.homesafeParentEdu = {
+            $scope.homesafeParentEdu_priorYr = {
                 completed: 0
             };
 
-            $scope.homefrontParentEdu = {
+            $scope.homefrontParentEdu_priorYr = {
                 completed: 0
             };
 
             for (var i = 0; i < data.length; i++) {
 
                 if(data[i].Program === "EMP") {
-                    $scope.empParentEdu.competed = parseInt(data[i]['Parenting Completed']);
-                    console.log('emp parent edu', $scope.empParentEdu.competed);
+                    $scope.empParentEdu_priorYr.completed = parseInt(data[i]['Parenting Completed']);
+                    console.log('emp parent edu', $scope.empParentEdu_priorYr.completed);
                 }
                 if(data[i].Program === "EMPII") {
-                    $scope.emp2ParentEdu.completed = parseInt(data[i]['Parenting Completed']);
-                    console.log('emp2 parent edu', $scope.emp2ParentEdu.completed);
+                    $scope.emp2ParentEdu_priorYr.completed = parseInt(data[i]['Parenting Completed']);
+                    console.log('emp2 parent edu', $scope.emp2ParentEdu_priorYr.completed);
                 }
                 if(data[i].Program === "Home Again") {
-                    $scope.homeagainParentEdu.completed = parseInt(data[i]['Parenting Completed']);
-                    console.log('homeagain parent edu',$scope.homeagainParentEdu.completed);
+                    $scope.homeagainParentEdu_priorYr.completed = parseInt(data[i]['Parenting Completed']);
+                    console.log('homeagain parent edu',$scope.homeagainParentEdu_priorYr.completed);
                 }
                 if(data[i].Program === "Home Safe" || data[i].Program === "HomeSafe") {
-                    $scope.homesafeParentEdu.completed = parseInt(data[i]['Parenting Completed']);
-                    console.log('home safe', $scope.homesafeParentEdu.completed);
+                    $scope.homesafeParentEdu_priorYr.completed = parseInt(data[i]['Parenting Completed']);
+                    console.log('home safe', $scope.homesafeParentEdu_priorYr.completed);
                 }
                 if(data[i].Program === "Home Front" || data[i].Program === "HomeFront") {
                     $scope.homefrontParentEdu.completed= parseInt(data[i]['Parenting Completed']);

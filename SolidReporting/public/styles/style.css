@@ -265,7 +265,6 @@ table.md-table tbody.md-body > tr.totalrow.md-row {
   /*background-color: lightgreen;*/
   /*border-bottom: 1px rgba(0,0,0,.12) solid
 }
-
 table.md-table td.md-cell {
   /*padding: 3em;*/
 }
@@ -370,6 +369,7 @@ md-tooltip p {
   transform: none;
   -webkit-transform: none; }
 
+
 .instruction {
   background-color: rgba(0, 0, 0, 0.54);
   border-radius: 5px;
@@ -393,3 +393,13 @@ md-tooltip p {
   margin: 0 auto 0 auto;
   font-size: 1.2em;
 }
+
+.loadingGif {
+  width: 10%;
+  z-index: 1;
+  position: fixed;
+  -webkit-transform: translate(-50%, 0);
+  left: 52%;
+  top: 35%;
+}
+

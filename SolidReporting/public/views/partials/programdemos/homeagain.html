@@ -1,5 +1,5 @@
 <!-- Home Again  --------------------------------->
-        <md-table-container  ng-model="toggleSelect" class="homeagain" ng-show="selectedprogram.indexOf('Home Again') !== -1" flex>
+        <md-table-container ng-model="toggleSelect" class="homeagain" ng-show="selectedprogram.indexOf('Home Again') !== -1 || selectedprogram.indexOf('HomeAgain') !== -1" flex>
           <md-toolbar flex>
             <h1 class="md-title tablehead" >{{"Home Again"}}</h1>
           </md-toolbar>
@@ -24,7 +24,7 @@
               <td ng-model="homeagainGender" md-cell>{{ homeagainGender.male }}</td>
               <td ng-model="homeagainGender" md-cell>{{ (100 * homeagainGender.male / homeagainGender.total ) | number:2 }}%</td>
             </tr>
-            <tr class="totalrow" md-row>
+            <tr class="boldrow" md-row>
               <td md-cell>Total</td>
               <td ng-model="homeagainGender" md-cell>{{ homeagainGender.total }}</td>
               <td ng-model="homeagainGender" md-cell>{{ (100 * homeagainGender.total / homeagainGender.total ) | number:2 }}%</td>
@@ -79,7 +79,7 @@
               <td ng-model="homeagainRace" md-cell>{{ homeagainRace.other }}</td>
               <td ng-model="homeagainRace" md-cell>{{ (100 * homeagainRace.other / homeagainRace.total ) | number:2 }}%</td>
             </tr>
-            <tr class="totalrow" md-row>
+            <tr class="boldrow" md-row>
               <td md-cell>Total</td>
               <td ng-model="homeagainRace" md-cell>{{ homeagainRace.total }}</td>
               <td ng-model="homeagainRace" md-cell>{{ (100 * homeagainRace.total / homeagainRace.total ) | number:2 }}%</td>
@@ -135,7 +135,7 @@
               <td ng-model="raceChildHomeAgain" md-cell>{{ raceChildHomeAgain.other }}</td>
               <td ng-model="raceChildHomeAgain" md-cell>{{ (100 * raceChildHomeAgain.other / raceChildHomeAgain.totalCount ) | number:2  }}%</td>
             </tr>
-            <tr class="totalrow" md-row>
+            <tr class="boldrow" md-row>
               <td md-cell>Total</td>
               <td ng-model="raceChildHomeAgain" md-cell>{{ raceChildHomeAgain.totalCount }}</td>
               <td ng-model="raceChildHomeAgain" md-cell>{{ (100 * raceChildHomeAgain.totalCount / raceChildHomeAgain.totalCount ) | number:2  }}%</td>
@@ -181,7 +181,7 @@
               <td ng-model="dobHomeAgain" md-cell>{{ dobHomeAgain.age65tobeyond }}</td>
               <td ng-model="dobHomeAgain" md-cell> {{ (100 * dobHomeAgain.age65tobeyond / dobHomeAgain.total ) | number:2  }}%</td>
             </tr>
-            <tr class="totalrow" md-row>
+            <tr class="boldrow" md-row>
               <td md-cell>Total</td>
               <td ng-model="number" md-cell> {{ dobHomeAgain.total }}</td>
               <td ng-model="percent" md-cell>{{ (100 * dobHomeAgain.total / dobHomeAgain.total ) | number:2  }}%</td>
@@ -233,7 +233,7 @@
               <td ng-model="childdobHomeAgain" md-cell>{{ childdobHomeAgain.age18tobeyond }}</td>
               <td ng-model="childdobHomeAgain" md-cell>{{ (100 * childdobHomeAgain.age18tobeyond / childdobHomeAgain.total ) | number:2  }}%</td>
             </tr>
-            <tr class="totalrow" md-row>
+            <tr class="boldrow" md-row>
               <td md-cell>Total</td>
               <td ng-model="childdobHomeAgain" md-cell>{{ childdobHomeAgain.total }}</td>
               <td ng-model="childdobHomeAgain" md-cell>{{ (100 * childdobHomeAgain.total / childdobHomeAgain.total ) | number:2  }}%</td>
@@ -294,7 +294,7 @@
               <td ng-model="residenceHomeAgain" md-cell>{{ residenceHomeAgain.other }}</td>
               <td ng-model="residenceHomeAgain" md-cell>{{ (100 * residenceHomeAgain.other / residenceHomeAgain.total ) | number:2  }}%</td>
             </tr>
-            <tr class="totalrow" md-row>
+            <tr class="boldrow" md-row>
               <td md-cell>Total</td>
               <td ng-model="residenceHomeAgain" md-cell>{{ residenceHomeAgain.total }}</td>
               <td ng-model="residenceHomeAgain" md-cell>{{ (100 * residenceHomeAgain.total / residenceHomeAgain.total ) | number:2  }}%</td>
@@ -335,7 +335,7 @@
               <td ng-model="earnedIncomeHomeAgain" md-cell>{{ earnedIncomeHomeAgain.n3000_plus }}</td>
               <td ng-model="earnedIncomeHomeAgain" md-cell>{{ (100 * earnedIncomeHomeAgain.n3000_plus / earnedIncomeHomeAgain.total ) | number:2  }}%</td>
             </tr>
-            <tr class="totalrow" md-row>
+            <tr class="boldrow" md-row>
               <td md-cell>Total</td>
               <td ng-model="earnedIncomeHomeAgain" md-cell>{{ earnedIncomeHomeAgain.total }}</td>
               <td ng-model="earnedIncomeHomeAgain" md-cell>{{ (100 * earnedIncomeHomeAgain.total / earnedIncomeHomeAgain.total ) | number:2  }}%</td>
@@ -376,7 +376,7 @@
               <td ng-model="unearnedIncomeHomeAgain" md-cell>{{ unearnedIncomeHomeAgain.n3000_plus }}</td>
               <td ng-model="unearnedIncomeHomeAgain" md-cell>{{ (100 * unearnedIncomeHomeAgain.n3000_plus / unearnedIncomeHomeAgain.total ) | number:2  }}%</td>
             </tr>
-            <tr class="totalrow" md-row>
+            <tr class="boldrow" md-row>
               <td md-cell>Total</td>
               <td ng-model="unearnedIncomeHomeAgain" md-cell>{{ unearnedIncomeHomeAgain.total }}</td>
               <td ng-model="unearnedIncomeHomeAgain" md-cell>{{ (100 * unearnedIncomeHomeAgain.total / unearnedIncomeHomeAgain.total ) | number:2  }}%</td>
@@ -417,7 +417,7 @@
               <td ng-model="totalIncomeHomeAgain" md-cell>{{ totalIncomeHomeAgain.n3000_plus }}</td>
               <td ng-model="totalIncomeHomeAgain" md-cell>{{ (100 * totalIncomeHomeAgain.n3000_plus / totalIncomeHomeAgain.total ) | number:2  }}%</td>
             </tr>
-            <tr class="totalrow" md-row>
+            <tr class="boldrow" md-row>
               <td md-cell>Total</td>
               <td ng-model="totalIncomeHomeAgain" md-cell>{{ totalIncomeHomeAgain.total }}</td>
               <td ng-model="totalIncomeHomeAgain" md-cell>{{ (100 * totalIncomeHomeAgain.total / totalIncomeHomeAgain.total ) | number:2  }}%</td>
@@ -453,7 +453,7 @@
               <td ng-model="exitHomeAgain" md-cell>{{ exitHomeAgain.other }}</td>
               <td ng-model="exitHomeAgain" md-cell>{{ (100 * exitHomeAgain.other / exitHomeAgain.total ) | number:2  }}%</td>
             </tr>
-            <tr class="totalrow" md-row>
+            <tr class="boldrow" md-row>
               <td md-cell>Total</td>
               <td ng-model="exitHomeAgain" md-cell>{{ exitHomeAgain.total }}</td>
               <td ng-model="exitHomeAgain" md-cell>{{ (100 * exitHomeAgain.total / exitHomeAgain.total ) | number:2  }}%</td>
