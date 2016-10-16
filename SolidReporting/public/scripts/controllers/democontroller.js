@@ -2792,9 +2792,9 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     });//end of famsExitHousing
 
     $scope.toggleSide();
-    $scope.isActive = !$scope.isActive;
+    $scope.isActive = false;
 }; //end of click button function
-  $scope.isActive = true;
+    $scope.isActive = true;
     /// filters through age parameters and converts them to date ranges for queries to be sent to server:
     function ageParams(selectedAgeRanges, endDate) {
         console.log("selectedAgeRanges: ", selectedAgeRanges);
