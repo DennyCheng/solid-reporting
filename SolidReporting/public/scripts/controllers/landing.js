@@ -1,5 +1,7 @@
-myApp.controller('landingController', ['$scope', '$location', function($scope, $location) {
+myApp.controller('landingController', ['$scope', '$location','DataFactory', function($scope, $location, DataFactory) {
         $scope.imagePath = 'img/washedout.png';
+
+    $scope.dataFactory = DataFactory;
 
     $scope.demo = function() {
         $location.path('/demographics');
@@ -14,7 +16,15 @@ myApp.controller('landingController', ['$scope', '$location', function($scope, $
     $scope.outcome = function () {
         $location.path('/outcomes');
         console.log('outcome page');
-    }
+    };
+
+    $scope.tologout = function() {
+        $scope.dataFactory.logout().then(function(response) {
+            console.log('logged out');
+            console.log('i redirected you to the home page');
+            $location.path("/login");
+        });
+    };
 
     }])
     .config(function($mdThemingProvider) {

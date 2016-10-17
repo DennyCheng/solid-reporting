@@ -11,14 +11,6 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
         $mdSidenav('left').toggle();
     };
 
-    $scope.tologout = function() {
-        $scope.dataFactory.logout().then(function(response) {
-            console.log('logged out');
-            console.log('i redirected you to the home page');
-            $location.path("/login");
-        });
-    };
-
     var programs = [];
 
     //----- Programs & Outcomes Checkboxes --------------
@@ -1350,19 +1342,249 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
         // });
         // $scope.outcomeFactory.budgetingEduYearBefore(selections).then(function(response) {
         //   console.log("response budgetingEduYearBefore: ", response);
+        //
         // });
-        // $scope.outcomeFactory.violence(selections).then(function(response) {
-        //   console.log("response violence: ", response);
-        // });
-        // $scope.outcomeFactory.tenantTraining(selections).then(function(response) {
-        //   console.log("response tenantTraining: ", response);
-        // });
-        // $scope.outcomeFactory.tenantTrainingSameYear(selections).then(function(response) {
-        //   console.log("response tenantTrainingSameYear: ", response);
-        // });
-        // $scope.outcomeFactory.tenantTrainingPriorYear(selections).then(function(response) {
-        //   console.log("response tenantTrainingPriorYear: ", response);
-        // });
+        $scope.outcomeFactory.violence(selections).then(function(response) {
+          console.log("response violence: ", response);
+            var data = response;
+
+            $scope.violentEmp = {
+                yesWithSafety: 0,
+                yesWithoutSafety: 0,
+                total: 0
+            };
+
+            $scope.violentEmp2 = {
+                yesWithSafety: 0,
+                yesWithoutSafety: 0,
+                total: 0
+            };
+
+            $scope.violentHomeFront = {
+                yesWithSafety: 0,
+                yesWithoutSafety: 0,
+                total: 0
+            };
+
+            $scope.violentHomeSafe = {
+                yesWithSafety: 0,
+                yesWithoutSafety: 0,
+                total: 0
+            };
+
+            $scope.violentHomeAgain = {
+                yesWithSafety: 0,
+                yesWithoutSafety: 0,
+                total: 0
+            };
+
+            for (var i = 0; i < data.length; i++){
+
+                // if (data[i]['Program'] === "EMP") {
+                //     // EMP VIOLENT WITH SAFETY
+                //     if(data[i]['Has or Had experienced or at risk for violence'] === "YES with a written Safety Plan") {
+                //         // var empYesWithSafety = parseInt(data[i]['count']);
+                //         $scope.violentEmp.yesWithSafety += parseInt(data[i]['count']);
+                //         console.log('violent emp with safety scope', $scope.violentEmp.yesWithSafety);
+                //     }
+                //     if($scope.violentEmp.yesWithSafety === undefined) {
+                //         $scope.violentEmp.yesWithSafety = 0;
+                //     }
+                //
+                //     // EMP VIOLENT WITHOUT SAFETY
+                //     if(data[i]['Has or Had experienced or at risk for violence'] === "YES without a written Safety Plan") {
+                //         // var empYesWithoutSafety = parseInt(data[i]['count']);
+                //         $scope.violentEmp.yesWithoutSafety += parseInt(data[i]['count']);
+                //         console.log('violent emp without safety scope', $scope.violentEmp.yesWithoutSafety);
+                //     }
+                //     // if(empYesWithoutSafety === undefined) {
+                //     //     empYesWithoutSafety = 0;
+                //     // }
+                //     if($scope.violentEmp.yesWithoutSafety === undefined) {
+                //         $scope.violentEmp.yesWithoutSafety = 0;
+                //     }
+                //     // EMP TOTAL
+                //     // $scope.violentEmp.total = empYesWithSafety + empYesWithoutSafety;
+                //     // debugger;
+                //     $scope.violentEmp.total = $scope.violentEmp.yesWithoutSafety + $scope.violentEmp.yesWithSafety;
+                //
+                //
+                //     console.log('emp total', $scope.violentEmp.total);
+                // } // END OF EMP
+                //
+                // // EMP2 VIOLENT
+                // if (data[i]['Program'] === "EMPII") {
+                //     // EMP2 VIOLENT WITH SAFETY
+                //     if(data[i]['Has or Had experienced or at risk for violence'] === "YES with a written Safety Plan") {
+                //         var emp2YesWithSafety = parseInt(data[i]['count']);
+                //         $scope.violentEmp2.yesWithSafety += emp2YesWithSafety;
+                //         console.log('violent emp2 with safety scope', $scope.violentEmp2.yesWithSafety);
+                //     }
+                //     if(emp2YesWithSafety === undefined) {
+                //         emp2YesWithSafety = 0;
+                //     }
+                //
+                //     // EMP2 VIOLENT WITHOUT SAFETY
+                //     if(data[i]['Has or Had experienced or at risk for violence'] === "YES without a written Safety Plan") {
+                //         var emp2YesWithoutSafety = parseInt(data[i]['count']);
+                //         $scope.violentEmp2.yesWithoutSafety += emp2YesWithoutSafety;
+                //         console.log('violent emp2 without safety scope', $scope.violentEmp2.yesWithoutSafety);
+                //     }
+                //     if(emp2YesWithoutSafety === undefined) {
+                //         emp2YesWithoutSafety = 0;
+                //     }
+                //     // EMP2 TOTAL
+                //     $scope.violentEmp2.total = emp2YesWithSafety + emp2YesWithoutSafety;
+                //     // console.log(' addd emp and emp2', emp2YesWithSafety, emp2YesWithoutSafety);
+                //     console.log('emp2 total ', $scope.violentEmp2.total);
+                // } // END EMP2
+                //
+                // // HOMEFRONT VIOLENT
+                // if (data[i]['Program'] === "HomeFront" || data[i]['Program'] == "Home Front") {
+                //     // HOMEFRONT VIOLENT WITH SAFETY
+                //     if(data[i]['Has or Had experienced or at risk for violence'] === "YES with a written Safety Plan") {
+                //         var homefrontYesWithSafety = parseInt(data[i]['count']);
+                //         $scope.violentHomeFront.yesWithSafety += homefrontYesWithSafety;
+                //         console.log('violent HOMEFRONT with safety scope', $scope.violentHomeFront.yesWithSafety);
+                //     }
+                //     if(homefrontYesWithSafety === undefined) {
+                //         homefrontYesWithSafety = 0;
+                //     }
+                //
+                //     // HOMEFRONT VIOLENT WITHOUT SAFETY
+                //     if(data[i]['Has or Had experienced or at risk for violence'] === "YES without a written Safety Plan") {
+                //         var homefrontYesWithoutSafety = parseInt(data[i]['count']);
+                //         $scope.violentHomeFront.yesWithoutSafety += homefrontYesWithoutSafety;
+                //         console.log('violent HOMEFRONT without safety scope', $scope.violentHomeFront.yesWithoutSafety);
+                //     }
+                //     if(homefrontYesWithoutSafety === undefined) {
+                //         homefrontYesWithoutSafety = 0;
+                //     }
+                //     // HOMEFRONT TOTAL
+                //     $scope.violentHomeFront.total = homefrontYesWithSafety + homefrontYesWithoutSafety;
+                //     console.log('HOMEFRONT total', $scope.violentHomeFront.total);
+                // } // END OF HOMEFRONT
+                //
+                // // HOMESAFE VIOLENT
+                // if (data[i]['Program'] === "HomeFront" || data[i]['Program'] == "Home Front") {
+                //     // HOMESAFE VIOLENT WITH SAFETY
+                //     if(data[i]['Has or Had experienced or at risk for violence'] === "YES with a written Safety Plan") {
+                //         var homesafeYesWithSafety = parseInt(data[i]['count']);
+                //         $scope.violentHomeSafe.yesWithSafety += homesafeYesWithSafety;
+                //         console.log('violent HOMESAFE with safety scope', $scope.violentHomeSafe.yesWithSafety);
+                //     }
+                //     if(homesafeYesWithSafety === undefined) {
+                //         homesafeYesWithSafety = 0;
+                //     }
+                //
+                //     // HOMESAFE VIOLENT WITHOUT SAFETY
+                //     if(data[i]['Has or Had experienced or at risk for violence'] === "YES without a written Safety Plan") {
+                //         var homesafeYesWithoutSafety = parseInt(data[i]['count']);
+                //         $scope.violentHomeSafe.yesWithoutSafety += homesafeYesWithoutSafety;
+                //         console.log('violent HOMESAFE without safety scope', $scope.violentHomeSafe.yesWithoutSafety);
+                //     }
+                //     if(homesafeYesWithoutSafety === undefined) {
+                //         homesafeYesWithoutSafety = 0;
+                //     }
+                //     // HOMEFRONT TOTAL
+                //     $scope.violentHomeSafe.total = homesafeYesWithSafety + homesafeYesWithoutSafety;
+                //     console.log('HOMESAFE total', $scope.violentHomeSafe.total);
+                // } // END OF HOMESAFE
+                //
+                // // HOMEAGAIN VIOLENT
+                // if (data[i]['Program'] === "HomeAgain" || data[i]['Program'] == "Home Again") {
+                //     // HOMEAGAIN VIOLENT WITH SAFETY
+                //     if(data[i]['Has or Had experienced or at risk for violence'] === "YES with a written Safety Plan") {
+                //         var homeagainYesWithSafety = parseInt(data[i]['count']);
+                //         $scope.violentHomeAgain.yesWithSafety += homeagainYesWithSafety;
+                //         console.log('violent HOMEAGAIN with safety scope', $scope.violentHomeAgain.yesWithSafety);
+                //     }
+                //     if(homeagainYesWithSafety === undefined) {
+                //         homeagainYesWithSafety = 0;
+                //     }
+                //
+                //     // HOMEAGAIN VIOLENT WITHOUT SAFETY
+                //     if(data[i]['Has or Had experienced or at risk for violence'] === "YES without a written Safety Plan") {
+                //         var homeagainYesWithoutSafety = parseInt(data[i]['count']);
+                //         $scope.violentHomeAgain.yesWithoutSafety += homeagainYesWithoutSafety;
+                //         console.log('violent HOMEAGAIN without safety scope', $scope.violentHomeAgain.yesWithoutSafety);
+                //     }
+                //     if(homeagainYesWithoutSafety === undefined) {
+                //         homeagainYesWithoutSafety = 0;
+                //     }
+                //     // HOMEFRONT TOTAL
+                //     $scope.violentHomeAgain.total = homeagainYesWithSafety + homesafeYesWithoutSafety;
+                //     console.log('HOMEAGAIN total', $scope.violentHomeAgain.total);
+                // } // END OF HOMEAGAIN
+
+            } // END OF FOR LOOP
+
+        });
+
+        $scope.outcomeFactory.tenantTraining(selections).then(function(response) {
+          console.log("response tenantTraining: ", response);
+        });
+        $scope.outcomeFactory.tenantTrainingSameYear(selections).then(function(response) {
+          console.log("response tenantTrainingSameYear: ", response);
+            $scope.tenantTrainingSameYear = {
+                emp: 0,
+                emp2: 0,
+                homeSafe: 0,
+                homeAgain: 0,
+                homeFront: 0,
+                total: 0
+            };
+            var data = response;
+            for(var i = 0; i < data.length; i++) {
+                var hasValue = parseInt(data[i]['Tenant Training Completed']);
+
+                if (hasValue) {
+                    // EMP
+                    if (data[i].Program === "EMP") {
+                        $scope.tenantTrainingSameYear.emp = hasValue;
+                    }
+
+                    // EMPII
+                    if (data[i].Program === "EMPII") {
+                        $scope.tenantTrainingSameYear.emp2 = hasValue;
+                    }
+
+                    // HOMEAGAIN
+                    if (data[i].Program === "Home Again") {
+                        $scope.tenantTrainingSameYear.homeAgain = hasValue;
+                    }
+
+                    // HOMESAFE
+                    if (data[i].Program === "HomeSafe") {
+                        $scope.tenantTrainingSameYear.homeSafe = hasValue;
+                    }
+
+                    // HOMEFRONT
+                    if (data[i].Program === "HomeSafe") {
+                        $scope.tenantTrainingSameYear.homeFront = hasValue;
+                    }
+                }
+
+            }
+            console.log('$scope.tenantTrainingSameYear.empComplete', $scope.tenantTrainingSameYear.emp);
+            console.log('$scope.tenantTrainingSameYear.emp2Complete', $scope.tenantTrainingSameYear.emp2);
+            console.log('$scope.tenantTrainingSameYear.homeagainComplete', $scope.tenantTrainingSameYear.homeAgain);
+            console.log('$scope.tenantTrainingSameYear.homefrontComplete', $scope.tenantTrainingSameYear.homeFront);
+            console.log('$scope.tenantTrainingSameYear.homesafeComplete', $scope.tenantTrainingSameYear.homeSafe);
+            $scope.tenantTrainingSameYear.total = $scope.tenantTrainingSameYear.emp + $scope.tenantTrainingSameYear.emp2 + $scope.tenantTrainingSameYear.homeFront + $scope.tenantTrainingSameYear.homeSafe + $scope.tenantTrainingSameYear.homeAgain;
+            console.log('total tenant training ', $scope.tenantTrainingSameYear.total);
+
+
+
+        });
+
+        $scope.outcomeFactory.tenantTrainingPriorYear(selections).then(function(response) {
+          console.log("response tenantTrainingPriorYear: ", response);
+            var data = response;
+            // for (var i= 0; i < data.length; i++) {
+            //
+            // }
+        });
         // $scope.outcomeFactory.dbt(selections).then(function(response) {
         //   console.log("response dbt: ", response);
         // });
@@ -1381,7 +1603,9 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
         // $scope.outcomeFactory.selfGoals(selections).then(function(response) {
         //   console.log("response selfGoals: ", response);
         // });
+        $scope.isActive = false;
     } //end of click
+    $scope.isActive = true;
 
     $scope.exportDataOutcome = function () {
         var blob = new Blob([document.getElementById('exportableOutcome').innerHTML], {
@@ -1396,7 +1620,6 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
         $scope.startdate = new Date();
         $scope.enddate = new Date();
     };
-
 
 // end controller
 }]);

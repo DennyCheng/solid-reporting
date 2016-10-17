@@ -58,10 +58,10 @@
 
 <!-- DATA DISPLAY TABLES ------------------------------------------------->
 
-    <md-content layout="column" flex>
+    <md-content layout="column" flex ng-class="{'opacityTables': isActive}">
       <div class="datagrid" layout = "row" flex>
 
-      <md-divider ng-if="!$last"></md-divider>
+      <md-divider ng-if="!$last" ></md-divider>
 
         <div ng-include="'public/views/partials/programoutcomes/outcomeemp.html'"> </div>
         <div ng-include="'public/views/partials/programoutcomes/outcomeempII.html'"> </div>
