@@ -50,7 +50,7 @@
         <div class="action-buttons" layout="column">
             <md-button class="md-raised md-primary" ng-click="newQuery()">Submit Query</md-button>
             <md-button id="reset" class="md-raised" ng-click="resetQuery()">Reset Query</md-button>
-            <md-button id="export" class="md-raised export">Export to CSV</md-button>
+            <md-button id="export" class="md-raised export" ng-click="exportDataOutcome()">Export to CSV</md-button>
         </div>
       </div>
 
@@ -70,6 +70,30 @@
         <div ng-include="'public/views/partials/programoutcomes/outcomehomesafe.html'"> </div>
         <!-- <div ng-include="'public/views/partials/programoutcomes/outcometotals.html'"> </div> -->
 
+      </div>
+      <div id="exportableDemo" style="display:none">
+        <table >
+          <thead>
+          <tr>
+            <th>Program 1</th>
+            <th>Program 2</th>
+            <th>Program 3</th>
+            <th>Program 4</th>
+            <th>Program 5</th>
+            <th>Program 6</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr >
+            <td ng-include="'public/views/partials/OutcomeHousing.html'"> </td>
+            <td ng-include="'public/views/partials/outcomeecon.html'"> </td>
+            <td ng-include="'public/views/partials/outcomeedu.html'"> </td>
+            <td ng-include="'public/views/partials/outcomefamily.html'"> </td>
+            <td ng-include="'public/views/partials/outcomehealth.html'"> </td>
+            <td ng-include="'public/views/partials/outcomecommunity.html'"> </td>
+          </tr>
+          </tbody>
+        </table>
       </div>
 
     </md-content>

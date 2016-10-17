@@ -1017,9 +1017,68 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
         }); // end of adultDisabil
 
 
-        // $scope.outcomeFactory.childDis(selections).then(function(response) {
-        //   console.log("response childDis: ", response);
-        // });
+        $scope.outcomeFactory.childDis(selections).then(function(response) {
+          console.log("response childDis: ", response);
+          var responseArray = response;
+
+          $scope.emp_childDis = {
+              total: 0,
+          };
+
+          $scope.emptwo_childDis = {
+              total: 0,
+          };
+
+          $scope.homeAgain_childDis = {
+              total: 0,
+          };
+
+          $scope.homeSafe_childDis = {
+              total: 0,
+          };
+
+          $scope.homeFront_childDis = {
+              total: 0,
+          };
+
+          $scope.childDis_Total = 0;
+
+          for (var i = 0; i < responseArray.length; i++) {
+            $scope.childDis_Total += parseInt(responseArray[i].count);
+              if(responseArray[i].Program == "EMP"){
+                  console.log("pre if", responseArray[i].count);
+                  if(responseArray[i]['Is There a Disability'] === true){
+                      $scope.emp_childDis.total += parseInt(responseArray[i].count);
+                      console.log("emp childDisability true: ", $scope.emp_childDis.total);
+                  }
+              }//end of EMP if
+              else if(responseArray[i].Program == "EMPII"){
+                  if(responseArray[i]['Is There a Disability'] === true){
+                      $scope.emptwo_childDis.total += parseInt(responseArray[i].count);
+                      console.log("empii childDisability true", $scope.emptwo_childDis.total);
+                  }
+              }//end of empII
+              else if(responseArray[i].Program == "HomeSafe"){
+                  console.log("whats going on here", responseArray[i]['Is There a Disability']);
+                  if(responseArray[i]['Is There a Disability'] === true){
+                      $scope.homeSafe_childDis.total += parseInt(responseArray[i].count);
+                      console.log("home safe childDisability true: ", $scope.homeSafe_childDis.total);
+                  }
+              }//end of HomeSafe
+              else if(responseArray[i].Program == "Home Again"){
+                  if(responseArray[i]['Is There a Disability'] === true){
+                      $scope.homeAgain_childDis.total += parseInt(responseArray[i].count);
+                      console.log("home again childDisability true: ", $scope.homeAgain_childDis.total);
+                  }
+              }//end of Home Again
+              else if(responseArray[i].Program == "HomeFront" || responseArray[i].Program == "Home Front"){
+                  if(responseArray[i]['Is There a Disability'] === true){
+                      $scope.homeFront_childDis.total += parseInt(responseArray[i].count);
+                      console.log("home front childDisability true: ", $scope.homeFront_childDis.total);
+                  }
+              }//end of homeFront
+          }
+        }); // end of childDis
 
 
         $scope.outcomeFactory.parentEduYearBefore(selections).then(function(response) {
@@ -1184,9 +1243,156 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
         }); //end of parentEdu
 
 
-        // $scope.outcomeFactory.childMI(selections).then(function(response) {
-        //   console.log("response childMI: ", response);
-        // });
+        $scope.outcomeFactory.childMI(selections).then(function(response) {
+          console.log("response childMI: ", response);
+          $scope.childMI_EMP = {
+              yesAndBeingTreated:0,
+              yesAndNotBeingTreated:0,
+              yesAndReferredForAssessment:0,
+              undiagnosedReferredForAssessment:0,
+              total:0
+          };
+
+          $scope.childMI_EMPII = {
+              yesAndBeingTreated:0,
+              yesAndNotBeingTreated:0,
+              yesAndReferredForAssessment:0,
+              undiagnosedReferredForAssessment:0,
+              total:0
+          };
+
+          $scope.childMI_HomeSafe = {
+              yesAndBeingTreated:0,
+              yesAndNotBeingTreated:0,
+              yesAndReferredForAssessment:0,
+              undiagnosedReferredForAssessment:0,
+              total:0
+          };
+
+          $scope.childMI_HomeAgain = {
+              yesAndBeingTreated:0,
+              yesAndNotBeingTreated:0,
+              yesAndReferredForAssessment:0,
+              undiagnosedReferredForAssessment:0,
+              total:0
+          };
+
+          $scope.childMI_HomeFront = {
+              yesAndBeingTreated:0,
+              yesAndNotBeingTreated:0,
+              yesAndReferredForAssessment:0,
+              undiagnosedReferredForAssessment:0,
+              total:0
+          };
+
+          $scope.childMI_Total = 0;
+
+          var responseArray = response
+
+          for (var i = 0; i < responseArray.length; i++) {
+              $scope.childMI_Total += parseInt(responseArray[i].count);
+              if (responseArray[i].Program == "EMP"){
+                  if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES and Being Treated"){
+                      $scope.childMI_EMP.yesAndBeingTreated += parseInt(responseArray[i].count);
+                      $scope.childMI_EMP.total += parseInt(responseArray[i].count);
+                  }
+                  else if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES Not Being Treated"){
+                      $scope.childMI_EMP.yesAndNotBeingTreated += parseInt(responseArray[i].count);
+                      $scope.childMI_EMP.total += parseInt(responseArray[i].count);
+                  }
+                  else if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES and referred for Assessment" || responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES and referred for assessment"){
+                      $scope.childMI_EMP.yesAndReferredForAssessment += parseInt(responseArray[i].count);
+                      $scope.childMI_EMP.total += parseInt(responseArray[i].count);
+                  }
+                  else if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "Undiagnosed referred for assessment"){
+                      $scope.childMI_EMP.undiagnosedReferredForAssessment += parseInt(responseArray[i].count);
+                      $scope.childMI_EMP.total += parseInt(responseArray[i].count);
+                  }
+              }
+
+              else if (responseArray[i].Program == "EMPII"){
+                  if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES and Being Treated"){
+                      $scope.childMI_EMPII.yesAndBeingTreated += parseInt(responseArray[i].count);
+                      $scope.childMI_EMPII.total += parseInt(responseArray[i].count);
+                  }
+                  else if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES Not Being Treated"){
+                      $scope.childMI_EMPII.yesAndNotBeingTreated += parseInt(responseArray[i].count);
+                      $scope.childMI_EMPII.total += parseInt(responseArray[i].count);
+                  }
+                  else if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES and referred for Assessment" || responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES and referred for assessment"){
+                      $scope.childMI_EMPII.yesAndReferredForAssessment += parseInt(responseArray[i].count);
+                      $scope.childMI_EMPII.total += parseInt(responseArray[i].count);
+                  }
+                  else if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "Undiagnosed referred for assessment"){
+                      $scope.childMI_EMPII.undiagnosedReferredForAssessment += parseInt(responseArray[i].count);
+                      $scope.childMI_EMPII.total += parseInt(responseArray[i].count);
+                  }
+              }
+
+              else if (responseArray[i].Program == "HomeSafe"||responseArray[i].Program == "Home Safe"){
+                  if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES and Being Treated"){
+                      $scope.childMI_HomeSafe.yesAndBeingTreated += parseInt(responseArray[i].count);
+                      $scope.childMI_HomeSafe.total += parseInt(responseArray[i].count);
+                  }
+                  else if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES Not Being Treated"){
+                      $scope.childMI_HomeSafe.yesAndNotBeingTreated += parseInt(responseArray[i].count);
+                      $scope.childMI_HomeSafe.total += parseInt(responseArray[i].count);
+                  }
+                  else if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES and referred for Assessment" || responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES and referred for assessment"){
+                      $scope.childMI_HomeSafe.yesAndReferredForAssessment += parseInt(responseArray[i].count);
+                      $scope.childMI_HomeSafe.total += parseInt(responseArray[i].count);
+                  }
+                  else if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "Undiagnosed referred for assessment"){
+                      $scope.childMI_HomeSafe.undiagnosedReferredForAssessment += parseInt(responseArray[i].count);
+                      $scope.childMI_HomeSafe.total += parseInt(responseArray[i].count);
+                  }
+              }
+
+              else if (responseArray[i].Program == "HomeAgain" || responseArray[i].Program == "Home Again"){
+                  if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES and Being Treated"){
+                      $scope.childMI_HomeAgain.yesAndBeingTreated += parseInt(responseArray[i].count);
+                      $scope.childMI_HomeAgain.total += parseInt(responseArray[i].count);
+                  }
+                  else if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES Not Being Treated"){
+                      $scope.childMI_HomeAgain.yesAndNotBeingTreated += parseInt(responseArray[i].count);
+                      $scope.childMI_HomeAgain.total += parseInt(responseArray[i].count);
+                  }
+                  else if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES and referred for Assessment" || responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES and referred for assessment"){
+                      $scope.childMI_HomeAgain.yesAndReferredForAssessment += parseInt(responseArray[i].count);
+                      $scope.childMI_HomeAgain.total += parseInt(responseArray[i].count);
+                  }
+                  else if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "Undiagnosed referred for assessment"){
+                      $scope.childMI_HomeAgain.undiagnosedReferredForAssessment += parseInt(responseArray[i].count);
+                      $scope.childMI_HomeAgain.total += parseInt(responseArray[i].count);
+                  }
+              }
+
+              else if (responseArray[i].Program == "HomeFront"|| responseArray[i].Program == "Home Front"){
+                  if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES and Being Treated"){
+                      $scope.childMI_HomeFront.yesAndBeingTreated += parseInt(responseArray[i].count);
+                      $scope.childMI_HomeFront.total += parseInt(responseArray[i].count);
+                  }
+                  else if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES Not Being Treated"){
+                      $scope.childMI_HomeFront.yesAndNotBeingTreated += parseInt(responseArray[i].count);
+                      $scope.childMI_HomeFront.total += parseInt(responseArray[i].count);
+                  }
+                  else if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES and referred for Assessment" || responseArray[i]["Is There a Diagnosed Mental Illness"] == "YES and referred for assessment"){
+                      $scope.childMI_HomeFront.yesAndReferredForAssessment += parseInt(responseArray[i].count);
+                      $scope.childMI_HomeFront.total += parseInt(responseArray[i].count);
+                  }
+                  else if(responseArray[i]["Is There a Diagnosed Mental Illness"] == "Undiagnosed referred for assessment"){
+                      $scope.childMI_HomeFront.undiagnosedReferredForAssessment += parseInt(responseArray[i].count);
+                      $scope.childMI_HomeFront.total += parseInt(responseArray[i].count);
+                  }
+              }
+          }//end for for loop
+          // console.log('childMI EMP', $scope.childMI_EMP);
+          // console.log('childMI EMPII', $scope.childMI_EMPII);
+          // console.log('childMI Safe', $scope.childMI_HomeSafe);
+          // console.log('childMI Again', $scope.childMI_HomeAgain);
+          // console.log('childMI Front', $scope.childMI_HomeFront);
+          // console.log('TOTAL', $scope.childMI_Total);
+        }); // end of childMI
 
 
         $scope.outcomeFactory.adultMI(selections).then(function(response) {
@@ -1332,22 +1538,134 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                     }
                 }
             }//end for for loop
-            console.log('test EMP', $scope.adultMI_EMP);
-            console.log('test EMPII', $scope.adultMI_EMPII);
-            console.log('test Safe', $scope.adultMI_HomeSafe);
-            console.log('test Again', $scope.adultMI_HomeAgain);
-            console.log('test Front', $scope.adultMI_HomeFront);
-            console.log('TOTAL', $scope.adultMI_Total);
+            // console.log('test EMP', $scope.adultMI_EMP);
+            // console.log('test EMPII', $scope.adultMI_EMPII);
+            // console.log('test Safe', $scope.adultMI_HomeSafe);
+            // console.log('test Again', $scope.adultMI_HomeAgain);
+            // console.log('test Front', $scope.adultMI_HomeFront);
+            // console.log('TOTAL', $scope.adultMI_Total);
 
-        });
+        });  // end of adultMI
 
 
-        // $scope.outcomeFactory.budgetingEdu(selections).then(function(response) {
-        //   console.log("response budgetingEdu: ", response);
-        // });
-        // $scope.outcomeFactory.budgetingEduSameYear(selections).then(function(response) {
-        //   console.log("response budgetingEduSameYear: ", response);
-        // });
+        $scope.outcomeFactory.budgetingEdu(selections).then(function(response) {
+          console.log("response budgetingEdu: ", response);
+          var responseArray = response;
+
+          $scope.emp_budgetingEdu = {
+              total: 0,
+          };
+
+          $scope.emptwo_budgetingEdu = {
+              total: 0,
+          };
+
+          $scope.homeAgain_budgetingEdu = {
+              total: 0,
+          };
+
+          $scope.homeSafe_budgetingEdu = {
+              total: 0,
+          };
+
+          $scope.homeFront_budgetingEdu = {
+              total: 0,
+          };
+
+          $scope.budgetingEdu_Total = 0;
+
+          for (var i = 0; i < responseArray.length; i++) {
+            $scope.budgetingEdu_Total += parseInt(responseArray[i].count);
+            console.log("budgetingEdu_Total: ", $scope.budgetingEdu_Total);
+              if(responseArray[i].Program == "EMP"){
+                  // console.log("pre if", responseArray[i].count);
+                  if(responseArray[i]['Budgeting Class'] === true){
+                      $scope.emp_budgetingEdu.total += parseInt(responseArray[i].count);
+                      console.log("emp budgetingEdu true: ", $scope.emp_budgetingEdu.total);
+                  }
+              }//end of EMP if
+              else if(responseArray[i].Program == "EMPII"){
+                  if(responseArray[i]['Budgeting Class'] === true){
+                      $scope.emptwo_budgetingEdu.total += parseInt(responseArray[i].count);
+                      console.log("empii budgetingEdu true", $scope.emptwo_budgetingEdu.total);
+                  }
+              }//end of empII
+              else if(responseArray[i].Program == "HomeSafe"){
+                  // console.log("whats going on here", responseArray[i]['Budgeting Class']);
+                  if(responseArray[i]['Budgeting Class'] === true){
+                      $scope.homeSafe_budgetingEdu.total += parseInt(responseArray[i].count);
+                      console.log("home safe budgetingEdu true: ", $scope.homeSafe_budgetingEdu.total);
+                  }
+              }//end of HomeSafe
+              else if(responseArray[i].Program == "Home Again"){
+                  if(responseArray[i]['Budgeting Class'] === true){
+                      $scope.homeAgain_budgetingEdu.total += parseInt(responseArray[i].count);
+                      console.log("home again budgetingEdu true: ", $scope.homeAgain_budgetingEdu.total);
+                  }
+              }//end of Home Again
+              else if(responseArray[i].Program == "HomeFront" || responseArray[i].Program == "Home Front"){
+                  if(responseArray[i]['Budgeting Class'] === true){
+                      $scope.homeFront_budgetingEdu.total += parseInt(responseArray[i].count);
+                      console.log("home front budgetingEdu true: ", $scope.homeFront_budgetingEdu.total);
+                  }
+              }//end of homeFront
+          }
+        });  // end of budgetingEdu
+
+
+        $scope.outcomeFactory.budgetingEduSameYear(selections).then(function(response) {
+          console.log("response budgetingEduSameYear: ", response);
+          var responseArray = response;
+
+          $scope.emp_budgetingEduSameYear = {
+              total: 0,
+          };
+
+          $scope.emptwo_budgetingEduSameYear = {
+              total: 0,
+          };
+
+          $scope.homeAgain_budgetingEduSameYear = {
+              total: 0,
+          };
+
+          $scope.homeSafe_budgetingEduSameYear = {
+              total: 0,
+          };
+
+          $scope.homeFront_budgetingEduSameYear = {
+              total: 0,
+          };
+
+          $scope.budgetingEduSameYear_Total = 0;
+
+          for (var i = 0; i < responseArray.length; i++) {
+            $scope.budgetingEduSameYear_Total += parseInt(responseArray[i]["Budgeting Completed"]);
+              if(responseArray[i].Program == "EMP"){
+                  $scope.emp_budgetingEduSameYear.total += parseInt(responseArray[i]["Budgeting Completed"]);
+                  console.log("emp budgetingEduSameYear true: ", $scope.emp_budgetingEduSameYear.total);
+              }//end of EMP if
+              else if(responseArray[i].Program == "EMPII"){
+                  $scope.emptwo_budgetingEduSameYear.total += parseInt(responseArray[i]["Budgeting Completed"]);
+                  console.log("empii budgetingEduSameYear true", $scope.emptwo_budgetingEduSameYear.total);
+              }//end of empII
+              else if(responseArray[i].Program == "HomeSafe"){
+                  $scope.homeSafe_budgetingEduSameYear.total += parseInt(responseArray[i]["Budgeting Completed"]);
+                  console.log("home safe budgetingEduSameYear true: ", $scope.homeSafe_budgetingEduSameYear.total);
+              }//end of HomeSafe
+              else if(responseArray[i].Program == "Home Again"){
+                  $scope.homeAgain_budgetingEduSameYear.total += parseInt(responseArray[i]["Budgeting Completed"]);
+                  console.log("home again budgetingEduSameYear true: ", $scope.homeAgain_budgetingEduSameYear.total);
+              }//end of Home Again
+              else if(responseArray[i].Program == "HomeFront" || responseArray[i].Program == "Home Front"){
+                  $scope.homeFront_budgetingEduSameYear.total += parseInt(responseArray[i]["Budgeting Completed"]);
+                  console.log("home front budgetingEduSameYear true: ", $scope.homeFront_budgetingEduSameYear.total);
+              }//end of homeFront
+          }
+          console.log("budgetingEduSameYear_Total: ", $scope.budgetingEduSameYear_Total);
+        }); // end of budgetingEduSameYear
+
+
         // $scope.outcomeFactory.budgetingEduYearBefore(selections).then(function(response) {
         //   console.log("response budgetingEduYearBefore: ", response);
         // });
@@ -1383,6 +1701,12 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
         // });
     } //end of click
 
+    $scope.exportDataOutcome = function () {
+        var blob = new Blob([document.getElementById('exportableOutcome').innerHTML], {
+            type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
+        });
+        saveAs(blob, "Solid_Ground_Report.xls");
+    };
 
     $scope.resetQuery = function () {
         $scope.selectedprogram = [];

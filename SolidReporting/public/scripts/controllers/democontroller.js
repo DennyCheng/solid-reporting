@@ -2792,9 +2792,9 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     });//end of famsExitHousing
 
     $scope.toggleSide();
-
+    $scope.isActive = false;
 }; //end of click button function
-
+    $scope.isActive = true;
     /// filters through age parameters and converts them to date ranges for queries to be sent to server:
     function ageParams(selectedAgeRanges, endDate) {
         console.log("selectedAgeRanges: ", selectedAgeRanges);
@@ -2860,8 +2860,8 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     return diff;
   };
 
-    $scope.exportData = function () {
-      var blob = new Blob([document.getElementById('exportable').innerHTML], {
+    $scope.exportDataDemo = function () {
+      var blob = new Blob([document.getElementById('exportableDemo').innerHTML], {
         type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
       });
       saveAs(blob, "Solid_Ground_Report.xls");

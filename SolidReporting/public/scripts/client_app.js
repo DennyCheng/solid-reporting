@@ -19,10 +19,10 @@ myApp.config(['$routeProvider', function($routeProvider){
       templateUrl: '/public/views/forgot.html',
       controller: "LoginController"
     })
-      .when('/landing', {
-        templateUrl: '/public/views/partials/landing.html',
-        controller: "landingController"
-      })  
+    .when('/landing', {
+      templateUrl: '/public/views/partials/landing.html',
+      controller: "landingController"
+    })  
     .when('/home', {
       templateUrl:'/public/views/partials/demographics.html',
       controller:'DemoController'
@@ -57,4 +57,15 @@ myApp.config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')
     .primaryPalette('indigo')
     .accentPalette('light-green')
+});
+
+myApp.directive('toggleClass', function() {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attrs) {
+      element.bind('click', function() {
+        element.toggleClass(attrs.toggleClass);
+      });
+    }
+  };
 });

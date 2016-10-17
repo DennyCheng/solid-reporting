@@ -28,6 +28,21 @@ md-toolbar:not(.md-menu-toolbar) {
 
 .togglesearch {
   float: left;
+  background-color: #3c89ec;
+  border-radius: 5px;
+}
+.togglesearch span.ng-scope {
+  color: white;
+}
+
+.togglesearch:hover {
+  float: left;
+  background-color: rgb(122,157,62);
+  border-radius: 5px;
+}
+
+.opacityTables {
+  opacity: 0.5;
 }
 
 .pagetitle {
@@ -354,6 +369,31 @@ md-tooltip p {
   transform: none;
   -webkit-transform: none; }
 
+
+.instruction {
+  background-color: rgba(0, 0, 0, 0.54);
+  border-radius: 5px;
+  position: absolute;
+  top: 6em;
+  left: 10em;
+  width: 45em;
+  padding-left: 0.5em;
+  transform: scale(1);
+  opacity: 9999;
+  margin-left: -7em;
+}
+.instruction p, h3 {
+  color: white;
+  font-size: 1.2em;
+  font-family: Roboto,Helvetica Neue,sans-serif;
+  line-height: 1.5em;
+  font-weight: 500;
+}
+.instruction h3 {
+  margin: 0 auto 0 auto;
+  font-size: 1.2em;
+}
+
 .loadingGif {
   width: 10%;
   z-index: 1;
@@ -362,3 +402,4 @@ md-tooltip p {
   left: 52%;
   top: 35%;
 }
+
