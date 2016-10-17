@@ -199,13 +199,13 @@
             md-cell>{{ homeSafeEconS.appliedforSSD + homeSafeEconS }}</td>
             <td ng-model="homeSafeEconS" md-cell>{{ (100 * homeSafeEconS.totalCount / homeSafeEconS.totalCount ) | number:2  }}%</td>
           </tr> -->
-          <!-- <tr md-row>
-            <td md-cell>Disabled children</td>
-            <td ng-model="raceChildEMP"
-            md-cell>{{ raceChildEMP.other }}</td>
-            <td ng-model="raceChildEMP" md-cell>{{ (100 * raceChildEMP.other / raceChildEMP.totalCount ) | number:2  }}%</td>
-          </tr>
           <tr md-row>
+            <td md-cell>Disabled children</td>
+            <td ng-model="homeSafe_childDis"
+            md-cell>{{ homeSafe_childDis.total }}</td>
+            <td ng-model="homeSafe_childDis" md-cell>{{ (100 * homeSafe_childDis.total / "total children" ) | number:2  }}%</td>
+          </tr>
+          <!-- <tr md-row>
             <td md-cell>Disabled children already receiving benefits</td>
             <td ng-model="raceChildEMP"
             md-cell>{{ raceChildEMP.other }}</td>

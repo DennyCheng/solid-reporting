@@ -199,13 +199,13 @@
             md-cell>{{ emptwoEconS.appliedforSSD + emptwoEconS }}</td>
             <td ng-model="emptwoEconS" md-cell>{{ (100 * emptwoEconS.totalCount / emptwoEconS.totalCount ) | number:2  }}%</td>
           </tr> -->
-          <!-- <tr md-row>
-            <td md-cell>Disabled children</td>
-            <td ng-model="raceChildEMP"
-            md-cell>{{ raceChildEMP.other }}</td>
-            <td ng-model="raceChildEMP" md-cell>{{ (100 * raceChildEMP.other / raceChildEMP.totalCount ) | number:2  }}%</td>
-          </tr>
           <tr md-row>
+            <td md-cell>Disabled children</td>
+            <td ng-model="emptwo_childDis"
+            md-cell>{{ emptwo_childDis.total }}</td>
+            <td ng-model="emptwo_childDis" md-cell>{{ (100 * emptwo_childDis.total / "total children" ) | number:2  }}%</td>
+          </tr>
+          <!-- <tr md-row>
             <td md-cell>Disabled children already receiving benefits</td>
             <td ng-model="raceChildEMP"
             md-cell>{{ raceChildEMP.other }}</td>

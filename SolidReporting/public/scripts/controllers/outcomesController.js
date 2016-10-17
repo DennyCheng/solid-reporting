@@ -21,10 +21,8 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
 
     var programs = [];
 
-    //----- Programs & Outcomes Checkboxes --------------
+    //----- Programs Checkboxes --------------
     // $scope.programs = ['EMP I', 'EMP II', 'Home Again', 'HomeSafe', 'HomeFront'];
-
-    $scope.outcomes = ['Housing Stability', 'Educational Advancement', 'Economic Stability', 'Strengthened Families', 'Improved Health', 'Community Connections'];
 
     showData();
     function showData() {
@@ -64,10 +62,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
         });
     }
 
-
-//----- Programs ----------------------------
-
-    $scope.selectedprogram = programs;
+  $scope.selectedprogram = programs;
 
   $scope.toggle = function (item, list) {
       var idx = list.indexOf(item);

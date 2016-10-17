@@ -118,13 +118,13 @@
             <td md-cell>Adults who have/had an IEP</td>
             <td ng-model="empRace" md-cell>{{ empRace.other }}</td>
             <td ng-model="empRace" md-cell>{{ (100 * empRace.other / empRace.total ) | number:2 }}%</td>
-          </tr>
-          <tr md-row>
+          </tr> -->
+          <!-- <tr md-row>
             <td md-cell>Children with a documented learning disability</td>
             <td ng-model="empRace" md-cell>{{ empRace.other }}</td>
             <td ng-model="empRace" md-cell>{{ (100 * empRace.other / empRace.total ) | number:2 }}%</td>
-          </tr>
-          <tr class="boldrow" md-row>
+          </tr> -->
+          <!-- <tr class="boldrow" md-row>
             <td md-cell>Children who have/had an IEP</td>
             <td ng-model="empRace" md-cell>{{ empRace.total }}</td>
             <td ng-model="empRace" md-cell>{{ (100 * empRace.total / empRace.total ) | number:2 }}%</td>
@@ -199,43 +199,43 @@
               md-cell>{{ empEconS.appliedforSSD + empEconS }}</td>
               <td ng-model="empEconS" md-cell>{{ (100 * empEconS.totalCount / empEconS.totalCount ) | number:2  }}%</td>
             </tr> -->
-            <!-- <tr md-row>
-              <td md-cell>Disabled children</td>
-              <td ng-model="raceChildEMP"
-              md-cell>{{ raceChildEMP.other }}</td>
-              <td ng-model="raceChildEMP" md-cell>{{ (100 * raceChildEMP.other / raceChildEMP.totalCount ) | number:2  }}%</td>
-            </tr>
             <tr md-row>
+              <td md-cell>Disabled children</td>
+              <td ng-model="emp_childDis"
+              md-cell>{{ emp_childDis.total }}</td>
+              <td ng-model="emp_childDis" md-cell>{{ (100 * emp_childDis.total / "# of children" | number:2  }}%</td>
+            </tr>
+            <!-- <tr md-row>
               <td md-cell>Disabled children already receiving benefits</td>
               <td ng-model="raceChildEMP"
               md-cell>{{ raceChildEMP.other }}</td>
               <td ng-model="raceChildEMP" md-cell>{{ (100 * raceChildEMP.other / raceChildEMP.totalCount ) | number:2  }}%</td>
-            </tr>
-            <tr md-row>
+            </tr> -->
+            <!-- <tr md-row>
               <td md-cell>Disabled children who applied for benefits</td>
               <td ng-model="raceChildEMP"
               md-cell>{{ raceChildEMP.other }}</td>
               <td ng-model="raceChildEMP" md-cell>{{ (100 * raceChildEMP.other / raceChildEMP.totalCount ) | number:2  }}%</td>
-            </tr>
-            <tr md-row>
+            </tr> -->
+            <!-- <tr md-row>
               <td md-cell>Disabled children approved for benefits</td>
               <td ng-model="raceChildEMP"
               md-cell>{{ raceChildEMP.other }}</td>
               <td ng-model="raceChildEMP" md-cell>{{ (100 * raceChildEMP.other / raceChildEMP.totalCount ) | number:2  }}%</td>
-            </tr>
-            <tr md-row>
+            </tr> -->
+            <!-- <tr md-row>
               <td md-cell>Disabled children denied benefits</td>
               <td ng-model="raceChildEMP"
               md-cell>{{ raceChildEMP.other }}</td>
               <td ng-model="raceChildEMP" md-cell>{{ (100 * raceChildEMP.other / raceChildEMP.totalCount ) | number:2  }}%</td>
-            </tr>
-            <tr md-row>
+            </tr> -->
+            <!-- <tr md-row>
               <td md-cell>Disabled children who refused to apply</td>
               <td ng-model="raceChildEMP"
               md-cell>{{ raceChildEMP.other }}</td>
               <td ng-model="raceChildEMP" md-cell>{{ (100 * raceChildEMP.other / raceChildEMP.totalCount ) | number:2  }}%</td>
-            </tr>
-            <tr class="boldrow" md-row>
+            </tr> -->
+            <!-- <tr class="boldrow" md-row>
               <td md-cell>Disabled children applying for disability</td>
               <td ng-model="raceChildEMP"
               md-cell>{{ raceChildEMP.other }}</td>
@@ -279,7 +279,7 @@
               <td md-cell>Achieved a Budgeting Goal</td>
               <td ng-model="dobEMP" md-cell>{{ dobEMP.age55to64 }}</td>
               <td ng-model="dobEMP" md-cell>{{ (100 * dobEMP.age55to64 / dobEMP.total ) | number:2  }}%</td>
-            </tr>
+            </tr> -->
             <tr md-row>
               <td md-cell>Completed Budgeting Class (prior year)</td>
               <td ng-model="dobEMP" md-cell>{{ dobEMP.age65tobeyond }}</td>
@@ -287,15 +287,15 @@
             </tr>
             <tr md-row>
               <td md-cell>Completed Budgeting Class (current year)</td>
-              <td ng-model="number" md-cell> {{ dobEMP.total }}</td>
-              <td ng-model="percent" md-cell>{{ (100 * dobEMP.total / dobEMP.total ) | number:2  }}%</td>
+              <td ng-model="emp_budgetingEduSameYear" md-cell> {{ emp_budgetingEduSameYear.total }}</td>
+              <td ng-model="emp_budgetingEduSameYear" md-cell>{{ (100 * emp_budgetingEduSameYear.total / "total adults in EMP" ) | number:2  }}%</td>
             </tr>
             <tr md-row>
               <td md-cell>Total Completing Budgeting Class</td>
-              <td ng-model="number" md-cell> {{ dobEMP.total }}</td>
-              <td ng-model="percent" md-cell>{{ (100 * dobEMP.total / dobEMP.total ) | number:2  }}%</td>
+              <td ng-model="emp_budgetingEdu" md-cell> {{ emp_budgetingEdu.total }}</td>
+              <td ng-model="emp_budgetingEdu" md-cell>{{ (100 * emp_budgetingEdu.total / "adults in EMP" ) | number:2  }}%</td>
             </tr>
-            <tr md-row>
+            <!-- <tr md-row>
               <td md-cell>Families experiencing Family Violence</td>
               <td ng-model="number" md-cell> {{ dobEMP.total }}</td>
               <td ng-model="percent" md-cell>{{ (100 * dobEMP.total / dobEMP.total ) | number:2  }}%</td>
@@ -309,8 +309,8 @@
               <td md-cell>Families residing in housing 1+ years</td>
               <td ng-model="number" md-cell> {{ dobEMP.total }}</td>
               <td ng-model="percent" md-cell>{{ (100 * dobEMP.total / dobEMP.total ) | number:2  }}%</td>
-            </tr>
-            <tr md-row>
+            </tr> -->
+            <!-- <tr md-row>
               <td md-cell>Completed Tenant Training (prior year)</td>
               <td ng-model="number" md-cell> {{ dobEMP.total }}</td>
               <td ng-model="percent" md-cell>{{ (100 * dobEMP.total / dobEMP.total ) | number:2  }}%</td>
@@ -324,8 +324,8 @@
               <td md-cell>Families in housing 1+ years completing Tenant Training</td>
               <td ng-model="number" md-cell> {{ dobEMP.total }}</td>
               <td ng-model="percent" md-cell>{{ (100 * dobEMP.total / dobEMP.total ) | number:2  }}%</td>
-            </tr>
-            <tr md-row>
+            </tr> -->
+            <!-- <tr md-row>
               <td md-cell>Completed DBT (prior year)</td>
               <td ng-model="number" md-cell> {{ dobEMP.total }}</td>
               <td ng-model="percent" md-cell>{{ (100 * dobEMP.total / dobEMP.total ) | number:2  }}%</td>
@@ -422,6 +422,27 @@
               <td ng-model="adultMI_EMP" md-cell>{{ adultMI_EMP.undiagnosedReferredForAssessment }}</td>
               <td ng-model="adultMI_EMP" md-cell>{{ (100 * adultMI_EMP.undiagnosedReferredForAssessment / adultMI_EMP.total ) | number:2  }}%</td>
             </tr>
+            <tr md-row>
+              <td md-cell>Children with MI diagnosis</td>
+              <td ng-model="childMI_EMP" md-cell>{{ childMI_EMP.yesAndBeingTreated + childMI_EMP.yesAndReferredForAssessment + childMI_EMP.yesAndNotBeingTreated }}</td>
+              <td ng-model="childMI_EMP" md-cell>{{ (100 * (childMI_EMP.yesAndBeingTreated + childMI_EMP.yesAndReferredForAssessment + childMI_EMP.yesAndNotBeingTreated) / "total children" ) | number:2 }}%</td>
+            </tr>
+            <tr class="boldrow" md-row>
+              <td md-cell>Children with MI diagnosis receiving treatment</td>
+              <td ng-model="childMI_EMP" md-cell>{{ childMI_EMP.yesAndBeingTreated }}</td>
+              <td ng-model="childMI_EMP" md-cell>{{ (100 * childMI_EMP.yesAndBeingTreated / (childMI_EMP.yesAndBeingTreated + childMI_EMP.yesAndReferredForAssessment + childMI_EMP.yesAndNotBeingTreated) ) | number:2 }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Children with diagnosed MI referred for assessment</td>
+              <td ng-model="childMI_EMP" md-cell>{{ childMI_EMP.yesAndReferredForAssessment }}</td>
+              <td ng-model="childMI_EMP" md-cell>{{ (100 * childMI_EMP.yesAndReferredForAssessment / (childMI_EMP.yesAndBeingTreated + childMI_EMP.yesAndReferredForAssessment + childMI_EMP.yesAndNotBeingTreated) ) | number:2  }}%</td>
+            </tr>
+            <tr class="boldrow" md-row>
+              <td md-cell>Children with undiagnosed MI referred for assessment</td>
+              <td ng-model="childMI_EMP" md-cell>{{ childMI_EMP.undiagnosedReferredForAssessment }}</td>
+              <td ng-model="childMI_EMP" md-cell>{{ (100 * childMI_EMP.undiagnosedReferredForAssessment / childMI_EMP.total ) | number:2  }}%</td>
+            </tr>
+
           </tbody>
 
 <!-- EMP: Community Connections ---------------------------->
