@@ -437,7 +437,7 @@ router.post('/adultmi', function(req, res) {
 // Child Disability
 router.post('/childDis', function(req, res) {
   console.log("go child dis");
-  // console.log("req.body line 56: ", req.body);
+  console.log("req.body line 440: ", req.body);
   // var raceAdult = req.body.raceAdultSelection;
   // var ageAdult = req.body.ageAdultSelection;
   // var raceChild = req.body.raceChildrenSelection;
@@ -469,7 +469,7 @@ router.post('/childDis', function(req, res) {
           console.log("select error: ", err);
           res.sendStatus(500);
         }
-        console.log('results.row: ', result.rows);
+        console.log('results.row for childDis line 472: ', result.rows);
 
         res.send(result.rows);
 
