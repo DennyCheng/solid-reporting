@@ -5,7 +5,7 @@ if(process.env.DATABASE_URL != undefined) {
     connectionString = process.env.DATABASE_URL + "?ssl=true";
 } else {
     connectionString = {
-      user: 'zcqluiumdoamag', //env var: PGUSER
+      user: '', //env var: PGUSER
       database: 'd5hb67qv48kp30', //env var: PGDATABASE
       password: '', //env var: PGPASSWORD
       port: 5432, //env var: PGPORT
