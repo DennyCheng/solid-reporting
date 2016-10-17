@@ -1660,7 +1660,44 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
 
         $scope.outcomeFactory.budgetingEduYearBefore(selections).then(function(response) {
           console.log("response budgetingEduYearBefore: ", response);
-        
+            $scope.budgetingEduYearBefore = {
+                emp: 0,
+                emp2: 0,
+                homeAgain: 0,
+                homeSafe: 0,
+                homeFront: 0,
+                total: 0
+            }
+            var data = response;
+
+            for(var i = 0; i < data.length; i++){
+                var hasValue = parseInt(data[i]['Budgeting Completed']);
+                var program = data[i].Program;
+                    if (hasValue) {
+                        if (program === "EMP") {
+                            $scope.budgetingEduYearBefore.emp = hasValue;
+                        }
+                        if (program === "EMPII") {
+                            $scope.budgetingEduYearBefore.emp2 = hasValue;
+                        }
+                        if (program === "HomeAgain" || program === "Home Again") {
+                            $scope.budgetingEduYearBefore.homeAgain = hasValue;
+                        }
+                        if (program === "HomeSafe" || program === "Home Safe") {
+                            $scope.budgetingEduYearBefore.homeSafe = hasValue;
+                        }
+                        if (program === "HomeFront" || program === "Home Front") {
+                            $scope.budgetingEduYearBefore.homeFront = hasValue;
+                        }
+                    } // end of hasValue
+            } // END OF FOR LOOP
+            $scope.budgetingEduYearBefore.total = $scope.budgetingEduYearBefore.emp + $scope.budgetingEduYearBefore.emp2 + $scope.budgetingEduYearBefore.homeAgain + $scope.budgetingEduYearBefore.homeSafe + $scope.budgetingEduYearBefore.homeFront;
+            console.log('$scope.budgetingEduYearBefore.emp', $scope.budgetingEduYearBefore.emp);
+            console.log('$scope.budgetingEduYearBefore.emp2', $scope.budgetingEduYearBefore.emp2);
+            console.log('$scope.budgetingEduYearBefore.homeAgain', $scope.budgetingEduYearBefore.homeAgain);
+            console.log('$scope.budgetingEduYearBefore.homeSafe', $scope.budgetingEduYearBefore.homeSafe);
+            console.log('$scope.budgetingEduYearBefore.homeFront', $scope.budgetingEduYearBefore.homeFront);
+            console.log('$scope.budgetingEduYearBefore.total', $scope.budgetingEduYearBefore.total);
         });
         $scope.outcomeFactory.violence(selections).then(function(response) {
           console.log("response violence: ", response);
@@ -1695,7 +1732,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                 yesWithoutSafety: 0,
                 total: 0
             };
-
+        
             for (var i = 0; i < data.length; i++){
         
                 if (data[i]['Program'] === "EMP") {
@@ -1838,7 +1875,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
             } // END OF FOR LOOP
         
         });
-
+        
         $scope.outcomeFactory.tenantTraining(selections).then(function(response) {
           console.log("response tenantTraining: ", response);
             var data = response;
@@ -1850,12 +1887,12 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                 homeFront: 0,
                 total: 0
             };
-
+        
             for (var i = 0; i < data.length; i++) {
                 var hasValue = data[i]['Tenant Training'];
                 var hasCount = parseInt(data[i]['count']);
                 var program = data[i].Program;
-
+        
                 if(hasCount) {
                     if(program === "EMP" && hasValue === true) {
                         $scope.tenantTraining.emp = hasCount;
@@ -1882,7 +1919,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
             console.log('$scope.tenantTraining.homeFront ', $scope.tenantTraining.homeFront);
             console.log('$scope.tenantTraining.total ', $scope.tenantTraining.total);
         });
-
+        
         $scope.outcomeFactory.tenantTrainingSameYear(selections).then(function(response) {
           console.log("response tenantTrainingSameYear: ", response);
             $scope.tenantTrainingSameYear = {
@@ -1933,7 +1970,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
             $scope.tenantTrainingSameYear.total = $scope.tenantTrainingSameYear.emp + $scope.tenantTrainingSameYear.emp2 + $scope.tenantTrainingSameYear.homeFront + $scope.tenantTrainingSameYear.homeSafe + $scope.tenantTrainingSameYear.homeAgain;
             console.log('total tenant training ', $scope.tenantTrainingSameYear.total);
         });
-
+        
         $scope.outcomeFactory.tenantTrainingPriorYear(selections).then(function(response) {
           console.log("response tenantTrainingPriorYear: ", response);
             var data = response;
@@ -1945,11 +1982,11 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                 homeSafe:0,
                 total:0
             };
-
+        
             for (var i= 0; i < data.length; i++) {
                 var hasCount = parseInt(data[i]['Tenant Training Completed']);
                 var program = data[i].Program;
-
+        
                 if (hasCount) {
                     if (program === "EMP") {
                         $scope.tenantTrainingPriorYear.emp = hasCount;
@@ -1968,7 +2005,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                     }
                 }
             } // END OF FOR LOOP
-
+        
             $scope.tenantTrainingPriorYear.total = $scope.tenantTrainingPriorYear.emp + $scope.tenantTrainingPriorYear.emp2 + $scope.tenantTrainingPriorYear.homeSafe + $scope.tenantTrainingPriorYear.homeAgain + $scope.tenantTrainingPriorYear.homeFront;
             console.log('$scope.tenantTrainingPriorYear.emp ', $scope.tenantTrainingPriorYear.emp);
             console.log('$scope.tenantTrainingPriorYear.emp2 ', $scope.tenantTrainingPriorYear.emp2);
@@ -1976,26 +2013,26 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
             console.log('$scope.tenantTrainingPriorYear.homeAgain ' , $scope.tenantTrainingPriorYear.homeAgain);
             console.log('$scope.tenantTrainingPriorYear.homeFront ', $scope.tenantTrainingPriorYear.homeFront);
             console.log('$scope.tenantTrainingPriorYear.total ', $scope.tenantTrainingPriorYear.total);
-
+        
         });
-        // $scope.outcomeFactory.dbt(selections).then(function(response) {
-        //   console.log("response dbt: ", response);
-        // });
-        // $scope.outcomeFactory.DBTsameyear(selections).then(function(response) {
-        //   console.log("response DBTsameyear: ", response);
-        // });
-        // $scope.outcomeFactory.DBTprioryear(selections).then(function(response) {
-        //   console.log("response DBTprioryear: ", response);
-        // });
-        // $scope.outcomeFactory.healthImproved(selections).then(function(response) {
-        //   console.log("response healthImproved: ", response);
-        // });
-        // $scope.outcomeFactory.socialSupport(selections).then(function(response) {
-        //   console.log("response socialSupport: ", response);
-        // });
-        // $scope.outcomeFactory.selfGoals(selections).then(function(response) {
-        //   console.log("response selfGoals: ", response);
-        // });
+        $scope.outcomeFactory.dbt(selections).then(function(response) {
+          console.log("response dbt: ", response);
+        });
+        $scope.outcomeFactory.DBTsameyear(selections).then(function(response) {
+          console.log("response DBTsameyear: ", response);
+        });
+        $scope.outcomeFactory.DBTprioryear(selections).then(function(response) {
+          console.log("response DBTprioryear: ", response);
+        });
+        $scope.outcomeFactory.healthImproved(selections).then(function(response) {
+          console.log("response healthImproved: ", response);
+        });
+        $scope.outcomeFactory.socialSupport(selections).then(function(response) {
+          console.log("response socialSupport: ", response);
+        });
+        $scope.outcomeFactory.selfGoals(selections).then(function(response) {
+          console.log("response selfGoals: ", response);
+        });
         $scope.isActive = false;
     } //end of click
     $scope.isActive = true;
