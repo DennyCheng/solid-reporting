@@ -34,7 +34,6 @@ myApp.factory('DemoFactory', ['$http', '$location', function($http, $location) {
   }
 
   var totalPeople = function(selections) {
-
     var promise = $http.post('/demoquery/totalpeople', selections).then(function (response) {
       var totalPeople = response.data;
       console.log("totalPeople: ", totalPeople);

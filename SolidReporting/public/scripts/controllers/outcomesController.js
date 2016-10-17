@@ -104,6 +104,8 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
     };
 //--------------------------------------------
 
+
+
     $scope.firstOfTheYear = '';
 
     $scope.newQuery = function () {
@@ -139,6 +141,9 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
             firstDayOfTheYear: $scope.firstOfTheYear
         };
 
+        $scope.demoFactory.totalPeople(selections).then(function(response){
+          console.log("response: ", response);
+        });
 
         console.log("Program: " + $scope.selectedprogram + "\n"
             + "Outcome: " + $scope.selectedoutcome);
@@ -1660,36 +1665,36 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
 
         $scope.outcomeFactory.budgetingEduYearBefore(selections).then(function(response) {
           console.log("response budgetingEduYearBefore: ", response);
-        
+
         });
         $scope.outcomeFactory.violence(selections).then(function(response) {
           console.log("response violence: ", response);
             var data = response;
-        
+
             $scope.violentEmp = {
                 yesWithSafety: 0,
                 yesWithoutSafety: 0,
                 total: 0
             };
-        
+
             $scope.violentEmp2 = {
                 yesWithSafety: 0,
                 yesWithoutSafety: 0,
                 total: 0
             };
-        
+
             $scope.violentHomeFront = {
                 yesWithSafety: 0,
                 yesWithoutSafety: 0,
                 total: 0
             };
-        
+
             $scope.violentHomeSafe = {
                 yesWithSafety: 0,
                 yesWithoutSafety: 0,
                 total: 0
             };
-        
+
             $scope.violentHomeAgain = {
                 yesWithSafety: 0,
                 yesWithoutSafety: 0,
@@ -1697,7 +1702,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
             };
 
             for (var i = 0; i < data.length; i++){
-        
+
                 if (data[i]['Program'] === "EMP") {
                     // EMP VIOLENT WITH SAFETY
                     if(data[i]['Has or Had experienced or at risk for violence'] === "YES with a written Safety Plan") {
@@ -1708,7 +1713,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                     if($scope.violentEmp.yesWithSafety === undefined) {
                         $scope.violentEmp.yesWithSafety = 0;
                     }
-        
+
                     // EMP VIOLENT WITHOUT SAFETY
                     if(data[i]['Has or Had experienced or at risk for violence'] === "YES without a written Safety Plan") {
                         // var empYesWithoutSafety = parseInt(data[i]['count']);
@@ -1725,11 +1730,11 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                     // $scope.violentEmp.total = empYesWithSafety + empYesWithoutSafety;
                     // debugger;
                     $scope.violentEmp.total = $scope.violentEmp.yesWithoutSafety + $scope.violentEmp.yesWithSafety;
-        
-        
+
+
                     console.log('emp total', $scope.violentEmp.total);
                 } // END OF EMP
-        
+
                 // EMP2 VIOLENT
                 if (data[i]['Program'] === "EMPII") {
                     // EMP2 VIOLENT WITH SAFETY
@@ -1741,7 +1746,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                     if(emp2YesWithSafety === undefined) {
                         emp2YesWithSafety = 0;
                     }
-        
+
                     // EMP2 VIOLENT WITHOUT SAFETY
                     if(data[i]['Has or Had experienced or at risk for violence'] === "YES without a written Safety Plan") {
                         var emp2YesWithoutSafety = parseInt(data[i]['count']);
@@ -1756,7 +1761,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                     // console.log(' addd emp and emp2', emp2YesWithSafety, emp2YesWithoutSafety);
                     console.log('emp2 total ', $scope.violentEmp2.total);
                 } // END EMP2
-        
+
                 // HOMEFRONT VIOLENT
                 if (data[i]['Program'] === "HomeFront" || data[i]['Program'] == "Home Front") {
                     // HOMEFRONT VIOLENT WITH SAFETY
@@ -1768,7 +1773,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                     if(homefrontYesWithSafety === undefined) {
                         homefrontYesWithSafety = 0;
                     }
-        
+
                     // HOMEFRONT VIOLENT WITHOUT SAFETY
                     if(data[i]['Has or Had experienced or at risk for violence'] === "YES without a written Safety Plan") {
                         var homefrontYesWithoutSafety = parseInt(data[i]['count']);
@@ -1782,7 +1787,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                     $scope.violentHomeFront.total = homefrontYesWithSafety + homefrontYesWithoutSafety;
                     console.log('HOMEFRONT total', $scope.violentHomeFront.total);
                 } // END OF HOMEFRONT
-        
+
                 // HOMESAFE VIOLENT
                 if (data[i]['Program'] === "HomeFront" || data[i]['Program'] == "Home Front") {
                     // HOMESAFE VIOLENT WITH SAFETY
@@ -1794,7 +1799,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                     if(homesafeYesWithSafety === undefined) {
                         homesafeYesWithSafety = 0;
                     }
-        
+
                     // HOMESAFE VIOLENT WITHOUT SAFETY
                     if(data[i]['Has or Had experienced or at risk for violence'] === "YES without a written Safety Plan") {
                         var homesafeYesWithoutSafety = parseInt(data[i]['count']);
@@ -1808,7 +1813,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                     $scope.violentHomeSafe.total = homesafeYesWithSafety + homesafeYesWithoutSafety;
                     console.log('HOMESAFE total', $scope.violentHomeSafe.total);
                 } // END OF HOMESAFE
-        
+
                 // HOMEAGAIN VIOLENT
                 if (data[i]['Program'] === "HomeAgain" || data[i]['Program'] == "Home Again") {
                     // HOMEAGAIN VIOLENT WITH SAFETY
@@ -1820,7 +1825,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                     if(homeagainYesWithSafety === undefined) {
                         homeagainYesWithSafety = 0;
                     }
-        
+
                     // HOMEAGAIN VIOLENT WITHOUT SAFETY
                     if(data[i]['Has or Had experienced or at risk for violence'] === "YES without a written Safety Plan") {
                         var homeagainYesWithoutSafety = parseInt(data[i]['count']);
@@ -1834,9 +1839,9 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                     $scope.violentHomeAgain.total = homeagainYesWithSafety + homesafeYesWithoutSafety;
                     console.log('HOMEAGAIN total', $scope.violentHomeAgain.total);
                 } // END OF HOMEAGAIN
-        
+
             } // END OF FOR LOOP
-        
+
         });
 
         $scope.outcomeFactory.tenantTraining(selections).then(function(response) {
@@ -1896,34 +1901,34 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
             var data = response;
             for(var i = 0; i < data.length; i++) {
                 var hasValue = parseInt(data[i]['Tenant Training Completed']);
-        
+
                 if (hasValue) {
                     // EMP
                     if (data[i].Program === "EMP") {
                         $scope.tenantTrainingSameYear.emp = hasValue;
                     }
-        
+
                     // EMPII
                     if (data[i].Program === "EMPII") {
                         $scope.tenantTrainingSameYear.emp2 = hasValue;
                     }
-        
+
                     // HOMEAGAIN
                     if (data[i].Program === "Home Again" || data[i].Program === "HomeAgain") {
                         $scope.tenantTrainingSameYear.homeAgain = hasValue;
                     }
-        
+
                     // HOMESAFE
                     if (data[i].Program === "HomeSafe" || data[i].Program === "Home Safe") {
                         $scope.tenantTrainingSameYear.homeSafe = hasValue;
                     }
-        
+
                     // HOMEFRONT
                     if (data[i].Program === "HomeFront" || data[i].Program === "Home Front") {
                         $scope.tenantTrainingSameYear.homeFront = hasValue;
                     }
                 }
-        
+
             }
             console.log('$scope.tenantTrainingSameYear.empComplete', $scope.tenantTrainingSameYear.emp);
             console.log('$scope.tenantTrainingSameYear.emp2Complete', $scope.tenantTrainingSameYear.emp2);
