@@ -5,8 +5,8 @@ if(process.env.DATABASE_URL != undefined) {
     connectionString = process.env.DATABASE_URL + "?ssl=true";
 } else {
     connectionString = {
-      user: '', //env var: PGUSER
-      database: 'omicron', //env var: PGDATABASE
+      user: 'nmatecki', //env var: PGUSER
+      database: 'solidground', //env var: PGDATABASE
       password: '', //env var: PGPASSWORD
       port: 5432, //env var: PGPORT
       max: 1000, // max number of clients in the pool
