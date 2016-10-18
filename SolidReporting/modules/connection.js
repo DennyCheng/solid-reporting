@@ -15,8 +15,8 @@ if(process.env.DATABASE_URL != undefined) {
     };
 } else {
     connectionString = {
-      user: 'elizabethhaakenson', //env var: PGUSER
-      database: 'solidGround4', //env var: PGDATABASE
+      user: '', //env var: PGUSER
+      database: 'omicron', //env var: PGDATABASE
       password: '', //env var: PGPASSWORD
       port: 5432, //env var: PGPORT
       max: 1000, // max number of clients in the pool

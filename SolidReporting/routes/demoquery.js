@@ -35,7 +35,7 @@ router.post('/dobadults', function(req, res) {
   // sorting through raceAdult in HOH selections:
     if(raceAdult.length === 0) {
       // somehow delete the query or make it blank or assume this is select all
-      raceAdultQuery = "length is 0, nothing selected";
+      raceAdultQuery = "";
     } else if(raceAdult.length === 1) {
       raceAdultQuery = "(\"Head of Household\".\"Race Code\" = '" + raceAdult[0] + "') AND ";
     } else {
@@ -57,7 +57,7 @@ router.post('/dobadults', function(req, res) {
     // sorting through raceAdult for HOH-2 selections:
   if(raceAdult.length === 0) {
     // somehow delete the query or make it blank or assume this is select all
-    raceAdult_2Query = "length is 0, nothing selected";
+    raceAdult_2Query = "";
   } else if(raceAdult.length === 1) {
     raceAdult_2Query = "(\"Head of Household-2\".\"Race Code\" = '" + raceAdult[0] + "') AND ";
   } else {
@@ -79,7 +79,7 @@ router.post('/dobadults', function(req, res) {
   // sorting through gender for Adults in HOH selections:
   if(gender.length === 0) {
     // somehow delete the query or make it blank or assume this is select all
-    genderAdultQuery = 'length is 0, nothing selected';
+    genderAdultQuery = "";
   } else if(gender.length === 1) {
     genderAdultQuery = "(\"Head of Household\".\"Gender\" = '" + gender[0] + "') AND ";
   } else {
@@ -96,7 +96,7 @@ router.post('/dobadults', function(req, res) {
   // sorting through gender for Adults in HOH-2 selections:
   if(gender.length === 0) {
     // somehow delete the query or make it blank or assume this is select all
-    genderAdult_2Query = 'length is 0, nothing selected';
+    genderAdult_2Query = "";
   } else if(gender.length === 1) {
     genderAdult_2Query = "(\"Head of Household-2\".\"Gender\" = '" + gender[0] + "') AND ";
   } else {
@@ -113,7 +113,7 @@ router.post('/dobadults', function(req, res) {
   // sorting through ageAdults in HOH selections:
     if(ageRangesArray.length === 0) {
       // somehow delete the query or make it blank or assume this is select all
-      ageRangesAdultQuery = "length is 0, nothing selected";
+      ageRangesAdultQuery = "";
     } else if(ageRangesArray.length === 1) {
       console.log("ageRangesArray[0] line 130: ", ageRangesArray[0]);
       var newDateRange1 = ageRangesArray[0].date1Range;
@@ -146,7 +146,7 @@ router.post('/dobadults', function(req, res) {
   // sorting through lastResidence for HOH Selections:
   if(lastResidence.length === 0) {
     // somehow delete the query or make it blank or assume this is select all
-    lastResidenceQuery = 'length is 0, nothing selected';
+    lastResidenceQuery = '';
   } else if(lastResidence.length === 1) {
     lastResidenceQuery = "(\"Head of Household\".\"County of Last Residence\" = '" + lastResidence[0] + "') AND ";
   } else {
@@ -165,7 +165,7 @@ router.post('/dobadults', function(req, res) {
   // sorting through lastResidence for HOH-2 Selections:
   if(lastResidence.length === 0) {
     // somehow delete the query or make it blank or assume this is select all
-    lastResidence_2Query = 'length is 0, nothing selected';
+    lastResidence_2Query = "";
   } else if(lastResidence.length === 1) {
     lastResidence_2Query = "(\"Head of Household-2\".\"County of Last Residence\" = '" + lastResidence[0] + "') AND ";
   } else {
@@ -373,7 +373,7 @@ router.post('/totalpeople', function(req, res) {
   // sorting through raceAdult selections:
   if(raceAdult.length === 0) {
     // somehow delete the query or make it blank or assume this is select all
-    raceAdultQuery = "length is 0, nothing selected";
+    raceAdultQuery = "";
   } else if(raceAdult.length === 1) {
     raceAdultQuery = "(\"Head of Household\".\"Race Code\" = '" + raceAdult[0] + "') AND ";
   } else {
@@ -395,7 +395,7 @@ router.post('/totalpeople', function(req, res) {
   // sorting through raceAdult for HOH-2 selections:
   if(raceAdult.length === 0) {
     // somehow delete the query or make it blank or assume this is select all
-    raceAdult_2Query = "length is 0, nothing selected";
+    raceAdult_2Query = "";
   } else if(raceAdult.length === 1) {
     raceAdult_2Query = "(\"Head of Household-2\".\"Race Code\" = '" + raceAdult[0] + "') AND ";
   } else {
@@ -426,7 +426,7 @@ router.post('/totalpeople', function(req, res) {
   // sorting through raceChild selections:
   if(raceChild.length === 0) {
     // somehow delete the query or make it blank or assume this is select all
-    raceChildQuery = "length is 0, nothing selected";
+    raceChildQuery = "";
   } else if(raceChild.length === 1) {
     raceChildQuery = "(\"Members of Household\".\"Race Code\" = '" + raceChild[0] + "') AND ";
   } else {
