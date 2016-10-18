@@ -1363,18 +1363,583 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
         // $scope.outcomeFactory.tenantTrainingPriorYear(selections).then(function(response) {
         //   console.log("response tenantTrainingPriorYear: ", response);
         // });
-        // $scope.outcomeFactory.dbt(selections).then(function(response) {
-        //   console.log("response dbt: ", response);
-        // });
-        // $scope.outcomeFactory.DBTsameyear(selections).then(function(response) {
-        //   console.log("response DBTsameyear: ", response);
-        // });
-        // $scope.outcomeFactory.DBTprioryear(selections).then(function(response) {
-        //   console.log("response DBTprioryear: ", response);
-        // });
-        // $scope.outcomeFactory.healthImproved(selections).then(function(response) {
-        //   console.log("response healthImproved: ", response);
-        // });
+        $scope.outcomeFactory.dbt(selections).then(function(response) {
+          console.log("response dbt: ", response);
+          var responseArray = response;
+      $scope.empDbt = {
+          total: 0,
+      };
+      $scope.emptwoDbt = {
+          total: 0,
+      };
+      $scope.homeAgainDbt = {
+          total: 0,
+      };
+      $scope.homeSafeDbt = {
+          total: 0,
+      };
+      $scope.homeFrontDbt = {
+          total: 0,
+      };
+
+      $scope.dbt_Total = 0;
+
+      for (var i = 0; i < responseArray.length; i++) {
+          $scope.dbt_Total += responseArray[i].count;
+
+          if(responseArray[i].Program == "EMP"){
+                  $scope.empDbt.total += parseInt(responseArray[i].count);
+                  console.log("emp DBT", $scope.empDbt.total);
+          }//end of EMP if
+          else if(responseArray[i].Program == "EMPII"){
+                  $scope.emptwoDbt.total += parseInt(responseArray[i].count);
+                  console.log("empii DBT", $scope.emptwoDbt.total);
+          }//end of empII
+          else if(responseArray[i].Program == "Home Again"){
+                  $scope.homeAgainDbt.total += parseInt(responseArray[i].count);
+                  console.log("home again DBT", $scope.homeAgainDbt.total);
+          }//end of HomeSafe
+          else if(responseArray[i].Program == "HomeSafe"){
+                  $scope.homeSafeDbt.total += parseInt(responseArray[i].count);
+                  console.log("home saft DBT", $scope.homeSafeDbt.total);
+          }//end of Home Again
+          else if(responseArray[i].Program == "HomeFront" || responseArray[i].Program == "Home Front"){
+                  $scope.homeFrontDbt.total += parseInt(responseArray[i].count);
+                  console.log("home front DBT", $scope.homeFrontDbt.total);
+          }//end of homeFront
+      }
+        });
+        $scope.outcomeFactory.DBTsameyear(selections).then(function(response) {
+          console.log("response DBTsameyear: ", response);
+          var responseArray = response;
+            $scope.empDbtSameYear = {
+                total: 0,
+            };
+            $scope.emptwoDbtSameYear = {
+                total: 0,
+            };
+            $scope.homeAgainDbtSameYear = {
+                total: 0,
+            };
+            $scope.homeSafeDbtSameYear = {
+                total: 0,
+            };
+            $scope.homeFrontDbtSameYear = {
+                total: 0,
+            };
+
+            $scope.dbtSameYear_Total = 0;
+
+            for (var i = 0; i < responseArray.length; i++) {
+                $scope.dbtSameYear_Total += responseArray[i]["DBT Completed"];
+
+                if(responseArray[i].Program == "EMP"){
+                        $scope.empDbtSameYear.total += parseInt(responseArray[i]["DBT Completed"]);
+                        console.log("emp DBT Same Year", $scope.empDbtSameYear.total);
+                }//end of EMP if
+                else if(responseArray[i].Program == "EMPII"){
+                        $scope.emptwoDbtSameYear.total += parseInt(responseArray[i]["DBT Completed"]);
+                        console.log("empii DBT Same Year", $scope.emptwoDbtSameYear.total);
+                }//end of empII
+                else if(responseArray[i].Program == "Home Again"){
+                        $scope.homeAgainDbtSameYear.total += parseInt(responseArray[i]["DBT Completed"]);
+                        console.log("home again DBT Same Year", $scope.homeAgainDbtSameYear.total);
+                }//end of HomeSafe
+                else if(responseArray[i].Program == "HomeSafe"){
+                        $scope.homeSafeDbtSameYear.total += parseInt(responseArray[i]["DBT Completed"]);
+                        console.log("home saft DBT Same Year", $scope.homeSafeDbtSameYear.total);
+                }//end of Home Again
+                else if(responseArray[i].Program == "HomeFront" || responseArray[i].Program == "Home Front"){
+                        $scope.homeFrontDbtSameYear.total += parseInt(responseArray[i]["DBT Completed"]);
+                        console.log("home front DBT Same Year", $scope.homeFrontDbtSameYear.total);
+                }//end of homeFront
+            }
+        });
+        $scope.outcomeFactory.DBTprioryear(selections).then(function(response) {
+          console.log("response DBTprioryear: ", response);
+          var responseArray = response;
+          $scope.empDbtPriorYear = {
+              total: 0,
+          };
+          $scope.emptwoDbtPriorYear = {
+              total: 0,
+          };
+          $scope.homeAgainDbtPriorYear = {
+              total: 0,
+          };
+          $scope.homeSafeDbtPriorYear = {
+              total: 0,
+          };
+          $scope.homeFrontDbtPriorYear = {
+              total: 0,
+          };
+
+          $scope.dbtPriorYear_Total = 0;
+
+          for (var i = 0; i < responseArray.length; i++) {
+              $scope.dbtPriorYear_Total += responseArray[i]["DBT Completed"];
+
+              if(responseArray[i].Program == "EMP"){
+                      $scope.empDbtPriorYear.total += parseInt(responseArray[i]["DBT Completed"]);
+                      console.log("emp DBT Prior Year", $scope.empDbtPriorYear.total);
+              }//end of EMP if
+              else if(responseArray[i].Program == "EMPII"){
+                      $scope.emptwoDbtPriorYear.total += parseInt(responseArray[i]["DBT Completed"]);
+                      console.log("empii DBT Prior Year", $scope.emptwoDbtPriorYear.total);
+              }//end of empII
+              else if(responseArray[i].Program == "Home Again"){
+                      $scope.homeAgainDbtPriorYear.total += parseInt(responseArray[i]["DBT Completed"]);
+                      console.log("home again DBT Prior Year", $scope.homeAgainDbtPriorYear.total);
+              }//end of HomeSafe
+              else if(responseArray[i].Program == "HomeSafe"){
+                      $scope.homeSafeDbtPriorYear.total += parseInt(responseArray[i]["DBT Completed"]);
+                      console.log("home saft DBT Prior Year", $scope.homeSafeDbtPriorYear.total);
+              }//end of Home Again
+              else if(responseArray[i].Program == "HomeFront" || responseArray[i].Program == "Home Front"){
+                      $scope.homeFrontDbtPriorYear.total += parseInt(responseArray[i]["DBT Completed"]);
+                      console.log("home front DBT Prior Year", $scope.homeFrontDbtPriorYear.total);
+              }//end of homeFront
+          }
+        });
+        $scope.outcomeFactory.healthImproved(selections).then(function(response) {
+          console.log("response healthImproved: ", response);
+          var responseArray = response;
+
+          $scope.empHealthImp = {
+              adultsHaveRuleAs: 0,
+              adultsCdTreatment: 0,
+              adultsSelfHelp: 0,
+              sobrietyNinety: 0,
+              sobrietySixMo: 0,
+              sobrietyTwelvePlus: 0,
+              abusedAndAchivedSobriety: 0,
+              total: 0
+          };
+
+          $scope.emptwoHealthImp = {
+            adultsHaveRuleAs: 0,
+            adultsCdTreatment: 0,
+            adultsSelfHelp: 0,
+            sobrietyNinety: 0,
+            sobrietySixMo: 0,
+            sobrietyTwelvePlus: 0,
+            abusedAndAchivedSobriety: 0,
+            total: 0
+          };
+
+          $scope.homeAgainHealthImp = {
+            adultsHaveRuleAs: 0,
+            adultsCdTreatment: 0,
+            adultsSelfHelp: 0,
+            sobrietyNinety: 0,
+            sobrietySixMo: 0,
+            sobrietyTwelvePlus: 0,
+            abusedAndAchivedSobriety: 0,
+            total: 0
+          };
+
+          $scope.homeSafeHealthImp = {
+            adultsHaveRuleAs: 0,
+            adultsCdTreatment: 0,
+            adultsSelfHelp: 0,
+            sobrietyNinety: 0,
+            sobrietySixMo: 0,
+            sobrietyTwelvePlus: 0,
+            abusedAndAchivedSobriety: 0,
+            total: 0
+          };
+
+          $scope.homeFrontHealthImp = {
+            adultsHaveRuleAs: 0,
+            adultsCdTreatment: 0,
+            adultsSelfHelp: 0,
+            sobrietyNinety: 0,
+            sobrietySixMo: 0,
+            sobrietyTwelvePlus: 0,
+            abusedAndAchivedSobriety: 0,
+            total: 0
+          };
+
+          for (var i = 0; i < responseArray.length; i++) {
+          if (responseArray[i].Program == "EMP"){
+          if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc)"){
+          $scope.empHealthImp.total ++;
+          $scope.empHealthImp.adultsSelfHelp ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Attended Treatment;Had a Rule 25 Assessment during report year"){
+          $scope.empHealthImp.total ++;
+          $scope.empHealthImp.adultsSelfHelp ++;
+          $scope.empHealthImp.adultsCdTreatment ++;
+          $scope.empHealthImp.adultsHaveRuleAs ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Attended Treatment;Had a Rule 25 Assessment during report year;Maintained Soberity for past 12+ months;Maintained Sobriety for the past 6 months"){
+          $scope.empHealthImp.total ++;
+          $scope.empHealthImp.adultsSelfHelp ++;
+          $scope.empHealthImp.adultsCdTreatment ++;
+          $scope.empHealthImp.adultsHaveRuleAs ++;
+          $scope.empHealthImp.sobrietyTwelvePlus ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Attended Treatment;Had a Rule 25 Assessment during report year;Maintained Sobriety for past 90 days"){
+          $scope.empHealthImp.total ++;
+          $scope.empHealthImp.adultsSelfHelp ++;
+          $scope.empHealthImp.adultsCdTreatment ++;
+          $scope.empHealthImp.adultsHaveRuleAs ++;
+          $scope.empHealthImp.sobrietyNinety ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Attended Treatment;Had a Rule 25 Assessment during report year;Maintained Sobriety for the past 6 months"){
+          $scope.empHealthImp.total ++;
+          $scope.empHealthImp.adultsSelfHelp ++;
+          $scope.empHealthImp.adultsCdTreatment ++;
+          $scope.empHealthImp.adultsHaveRuleAs ++;
+          $scope.empHealthImp.sobrietySixMo ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Attended Treatment;Maintained Sobriety for past 90 days"){
+          $scope.empHealthImp.total ++;
+          $scope.empHealthImp.adultsSelfHelp ++;
+          $scope.empHealthImp.adultsCdTreatment ++;
+          $scope.empHealthImp.sobrietyNinety ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Had a Rule 25 Assessment during report year"){
+          $scope.empHealthImp.total ++;
+          $scope.empHealthImp.adultsSelfHelp ++;
+          $scope.empHealthImp.adultsHaveRuleAs ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Maintained Soberity for past 12+ months"){
+          $scope.empHealthImp.total ++;
+          $scope.empHealthImp.adultsSelfHelp ++;
+          $scope.empHealthImp.sobrietyTwelvePlus ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Treatment"){
+          $scope.empHealthImp.total ++;
+          $scope.empHealthImp.adultsCdTreatment ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Treatment;Had a Rule 25 Assessment during report year"){
+          $scope.empHealthImp.total ++;
+          $scope.empHealthImp.adultsCdTreatment ++;
+          $scope.empHealthImp.adultsHaveRuleAs ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Treatment;Had a Rule 25 Assessment during report year;Maintained Sobriety for past 90 days"){
+          $scope.empHealthImp.total ++;
+          $scope.empHealthImp.adultsCdTreatment ++;
+          $scope.empHealthImp.adultsHaveRuleAs ++;
+          $scope.empHealthImp.sobrietyNinety ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Treatment;Had a Rule 25 Assessment during report year;Maintained Sobriety for the past 6 months"){
+          $scope.empHealthImp.total ++;
+          $scope.empHealthImp.adultsCdTreatment ++;
+          $scope.empHealthImp.adultsHaveRuleAs ++;
+          $scope.empHealthImp.sobrietySixMo ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Had a Rule 25 Assessment during report year"){
+          $scope.empHealthImp.total ++;
+          $scope.empHealthImp.adultsHaveRuleAs ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Had a Rule 25 Assessment during report year;Maintained Sobriety for the past 6 months"){
+          $scope.empHealthImp.total ++;
+          $scope.empHealthImp.adultsHaveRuleAs ++;
+          $scope.empHealthImp.sobrietySixMo ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Maintained Soberity for past 12+ months"){
+          $scope.empHealthImp.total ++;
+          $scope.empHealthImp.sobrietyTwelvePlus ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Maintained Sobriety for past 90 days"){
+          $scope.empHealthImp.total ++;
+          $scope.empHealthImp.sobrietyNinety ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Maintained Sobriety for the past 6 months"){
+          $scope.empHealthImp.total ++;
+          $scope.empHealthImp.sobrietySixMo ++;
+          }// end of emp
+
+        } else if (responseArray[i].Program == "EMPII"){
+          if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc)"){
+          $scope.emptwoHealthImp.total ++;
+          $scope.emptwoHealthImp.adultsSelfHelp ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Attended Treatment;Had a Rule 25 Assessment during report year"){
+          $scope.emptwoHealthImp.total ++;
+          $scope.emptwoHealthImp.adultsSelfHelp ++;
+          $scope.emptwoHealthImp.adultsCdTreatment ++;
+          $scope.emptwoHealthImp.adultsHaveRuleAs ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Attended Treatment;Had a Rule 25 Assessment during report year;Maintained Soberity for past 12+ months;Maintained Sobriety for the past 6 months"){
+          $scope.emptwoHealthImp.total ++;
+          $scope.emptwoHealthImp.adultsSelfHelp ++;
+          $scope.emptwoHealthImp.adultsCdTreatment ++;
+          $scope.emptwoHealthImp.adultsHaveRuleAs ++;
+          $scope.emptwoHealthImp.sobrietyTwelvePlus ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Attended Treatment;Had a Rule 25 Assessment during report year;Maintained Sobriety for past 90 days"){
+          $scope.emptwoHealthImp.total ++;
+          $scope.emptwoHealthImp.adultsSelfHelp ++;
+          $scope.emptwoHealthImp.adultsCdTreatment ++;
+          $scope.emptwoHealthImp.adultsHaveRuleAs ++;
+          $scope.emptwoHealthImp.sobrietyNinety ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Attended Treatment;Had a Rule 25 Assessment during report year;Maintained Sobriety for the past 6 months"){
+          $scope.emptwoHealthImp.total ++;
+          $scope.emptwoHealthImp.adultsSelfHelp ++;
+          $scope.emptwoHealthImp.adultsCdTreatment ++;
+          $scope.emptwoHealthImp.adultsHaveRuleAs ++;
+          $scope.emptwoHealthImp.sobrietySixMo ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Attended Treatment;Maintained Sobriety for past 90 days"){
+          $scope.emptwoHealthImp.total ++;
+          $scope.emptwoHealthImp.adultsSelfHelp ++;
+          $scope.emptwoHealthImp.sobrietyNinety ++;
+          $scope.emptwoHealthImp.adultsCdTreatment ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Had a Rule 25 Assessment during report year"){
+          $scope.emptwoHealthImp.total ++;
+          $scope.emptwoHealthImp.adultsSelfHelp ++;
+          $scope.emptwoHealthImp.adultsHaveRuleAs ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Maintained Soberity for past 12+ months"){
+          $scope.emptwoHealthImp.total ++;
+          $scope.emptwoHealthImp.adultsSelfHelp ++;
+          $scope.emptwoHealthImp.sobrietyTwelvePlus ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Treatment"){
+          $scope.emptwoHealthImp.total ++;
+          $scope.emptwoHealthImp.adultsCdTreatment ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Treatment;Had a Rule 25 Assessment during report year"){
+          $scope.emptwoHealthImp.total ++;
+          $scope.emptwoHealthImp.adultsCdTreatment ++;
+          $scope.emptwoHealthImp.adultsHaveRuleAs ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Treatment;Had a Rule 25 Assessment during report year;Maintained Sobriety for past 90 days"){
+          $scope.emptwoHealthImp.total ++;
+          $scope.emptwoHealthImp.adultsCdTreatment ++;
+          $scope.emptwoHealthImp.adultsHaveRuleAs ++;
+          $scope.emptwoHealthImp.sobrietyNinety ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Treatment;Had a Rule 25 Assessment during report year;Maintained Sobriety for the past 6 months"){
+          $scope.emptwoHealthImp.total ++;
+          $scope.emptwoHealthImp.adultsCdTreatment ++;
+          $scope.emptwoHealthImp.adultsHaveRuleAs ++;
+          $scope.emptwoHealthImp.sobrietySixMo ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Had a Rule 25 Assessment during report year"){
+          $scope.emptwoHealthImp.total ++;
+          $scope.emptwoHealthImp.adultsHaveRuleAs ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Had a Rule 25 Assessment during report year;Maintained Sobriety for the past 6 months"){
+          $scope.emptwoHealthImp.total ++;
+          $scope.emptwoHealthImp.adultsHaveRuleAs ++;
+          $scope.emptwoHealthImp.sobrietySixMo ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Maintained Soberity for past 12+ months"){
+          $scope.emptwoHealthImp.total ++;
+          $scope.emptwoHealthImp.sobrietyTwelvePlus ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Maintained Sobriety for past 90 days"){
+          $scope.emptwoHealthImp.total ++;
+          $scope.emptwoHealthImp.sobrietyNinety ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Maintained Sobriety for the past 6 months"){
+          $scope.emptwoHealthImp.total ++;
+          $scope.emptwoHealthImp.sobrietySixMo ++;
+          }  //end of empII
+      } else if (responseArray[i].Program == "Home Again"){
+          if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc)"){
+          $scope.homeAgainHealthImp.total ++;
+          $scope.homeAgainHealthImp.adultsSelfHelp ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Attended Treatment;Had a Rule 25 Assessment during report year"){
+          $scope.homeAgainHealthImp.total ++;
+          $scope.homeAgainHealthImp.adultsSelfHelp ++;
+          $scope.homeAgainHealthImp.adultsCdTreatment ++;
+          $scope.homeAgainHealthImp.adultsHaveRuleAs ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Attended Treatment;Had a Rule 25 Assessment during report year;Maintained Soberity for past 12+ months;Maintained Sobriety for the past 6 months"){
+          $scope.homeAgainHealthImp.total ++;
+          $scope.homeAgainHealthImp.adultsSelfHelp ++;
+          $scope.homeAgainHealthImp.adultsCdTreatment ++;
+          $scope.homeAgainHealthImp.adultsHaveRuleAs ++;
+          $scope.homeAgainHealthImp.sobrietyTwelvePlus ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Attended Treatment;Had a Rule 25 Assessment during report year;Maintained Sobriety for past 90 days"){
+          $scope.homeAgainHealthImp.total ++;
+          $scope.homeAgainHealthImp.adultsSelfHelp ++;
+          $scope.homeAgainHealthImp.adultsCdTreatment ++;
+          $scope.homeAgainHealthImp.adultsHaveRuleAs ++;
+          $scope.homeAgainHealthImp.sobrietyNinety ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Attended Treatment;Had a Rule 25 Assessment during report year;Maintained Sobriety for the past 6 months"){
+          $scope.homeAgainHealthImp.total ++;
+          $scope.homeAgainHealthImp.adultsSelfHelp ++;
+          $scope.homeAgainHealthImp.adultsCdTreatment ++;
+          $scope.homeAgainHealthImp.adultsHaveRuleAs ++;
+          $scope.homeAgainHealthImp.sobrietySixMo ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Attended Treatment;Maintained Sobriety for past 90 days"){
+          $scope.homeAgainHealthImp.total ++;
+          $scope.homeAgainHealthImp.adultsSelfHelp ++;
+          $scope.homeAgainHealthImp.sobrietyNinety ++;
+          $scope.homeAgainHealthImp.adultsCdTreatment ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Had a Rule 25 Assessment during report year"){
+          $scope.homeAgainHealthImp.total ++;
+          $scope.homeAgainHealthImp.adultsSelfHelp ++;
+          $scope.homeAgainHealthImp.adultsHaveRuleAs ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Maintained Soberity for past 12+ months"){
+          $scope.homeAgainHealthImp.total ++;
+          $scope.homeAgainHealthImp.adultsSelfHelp ++;
+          $scope.homeAgainHealthImp.sobrietyTwelvePlus ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Treatment"){
+          $scope.homeAgainHealthImp.total ++;
+          $scope.homeAgainHealthImp.adultsCdTreatment ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Treatment;Had a Rule 25 Assessment during report year"){
+          $scope.homeAgainHealthImp.total ++;
+          $scope.homeAgainHealthImp.adultsCdTreatment ++;
+          $scope.homeAgainHealthImp.adultsHaveRuleAs ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Treatment;Had a Rule 25 Assessment during report year;Maintained Sobriety for past 90 days"){
+          $scope.homeAgainHealthImp.total ++;
+          $scope.homeAgainHealthImp.adultsCdTreatment ++;
+          $scope.homeAgainHealthImp.adultsHaveRuleAs ++;
+          $scope.homeAgainHealthImp.sobrietyNinety ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Attended Treatment;Had a Rule 25 Assessment during report year;Maintained Sobriety for the past 6 months"){
+          $scope.homeAgainHealthImp.total ++;
+          $scope.homeAgainHealthImp.adultsCdTreatment ++;
+          $scope.homeAgainHealthImp.adultsHaveRuleAs ++;
+          $scope.homeAgainHealthImp.sobrietySixMo ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Had a Rule 25 Assessment during report year"){
+          $scope.homeAgainHealthImp.total ++;
+          $scope.homeAgainHealthImp.adultsHaveRuleAs ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Had a Rule 25 Assessment during report year;Maintained Sobriety for the past 6 months"){
+          $scope.homeAgainHealthImp.total ++;
+          $scope.homeAgainHealthImp.adultsHaveRuleAs ++;
+          $scope.homeAgainHealthImp.sobrietySixMo ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Maintained Soberity for past 12+ months"){
+          $scope.homeAgainHealthImp.total ++;
+          $scope.homeAgainHealthImp.sobrietyTwelvePlus ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Maintained Sobriety for past 90 days"){
+          $scope.homeAgainHealthImp.total ++;
+          $scope.homeAgainHealthImp.sobrietyNinety ++;
+          } else if(responseArray[i]["Has Health Improved"] == "Maintained Sobriety for the past 6 months"){
+          $scope.homeAgainHealthImp.total ++;
+          $scope.homeAgainHealthImp.sobrietySixMo ++;
+          } // end of home again
+        } else if (responseArray[i].Program == "HomeSafe"){
+            if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc)"){
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.adultsSelfHelp ++;
+            } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Attended Treatment;Had a Rule 25 Assessment during report year"){
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.adultsSelfHelp ++;
+            $scope.homeSafeHealthImp.adultsCdTreatment ++;
+            $scope.homeSafeHealthImp.adultsHaveRuleAs ++;
+            } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Attended Treatment;Had a Rule 25 Assessment during report year;Maintained Soberity for past 12+ months;Maintained Sobriety for the past 6 months"){
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.adultsSelfHelp ++;
+            $scope.homeSafeHealthImp.adultsCdTreatment ++;
+            $scope.homeSafeHealthImp.adultsHaveRuleAs ++;
+            $scope.homeSafeHealthImp.sobrietyTwelvePlus ++;
+            } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Attended Treatment;Had a Rule 25 Assessment during report year;Maintained Sobriety for past 90 days"){
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.adultsSelfHelp ++;
+            $scope.homeSafeHealthImp.adultsCdTreatment ++;
+            $scope.homeSafeHealthImp.adultsHaveRuleAs ++;
+            $scope.homeSafeHealthImp.sobrietyNinety ++;
+            } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Attended Treatment;Had a Rule 25 Assessment during report year;Maintained Sobriety for the past 6 months"){
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.adultsSelfHelp ++;
+            $scope.homeSafeHealthImp.adultsCdTreatment ++;
+            $scope.homeSafeHealthImp.adultsHaveRuleAs ++;
+            $scope.homeSafeHealthImp.sobrietySixMo ++;
+            } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Attended Treatment;Maintained Sobriety for past 90 days"){
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.adultsSelfHelp ++;
+            $scope.homeSafeHealthImp.sobrietyNinety ++;
+            $scope.homeSafeHealthImp.adultsCdTreatment ++;
+            } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Had a Rule 25 Assessment during report year"){
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.adultsSelfHelp ++;
+            $scope.homeSafeHealthImp.adultsHaveRuleAs ++;
+            } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Maintained Soberity for past 12+ months"){
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.adultsSelfHelp ++;
+            $scope.homeSafeHealthImp.sobrietyTwelvePlus ++;
+            } else if(responseArray[i]["Has Health Improved"] == "Attended Treatment"){
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.adultsCdTreatment ++;
+            } else if(responseArray[i]["Has Health Improved"] == "Attended Treatment;Had a Rule 25 Assessment during report year"){
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.adultsCdTreatment ++;
+            $scope.homeSafeHealthImp.adultsHaveRuleAs ++;
+            } else if(responseArray[i]["Has Health Improved"] == "Attended Treatment;Had a Rule 25 Assessment during report year;Maintained Sobriety for past 90 days"){
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.adultsCdTreatment ++;
+            $scope.homeSafeHealthImp.adultsHaveRuleAs ++;
+            $scope.homeSafeHealthImp.sobrietyNinety ++;
+            } else if(responseArray[i]["Has Health Improved"] == "Attended Treatment;Had a Rule 25 Assessment during report year;Maintained Sobriety for the past 6 months"){
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.adultsCdTreatment ++;
+            $scope.homeSafeHealthImp.adultsHaveRuleAs ++;
+            $scope.homeSafeHealthImp.sobrietySixMo ++;
+            } else if(responseArray[i]["Has Health Improved"] == "Had a Rule 25 Assessment during report year"){
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.adultsHaveRuleAs ++;
+            } else if(responseArray[i]["Has Health Improved"] == "Had a Rule 25 Assessment during report year;Maintained Sobriety for the past 6 months"){
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.adultsHaveRuleAs ++;
+            $scope.homeSafeHealthImp.sobrietySixMo ++;
+            } else if(responseArray[i]["Has Health Improved"] == "Maintained Soberity for past 12+ months"){
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.sobrietyTwelvePlus ++;
+            } else if(responseArray[i]["Has Health Improved"] == "Maintained Sobriety for past 90 days"){
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.sobrietyNinety ++;
+            } else if(responseArray[i]["Has Health Improved"] == "Maintained Sobriety for the past 6 months"){
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.sobrietySixMo ++;
+          } //end of homesafe
+          } else if (responseArray[i].Program == "HomeFront" || responseArray[i].Program == "Home Front"){
+              if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc)"){
+              $scope.homeFrontHealthImp.total ++;
+              $scope.homeFrontHealthImp.adultsSelfHelp ++;
+              } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Attended Treatment;Had a Rule 25 Assessment during report year"){
+              $scope.homeFrontHealthImp.total ++;
+              $scope.homeFrontHealthImp.adultsSelfHelp ++;
+              $scope.homeFrontHealthImp.adultsCdTreatment ++;
+              $scope.homeFrontHealthImp.adultsHaveRuleAs ++;
+              } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Attended Treatment;Had a Rule 25 Assessment during report year;Maintained Soberity for past 12+ months;Maintained Sobriety for the past 6 months"){
+              $scope.homeFrontHealthImp.total ++;
+              $scope.homeFrontHealthImp.adultsSelfHelp ++;
+              $scope.homeFrontHealthImp.adultsCdTreatment ++;
+              $scope.homeFrontHealthImp.adultsHaveRuleAs ++;
+              $scope.homeFrontHealthImp.sobrietyTwelvePlus ++;
+              } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Attended Treatment;Had a Rule 25 Assessment during report year;Maintained Sobriety for past 90 days"){
+              $scope.homeFrontHealthImp.total ++;
+              $scope.homeFrontHealthImp.adultsSelfHelp ++;
+              $scope.homeFrontHealthImp.adultsCdTreatment ++;
+              $scope.homeFrontHealthImp.adultsHaveRuleAs ++;
+              $scope.homeFrontHealthImp.sobrietyNinety ++;
+              } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Attended Treatment;Had a Rule 25 Assessment during report year;Maintained Sobriety for the past 6 months"){
+              $scope.homeFrontHealthImp.total ++;
+              $scope.homeFrontHealthImp.adultsSelfHelp ++;
+              $scope.homeFrontHealthImp.adultsCdTreatment ++;
+              $scope.homeFrontHealthImp.adultsHaveRuleAs ++;
+              $scope.homeFrontHealthImp.sobrietySixMo ++;
+              } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Attended Treatment;Maintained Sobriety for past 90 days"){
+              $scope.homeFrontHealthImp.total ++;
+              $scope.homeFrontHealthImp.adultsSelfHelp ++;
+              $scope.homeFrontHealthImp.sobrietyNinety ++;
+              $scope.homeFrontHealthImp.adultsCdTreatment ++;
+              } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Had a Rule 25 Assessment during report year"){
+              $scope.homeFrontHealthImp.total ++;
+              $scope.homeFrontHealthImp.adultsSelfHelp ++;
+              $scope.homeFrontHealthImp.adultsHaveRuleAs ++;
+              } else if(responseArray[i]["Has Health Improved"] == "Attended Self-Help Groups (AA,NA,etc);Maintained Soberity for past 12+ months"){
+              $scope.homeFrontHealthImp.total ++;
+              $scope.homeFrontHealthImp.adultsSelfHelp ++;
+              $scope.homeFrontHealthImp.sobrietyTwelvePlus ++;
+              } else if(responseArray[i]["Has Health Improved"] == "Attended Treatment"){
+              $scope.homeFrontHealthImp.total ++;
+              $scope.homeFrontHealthImp.adultsCdTreatment ++;
+              } else if(responseArray[i]["Has Health Improved"] == "Attended Treatment;Had a Rule 25 Assessment during report year"){
+              $scope.homeFrontHealthImp.total ++;
+              $scope.homeFrontHealthImp.adultsCdTreatment ++;
+              $scope.homeFrontHealthImp.adultsHaveRuleAs ++;
+              } else if(responseArray[i]["Has Health Improved"] == "Attended Treatment;Had a Rule 25 Assessment during report year;Maintained Sobriety for past 90 days"){
+              $scope.homeFrontHealthImp.total ++;
+              $scope.homeFrontHealthImp.adultsCdTreatment ++;
+              $scope.homeFrontHealthImp.adultsHaveRuleAs ++;
+              $scope.homeFrontHealthImp.sobrietyNinety ++;
+              } else if(responseArray[i]["Has Health Improved"] == "Attended Treatment;Had a Rule 25 Assessment during report year;Maintained Sobriety for the past 6 months"){
+              $scope.homeFrontHealthImp.total ++;
+              $scope.homeFrontHealthImp.adultsCdTreatment ++;
+              $scope.homeFrontHealthImp.adultsHaveRuleAs ++;
+              $scope.homeFrontHealthImp.sobrietySixMo ++;
+              } else if(responseArray[i]["Has Health Improved"] == "Had a Rule 25 Assessment during report year"){
+              $scope.homeFrontHealthImp.total ++;
+              $scope.homeFrontHealthImp.adultsHaveRuleAs ++;
+              } else if(responseArray[i]["Has Health Improved"] == "Had a Rule 25 Assessment during report year;Maintained Sobriety for the past 6 months"){
+              $scope.homeFrontHealthImp.total ++;
+              $scope.homeFrontHealthImp.adultsHaveRuleAs ++;
+              $scope.homeFrontHealthImp.sobrietySixMo ++;
+              } else if(responseArray[i]["Has Health Improved"] == "Maintained Soberity for past 12+ months"){
+              $scope.homeFrontHealthImp.total ++;
+              $scope.homeFrontHealthImp.sobrietyTwelvePlus ++;
+              } else if(responseArray[i]["Has Health Improved"] == "Maintained Sobriety for past 90 days"){
+              $scope.homeFrontHealthImp.total ++;
+              $scope.homeFrontHealthImp.sobrietyNinety ++;
+              } else if(responseArray[i]["Has Health Improved"] == "Maintained Sobriety for the past 6 months"){
+              $scope.homeFrontHealthImp.total ++;
+              $scope.homeFrontHealthImp.sobrietySixMo ++;
+              }
+            }
+          }
+          console.log("homefront", $scope.homeFrontHealthImp);
+          console.log("home safe", $scope.homeSafeHealthImp);
+          console.log("home again", $scope.homeAgainHealthImp);
+          console.log("empII", $scope.emptwoHealthImp);
+          console.log("emp", $scope.empHealthImp);
+        });
         // $scope.outcomeFactory.socialSupport(selections).then(function(response) {
         //   console.log("response socialSupport: ", response);
         // });
