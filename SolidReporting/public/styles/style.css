@@ -403,3 +403,6 @@ md-tooltip p {
   top: 35%;
 }
 
+.sidenav1, .md-sidenav-backdrop {
+  position: fixed;
+}
