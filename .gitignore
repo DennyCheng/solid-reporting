@@ -3,4 +3,3 @@ node_modules
 *.log
 .idea/workspace.xml
 /routes/forgot.js
-.env
