@@ -2099,8 +2099,6 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                         $scope.violentEmp.yesWithoutSafety = 0;
                     }
                     // EMP TOTAL
-                    // $scope.violentEmp.total = empYesWithSafety + empYesWithoutSafety;
-                    // debugger;
                     $scope.violentEmp.total = $scope.violentEmp.yesWithoutSafety + $scope.violentEmp.yesWithSafety;
 
 
