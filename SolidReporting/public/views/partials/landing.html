@@ -4,6 +4,9 @@
     }
 </style>
 <md-toolbar layout="row" layout-align="center"><img class="logo" layout-align="center" src="http://www.solidgroundmn.org/wp-content/themes/theme1205/images/logo.png" /></md-toolbar>
+<md-nav-bar layout="row" layout-align="end center" flex="33" md-selected-nav-item="currentNavItem" ng-hide="isActive('/login')">
+    <md-nav-item md-nav-click="tologout()">LogOut</md-nav-item>
+</md-nav-bar>
 <div ng-controller="landingController" ng-cloak="" class="carddemoBasicUsage" >
     <div layout="row" layout-xs="column" layout-sm="column" layout-md="column" layout-align="center center">
         <div flex layout-fill>

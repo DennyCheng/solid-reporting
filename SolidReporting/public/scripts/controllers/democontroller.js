@@ -12,7 +12,8 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
         console.log('i redirected you to the home page');
         $location.path("/login");
       });
-    }
+    };
+
     $scope.toggleSide = function() {
       $mdSidenav('left').toggle();
     };
@@ -449,7 +450,7 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
       };
 
       for (var i = 0; i < responseArray.length; i++) {
-        console.log('SHIT',responseArray.length);
+
         responseArray[i]['dob'] = responseArray[i]['dob'].slice(0,10);
         var personDOB = new Date(responseArray[i]['dob']); //reformats persons DOB
         var age = dateDiff(personDOB,$scope.enddate);

@@ -11,7 +11,9 @@ myApp.controller('landingController', ['$scope', '$location', 'DataFactory', fun
         console.log('i redirected you to the home page');
         $location.path("/login");
       });
-    }
+    };
+
+    $scope.dataFactory = DataFactory;
 
     $scope.demo = function() {
         $location.path('/demographics');
@@ -26,7 +28,15 @@ myApp.controller('landingController', ['$scope', '$location', 'DataFactory', fun
     $scope.outcome = function () {
         $location.path('/outcomes');
         console.log('outcome page');
-    }
+    };
+
+    $scope.tologout = function() {
+        $scope.dataFactory.logout().then(function(response) {
+            console.log('logged out');
+            console.log('i redirected you to the home page');
+            $location.path("/login");
+        });
+    };
 
 }])
 
