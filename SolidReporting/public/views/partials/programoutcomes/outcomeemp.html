@@ -203,7 +203,7 @@
               <td md-cell>Disabled children</td>
               <td ng-model="emp_childDis"
               md-cell>{{ emp_childDis.total }}</td>
-              <td ng-model="emp_childDis" md-cell>{{ (100 * emp_childDis.total / "# of children" | number:2  }}%</td>
+              <td ng-model="emp_childDis" md-cell>{{ (100 * emp_childDis.total / total) | number:2  }}%</td>
             </tr>
             <!-- <tr md-row>
               <td md-cell>Disabled children already receiving benefits</td>
