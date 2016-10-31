@@ -157,291 +157,302 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
 
         $scope.outcomeFactory.houseStabil(selections).then(function(response) {
             console.log("response houseStabil: ", response);
-            $scope.houseEMP={
-                reside6:0,
-                reside1year: 0,
-                achieveStability:0,
-                exited:0,
-                entered:0,
-                securePermanent:0,
-                other:0,
-                total:0
-            };
 
-            $scope.houseEMPII={
-                reside6:0,
-                reside1year: 0,
-                achieveStability:0,
-                exited:0,
-                entered:0,
-                securePermanent:0,
-                other:0,
-                total:0
-            };
+            $scope.houseEMP = {};
+            $scope.houseEMPII = {};
+            $scope.houseHomeSafe = {};
+            $scope.houseHomeAgain = {};
+            $scope.houseHomeFront = {};
 
-            $scope.houseHomeSafe={
-                reside6:0,
-                reside1year: 0,
-                achieveStability:0,
-                exited:0,
-                entered:0,
-                securePermanent:0,
-                other:0,
-                total:0
-            };
+            var housPrograms = [ $scope.houseEMP, $scope.houseEMPII, $scope.houseHomeSafe, $scope.houseHomeAgain, $scope.houseHomeFront ];
 
-            $scope.houseHomeAgain={
-                reside6:0,
-                reside1year: 0,
-                achieveStability:0,
-                exited:0,
-                entered:0,
-                securePermanent:0,
-                other:0,
-                total:0
-            };
+            housPrograms.forEach(function(housProg) {
+              housProg.reside6 = 0,
+              housProg.reside1year = 0,
+              housProg.achieveStability = 0,
+              housProg.exited = 0,
+              housProg.entered = 0,
+              housProg.securePermanent = 0,
+              housProg.other = 0,
+              housProg.total = 0
+            });
 
-            $scope.houseHomeFront={
-                reside6:0,
-                reside1year: 0,
-                achieveStability:0,
-                exited:0,
-                entered:0,
-                securePermanent:0,
-                other:0,
-                total:0
-            };
+            console.log("housProgs", housPrograms);
 
             var responseArray = response
 
             for (var i = 0; i < responseArray.length; i++) {
                 // console.log(responseArray[i]["Achieve Housing Stability"])
-                if(responseArray[i].Program == "EMP"){
-                    if(responseArray[i]["Achieve Housing Stability"]=="Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Remain in Housing at least 6 months"||responseArray[i]["Achieve Housing Stability"]=="Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"){
-                        $scope.houseEMP.reside6 += parseInt(responseArray[i].count);
-                        $scope.houseEMP.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Remain in Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Remain in EMWC Housing for at least 1 year"){
-                        $scope.houseEMP.reside1year += parseInt(responseArray[i].count);
-                        $scope.houseEMP.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Secured Permanent Housing upon exit"){
-                        $scope.houseEMP.achieveStability += parseInt(responseArray[i].count);
-                        $scope.houseEMP.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing at least 6 months"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other"){
-                        $scope.houseEMP.exited += parseInt(responseArray[i].count);
-                        $scope.houseEMP.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]== "Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"){
-                        $scope.houseEMP.exited += parseInt(responseArray[i].count);
-                        $scope.houseEMP.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing for at least 1 year;Secured Permanent Housing upon exit"){
-                        $scope.houseEMP.securePermanent += parseInt(responseArray[i].count);
-                        $scope.houseEMP.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Other;Remain in Housing < 1 year (ex: 7 months)Enter EMWC Housing during current year"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year;Remain in EMWC Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report"){
-                        $scope.houseEMP.entered += parseInt(responseArray[i].count);
-                        $scope.houseEMP.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Other;Remain in Housing < 1 year (ex: 7 months)"){
-                        $scope.houseEMP.entered += parseInt(responseArray[i].count);
-                        $scope.houseEMP.total += parseInt(responseArray[i].count);
-                    }
-                    else {
-                        $scope.houseEMP.other += parseInt(responseArray[i].count);
-                        $scope.houseEMP.total += parseInt(responseArray[i].count);
-                    }
+                var program = responseArray[i].Program;
+
+                if (program == 'Home Safe') {
+                  program = 'HomeSafe';
+                }
+                else if (program == 'Home Again') {
+                  program = 'HomeAgain';
+                }
+                else if (program == 'Home Front') {
+                  program = 'HomeFront';
                 }
 
-                if(responseArray[i].Program == "EMPII"){
-                    if(responseArray[i]["Achieve Housing Stability"]=="Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Remain in Housing at least 6 months"||responseArray[i]["Achieve Housing Stability"]=="Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"){
-                        $scope.houseEMPII.reside6 += parseInt(responseArray[i].count);
-                        $scope.houseEMPII.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Remain in Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Remain in EMWC Housing for at least 1 year"){
-                        $scope.houseEMPII.reside1year += parseInt(responseArray[i].count);
-                        $scope.houseEMPII.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Secured Permanent Housing upon exit"){
-                        $scope.houseEMPII.achieveStability += parseInt(responseArray[i].count);
-                        $scope.houseEMPII.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing at least 6 months"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other"){
-                        $scope.houseEMPII.exited += parseInt(responseArray[i].count);
-                        $scope.houseEMPII.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]== "Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year"){
-                        $scope.houseEMPII.exited += parseInt(responseArray[i].count);
-                        $scope.houseEMPII.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing for at least 1 year;Secured Permanent Housing upon exit"){
-                        $scope.houseEMPII.securePermanent += parseInt(responseArray[i].count);
-                        $scope.houseEMPII.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Other;Remain in Housing < 1 year (ex: 7 months)Enter EMWC Housing during current year"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year;Remain in EMWC Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report"){
-                        $scope.houseEMPII.entered += parseInt(responseArray[i].count);
-                        $scope.houseEMPII.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Other;Remain in Housing < 1 year (ex: 7 months)"){
-                        $scope.houseEMPII.entered += parseInt(responseArray[i].count);
-                        $scope.houseEMPII.total += parseInt(responseArray[i].count);
-                    }
-                    else {
-                        // console.log(responseArray[i]["Achieve Housing Stability"]);
-                        $scope.houseEMPII.other += parseInt(responseArray[i].count);
-                        $scope.houseEMPII.total += parseInt(responseArray[i].count);
-                    }
-                }
+                var houseProgram = "house" + program;
+                //   console.log (houseProgram);
 
-                if(responseArray[i].Program == "HomeSafe"||responseArray[i].Program == "Home Safe" ){
-                    if(responseArray[i]["Achieve Housing Stability"]=="Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Remain in Housing at least 6 months"||responseArray[i]["Achieve Housing Stability"]=="Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"){
-                        $scope.houseHomeSafe.reside6 += parseInt(responseArray[i].count);
-                        $scope.houseHomeSafe.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Remain in Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Remain in EMWC Housing for at least 1 year"){
-                        $scope.houseHomeSafe.reside1year += parseInt(responseArray[i].count);
-                        $scope.houseHomeSafe.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Secured Permanent Housing upon exit"){
-                        $scope.houseHomeSafe.achieveStability += parseInt(responseArray[i].count);
-                        $scope.houseHomeSafe.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing at least 6 months"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other"){
-                        $scope.houseHomeSafe.exited += parseInt(responseArray[i].count);
-                        $scope.houseHomeSafe.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]== "Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year"){
-                        $scope.houseHomeSafe.exited += parseInt(responseArray[i].count);
-                        $scope.houseHomeSafe.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing at least 6 months"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Other"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]==" Enter Housing during reporting report;Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]==" Enter Housing during reporting report;Exited Housing during reporting period;Other"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Other;Remain in Housing < 1 year (ex: 7 months)"){
-                        $scope.houseHomeSafe.exited += parseInt(responseArray[i].count);
-                        $scope.houseHomeSafe.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Other"){
-                        $scope.houseHomeSafe.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing for at least 1 year;Secured Permanent Housing upon exit"){
-                        $scope.houseHomeSafe.securePermanent += parseInt(responseArray[i].count);
-                        $scope.houseHomeSafe.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Other;Remain in Housing < 1 year (ex: 7 months)Enter EMWC Housing during current year"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year;Remain in EMWC Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report"){
-                        $scope.houseHomeSafe.entered += parseInt(responseArray[i].count);
-                        $scope.houseHomeSafe.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Other;Remain in Housing < 1 year (ex: 7 months)"){
-                        $scope.houseHomeSafe.entered += parseInt(responseArray[i].count);
-                        $scope.houseHomeSafe.total += parseInt(responseArray[i].count);
-                    }
-                    else {
-                        console.log(responseArray[i]["Achieve Housing Stability"]);
-                        $scope.houseHomeSafe.other += parseInt(responseArray[i].count);
-                        $scope.houseHomeSafe.total += parseInt(responseArray[i].count);
-                    }
-                }
+                var houseStab = responseArray[i]["Achieve Housing Stability"];
 
-                else if(responseArray[i].Program == "HomeAgain"||responseArray[i].Program == "Home Again" ){
-                    if(responseArray[i]["Achieve Housing Stability"]=="Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Remain in Housing at least 6 months"||responseArray[i]["Achieve Housing Stability"]=="Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"){
-                        $scope.houseHomeAgain.reside6 += parseInt(responseArray[i].count);
-                        $scope.houseHomeAgain.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Remain in Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Remain in EMWC Housing for at least 1 year"){
-                        $scope.houseHomeAgain.reside1year += parseInt(responseArray[i].count);
-                        $scope.houseHomeAgain.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Secured Permanent Housing upon exit"){
-                        $scope.houseHomeAgain.achieveStability += parseInt(responseArray[i].count);
-                        $scope.houseHomeAgain.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing at least 6 months"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other"){
-                        $scope.houseHomeAgain.exited += parseInt(responseArray[i].count);
-                        $scope.houseHomeAgain.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]== "Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year"){
-                        $scope.houseHomeAgain.exited += parseInt(responseArray[i].count);
-                        $scope.houseHomeAgain.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing at least 6 months"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Other"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]==" Enter Housing during reporting report;Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]==" Enter Housing during reporting report;Exited Housing during reporting period;Other"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Other;Remain in Housing < 1 year (ex: 7 months)"){
-                        $scope.houseHomeAgain.exited += parseInt(responseArray[i].count);
-                        $scope.houseHomeAgain.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Other"){
-                        $scope.houseHomeAgain.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing for at least 1 year;Secured Permanent Housing upon exit"){
-                        $scope.houseHomeAgain.securePermanent += parseInt(responseArray[i].count);
-                        $scope.houseHomeAgain.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Other;Remain in Housing < 1 year (ex: 7 months)Enter EMWC Housing during current year"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year;Remain in EMWC Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report"){
-                        $scope.houseHomeAgain.entered += parseInt(responseArray[i].count);
-                        $scope.houseHomeAgain.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Other;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Remain in Housing at least 6 months;Secured Permanent Housing upon exit"){
-                        $scope.houseHomeAgain.entered += parseInt(responseArray[i].count);
-                        $scope.houseHomeAgain.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year;Remain in EMWC Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"){
-                        $scope.houseHomeAgain.entered += parseInt(responseArray[i].count);
-                        $scope.houseHomeAgain.total += parseInt(responseArray[i].count);
-                    }
-                    else {
-                        $scope.houseHomeAgain.other += parseInt(responseArray[i].count);
-                        $scope.houseHomeAgain.total += parseInt(responseArray[i].count);
-                    }
-                }
+                getHouseStability(houseProgram);
 
-                else if(responseArray[i].Program == "HomeFront"||responseArray[i].Program == "Home Front" ){
-                    if(responseArray[i]["Achieve Housing Stability"]=="Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Remain in Housing at least 6 months"||responseArray[i]["Achieve Housing Stability"]=="Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"){
-                        $scope.houseHomeFront.reside6 += parseInt(responseArray[i].count);
-                        $scope.houseHomeFront.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Remain in Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Remain in EMWC Housing for at least 1 year"){
-                        $scope.houseHomeFront.reside1year += parseInt(responseArray[i].count);
-                        $scope.houseHomeFront.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Secured Permanent Housing upon exit"){
-                        $scope.houseHomeFront.achieveStability += parseInt(responseArray[i].count);
-                        $scope.houseHomeFront.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing at least 6 months"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other"){
-                        $scope.houseHomeFront.exited += parseInt(responseArray[i].count);
-                        $scope.houseHomeFront.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]== "Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year"){
-                        $scope.houseHomeFront.exited += parseInt(responseArray[i].count);
-                        $scope.houseHomeFront.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing at least 6 months"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Other"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]==" Enter Housing during reporting report;Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]==" Enter Housing during reporting report;Exited Housing during reporting period;Other"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Other;Remain in Housing < 1 year (ex: 7 months)"){
-                        $scope.houseHomeFront.exited += parseInt(responseArray[i].count);
-                        $scope.houseHomeFront.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Other"){
-                        $scope.houseHomeFront.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing for at least 1 year;Secured Permanent Housing upon exit"){
-                        $scope.houseHomeFront.securePermanent += parseInt(responseArray[i].count);
-                        $scope.houseHomeFront.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Other;Remain in Housing < 1 year (ex: 7 months)Enter EMWC Housing during current year"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year;Remain in EMWC Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report"){
-                        $scope.houseHomeFront.entered += parseInt(responseArray[i].count);
-                        $scope.houseHomeFront.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Other;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Remain in Housing at least 6 months;Secured Permanent Housing upon exit"){
-                        $scope.houseHomeFront.entered += parseInt(responseArray[i].count);
-                        $scope.houseHomeFront.total += parseInt(responseArray[i].count);
-                    }
-                    else if(responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year;Remain in EMWC Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"){
-                        $scope.houseHomeFront.entered += parseInt(responseArray[i].count);
-                        $scope.houseHomeFront.total += parseInt(responseArray[i].count);
-                    }
-                    else {
-                        console.log('fuck',responseArray[i]["Achieve Housing Stability"]);
-                        $scope.houseHomeFront.other += parseInt(responseArray[i].count);
-                        $scope.houseHomeFront.total += parseInt(responseArray[i].count);
-                    }
+                function getHouseStability (program) {
+                  switch(houseStab) {
+                    case "Remain in Housing at least 6 months;Secured Permanent Housing upon exit":
+                    case "Remain in Housing at least 6 months":
+                    case "Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit":
+                      $scope[program].reside6 += parseInt(responseArray[i].count);
+                      $scope[program].total += parseInt(responseArray[i].count);
+                      break;
+                    case "Remain in Housing for at least 1 year;Secured Permanent Housing upon exit":
+                    case "Remain in Housing for at least 1 year":
+                    case "Remain in EMWC Housing for at least 1 year":
+                      console.log($scope[program]);
+                      $scope[program].reside1year += parseInt(responseArray[i].count);
+                      $scope[program].total += parseInt(responseArray[i].count);
+                      break;
+                    case "Secured Permanent Housing upon exit":
+                    case "Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit":
+                    case "Secured Permanent Housing upon exit":
+                      $scope[program].achieveStability += parseInt(responseArray[i].count);
+                      $scope[program].total += parseInt(responseArray[i].count);
+                      break;
+                    case "Exited Housing during reporting period;Remain in Housing for at least 1 year":
+                    case "Exited Housing during reporting period;Other;Remain in Housing for at least 1 year":
+                    case "Exited Housing during reporting period;Other;Remain in Housing at least 6 months":
+                    case "Exited Housing during reporting period;Other;Remain in Housing < 1 year (ex: 7 months)":
+                    case "Exited Housing during reporting period;Other":
+                      $scope[program].exited += parseInt(responseArray[i].count);
+                      $scope[program].total += parseInt(responseArray[i].count);
+                      break;
+                    case "Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Remain in Housing for at least 1 year":
+                    case "Exited Housing during reporting period":
+                    case "Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months)":
+                    case "Exited Housing during reporting period;Remain in EMWC Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit":
+                      $scope[program].exited += parseInt(responseArray[i].count);
+                      $scope[program].total += parseInt(responseArray[i].count);
+                      break;
+                    case "Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit":
+                    case "Exited Housing during reporting period;Remain in Housing at least 6 months;Secured Permanent Housing upon exit":
+                    case "Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit":
+                    case "Exited Housing during reporting period;Secured Permanent Housing upon exit":
+                    case "Exited Housing during reporting period;Remain in Housing for at least 1 year;Secured Permanent Housing upon exit":
+                      $scope[program].securePermanent += parseInt(responseArray[i].count);
+                      $scope[program].total += parseInt(responseArray[i].count);
+                      break;
+                    case (houseStab.match(/Enter Housing/) || {}).input:
+                    case (houseStab.match(/Enter EMWC Housing/) || {}).input:
+                    // case "Enter Housing during reporting report;Exited Housing during reporting period":
+                    // case "Enter Housing during reporting report;Remain in Housing < 1 year (ex: 7 months)":
+                    // case "Enter Housing during reporting report;Other;Remain in Housing < 1 year (ex: 7 months)Enter EMWC Housing during current year":
+                    // case "Enter EMWC Housing during current year":
+                    // case "Enter EMWC Housing during current year;Remain in EMWC Housing < 1 year (ex: 7 months)":
+                    // case "Enter Housing during reporting report":
+                      $scope[program].entered += parseInt(responseArray[i].count);
+                      $scope[program].total += parseInt(responseArray[i].count);
+                      break;
+                    case "Enter Housing during reporting report;Other;Remain in Housing < 1 year (ex: 7 months)":
+                      $scope[program].entered += parseInt(responseArray[i].count);
+                      $scope[program].total += parseInt(responseArray[i].count);
+                      break;
+                    default:
+                      $scope[program].other += parseInt(responseArray[i].count);
+                      $scope[program].total += parseInt(responseArray[i].count);
+                  }
                 }
+                // if(responseArray[i].Program == "EMPII"){
+                //     if(responseArray[i]["Achieve Housing Stability"]=="Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Remain in Housing at least 6 months"||responseArray[i]["Achieve Housing Stability"]=="Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"){
+                //         $scope.houseEMPII.reside6 += parseInt(responseArray[i].count);
+                //         $scope.houseEMPII.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Remain in Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Remain in EMWC Housing for at least 1 year"){
+                //         $scope.houseEMPII.reside1year += parseInt(responseArray[i].count);
+                //         $scope.houseEMPII.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Secured Permanent Housing upon exit"){
+                //         $scope.houseEMPII.achieveStability += parseInt(responseArray[i].count);
+                //         $scope.houseEMPII.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing at least 6 months"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other"){
+                //         $scope.houseEMPII.exited += parseInt(responseArray[i].count);
+                //         $scope.houseEMPII.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]== "Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year"){
+                //         $scope.houseEMPII.exited += parseInt(responseArray[i].count);
+                //         $scope.houseEMPII.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing for at least 1 year;Secured Permanent Housing upon exit"){
+                //         $scope.houseEMPII.securePermanent += parseInt(responseArray[i].count);
+                //         $scope.houseEMPII.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Other;Remain in Housing < 1 year (ex: 7 months)Enter EMWC Housing during current year"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year;Remain in EMWC Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report"){
+                //         $scope.houseEMPII.entered += parseInt(responseArray[i].count);
+                //         $scope.houseEMPII.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Other;Remain in Housing < 1 year (ex: 7 months)"){
+                //         $scope.houseEMPII.entered += parseInt(responseArray[i].count);
+                //         $scope.houseEMPII.total += parseInt(responseArray[i].count);
+                //     }
+                //     else {
+                //         // console.log(responseArray[i]["Achieve Housing Stability"]);
+                //         $scope.houseEMPII.other += parseInt(responseArray[i].count);
+                //         $scope.houseEMPII.total += parseInt(responseArray[i].count);
+                //     }
+                // }
+                //
+                // if(responseArray[i].Program == "HomeSafe"||responseArray[i].Program == "Home Safe" ){
+                //     if(responseArray[i]["Achieve Housing Stability"]=="Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Remain in Housing at least 6 months"||responseArray[i]["Achieve Housing Stability"]=="Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"){
+                //         $scope.houseHomeSafe.reside6 += parseInt(responseArray[i].count);
+                //         $scope.houseHomeSafe.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Remain in Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Remain in EMWC Housing for at least 1 year"){
+                //         $scope.houseHomeSafe.reside1year += parseInt(responseArray[i].count);
+                //         $scope.houseHomeSafe.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Secured Permanent Housing upon exit"){
+                //         $scope.houseHomeSafe.achieveStability += parseInt(responseArray[i].count);
+                //         $scope.houseHomeSafe.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing at least 6 months"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other"){
+                //         $scope.houseHomeSafe.exited += parseInt(responseArray[i].count);
+                //         $scope.houseHomeSafe.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]== "Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year"){
+                //         $scope.houseHomeSafe.exited += parseInt(responseArray[i].count);
+                //         $scope.houseHomeSafe.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing at least 6 months"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Other"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]==" Enter Housing during reporting report;Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]==" Enter Housing during reporting report;Exited Housing during reporting period;Other"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Other;Remain in Housing < 1 year (ex: 7 months)"){
+                //         $scope.houseHomeSafe.exited += parseInt(responseArray[i].count);
+                //         $scope.houseHomeSafe.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Other"){
+                //         $scope.houseHomeSafe.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing for at least 1 year;Secured Permanent Housing upon exit"){
+                //         $scope.houseHomeSafe.securePermanent += parseInt(responseArray[i].count);
+                //         $scope.houseHomeSafe.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Other;Remain in Housing < 1 year (ex: 7 months)Enter EMWC Housing during current year"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year;Remain in EMWC Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report"){
+                //         $scope.houseHomeSafe.entered += parseInt(responseArray[i].count);
+                //         $scope.houseHomeSafe.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Other;Remain in Housing < 1 year (ex: 7 months)"){
+                //         $scope.houseHomeSafe.entered += parseInt(responseArray[i].count);
+                //         $scope.houseHomeSafe.total += parseInt(responseArray[i].count);
+                //     }
+                //     else {
+                //         console.log(responseArray[i]["Achieve Housing Stability"]);
+                //         $scope.houseHomeSafe.other += parseInt(responseArray[i].count);
+                //         $scope.houseHomeSafe.total += parseInt(responseArray[i].count);
+                //     }
+                // }
+                //
+                // else if(responseArray[i].Program == "HomeAgain"||responseArray[i].Program == "Home Again" ){
+                //     if(responseArray[i]["Achieve Housing Stability"]=="Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Remain in Housing at least 6 months"||responseArray[i]["Achieve Housing Stability"]=="Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"){
+                //         $scope.houseHomeAgain.reside6 += parseInt(responseArray[i].count);
+                //         $scope.houseHomeAgain.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Remain in Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Remain in EMWC Housing for at least 1 year"){
+                //         $scope.houseHomeAgain.reside1year += parseInt(responseArray[i].count);
+                //         $scope.houseHomeAgain.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Secured Permanent Housing upon exit"){
+                //         $scope.houseHomeAgain.achieveStability += parseInt(responseArray[i].count);
+                //         $scope.houseHomeAgain.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing at least 6 months"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other"){
+                //         $scope.houseHomeAgain.exited += parseInt(responseArray[i].count);
+                //         $scope.houseHomeAgain.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]== "Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year"){
+                //         $scope.houseHomeAgain.exited += parseInt(responseArray[i].count);
+                //         $scope.houseHomeAgain.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing at least 6 months"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Other"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]==" Enter Housing during reporting report;Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]==" Enter Housing during reporting report;Exited Housing during reporting period;Other"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Other;Remain in Housing < 1 year (ex: 7 months)"){
+                //         $scope.houseHomeAgain.exited += parseInt(responseArray[i].count);
+                //         $scope.houseHomeAgain.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Other"){
+                //         $scope.houseHomeAgain.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing for at least 1 year;Secured Permanent Housing upon exit"){
+                //         $scope.houseHomeAgain.securePermanent += parseInt(responseArray[i].count);
+                //         $scope.houseHomeAgain.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Other;Remain in Housing < 1 year (ex: 7 months)Enter EMWC Housing during current year"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year;Remain in EMWC Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report"){
+                //         $scope.houseHomeAgain.entered += parseInt(responseArray[i].count);
+                //         $scope.houseHomeAgain.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Other;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Remain in Housing at least 6 months;Secured Permanent Housing upon exit"){
+                //         $scope.houseHomeAgain.entered += parseInt(responseArray[i].count);
+                //         $scope.houseHomeAgain.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year;Remain in EMWC Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"){
+                //         $scope.houseHomeAgain.entered += parseInt(responseArray[i].count);
+                //         $scope.houseHomeAgain.total += parseInt(responseArray[i].count);
+                //     }
+                //     else {
+                //         $scope.houseHomeAgain.other += parseInt(responseArray[i].count);
+                //         $scope.houseHomeAgain.total += parseInt(responseArray[i].count);
+                //     }
+                // }
+                //
+                // else if(responseArray[i].Program == "HomeFront"||responseArray[i].Program == "Home Front" ){
+                //     if(responseArray[i]["Achieve Housing Stability"]=="Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Remain in Housing at least 6 months"||responseArray[i]["Achieve Housing Stability"]=="Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"){
+                //         $scope.houseHomeFront.reside6 += parseInt(responseArray[i].count);
+                //         $scope.houseHomeFront.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Remain in Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Remain in EMWC Housing for at least 1 year"){
+                //         $scope.houseHomeFront.reside1year += parseInt(responseArray[i].count);
+                //         $scope.houseHomeFront.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Secured Permanent Housing upon exit"){
+                //         $scope.houseHomeFront.achieveStability += parseInt(responseArray[i].count);
+                //         $scope.houseHomeFront.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing at least 6 months"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Other"){
+                //         $scope.houseHomeFront.exited += parseInt(responseArray[i].count);
+                //         $scope.houseHomeFront.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]== "Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Remain in Housing for at least 1 year"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year"){
+                //         $scope.houseHomeFront.exited += parseInt(responseArray[i].count);
+                //         $scope.houseHomeFront.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing at least 6 months"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Other"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]==" Enter Housing during reporting report;Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]==" Enter Housing during reporting report;Exited Housing during reporting period;Other"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Other;Remain in Housing < 1 year (ex: 7 months)"){
+                //         $scope.houseHomeFront.exited += parseInt(responseArray[i].count);
+                //         $scope.houseHomeFront.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Other"){
+                //         $scope.houseHomeFront.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Exited Housing during reporting period;Remain in Housing for at least 1 year;Secured Permanent Housing upon exit"){
+                //         $scope.houseHomeFront.securePermanent += parseInt(responseArray[i].count);
+                //         $scope.houseHomeFront.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Other;Remain in Housing < 1 year (ex: 7 months)Enter EMWC Housing during current year"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year;Remain in EMWC Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report"){
+                //         $scope.houseHomeFront.entered += parseInt(responseArray[i].count);
+                //         $scope.houseHomeFront.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Other;Remain in Housing < 1 year (ex: 7 months)"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Enter Housing during reporting report;Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Remain in Housing at least 6 months;Secured Permanent Housing upon exit"){
+                //         $scope.houseHomeFront.entered += parseInt(responseArray[i].count);
+                //         $scope.houseHomeFront.total += parseInt(responseArray[i].count);
+                //     }
+                //     else if(responseArray[i]["Achieve Housing Stability"]=="Enter EMWC Housing during current year;Remain in EMWC Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"){
+                //         $scope.houseHomeFront.entered += parseInt(responseArray[i].count);
+                //         $scope.houseHomeFront.total += parseInt(responseArray[i].count);
+                //     }
+                //     else {
+                //         console.log('fuck',responseArray[i]["Achieve Housing Stability"]);
+                //         $scope.houseHomeFront.other += parseInt(responseArray[i].count);
+                //         $scope.houseHomeFront.total += parseInt(responseArray[i].count);
+                //     }
+                // }
 
             }//end of for statement
             console.log('this is the TESTEMP',$scope.houseEMP);
