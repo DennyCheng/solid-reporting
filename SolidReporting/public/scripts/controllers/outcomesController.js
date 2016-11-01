@@ -154,7 +154,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
         console.log("Program: " + $scope.selectedprogram + "\n"
             + "Outcome: " + $scope.selectedoutcome);
 
-
+        console.time("Housing function time");
         $scope.outcomeFactory.houseStabil(selections).then(function(response) {
             console.log("response houseStabil: ", response);
 
@@ -179,9 +179,9 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
 
             console.log("housProgs", housPrograms);
 
-            var responseArray = response
+            var responseArray = response;
 
-            for (var i = 0; i < responseArray.length; i++) {
+            for (var i = 0, x = responseArray.length; i < x; i++) {
                 // console.log(responseArray[i]["Achieve Housing Stability"])
                 var program = responseArray[i].Program;
 
@@ -266,6 +266,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                       $scope[program].total += parseInt(responseArray[i].count);
                   }
                 }
+
                 // if(responseArray[i].Program == "EMPII"){
                 //     if(responseArray[i]["Achieve Housing Stability"]=="Remain in Housing at least 6 months;Secured Permanent Housing upon exit"||responseArray[i]["Achieve Housing Stability"]=="Remain in Housing at least 6 months"||responseArray[i]["Achieve Housing Stability"]=="Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit"){
                 //         $scope.houseEMPII.reside6 += parseInt(responseArray[i].count);
@@ -461,6 +462,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
             console.log('this is the HomeAGain',$scope.houseHomeAgain);
             console.log('this is the HomeFront',$scope.houseHomeFront);
         });  // end of houseStabil
+        console.timeEnd("Housing function time");
 
 
         $scope.outcomeFactory.adultEduAdv(selections).then(function(response) {
