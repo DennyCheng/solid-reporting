@@ -4,5 +4,3 @@ node_modules
 .idea/workspace.xml
 SolidReporting/routes/forgot.js
 .idea
-SolidReporting/modules/connection.js
-SolidReporting/modules/encryption.js
