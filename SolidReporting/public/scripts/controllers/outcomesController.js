@@ -204,48 +204,6 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
 
                 function getHouseStability (program) {
                   switch(houseStab) {
-                    case "Remain in Housing at least 6 months;Secured Permanent Housing upon exit":
-                    case "Remain in Housing at least 6 months":
-                    case "Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit":
-                      $scope[program].reside6 += parseInt(responseArray[i].count);
-                      $scope[program].total += parseInt(responseArray[i].count);
-                      break;
-                    case "Remain in Housing for at least 1 year;Secured Permanent Housing upon exit":
-                    case "Remain in Housing for at least 1 year":
-                    case "Remain in EMWC Housing for at least 1 year":
-                      console.log($scope[program]);
-                      $scope[program].reside1year += parseInt(responseArray[i].count);
-                      $scope[program].total += parseInt(responseArray[i].count);
-                      break;
-                    case "Secured Permanent Housing upon exit":
-                    case "Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit":
-                    case "Secured Permanent Housing upon exit":
-                      $scope[program].achieveStability += parseInt(responseArray[i].count);
-                      $scope[program].total += parseInt(responseArray[i].count);
-                      break;
-                    case "Exited Housing during reporting period;Remain in Housing for at least 1 year":
-                    case "Exited Housing during reporting period;Other;Remain in Housing for at least 1 year":
-                    case "Exited Housing during reporting period;Other;Remain in Housing at least 6 months":
-                    case "Exited Housing during reporting period;Other;Remain in Housing < 1 year (ex: 7 months)":
-                    case "Exited Housing during reporting period;Other":
-                      $scope[program].exited += parseInt(responseArray[i].count);
-                      $scope[program].total += parseInt(responseArray[i].count);
-                      break;
-                    case "Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Remain in Housing for at least 1 year":
-                    case "Exited Housing during reporting period":
-                    case "Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months)":
-                    case "Exited Housing during reporting period;Remain in EMWC Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit":
-                      $scope[program].exited += parseInt(responseArray[i].count);
-                      $scope[program].total += parseInt(responseArray[i].count);
-                      break;
-                    case "Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit":
-                    case "Exited Housing during reporting period;Remain in Housing at least 6 months;Secured Permanent Housing upon exit":
-                    case "Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit":
-                    case "Exited Housing during reporting period;Secured Permanent Housing upon exit":
-                    case "Exited Housing during reporting period;Remain in Housing for at least 1 year;Secured Permanent Housing upon exit":
-                      $scope[program].securePermanent += parseInt(responseArray[i].count);
-                      $scope[program].total += parseInt(responseArray[i].count);
-                      break;
                     case (houseStab.match(/Enter Housing/) || {}).input:
                     case (houseStab.match(/Enter EMWC Housing/) || {}).input:
                     // case "Enter Housing during reporting report;Exited Housing during reporting period":
@@ -253,17 +211,54 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                     // case "Enter Housing during reporting report;Other;Remain in Housing < 1 year (ex: 7 months)Enter EMWC Housing during current year":
                     // case "Enter EMWC Housing during current year":
                     // case "Enter EMWC Housing during current year;Remain in EMWC Housing < 1 year (ex: 7 months)":
-                    // case "Enter Housing during reporting report":
+                    // case "Enter Housing during reporting report":;
+                    // case "Enter Housing during reporting report;Other;Remain in Housing < 1 year (ex: 7 months)":
                       $scope[program].entered += parseInt(responseArray[i].count);
-                      $scope[program].total += parseInt(responseArray[i].count);
-                      break;
-                    case "Enter Housing during reporting report;Other;Remain in Housing < 1 year (ex: 7 months)":
-                      $scope[program].entered += parseInt(responseArray[i].count);
-                      $scope[program].total += parseInt(responseArray[i].count);
+                      // $scope[program].total += parseInt(responseArray[i].count);
+                    case (houseStab.match(/Remain in Housing at least 6 months/) || {}).input:
+                    case (houseStab.match(/Remain in Housing < 1 year (ex: 7 months)/) || {}).input:
+                    // case "Remain in Housing at least 6 months;Secured Permanent Housing upon exit":
+                    // case "Remain in Housing at least 6 months":
+                    // case "Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit":
+                      $scope[program].reside6 += parseInt(responseArray[i].count);
+                      // $scope[program].total += parseInt(responseArray[i].count);
+                    case (houseStab.match(/Remain in Housing for at least 1 year/) || {}).input:
+                    case (houseStab.match(/Remain in EMWC Housing for at least 1 year/) || {}).input:
+                    // case "Remain in Housing for at least 1 year;Secured Permanent Housing upon exit":
+                    // case "Remain in Housing for at least 1 year":
+                    // case "Remain in EMWC Housing for at least 1 year":
+                      $scope[program].reside1year += parseInt(responseArray[i].count);
+                      // $scope[program].total += parseInt(responseArray[i].count);
+                    case (houseStab.match(/Secured Permanent Housing upon exit/) || {}).input:
+                    // case "Secured Permanent Housing upon exit":
+                    // case "Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit":
+                    // case "Secured Permanent Housing upon exit":
+                      $scope[program].achieveStability += parseInt(responseArray[i].count);
+                      // $scope[program].total += parseInt(responseArray[i].count);
+                    case (houseStab.match(/Exited Housing during reporting period/) || {}).input:
+                    // case "Exited Housing during reporting period;Remain in Housing for at least 1 year":
+                    // case "Exited Housing during reporting period;Other;Remain in Housing for at least 1 year":
+                    // case "Exited Housing during reporting period;Other;Remain in Housing at least 6 months":
+                    // case "Exited Housing during reporting period;Other;Remain in Housing < 1 year (ex: 7 months)":
+                    // case "Exited Housing during reporting period;Other":
+                    // case "Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Remain in Housing for at least 1 year":
+                    // case "Exited Housing during reporting period":
+                    // case "Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months)":
+                    // case "Exited Housing during reporting period;Remain in EMWC Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit":
+                      $scope[program].exited += parseInt(responseArray[i].count);
+                      // $scope[program].total += parseInt(responseArray[i].count);
+                    case (houseStab.match(/Secured Permanent Housing upon exit/) || {}).input:
+                    // case "Exited Housing during reporting period;Remain in EMWC Housing for at least 1 year;Secured Permanent Housing upon exit":
+                    // case "Exited Housing during reporting period;Remain in Housing at least 6 months;Secured Permanent Housing upon exit":
+                    // case "Exited Housing during reporting period;Remain in Housing < 1 year (ex: 7 months);Secured Permanent Housing upon exit":
+                    // case "Exited Housing during reporting period;Secured Permanent Housing upon exit":
+                    // case "Exited Housing during reporting period;Remain in Housing for at least 1 year;Secured Permanent Housing upon exit":
+                      $scope[program].securePermanent += parseInt(responseArray[i].count);
+                      // $scope[program].total += parseInt(responseArray[i].count);
                       break;
                     default:
                       $scope[program].other += parseInt(responseArray[i].count);
-                      $scope[program].total += parseInt(responseArray[i].count);
+                      // $scope[program].total += parseInt(responseArray[i].count);
                   }
                 }
 
