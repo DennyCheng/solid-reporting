@@ -481,7 +481,215 @@
               <td ng-model="earnedIncomeEMP" md-cell>{{ (100 * earnedIncomeEMP.n500_999 / earnedIncomeEMP.total ) | number:2  }}%</td>
             </tr>
           </tbody> -->
+          <!-- Budgeting Education Year Before ---------------------------->
+          <thead md-head>
+          <tr md-row >
+            <th md-column>Budgeting Education Year Before</th>
+            <th md-column md-numeric>Number</th>
+            <th md-column md-numeric>Percent</th>
+          </tr>
+          </thead>
+          <tbody md-body>
+          <tr md-row>
+            <td md-cell>Emp</td>
+            <td ng-model="budgetingEduYearBefore" md-cell>{{ budgetingEduYearBefore.emp }}</td>
+            <td ng-model="budgetingEduYearBefore" md-cell>{{ (100 * budgetingEduYearBefore.emp / budgetingEduYearBefore.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row class="boldrow">
+            <td md-cell>EmpII</td>
+            <td ng-model="budgetingEduYearBefore" md-cell>{{ budgetingEduYearBefore.emp2 }}</td>
+            <td ng-model="budgetingEduYearBefore" md-cell>{{ (100 * budgetingEduYearBefore.emp2 / budgetingEduYearBefore.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row class="boldrow">
+            <td md-cell>Home Again</td>
+            <td ng-model="budgetingEduYearBefore" md-cell>{{ budgetingEduYearBefore.homeAgain }}</td>
+            <td ng-model="budgetingEduYearBefore" md-cell>{{ (100 * budgetingEduYearBefore.homeAgain / budgetingEduYearBefore.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row class="boldrow">
+            <td md-cell>Home Safe</td>
+            <td ng-model="budgetingEduYearBefore" md-cell>{{ budgetingEduYearBefore.homeSafe }}</td>
+            <td ng-model="budgetingEduYearBefore" md-cell>{{ (100 * budgetingEduYearBefore.homeSafe / budgetingEduYearBefore.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row class="boldrow">
+            <td md-cell>Home Front</td>
+            <td ng-model="budgetingEduYearBefore" md-cell>{{ budgetingEduYearBefore.homeFront }}</td>
+            <td ng-model="budgetingEduYearBefore" md-cell>{{ (100 * budgetingEduYearBefore.homeFront / budgetingEduYearBefore.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row class="boldrow">
+            <td md-cell>Total</td>
+            <td ng-model="budgetingEduYearBefore" md-cell>{{ budgetingEduYearBefore.total }}</td>
+            <td ng-model="budgetingEduYearBefore" md-cell>{{ (100 * budgetingEduYearBefore.total / budgetingEduYearBefore.total ) | number:2  }}%</td>
+          </tr>
+          </tbody>
 
+          <!-- violent Emp ---------------------------->
+          <thead md-head>
+          <tr md-row >
+            <th md-column>violent</th>
+            <th md-column md-numeric>Number</th>
+            <th md-column md-numeric>Percent</th>
+          </tr>
+          </thead>
+          <tbody md-body>
+          <tr md-row>
+            <td md-cell>Emp Yes With Safety</td>
+            <td ng-model="violentEmp" md-cell>{{ violentEmp.yesWithSafety }}</td>
+            <td ng-model="violentEmp" md-cell>{{ (100 * violentEmp.yesWithSafety / violentEmp.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>Emp Yes Without Safety</td>
+            <td ng-model="violentEmp" md-cell>{{ violentEmp.yesWithoutSafety }}</td>
+            <td ng-model="violentEmp" md-cell>{{ (100 * violentEmp.yesWithoutSafety / violentEmp.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row class="boldrow">
+            <td md-cell>EmpII Yes WithSafety</td>
+            <td ng-model="violentEmp2" md-cell>{{ violentEmp2.yesWithSafety }}</td>
+            <td ng-model="violentEmp2" md-cell>{{ (100 * violentEmp2.yesWithSafety / violentEmp2.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>EmpII Yes Without Safety</td>
+            <td ng-model="violentEmp" md-cell>{{ violentEmp2.yesWithoutSafety }}</td>
+            <td ng-model="violentEmp" md-cell>{{ (100 * violentEmp2.yesWithoutSafety / violentEmp2.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row class="boldrow">
+            <td md-cell>Home Front Yes With Safety</td>
+            <td ng-model="violentHomeFront" md-cell>{{ violentHomeFront.yesWithSafety }}</td>
+            <td ng-model="violentHomeFront" md-cell>{{ (100 * violentHomeFront.yesWithSafety / violentHomeFront.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row class="boldrow">
+            <td md-cell>Home Front Yes Without Safety</td>
+            <td ng-model="violentHomeFront" md-cell>{{ violentHomeFront.yesWithoutSafety }}</td>
+            <td ng-model="violentHomeFront" md-cell>{{ (100 * violentHomeFront.yesWithoutSafety / violentHomeFront.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row class="boldrow">
+            <td md-cell>Home Safe Yes With Safety</td>
+            <td ng-model="violentHomeSafe" md-cell>{{ violentHomeSafe.yesWithSafety }}</td>
+            <td ng-model="violentHomeSafe" md-cell>{{ (100 * violentHomeSafe.yesWithSafety / violentHomeSafe.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row class="boldrow">
+            <td md-cell>Home Safe Yes Without Safety</td>
+            <td ng-model="violentHomeSafe" md-cell>{{ violentHomeSafe.yesWithSafety }}</td>
+            <td ng-model="violentHomeSafe" md-cell>{{ (100 * violentHomeSafe.yesWithSafety / violentHomeSafe.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row class="boldrow">
+            <td md-cell>Home Again Yes With Safety</td>
+            <td ng-model="violentHomeAgain" md-cell>{{ violentHomeAgain.yesWithSafety }}</td>
+            <td ng-model="violentHomeAgain" md-cell>{{ (100 * violentHomeAgain.yesWithSafety / violentHomeAgain.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row class="boldrow">
+            <td md-cell>Home Again Yes Without Safety</td>
+            <td ng-model="violentHomeAgain" md-cell>{{ violentHomeAgain.yesWithoutSafety }}</td>
+            <td ng-model="violentHomeAgain" md-cell>{{ (100 * violentHomeAgain.yesWithoutSafety / violentHomeAgain.total ) | number:2  }}%</td>
+          </tr>
+          </tbody>
+
+          <!-- Tenant Training Same Year ---------------------------->
+          <thead md-head>
+          <tr md-row >
+            <th md-column>Tenant Training Same Year </th>
+            <th md-column md-numeric>Number</th>
+            <th md-column md-numeric>Percent</th>
+          </tr>
+          </thead>
+          <tbody md-body>
+          <tr md-row>
+            <td md-cell> EMP Tenant Training Same Year</td>
+            <td ng-model="tenantTrainingSameYear" md-cell>{{ tenantTrainingSameYear.emp }}</td>
+            <td ng-model="tenantTrainingSameYear" md-cell>{{ (100 * tenantTrainingSameYear.emp / tenantTrainingSameYear.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row class="boldrow">
+            <td md-cell>EMPII Tenant Training Same Year</td>
+            <td ng-model="tenantTrainingSameYear" md-cell>{{ tenantTrainingSameYear.emp2 }}</td>
+            <td ng-model="tenantTrainingSameYear" md-cell>{{ (100 * tenantTrainingSameYear.emp2 / tenantTrainingSameYear.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row class="boldrow">
+            <td md-cell>HomeSafe Tenant Training Same Year</td>
+            <td ng-model="tenantTrainingSameYear" md-cell>{{ tenantTrainingSameYear.homeSafe }}</td>
+            <td ng-model="tenantTrainingSameYear" md-cell>{{ (100 * tenantTrainingSameYear.homeSafe / tenantTrainingSameYear.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row class="boldrow">
+            <td md-cell>HomeAgain Tenant Training Same Year</td>
+            <td ng-model="tenantTrainingSameYear" md-cell>{{ tenantTrainingSameYear.homeAgain }}</td>
+            <td ng-model="tenantTrainingSameYear" md-cell>{{ (100 * tenantTrainingSameYear.homeAgain / tenantTrainingSameYear.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row class="boldrow">
+            <td md-cell>HomeFront Tenant Training Same Year</td>
+            <td ng-model="tenantTrainingSameYear" md-cell>{{ tenantTrainingSameYear.homeFront }}</td>
+            <td ng-model="tenantTrainingSameYear" md-cell>{{ (100 * tenantTrainingSameYear.homeFront / tenantTrainingSameYear.total ) | number:2  }}%</td>
+          </tr>
+          </tbody>
+
+          <!-- Tenant Training Prior Year ---------------------------->
+          <thead md-head>
+          <tr md-row >
+            <th md-column>Tenant Training Prior Year </th>
+            <th md-column md-numeric>Number</th>
+            <th md-column md-numeric>Percent</th>
+          </tr>
+          </thead>
+          <tbody md-body>
+          <tr md-row>
+            <td md-cell> EMP Tenant Training Prior Year</td>
+            <td ng-model="tenantTrainingPriorYear" md-cell>{{ tenantTrainingPriorYear.emp }}</td>
+            <td ng-model="tenantTrainingPriorYear" md-cell>{{ (100 * tenantTrainingPriorYear.emp / tenantTrainingPriorYear.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row class="boldrow">
+            <td md-cell>EMPII Tenant Training Prior Year</td>
+            <td ng-model="tenantTrainingPriorYear" md-cell>{{ tenantTrainingPriorYear.emp2 }}</td>
+            <td ng-model="tenantTrainingPriorYear" md-cell>{{ (100 * tenantTrainingPriorYear.emp2 / tenantTrainingPriorYear.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row class="boldrow">
+            <td md-cell>HomeSafe Tenant Training Prior Year</td>
+            <td ng-model="tenantTrainingPriorYear" md-cell>{{ tenantTrainingPriorYear.homeSafe }}</td>
+            <td ng-model="tenantTrainingPriorYear" md-cell>{{ (100 * tenantTrainingPriorYear.homeSafe / tenantTrainingPriorYear.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row class="boldrow">
+            <td md-cell>HomeAgain Tenant Training Prior Year</td>
+            <td ng-model="tenantTrainingPriorYear" md-cell>{{ tenantTrainingPriorYear.homeAgain }}</td>
+            <td ng-model="tenantTrainingPriorYear" md-cell>{{ (100 * tenantTrainingPriorYear.homeAgain / tenantTrainingPriorYear.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row class="boldrow">
+            <td md-cell>HomeFront Tenant Training Prior Year</td>
+            <td ng-model="tenantTrainingPriorYear" md-cell>{{ tenantTrainingPriorYear.homeFront }}</td>
+            <td ng-model="tenantTrainingPriorYear" md-cell>{{ (100 * tenantTrainingPriorYear.homeFront / tenantTrainingPriorYear.total ) | number:2  }}%</td>
+          </tr>
+          </tbody>
+
+          <!-- Tenant Training---------------------------->
+          <thead md-head>
+          <tr md-row >
+            <th md-column>Tenant Training</th>
+            <th md-column md-numeric>Number</th>
+            <th md-column md-numeric>Percent</th>
+          </tr>
+          </thead>
+          <tbody md-body>
+          <tr md-row>
+            <td md-cell> EMP Tenant Training</td>
+            <td ng-model="tenantTraining" md-cell>{{ tenantTraining.emp }}</td>
+            <td ng-model="tenantTraining" md-cell>{{ (100 * tenantTraining.emp / tenantTraining.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row class="boldrow">
+            <td md-cell>EMPII Tenant Training</td>
+            <td ng-model="tenantTraining" md-cell>{{ tenantTraining.emp2 }}</td>
+            <td ng-model="tenantTraining" md-cell>{{ (100 * tenantTraining.emp2 / tenantTraining.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row class="boldrow">
+            <td md-cell>HomeSafe Tenant Training</td>
+            <td ng-model="tenantTraining" md-cell>{{ tenantTraining.homeSafe }}</td>
+            <td ng-model="tenantTraining" md-cell>{{ (100 * tenantTraining.homeSafe / tenantTraining.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row class="boldrow">
+            <td md-cell>HomeAgain Tenant Training</td>
+            <td ng-model="tenantTraining" md-cell>{{ tenantTraining.homeAgain }}</td>
+            <td ng-model="tenantTraining" md-cell>{{ (100 * tenantTraining.homeAgain / tenantTraining.total ) | number:2  }}%</td>
+          </tr>
+          <tr md-row class="boldrow">
+            <td md-cell>HomeFront Tenant Training</td>
+            <td ng-model="tenantTraining" md-cell>{{ tenantTraining.homeFront }}</td>
+            <td ng-model="tenantTraining" md-cell>{{ (100 * tenantTraining.homeFront / tenantTraining.total ) | number:2  }}%</td>
+          </tr>
+          </tbody>
 
         </table>
       </md-table-container>
