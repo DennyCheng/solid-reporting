@@ -9,7 +9,7 @@ var connection = require('../modules/connection');
 var pool = new pg.Pool(connection);
 
 
-// Houseing Stability
+// Housing Stability
 router.post('/houseStabil', function(req, res) {
   console.log("go house stabil");
   console.log("req.body line 09: ", req.body);
@@ -313,6 +313,51 @@ router.post('/econstabil', function(req, res) {
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "')) " +
     "GROUP BY \"Head of Household-2\".\"Improved Econ Stability\", \"Head of Household\".\"Program\"; ",
+      function(err, result) {
+        done();
+
+        if(err) {
+          console.log("select error: ", err);
+          res.sendStatus(500);
+        }
+        console.log('results.row: ', result.rows);
+
+        res.send(result.rows);
+    });
+
+  });
+});
+
+
+// Improved Econ Stability MOH
+router.post('/econstabilmoh', function(req, res) {
+  console.log("go Econ Stabil MOH");
+  // console.log("req.body line 56: ", req.body);
+  // var raceAdult = req.body.raceAdultSelection;
+  // var ageAdult = req.body.ageAdultSelection;
+  // var raceChild = req.body.raceChildrenSelection;
+  // var gender = req.body.genderSelection;
+  // var ageChild = req.body.ageChildrenSelection;
+  var startDate = req.body.startdate;
+  var endDate = req.body.enddate;
+
+
+  pool.connect(function(err, client, done) {
+
+    if(err) {
+      console.log(err);
+      res.sendStatus(500);
+    }
+
+    client.query("SELECT \"Members of Household\".\"Improved Econ Stability\", COUNT(*), \"Head of Household\".\"Program\" " +
+    "FROM \"Members of Household\" " +
+    "LEFT JOIN \"Head of Household\" ON \"Members of Household\".\"Head of Household\" = \"Head of Household\".\"HoHID\" " +
+    "WHERE(\"Members of Household\".\"Improved Econ Stability\" IS NOT NULL AND \"Members of Household\".\"Improved Econ Stability\" != '') AND " +
+    "((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
+    "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
+    "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
+    "OR (\"Head of Household\".\"Program Entry Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "')) " +
+    "GROUP BY \"Members of Household\".\"Improved Econ Stability\", \"Head of Household\".\"Program\"; ",
       function(err, result) {
         done();
 

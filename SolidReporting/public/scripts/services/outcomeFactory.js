@@ -81,6 +81,16 @@ myApp.factory('OutcomeFactory', ['$http', '$location', function($http, $location
     return promise;
   }
 
+  var econStabilMOH = function(selections) {
+
+    var promise = $http.post('/outcomequery/econstabilmoh', selections).then(function (response) {
+      var econStabilMOH = response.data;
+      console.log("econStabilMOH: ", econStabilMOH);
+      return econStabilMOH;
+    });
+    return promise;
+  }
+
   var adultDisabil = function(selections) {
 
     var promise = $http.post('/outcomequery/adultdisabil', selections).then(function (response) {
@@ -281,6 +291,16 @@ myApp.factory('OutcomeFactory', ['$http', '$location', function($http, $location
       return promise;
     }
 
+    var totalPeople = function(selections) {
+
+      var promise = $http.post('/outcomequery/totalpeopleforoutcomes', selections).then(function (response) {
+        var totalPeople = response.data;
+        console.log("totalPeople: ", totalPeople);
+        return totalPeople;
+      });
+      return promise;
+    }
+
   return {  //start of return scope
     retrieveData: function () {
       return getData();
@@ -305,6 +325,9 @@ myApp.factory('OutcomeFactory', ['$http', '$location', function($http, $location
     },
     econStabil: function (selections) {
       return econStabil(selections);
+    },
+    econStabilMOH: function (selections) {
+      return econStabilMOH(selections);
     },
     adultDisabil: function (selections) {
       return adultDisabil(selections);
