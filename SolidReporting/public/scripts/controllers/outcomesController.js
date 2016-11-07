@@ -73,28 +73,32 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
   };
 
 
-//------ Calendar -------------------------------------------------------
+  //------ Calendar -------------------------------------------------------
 
-    var startDate;
-    var endDate;
+      // $scope.startdate = new Date();
+      // $scope.enddate = new Date();
 
-    $scope.startdate = new Date();
-    $scope.enddate = new Date();
+      $scope.enddate = new Date();
+      console.log("$scope.enddate: ", $scope.enddate);
+      $scope.startdate = new Date();
+      $scope.startdate = $scope.startdate.setFullYear($scope.startdate.getFullYear() - 1);
+      $scope.startdate = new Date($scope.startdate);
+      console.log("$scope.startdate: ", $scope.startdate);
 
-    $scope.maxDate = new Date(
-        $scope.enddate.getFullYear(),
-        $scope.enddate.getMonth(),
-        $scope.enddate.getDate());
+      $scope.maxDate = new Date(
+          $scope.enddate.getFullYear(),
+          $scope.enddate.getMonth(),
+          $scope.enddate.getDate());
 
-    $scope.startDate = function(date) {
-        var startDate = date;
-        console.log('startDate: ', startDate);
-    };
-    $scope.endDate = function(date) {
-        var endDate = date;
-        console.log('endDate: ', endDate);
-    };
-//--------------------------------------------
+      $scope.startDate = function(date) {
+          var startDate = date;
+          console.log('startDate: ', startDate);
+      };
+      $scope.endDate = function(date) {
+          var endDate = date;
+          console.log('endDate: ', endDate);
+      };
+  //--------------------------------------------
 
     $scope.firstOfTheYear = '';
 
