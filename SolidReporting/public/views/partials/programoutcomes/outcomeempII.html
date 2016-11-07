@@ -71,7 +71,7 @@
           <tr md-row>
             <td md-cell>Adults enrolled in education</td>
             <td md-cell>{{ emp2Adult.enrolled }}</td>
-            <td md-cell>{{ (100 * emp2Adult.enrolled / ADULTS_PROGRAM ) | number:0 }}%</td>
+            <td md-cell>{{ (100 * emp2Adult.enrolled / emp2People.adult ) | number:0 }}%</td>
           </tr>
           <tr md-row>
             <td md-cell>Adults completing education</td>
@@ -107,7 +107,7 @@
           <tr md-row>
             <td md-cell>Adults with a documented learning disability</td>
             <td md-cell>{{ adultDisEMPII.countTotal }}</td>
-            <td md-cell>{{ (100 * adultDisEMPII.countTotal / ADULTS_PROGRAM ) | number:0 }}%</td>
+            <td md-cell>{{ (100 * adultDisEMPII.countTotal / emp2People.adult ) | number:0 }}%</td>
           </tr>
           <tr md-row class="boldrow">
             <td md-cell>Adults who have/had an IEP</td>
@@ -117,7 +117,7 @@
           <tr md-row>
             <td md-cell>Children with a documented learning disability</td>
             <td md-cell>{{ childDisEMPII.countTotal }}</td>
-            <td md-cell>{{ (100 * childDisEMPII.countTotal / CHILDREN_PROGRAM ) | number:0 }}%</td>
+            <td md-cell>{{ (100 * childDisEMPII.countTotal / emp2People.children ) | number:0 }}%</td>
           </tr>
           <tr class="boldrow" md-row>
             <td md-cell>Children who have/had an IEP</td>
@@ -142,7 +142,7 @@
               <td
               md-cell>{{ emp2EconS.jobAtYearEndorExit }}</td>
               <td
-              md-cell>{{ (100 * emp2EconS.jobAtYearEndorExit / ADULTS_PROGRAM ) | number:0 }}%</td>
+              md-cell>{{ (100 * emp2EconS.jobAtYearEndorExit / emp2People.adult ) | number:0 }}%</td>
             </tr>
             <!-- <tr class="boldrow" md-row>
               <td md-cell>Increased employment income at exit</td>
@@ -157,7 +157,7 @@
             <tr md-row>
               <td md-cell>Disabled adults</td>
               <td md-cell>{{ emp2AdultDis.total }}</td>
-              <td md-cell>{{ (100 * emp2AdultDis.total / ADULTS_PROGRAM ) | number:0 }}%</td>
+              <td md-cell>{{ (100 * emp2AdultDis.total / emp2People.adult ) | number:0 }}%</td>
             </tr>
             <tr md-row>
               <td md-cell>Disabled adults already receiving benefits</td>
@@ -192,7 +192,7 @@
             <tr md-row>
               <td md-cell>Disabled children</td>
               <td md-cell>{{ emp2_childDis.total }}</td>
-              <td md-cell>{{ (100 * emp2_childDis.total / CHILDREN_PROGRAM) | number:0  }}%</td>
+              <td md-cell>{{ (100 * emp2_childDis.total / emp2People.children) | number:0  }}%</td>
             </tr>
             <!-- <tr md-row>
               <td md-cell>Disabled children already receiving benefits</td>
@@ -245,17 +245,17 @@
             <tr md-row>
               <td md-cell>Completed Parenting Education (prior year)</td>
               <td md-cell>{{ emp2ParentEdu_priorYr.completed }}</td>
-              <td md-cell>{{ (100 * emp2ParentEdu_priorYr.completed / ADULTS_PROGRAM ) | number:0  }}%</td>
+              <td md-cell>{{ (100 * emp2ParentEdu_priorYr.completed / emp2People.adult ) | number:0  }}%</td>
             </tr>
             <tr md-row>
               <td md-cell>Completed Parenting Education (current year)</td>
               <td md-cell>{{ parentEduThisYear_EMPII.total }}</td>
-              <td md-cell>{{ (100 * parentEduThisYear_EMPII.total / ADULTS_PROGRAM ) | number:0  }}%</td>
+              <td md-cell>{{ (100 * parentEduThisYear_EMPII.total / emp2People.adult ) | number:0  }}%</td>
             </tr>
             <tr md-row>
               <td md-cell>Total completing Parenting Education</td>
               <td md-cell>{{ emp2ParentEdu_priorYr.completed + parentEduThisYear_EMPII.total }}</td>
-              <td md-cell>{{ (100 * emp2ParentEdu.total / ADULTS_PROGRAM ) | number:0  }}%</td>
+              <td md-cell>{{ (100 * emp2ParentEdu.total / emp2People.adult ) | number:0  }}%</td>
             </tr>
             <!-- <tr class="boldrow" md-row>
               <td md-cell>Achieved a Budgeting Goal</td>
@@ -265,17 +265,17 @@
             <tr md-row>
               <td md-cell>Completed Budgeting Class (prior year)</td>
               <td md-cell>{{ budgetingEduYearBefore.emp2 }}</td>
-              <td md-cell> {{ (100 * budgetingEduYearBefore.emp2 / ADULTS_PROGRAM ) | number:0  }}%</td>
+              <td md-cell> {{ (100 * budgetingEduYearBefore.emp2 / emp2People.adult ) | number:0  }}%</td>
             </tr>
             <tr md-row>
               <td md-cell>Completed Budgeting Class (current year)</td>
               <td md-cell> {{ emp2_budgetingEduSameYear.total }}</td>
-              <td md-cell>{{ (100 * emp2_budgetingEduSameYear.total / ADULTS_PROGRAM ) | number:0  }}%</td>
+              <td md-cell>{{ (100 * emp2_budgetingEduSameYear.total / emp2People.adult ) | number:0  }}%</td>
             </tr>
             <tr md-row>
               <td md-cell>Total Completing Budgeting Class</td>
               <td md-cell> {{ emp2_budgetingEdu.total }}</td>
-              <td md-cell>{{ (100 * emp2_budgetingEdu.total / ADULTS_PROGRAM ) | number:0  }}%</td>
+              <td md-cell>{{ (100 * emp2_budgetingEdu.total / emp2People.adult ) | number:0  }}%</td>
             </tr>
             <tr md-row>
               <td md-cell>Families experiencing Family Violence</td>
@@ -348,7 +348,7 @@
             <tr md-row>
               <td md-cell>Adults abusing substances</td>
               <td md-cell>{{ emp2HealthImp.total }}</td>
-              <td md-cell>{{ (100 * emp2HealthImp.total / ADULTS_PROGRAM ) | number:0  }}%</td>
+              <td md-cell>{{ (100 * emp2HealthImp.total / emp2People.adult ) | number:0  }}%</td>
             </tr>
             <tr md-row>
               <td md-cell>Adults with a Rule 25 Assessment</td>
@@ -388,7 +388,7 @@
             <tr md-row>
               <td md-cell>Adults with MI diagnosis</td>
               <td md-cell>{{ adultMI_EMPII.yesAndBeingTreated + adultMI_EMPII.yesAndReferredForAssessment + adultMI_EMPII.yesAndNotBeingTreated }}</td>
-              <td md-cell>{{ (100 * (adultMI_EMPII.yesAndBeingTreated + adultMI_EMPII.yesAndReferredForAssessment + adultMI_EMPII.yesAndNotBeingTreated) / ADULTS_PROGRAM ) | number:0 }}%</td>
+              <td md-cell>{{ (100 * (adultMI_EMPII.yesAndBeingTreated + adultMI_EMPII.yesAndReferredForAssessment + adultMI_EMPII.yesAndNotBeingTreated) / emp2People.adult ) | number:0 }}%</td>
             </tr>
             <tr class="boldrow" md-row>
               <td md-cell>Adults with MI diagnosis receiving treatment</td>
@@ -423,7 +423,7 @@
             <tr class="boldrow" md-row>
               <td md-cell>Children with undiagnosed MI referred for assessment</td>
               <td md-cell>{{ childMI_EMPII.undiagnosedReferred }}</td>
-              <td md-cell>{{ (100 * childMI_EMPII.undiagnosedReferred / CHILDREN_PROGRAM ) | number:0  }}%</td>
+              <td md-cell>{{ (100 * childMI_EMPII.undiagnosedReferred / emp2People.children ) | number:0  }}%</td>
             </tr>
           </tbody>
         </table>

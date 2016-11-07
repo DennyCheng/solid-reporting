@@ -363,7 +363,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
 
 
                 // HOMESAFE PROGRAM Education
-                $scope.homesafeAdult = {
+                $scope.homeSafeAdult = {
                     complete: 0,
                     continue: 0,
                     enrolled: 0,
@@ -374,40 +374,40 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                 if(data[i].Program == "HomeSafe" || data[i].Program == "Home Safe") {
                     // Adult Completed Education
                     if (data[i]['Adult Edu Adv'] === "Completed Education/Training") {
-                        $scope.homesafeAdult.complete += parseInt(data[i].count);
-                        $scope.homesafeAdult.total += parseInt(data[i].count);
+                        $scope.homeSafeAdult.complete += parseInt(data[i].count);
+                        $scope.homeSafeAdult.total += parseInt(data[i].count);
                     }
-                    if ($scope.homesafeAdult.complete === undefined) {
-                        $scope.homesafeAdult.complete = 0;
+                    if ($scope.homeSafeAdult.complete === undefined) {
+                        $scope.homeSafeAdult.complete = 0;
                     }
 
                     // Adult Continue Education
                     if (data[i]['Adult Edu Adv'] === "Continue Education or Training") {
-                        $scope.homesafeAdult.continue += parseInt(data[i].count);
-                        $scope.homesafeAdult.total += parseInt(data[i].count);
+                        $scope.homeSafeAdult.continue += parseInt(data[i].count);
+                        $scope.homeSafeAdult.total += parseInt(data[i].count);
                     }
-                    if ($scope.homesafeAdult.continue === undefined) {
-                        $scope.homesafeAdult.continue = 0;
+                    if ($scope.homeSafeAdult.continue === undefined) {
+                        $scope.homeSafeAdult.continue = 0;
                     }
 
                     // Adult Dropout Education
                     if (data[i]['Adult Edu Adv'] === "Dropped out and did not return") {
-                        $scope.homesafeAdult.dropout += parseInt(data[i].count);
-                        $scope.homesafeAdult.total += parseInt(data[i].count);
+                        $scope.homeSafeAdult.dropout += parseInt(data[i].count);
+                        $scope.homeSafeAdult.total += parseInt(data[i].count);
                     }
-                    if ($scope.homesafeAdult.dropout === undefined) {
-                        $scope.homesafeAdult.dropout = 0;
+                    if ($scope.homeSafeAdult.dropout === undefined) {
+                        $scope.homeSafeAdult.dropout = 0;
                     }
 
                     // Adult Enrolled Education
                     if (data[i]['Adult Edu Adv'] === "Enrolled in education") {
-                        $scope.homesafeAdult.enrolled += parseInt(data[i].count);
-                        $scope.homesafeAdult.total += parseInt(data[i].count);
+                        $scope.homeSafeAdult.enrolled += parseInt(data[i].count);
+                        $scope.homeSafeAdult.total += parseInt(data[i].count);
                     }
-                    if ($scope.homesafeAdult.enrolled === undefined) {
-                        $scope.homesafeAdult.enrolled = 0;
+                    if ($scope.homeSafeAdult.enrolled === undefined) {
+                        $scope.homeSafeAdult.enrolled = 0;
                     }
-                    console.log('HOMESAFE total', $scope.homesafeAdult.total);
+                    console.log('HOMESAFE total', $scope.homeSafeAdult.total);
                 } // End of HOMESAFE
 
                 // HOMEFRONT PROGRAM Education
@@ -455,7 +455,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                     if ($scope.homeFrontAdult.enrolled === undefined) {
                         $scope.homeFrontAdult.enrolled = 0;
                     }
-                    console.log('homefront total', $scope.homefrontAdult.total);
+                    console.log('homeFront total', $scope.homeFrontAdult.total);
                 } // End of HOMEFRONT
 
                 // HOMEFAGAIN PROGRAM Education
@@ -503,7 +503,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                     if ($scope.homeAgainAdult.enrolled === undefined) {
                         $scope.homeAgainAdult.enrolled = 0;
                     }
-                    console.log('homeagain  total', $scope.homeAgainAdult.total);
+                    console.log('homeAgain  total', $scope.homeAgainAdult.total);
                 } // End of HOMEFAGAIN
 
             } // End of for loop
@@ -610,7 +610,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
           console.log("test emp2",$scope.adultDisEMPII);
           console.log("test again",$scope.adultDisHomeAgain);
           console.log("test safe",$scope.adultDisHomeSafe);
-          console.log("test homefront",$scope.adultDisHomeFront);
+          console.log("test homeFront",$scope.adultDisHomeFront);
         });//end of adultLearningDis
 
 
@@ -713,7 +713,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
             console.log("test emp2",$scope.childDisEMPII);
             console.log("test again",$scope.childDisHomeAgain);
             console.log("test safe",$scope.childDisHomeSafe);
-            console.log("test homefront",$scope.childDisHomeFront);
+            console.log("test homeFront",$scope.childDisHomeFront);
         });//end of childLearnDis
 
 
@@ -1169,7 +1169,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                 total: 0,
             };
 
-            $scope.homesafeAdultDis = {
+            $scope.homeSafeAdultDis = {
                 total: 0,
             };
 
@@ -1194,8 +1194,8 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                 else if(responseArray[i].Program == "HomeSafe"){
                     console.log("whats going on here", responseArray[i]['Is There a Disability']);
                     if(responseArray[i]['Is There a Disability'] === true){
-                        $scope.homesafeAdultDis.total += parseInt(responseArray[i].count);
-                        console.log("home safe Disability true", $scope.homesafeAdultDis.total);
+                        $scope.homeSafeAdultDis.total += parseInt(responseArray[i].count);
+                        console.log("home safe Disability true", $scope.homeSafeAdultDis.total);
                     }
                 }//end of HomeSafe
                 else if(responseArray[i].Program == "Home Again"){
@@ -1231,7 +1231,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
               total: 0,
           };
 
-          $scope.homesafe_childDis = {
+          $scope.homeSafe_childDis = {
               total: 0,
           };
 
@@ -1242,35 +1242,36 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
           $scope.childDis_Total = 0;
 
           for (var i = 0; i < responseArray.length; i++) {
+            var prog = responseArray[i].Program;
+            var childDisValue = responseArray[i]['Is There a Disability'];
             $scope.childDis_Total += parseInt(responseArray[i].count);
-              if(responseArray[i].Program == "EMP"){
+              if(prog == "EMP"){
                   console.log("pre if", responseArray[i].count);
-                  if(responseArray[i]['Is There a Disability'] === true){
+                  if(childDisValue === true){
                       $scope.emp_childDis.total += parseInt(responseArray[i].count);
                       console.log("emp childDisability true: ", $scope.emp_childDis.total);
                   }
               }//end of EMP if
-              else if(responseArray[i].Program == "EMPII"){
-                  if(responseArray[i]['Is There a Disability'] === true){
+              else if(prog == "EMPII"){
+                  if(childDisValue === true){
                       $scope.emp2_childDis.total += parseInt(responseArray[i].count);
                       console.log("emp2 childDisability true", $scope.emp2_childDis.total);
                   }
               }//end of emp2
-              else if(responseArray[i].Program == "HomeSafe"){
-                  console.log("whats going on here", responseArray[i]['Is There a Disability']);
-                  if(responseArray[i]['Is There a Disability'] === true){
-                      $scope.homesafe_childDis.total += parseInt(responseArray[i].count);
-                      console.log("home safe childDisability true: ", $scope.homesafe_childDis.total);
+              else if(prog == "HomeSafe" || prog == "Home Safe"){
+                  if(childDisValue === true){
+                      $scope.homeSafe_childDis.total += parseInt(responseArray[i].count);
+                      console.log("home safe childDisability true: ", $scope.homeSafe_childDis.total);
                   }
               }//end of HomeSafe
-              else if(responseArray[i].Program == "Home Again"){
-                  if(responseArray[i]['Is There a Disability'] === true){
+              else if(prog == "HomeAgain" || prog == "Home Again"){
+                  if(childDisValue === true){
                       $scope.homeAgain_childDis.total += parseInt(responseArray[i].count);
                       console.log("home again childDisability true: ", $scope.homeAgain_childDis.total);
                   }
               }//end of Home Again
-              else if(responseArray[i].Program == "HomeFront" || responseArray[i].Program == "Home Front"){
-                  if(responseArray[i]['Is There a Disability'] === true){
+              else if(prog == "HomeFront" || prog == "Home Front"){
+                  if(childDisValue === true){
                       $scope.homeFront_childDis.total += parseInt(responseArray[i].count);
                       console.log("home front childDisability true: ", $scope.homeFront_childDis.total);
                   }
@@ -1292,15 +1293,15 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                 completed: 0
             };
 
-            $scope.homeagainParentEdu_priorYr = {
+            $scope.homeAgainParentEdu_priorYr = {
                 completed: 0
             };
 
-            $scope.homesafeParentEdu_priorYr = {
+            $scope.homeSafeParentEdu_priorYr = {
                 completed: 0
             };
 
-            $scope.homefrontParentEdu_priorYr = {
+            $scope.homeFrontParentEdu_priorYr = {
                 completed: 0
             };
 
@@ -1315,16 +1316,16 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                     console.log('emp2 parent edu', $scope.emp2ParentEdu_priorYr.completed);
                 }
                 if(data[i].Program === "Home Again") {
-                    $scope.homeagainParentEdu_priorYr.completed = parseInt(data[i]['Parenting Completed']);
-                    console.log('homeagain parent edu',$scope.homeagainParentEdu_priorYr.completed);
+                    $scope.homeAgainParentEdu_priorYr.completed = parseInt(data[i]['Parenting Completed']);
+                    console.log('homeAgain parent edu',$scope.homeAgainParentEdu_priorYr.completed);
                 }
                 if(data[i].Program === "Home Safe" || data[i].Program === "HomeSafe") {
-                    $scope.homesafeParentEdu_priorYr.completed = parseInt(data[i]['Parenting Completed']);
-                    console.log('home safe', $scope.homesafeParentEdu_priorYr.completed);
+                    $scope.homeSafeParentEdu_priorYr.completed = parseInt(data[i]['Parenting Completed']);
+                    console.log('home safe', $scope.homeSafeParentEdu_priorYr.completed);
                 }
                 if(data[i].Program === "Home Front" || data[i].Program === "HomeFront") {
-                    $scope.homefrontParentEdu.completed= parseInt(data[i]['Parenting Completed']);
-                    console.log('home safe', $scope.homefrontParentEdu.completed);
+                    $scope.homeFrontParentEdu.completed= parseInt(data[i]['Parenting Completed']);
+                    console.log('home safe', $scope.homeFrontParentEdu.completed);
                 }
             }
 
@@ -1393,7 +1394,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
             $scope.homeAgainParentEdu = {
                 total: 0,
             };
-            $scope.homesafeParentEdu = {
+            $scope.homeSafeParentEdu = {
                 total: 0,
             };
             $scope.homeFrontParentEdu = {
@@ -1420,8 +1421,8 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                 else if(responseArray[i].Program == "HomeSafe"){
                     console.log("whats going on here", responseArray[i]['Is There a Disability']);
                     if(responseArray[i]['Parenting Education'] === true){
-                        $scope.homesafeParentEdu.total += parseInt(responseArray[i].count);
-                        console.log("home safe parent true", $scope.homesafeParentEdu.total);
+                        $scope.homeSafeParentEdu.total += parseInt(responseArray[i].count);
+                        console.log("home safe parent true", $scope.homeSafeParentEdu.total);
                     }
                 }//end of HomeSafe
                 else if(responseArray[i].Program == "Home Again"){
@@ -1680,7 +1681,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
               total: 0,
           };
 
-          $scope.homesafe_budgetingEdu = {
+          $scope.homeSafe_budgetingEdu = {
               total: 0,
           };
 
@@ -1709,8 +1710,8 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
               else if(responseArray[i].Program == "HomeSafe"){
                   // console.log("whats going on here", responseArray[i]['Budgeting Class']);
                   if(responseArray[i]['Budgeting Class'] === true){
-                      $scope.homesafe_budgetingEdu.total += parseInt(responseArray[i].count);
-                      console.log("home safe budgetingEdu true: ", $scope.homesafe_budgetingEdu.total);
+                      $scope.homeSafe_budgetingEdu.total += parseInt(responseArray[i].count);
+                      console.log("home safe budgetingEdu true: ", $scope.homeSafe_budgetingEdu.total);
                   }
               }//end of HomeSafe
               else if(responseArray[i].Program == "Home Again"){
@@ -1745,7 +1746,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
               total: 0,
           };
 
-          $scope.homesafe_budgetingEduSameYear = {
+          $scope.homeSafe_budgetingEduSameYear = {
               total: 0,
           };
 
@@ -1766,8 +1767,8 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                   console.log("emp2 budgetingEduSameYear true", $scope.emp2_budgetingEduSameYear.total);
               }//end of emp2
               else if(responseArray[i].Program == "HomeSafe"){
-                  $scope.homesafe_budgetingEduSameYear.total += parseInt(responseArray[i]["Budgeting Completed"]);
-                  console.log("home safe budgetingEduSameYear true: ", $scope.homesafe_budgetingEduSameYear.total);
+                  $scope.homeSafe_budgetingEduSameYear.total += parseInt(responseArray[i]["Budgeting Completed"]);
+                  console.log("home safe budgetingEduSameYear true: ", $scope.homeSafe_budgetingEduSameYear.total);
               }//end of HomeSafe
               else if(responseArray[i].Program == "Home Again"){
                   $scope.homeAgain_budgetingEduSameYear.total += parseInt(responseArray[i]["Budgeting Completed"]);
@@ -1923,25 +1924,25 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                 if (data[i]['Program'] === "HomeFront" || data[i]['Program'] == "Home Front") {
                     // HOMEFRONT VIOLENT WITH SAFETY
                     if(data[i]['Has or Had experienced or at risk for violence'] === "YES with a written Safety Plan") {
-                        var homefrontYesWithSafety = parseInt(data[i]['count']);
-                        $scope.violentHomeFront.yesWithSafety += homefrontYesWithSafety;
+                        var homeFrontYesWithSafety = parseInt(data[i]['count']);
+                        $scope.violentHomeFront.yesWithSafety += homeFrontYesWithSafety;
                         console.log('violent HOMEFRONT with safety scope', $scope.violentHomeFront.yesWithSafety);
                     }
-                    if(homefrontYesWithSafety === undefined) {
-                        homefrontYesWithSafety = 0;
+                    if(homeFrontYesWithSafety === undefined) {
+                        homeFrontYesWithSafety = 0;
                     }
 
                     // HOMEFRONT VIOLENT WITHOUT SAFETY
                     if(data[i]['Has or Had experienced or at risk for violence'] === "YES without a written Safety Plan") {
-                        var homefrontYesWithoutSafety = parseInt(data[i]['count']);
-                        $scope.violentHomeFront.yesWithoutSafety += homefrontYesWithoutSafety;
+                        var homeFrontYesWithoutSafety = parseInt(data[i]['count']);
+                        $scope.violentHomeFront.yesWithoutSafety += homeFrontYesWithoutSafety;
                         console.log('violent HOMEFRONT without safety scope', $scope.violentHomeFront.yesWithoutSafety);
                     }
-                    if(homefrontYesWithoutSafety === undefined) {
-                        homefrontYesWithoutSafety = 0;
+                    if(homeFrontYesWithoutSafety === undefined) {
+                        homeFrontYesWithoutSafety = 0;
                     }
                     // HOMEFRONT TOTAL
-                    $scope.violentHomeFront.total = homefrontYesWithSafety + homefrontYesWithoutSafety;
+                    $scope.violentHomeFront.total = homeFrontYesWithSafety + homeFrontYesWithoutSafety;
                     console.log('HOMEFRONT total', $scope.violentHomeFront.total);
                 } // END OF HOMEFRONT
 
@@ -1975,25 +1976,25 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                 if (data[i]['Program'] === "HomeAgain" || data[i]['Program'] == "Home Again") {
                     // HOMEAGAIN VIOLENT WITH SAFETY
                     if(data[i]['Has or Had experienced or at risk for violence'] === "YES with a written Safety Plan") {
-                        var homeagainYesWithSafety = parseInt(data[i]['count']);
-                        $scope.violentHomeAgain.yesWithSafety += homeagainYesWithSafety;
+                        var homeAgainYesWithSafety = parseInt(data[i]['count']);
+                        $scope.violentHomeAgain.yesWithSafety += homeAgainYesWithSafety;
                         console.log('violent HOMEAGAIN with safety scope', $scope.violentHomeAgain.yesWithSafety);
                     }
-                    if(homeagainYesWithSafety === undefined) {
-                        homeagainYesWithSafety = 0;
+                    if(homeAgainYesWithSafety === undefined) {
+                        homeAgainYesWithSafety = 0;
                     }
 
                     // HOMEAGAIN VIOLENT WITHOUT SAFETY
                     if(data[i]['Has or Had experienced or at risk for violence'] === "YES without a written Safety Plan") {
-                        var homeagainYesWithoutSafety = parseInt(data[i]['count']);
-                        $scope.violentHomeAgain.yesWithoutSafety += homeagainYesWithoutSafety;
+                        var homeAgainYesWithoutSafety = parseInt(data[i]['count']);
+                        $scope.violentHomeAgain.yesWithoutSafety += homeAgainYesWithoutSafety;
                         console.log('violent HOMEAGAIN without safety scope', $scope.violentHomeAgain.yesWithoutSafety);
                     }
-                    if(homeagainYesWithoutSafety === undefined) {
-                        homeagainYesWithoutSafety = 0;
+                    if(homeAgainYesWithoutSafety === undefined) {
+                        homeAgainYesWithoutSafety = 0;
                     }
                     // HOMEFRONT TOTAL
-                    $scope.violentHomeAgain.total = homeagainYesWithSafety + homeSafeYesWithoutSafety;
+                    $scope.violentHomeAgain.total = homeAgainYesWithSafety + homeSafeYesWithoutSafety;
                     console.log('HOMEAGAIN total', $scope.violentHomeAgain.total);
                 } // END OF HOMEAGAIN
 
@@ -2089,8 +2090,8 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
             }
             console.log('$scope.tenantTrainingSameYear.empComplete', $scope.tenantTrainingSameYear.emp);
             console.log('$scope.tenantTrainingSameYear.emp2Complete', $scope.tenantTrainingSameYear.emp2);
-            console.log('$scope.tenantTrainingSameYear.homeagainComplete', $scope.tenantTrainingSameYear.homeAgain);
-            console.log('$scope.tenantTrainingSameYear.homefrontComplete', $scope.tenantTrainingSameYear.homeFront);
+            console.log('$scope.tenantTrainingSameYear.homeAgainComplete', $scope.tenantTrainingSameYear.homeAgain);
+            console.log('$scope.tenantTrainingSameYear.homeFrontComplete', $scope.tenantTrainingSameYear.homeFront);
             console.log('$scope.tenantTrainingSameYear.homeSafeComplete', $scope.tenantTrainingSameYear.homeSafe);
             $scope.tenantTrainingSameYear.total = $scope.tenantTrainingSameYear.emp + $scope.tenantTrainingSameYear.emp2 + $scope.tenantTrainingSameYear.homeFront + $scope.tenantTrainingSameYear.homeSafe + $scope.tenantTrainingSameYear.homeAgain;
             console.log('total tenant training ', $scope.tenantTrainingSameYear.total);
@@ -2271,7 +2272,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
           $scope.homeAgainDbt = {
               total: 0,
           };
-          $scope.homesafeDbt = {
+          $scope.homeSafeDbt = {
               total: 0,
           };
           $scope.homeFrontDbt = {
@@ -2296,8 +2297,8 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                       console.log("home again DBT", $scope.homeAgainDbt.total);
               }//end of HomeSafe
               else if(responseArray[i].Program == "HomeSafe"){
-                      $scope.homesafeDbt.total += parseInt(responseArray[i].count);
-                      console.log("home saft DBT", $scope.homesafeDbt.total);
+                      $scope.homeSafeDbt.total += parseInt(responseArray[i].count);
+                      console.log("home saft DBT", $scope.homeSafeDbt.total);
               }//end of Home Again
               else if(responseArray[i].Program == "HomeFront" || responseArray[i].Program == "Home Front"){
                       $scope.homeFrontDbt.total += parseInt(responseArray[i].count);
@@ -2318,7 +2319,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
             $scope.homeAgainDbtSameYear = {
                 total: 0,
             };
-            $scope.homesafeDbtSameYear = {
+            $scope.homeSafeDbtSameYear = {
                 total: 0,
             };
             $scope.homeFrontDbtSameYear = {
@@ -2343,8 +2344,8 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                         console.log("home again DBT Same Year", $scope.homeAgainDbtSameYear.total);
                 }//end of HomeSafe
                 else if(responseArray[i].Program == "HomeSafe"){
-                        $scope.homesafeDbtSameYear.total += parseInt(responseArray[i]["DBT Completed"]);
-                        console.log("home saft DBT Same Year", $scope.homesafeDbtSameYear.total);
+                        $scope.homeSafeDbtSameYear.total += parseInt(responseArray[i]["DBT Completed"]);
+                        console.log("home saft DBT Same Year", $scope.homeSafeDbtSameYear.total);
                 }//end of Home Again
                 else if(responseArray[i].Program == "HomeFront" || responseArray[i].Program == "Home Front"){
                         $scope.homeFrontDbtSameYear.total += parseInt(responseArray[i]["DBT Completed"]);
@@ -2365,7 +2366,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
           $scope.homeAgainDbtPriorYear = {
               total: 0,
           };
-          $scope.homesafeDbtPriorYear = {
+          $scope.homeSafeDbtPriorYear = {
               total: 0,
           };
           $scope.homeFrontDbtPriorYear = {
@@ -2390,8 +2391,8 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                       console.log("home again DBT Prior Year", $scope.homeAgainDbtPriorYear.total);
               }//end of HomeSafe
               else if(responseArray[i].Program == "HomeSafe"){
-                      $scope.homesafeDbtPriorYear.total += parseInt(responseArray[i]["DBT Completed"]);
-                      console.log("home saft DBT Prior Year", $scope.homesafeDbtPriorYear.total);
+                      $scope.homeSafeDbtPriorYear.total += parseInt(responseArray[i]["DBT Completed"]);
+                      console.log("home saft DBT Prior Year", $scope.homeSafeDbtPriorYear.total);
               }//end of Home Again
               else if(responseArray[i].Program == "HomeFront" || responseArray[i].Program == "Home Front"){
                       $scope.homeFrontDbtPriorYear.total += parseInt(responseArray[i]["DBT Completed"]);
@@ -2437,7 +2438,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
             total: 0
           };
 
-          $scope.homesafeHealthImp = {
+          $scope.homeSafeHealthImp = {
             adultsHaveRuleAs: 0,
             adultsCdTreatment: 0,
             adultsSelfHelp: 0,
@@ -2687,77 +2688,77 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
           } // end of home again
         } else if (responseArray[i].Program == "HomeSafe"){
             if (healthValue == "Attended Self-Help Groups (AA,NA,etc)"){
-            $scope.homesafeHealthImp.total ++;
-            $scope.homesafeHealthImp.adultsSelfHelp ++;
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.adultsSelfHelp ++;
           } else if (healthValue == "Attended Self-Help Groups (AA,NA,etc);Attended Treatment;Had a Rule 25 Assessment during report year"){
-            $scope.homesafeHealthImp.total ++;
-            $scope.homesafeHealthImp.adultsSelfHelp ++;
-            $scope.homesafeHealthImp.adultsCdTreatment ++;
-            $scope.homesafeHealthImp.adultsHaveRuleAs ++;
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.adultsSelfHelp ++;
+            $scope.homeSafeHealthImp.adultsCdTreatment ++;
+            $scope.homeSafeHealthImp.adultsHaveRuleAs ++;
           } else if (healthValue == "Attended Self-Help Groups (AA,NA,etc);Attended Treatment;Had a Rule 25 Assessment during report year;Maintained Soberity for past 12+ months;Maintained Sobriety for the past 6 months"){
-            $scope.homesafeHealthImp.total ++;
-            $scope.homesafeHealthImp.adultsSelfHelp ++;
-            $scope.homesafeHealthImp.adultsCdTreatment ++;
-            $scope.homesafeHealthImp.adultsHaveRuleAs ++;
-            $scope.homesafeHealthImp.sobrietyTwelvePlus ++;
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.adultsSelfHelp ++;
+            $scope.homeSafeHealthImp.adultsCdTreatment ++;
+            $scope.homeSafeHealthImp.adultsHaveRuleAs ++;
+            $scope.homeSafeHealthImp.sobrietyTwelvePlus ++;
           } else if (healthValue == "Attended Self-Help Groups (AA,NA,etc);Attended Treatment;Had a Rule 25 Assessment during report year;Maintained Sobriety for past 90 days"){
-            $scope.homesafeHealthImp.total ++;
-            $scope.homesafeHealthImp.adultsSelfHelp ++;
-            $scope.homesafeHealthImp.adultsCdTreatment ++;
-            $scope.homesafeHealthImp.adultsHaveRuleAs ++;
-            $scope.homesafeHealthImp.sobrietyNinety ++;
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.adultsSelfHelp ++;
+            $scope.homeSafeHealthImp.adultsCdTreatment ++;
+            $scope.homeSafeHealthImp.adultsHaveRuleAs ++;
+            $scope.homeSafeHealthImp.sobrietyNinety ++;
           } else if (healthValue == "Attended Self-Help Groups (AA,NA,etc);Attended Treatment;Had a Rule 25 Assessment during report year;Maintained Sobriety for the past 6 months"){
-            $scope.homesafeHealthImp.total ++;
-            $scope.homesafeHealthImp.adultsSelfHelp ++;
-            $scope.homesafeHealthImp.adultsCdTreatment ++;
-            $scope.homesafeHealthImp.adultsHaveRuleAs ++;
-            $scope.homesafeHealthImp.sobrietySixMo ++;
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.adultsSelfHelp ++;
+            $scope.homeSafeHealthImp.adultsCdTreatment ++;
+            $scope.homeSafeHealthImp.adultsHaveRuleAs ++;
+            $scope.homeSafeHealthImp.sobrietySixMo ++;
           } else if (healthValue == "Attended Self-Help Groups (AA,NA,etc);Attended Treatment;Maintained Sobriety for past 90 days"){
-            $scope.homesafeHealthImp.total ++;
-            $scope.homesafeHealthImp.adultsSelfHelp ++;
-            $scope.homesafeHealthImp.sobrietyNinety ++;
-            $scope.homesafeHealthImp.adultsCdTreatment ++;
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.adultsSelfHelp ++;
+            $scope.homeSafeHealthImp.sobrietyNinety ++;
+            $scope.homeSafeHealthImp.adultsCdTreatment ++;
           } else if (healthValue == "Attended Self-Help Groups (AA,NA,etc);Had a Rule 25 Assessment during report year"){
-            $scope.homesafeHealthImp.total ++;
-            $scope.homesafeHealthImp.adultsSelfHelp ++;
-            $scope.homesafeHealthImp.adultsHaveRuleAs ++;
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.adultsSelfHelp ++;
+            $scope.homeSafeHealthImp.adultsHaveRuleAs ++;
           } else if (healthValue == "Attended Self-Help Groups (AA,NA,etc);Maintained Soberity for past 12+ months"){
-            $scope.homesafeHealthImp.total ++;
-            $scope.homesafeHealthImp.adultsSelfHelp ++;
-            $scope.homesafeHealthImp.sobrietyTwelvePlus ++;
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.adultsSelfHelp ++;
+            $scope.homeSafeHealthImp.sobrietyTwelvePlus ++;
           } else if (healthValue == "Attended Treatment"){
-            $scope.homesafeHealthImp.total ++;
-            $scope.homesafeHealthImp.adultsCdTreatment ++;
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.adultsCdTreatment ++;
           } else if (healthValue == "Attended Treatment;Had a Rule 25 Assessment during report year"){
-            $scope.homesafeHealthImp.total ++;
-            $scope.homesafeHealthImp.adultsCdTreatment ++;
-            $scope.homesafeHealthImp.adultsHaveRuleAs ++;
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.adultsCdTreatment ++;
+            $scope.homeSafeHealthImp.adultsHaveRuleAs ++;
           } else if (healthValue == "Attended Treatment;Had a Rule 25 Assessment during report year;Maintained Sobriety for past 90 days"){
-            $scope.homesafeHealthImp.total ++;
-            $scope.homesafeHealthImp.adultsCdTreatment ++;
-            $scope.homesafeHealthImp.adultsHaveRuleAs ++;
-            $scope.homesafeHealthImp.sobrietyNinety ++;
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.adultsCdTreatment ++;
+            $scope.homeSafeHealthImp.adultsHaveRuleAs ++;
+            $scope.homeSafeHealthImp.sobrietyNinety ++;
           } else if (healthValue == "Attended Treatment;Had a Rule 25 Assessment during report year;Maintained Sobriety for the past 6 months"){
-            $scope.homesafeHealthImp.total ++;
-            $scope.homesafeHealthImp.adultsCdTreatment ++;
-            $scope.homesafeHealthImp.adultsHaveRuleAs ++;
-            $scope.homesafeHealthImp.sobrietySixMo ++;
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.adultsCdTreatment ++;
+            $scope.homeSafeHealthImp.adultsHaveRuleAs ++;
+            $scope.homeSafeHealthImp.sobrietySixMo ++;
           } else if (healthValue == "Had a Rule 25 Assessment during report year"){
-            $scope.homesafeHealthImp.total ++;
-            $scope.homesafeHealthImp.adultsHaveRuleAs ++;
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.adultsHaveRuleAs ++;
           } else if (healthValue == "Had a Rule 25 Assessment during report year;Maintained Sobriety for the past 6 months"){
-            $scope.homesafeHealthImp.total ++;
-            $scope.homesafeHealthImp.adultsHaveRuleAs ++;
-            $scope.homesafeHealthImp.sobrietySixMo ++;
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.adultsHaveRuleAs ++;
+            $scope.homeSafeHealthImp.sobrietySixMo ++;
           } else if (healthValue == "Maintained Soberity for past 12+ months"){
-            $scope.homesafeHealthImp.total ++;
-            $scope.homesafeHealthImp.sobrietyTwelvePlus ++;
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.sobrietyTwelvePlus ++;
           } else if (healthValue == "Maintained Sobriety for past 90 days"){
-            $scope.homesafeHealthImp.total ++;
-            $scope.homesafeHealthImp.sobrietyNinety ++;
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.sobrietyNinety ++;
           } else if (healthValue == "Maintained Sobriety for the past 6 months"){
-            $scope.homesafeHealthImp.total ++;
-            $scope.homesafeHealthImp.sobrietySixMo ++;
+            $scope.homeSafeHealthImp.total ++;
+            $scope.homeSafeHealthImp.sobrietySixMo ++;
           } //end of homeSafe
           } else if (responseArray[i].Program == "HomeFront" || responseArray[i].Program == "Home Front"){
               if (healthValue == "Attended Self-Help Groups (AA,NA,etc)"){
@@ -2835,8 +2836,8 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
               }
             }
           }
-          console.log("homefront", $scope.homeFrontHealthImp);
-          console.log("home safe", $scope.homesafeHealthImp);
+          console.log("homeFront", $scope.homeFrontHealthImp);
+          console.log("home safe", $scope.homeSafeHealthImp);
           console.log("home again", $scope.homeAgainHealthImp);
           console.log("emp2", $scope.emp2HealthImp);
           console.log("emp", $scope.empHealthImp);
@@ -2871,12 +2872,12 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                     }
 
                     if (dataProgram === 'HomeSafe' && dataRole === 'Adults') {
-                      var homesafeSum = Number(data[i]['sum']);
-                      console.log('total sum HomeSafe Adults -------', homesafeSum);
+                      var homeSafeSum = Number(data[i]['sum']);
+                      console.log('total sum HomeSafe Adults -------', homeSafeSum);
                     }
                     if (dataProgram === 'HomeSafe' && dataRole === 'Children') {
-                      var homesafeChildrenSum = Number(data[i]['sum']);
-                      console.log('total sum HomeSafe children -------', homesafeChildrenSum);
+                      var homeSafeChildrenSum = Number(data[i]['sum']);
+                      console.log('total sum HomeSafe children -------', homeSafeChildrenSum);
                     }
                     if (dataProgram === 'Home Again' && dataRole === 'Adults') {
                       var homeAgainSum = Number(data[i]['sum']);
@@ -2906,11 +2907,11 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                     if(homeAgainChildrenSum === undefined) {
                       homeAgainChildrenSum = 0;
                     }
-                    if(homesafeSum === undefined) {
-                      homesafeSum = 0;
+                    if(homeSafeSum === undefined) {
+                      homeSafeSum = 0;
                     }
-                    if(homesafeChildrenSum === undefined) {
-                      homesafeChildrenSum= 0;
+                    if(homeSafeChildrenSum === undefined) {
+                      homeSafeChildrenSum= 0;
                     }
                     if(emp2Sum === undefined) {
                       emp2Sum = 0;
@@ -2951,31 +2952,31 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                   console.log('emp2children sum value',$scope.emp2People.children);
 
                   // HOMESAFE
-                  $scope.homesafePeople = {
+                  $scope.homeSafePeople = {
                     adult: 0,
                     children: 0
                   };
 
-                  $scope.homesafePeople.adult = homesafeSum;
-                  console.log('homesafeadult sum value',$scope.homesafePeople.adult);
+                  $scope.homeSafePeople.adult = homeSafeSum;
+                  console.log('homeSafeadult sum value',$scope.homeSafePeople.adult);
 
-                  $scope.homesafePeople.children = homesafeChildrenSum ;
-                  console.log('homesafechildren sum value',$scope.homesafePeople.children);
+                  $scope.homeSafePeople.children = homeSafeChildrenSum ;
+                  console.log('homeSafechildren sum value',$scope.homeSafePeople.children);
 
                   // HOMEAGAIN People
-                  $scope.homeagainPeople = {
+                  $scope.homeAgainPeople = {
                     adult: 0,
                     children: 0
                   };
 
-                  $scope.homeagainPeople.adult = homeAgainSum;
-                  console.log('homeagianadult sum value',$scope.homeagainPeople.adult);
+                  $scope.homeAgainPeople.adult = homeAgainSum;
+                  console.log('homeagianadult sum value',$scope.homeAgainPeople.adult);
 
-                  $scope.homeagainPeople.children = homeAgainChildrenSum;
-                  console.log('homeagianchildren sum value',$scope.homeagainPeople.children);
+                  $scope.homeAgainPeople.children = homeAgainChildrenSum;
+                  console.log('homeagianchildren sum value',$scope.homeAgainPeople.children);
 
                   // HOMEFRONT People
-                  $scope.homeafrontPeople = {
+                  $scope.homeFrontPeople = {
                     adult: 0,
                     children: 0
                   };
@@ -2986,24 +2987,24 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                     children: 0,
                     emp1: 0,
                     emp2: 0,
-                    homeagain: 0,
-                    homesafe: 0,
-                    homefront: 0,
+                    homeAgain: 0,
+                    homeSafe: 0,
+                    homeFront: 0,
                     adultChildrenTotal: 0
                   };
 
-                  $scope.homeafrontPeople.adult = homeFrontSum;
-                  console.log('homefrontadult sum value',$scope.homeafrontPeople.adult);
+                  $scope.homeFrontPeople.adult = homeFrontSum;
+                  console.log('homeFront.adult sum value',$scope.homeFrontPeople.adult);
 
-                  $scope.homeafrontPeople.children = homeFrontChildrenSum;
-                  console.log('homefrontchildren sum value',$scope.homeafrontPeople.children);
+                  $scope.homeFrontPeople.children = homeFrontChildrenSum;
+                  console.log('homeFront.children sum value',$scope.homeFrontPeople.children);
 
                   // Adult Total People
-                  $scope.programPeopleTotal.adult = empSum + emp2Sum + homesafeSum + homeAgainSum + homeFrontSum + homeFrontChildrenSum;
+                  $scope.programPeopleTotal.adult = empSum + emp2Sum + homeSafeSum + homeAgainSum + homeFrontSum + homeFrontChildrenSum;
                   console.log('Program adult total ', $scope.programPeopleTotal.adult);
 
                   //Children Total People
-                  $scope.programPeopleTotal.children = empChildrenSum +  emp2ChildrenSum + homesafeChildrenSum + homeAgainChildrenSum;
+                  $scope.programPeopleTotal.children = empChildrenSum +  emp2ChildrenSum + homeSafeChildrenSum + homeAgainChildrenSum;
                   console.log('Program children total ', $scope.programPeopleTotal.children);
 
                   //EMP1 Total People
@@ -3015,16 +3016,16 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                   console.log('Program EMP2 total ', $scope.programPeopleTotal.emp2);
 
                   //HomeAgain People Total
-                  $scope.programPeopleTotal.homeagain = homeAgainSum + homeAgainChildrenSum;
-                  console.log('Program HomeAgain total ', $scope.programPeopleTotal.homeagain);
+                  $scope.programPeopleTotal.homeAgain = homeAgainSum + homeAgainChildrenSum;
+                  console.log('Program HomeAgain total ', $scope.programPeopleTotal.homeAgain);
 
                   //HomeSafe People Total
-                  $scope.programPeopleTotal.homesafe = homesafeSum + homesafeChildrenSum;
-                  console.log('Program homesafe total ', $scope.programPeopleTotal.homesafe);
+                  $scope.programPeopleTotal.homeSafe = homeSafeSum + homeSafeChildrenSum;
+                  console.log('Program homeSafe total ', $scope.programPeopleTotal.homeSafe);
 
                   //HomeFront People Total
-                  $scope.programPeopleTotal.homefront = homeFrontSum + homeFrontChildrenSum;
-                  console.log('Program homefront total ', $scope.programPeopleTotal.homefront);
+                  $scope.programPeopleTotal.homeFront = homeFrontSum + homeFrontChildrenSum;
+                  console.log('Program homeFront total ', $scope.programPeopleTotal.homeFront);
 
                   $scope.programPeopleTotal.adultChildrenTotal = $scope.programPeopleTotal.adult + $scope.programPeopleTotal.children;
                   console.log('Program Adult and Children total ', $scope.programPeopleTotal.adultChildrenTotal);

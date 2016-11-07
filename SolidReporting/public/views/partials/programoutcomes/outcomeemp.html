@@ -116,7 +116,7 @@
           <tr md-row>
             <td md-cell>Children with a documented learning disability</td>
             <td md-cell>{{ childDisEMP.countTotal }}</td>
-            <td md-cell>{{ (100 * childDisEMP.countTotal / CHILDREN_PROGRAM ) | number:0 }}%</td>
+            <td md-cell>{{ (100 * childDisEMP.countTotal / empPeople.children ) | number:0 }}%</td>
           </tr>
           <tr class="boldrow" md-row>
             <td md-cell>Children who have/had an IEP</td>
@@ -191,7 +191,7 @@
             <tr md-row>
               <td md-cell>Disabled children</td>
               <td md-cell>{{ emp_childDis.total }}</td>
-              <td md-cell>{{ (100 * emp_childDis.total / CHILDREN_PROGRAM) | number:0  }}%</td>
+              <td md-cell>{{ (100 * emp_childDis.total / empPeople.children) | number:0  }}%</td>
             </tr>
             <!-- <tr md-row>
               <td md-cell>Disabled children already receiving benefits</td>
