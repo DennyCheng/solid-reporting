@@ -267,7 +267,7 @@ OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Househ
 OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
 GROUP BY "Head of Household-2"."Currently Employed", "Head of Household"."Program";
 
-Improved Econ Stability
+Improved Econ Stability Adults
 SELECT "Improved Econ Stability", COUNT(*), "Program"
 FROM "Head of Household"
 WHERE("Improved Econ Stability" IS NOT NULL AND "Improved Econ Stability" != '') AND (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
@@ -287,6 +287,16 @@ OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Househ
 OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
 GROUP BY "Head of Household-2"."Improved Econ Stability", "Head of Household"."Program"
 ;
+
+Improved Econ Stability Children
+SELECT "Members of Household"."Improved Econ Stability", COUNT(*), "Head of Household"."Program"
+FROM "Members of Household"
+LEFT JOIN "Head of Household" ON "Members of Household"."Head of Household" = "Head of Household"."HoHID"
+WHERE("Members of Household"."Improved Econ Stability" IS NOT NULL AND "Members of Household"."Improved Econ Stability" != '') AND (("Head of Household"."Program Exit Date" >= '2015-01-01' AND "Head of Household"."Program Exit Date" <= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" IS NULL)
+OR ("Head of Household"."Program Entry Date" <= '2015-01-01' AND "Head of Household"."Program Exit Date" >= '2015-12-31')
+OR ("Head of Household"."Program Entry Date" >= '2015-01-01'AND "Head of Household"."Program Entry Date" <= '2015-12-31' AND "Head of Household"."Program Exit Date" >= '2015-12-31'))
+GROUP BY "Members of Household"."Improved Econ Stability", "Head of Household"."Program";
 
 Disability - Adult
 SELECT "Is There a Disability", COUNT(*), "Program"
