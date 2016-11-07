@@ -3290,6 +3290,72 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
 
                 });
 
+                //Call to get total number of children ages 5-18
+                    $scope.demoFactory.dobChildren(selections).then(function(response) {
+                      console.log("SHITresponse dobChildren: ", response);
+                      var responseArray = response
+                      $scope.childSchoolAgeEMP = {
+                        total:0
+                      };
+
+                      $scope.childSchoolAgeEMPII = {
+                        total:0
+                      };
+
+                      $scope.childSchoolAgeHomeSafe = {
+                        total:0
+                      };
+
+                      $scope.childSchoolAgeHomeAgain = {
+                        total:0
+                      };
+
+                      $scope.childSchoolAgeHomeFront = {
+                        total:0
+                      };
+
+                      for (var i = 0; i < responseArray.length; i++) {
+                        responseArray[i]['dob'] = responseArray[i]['dob'].slice(0,10);
+                        var personDOB = new Date(responseArray[i]['dob']); //reformats persons DOB
+                        var age = dateDiff(personDOB,$scope.enddate);
+
+                            if(responseArray[i].Program =="EMP"){
+                                if(age>=5 && age>=5 && age <= 188){
+                                  $scope.childSchoolAgeEMP.total+=1;
+                                  }
+                                }
+
+                            else if(responseArray[i].Program =="EMPII"){
+                                if(age>=5 && age <= 18){
+                                  $scope.childSchoolAgeEMPII.total+=1;
+                                  }
+                            }
+
+                            else if(responseArray[i].Program =="HomeSafe"||responseArray[i].Program =="Home Safe"){
+                                if(age>=5 && age <= 18){
+                                  $scope.childSchoolAgeHomeSafe.total+=1;
+                                  }
+                                }
+
+                            else if(responseArray[i].Program =="HomeAgain"||responseArray[i].Program =="Home Again"){
+                                if(age>=5 && age <= 18){
+                                  $scope.childSchoolAgeHomeAgain.total+=1;
+                                  }
+                                }
+
+                            else if(responseArray[i].Program =="HomeFront"||responseArray[i].Program =="Home Front"){
+                                if(age>=5 && age <= 18){
+                                  $scope.childSchoolAgeHomeFront.total+=1;
+                                  }
+                                }
+                      }//end of for loop
+                      console.log("OUTCOME TEST", $scope.childSchoolAgeEMP);
+                      console.log("OUTCOME TEST", $scope.childSchoolAgeEMPII);
+                      console.log("OUTCOME TEST", $scope.childSchoolAgeHomeFront);
+                      console.log("OUTCOME TEST", $scope.childSchoolAgeHomeAgain);
+                      console.log("OUTCOME TEST", $scope.childSchoolAgeHomeSafe);
+                    console.log("MEOWSZ");
+                    });//end of dobChildren
 
 
     } //end of click
@@ -3310,72 +3376,24 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
         $scope.enddate = new Date();
     };
 
-//Call to get total number of children ages 5-18
-    $scope.demoFactory.dobChildren(selections).then(function(response) {
-      console.log("SHITresponse dobChildren: ", response);
-      var responseArray = response
-      $scope.childSchoolAgeEMP = {
-        total:0
-      };
-
-      $scope.childSchoolAgeEMPII = {
-        total:0
-      };
-
-      $scope.childSchoolAgeHomeSafe = {
-        total:0
-      };
-
-      $scope.childSchoolAgeHomeAgain = {
-        total:0
-      };
-
-      $scope.childSchoolAgeHomeFront = {
-        total:0
-      };
-
-      for (var i = 0; i < responseArray.length; i++) {
-        responseArray[i]['dob'] = responseArray[i]['dob'].slice(0,10);
-        var personDOB = new Date(responseArray[i]['dob']); //reformats persons DOB
-        var age = dateDiff(personDOB,$scope.enddate);
-
-            if(responseArray[i].Program =="EMP"){
-                if(age>=5 && age>=5 && age <= 188){
-                  $scope.childdobEMP.total+=1;
-                  }
-                }
-
-            else if(responseArray[i].Program =="EMPII"){
-                if(age>=5 && age <= 18){
-                  $scope.childdobEMPII.total+=1;
-                  }
-            }
-
-            else if(responseArray[i].Program =="HomeSafe"||responseArray[i].Program =="Home Safe"){
-                if(age>=5 && age <= 18){
-                  $scope.childdobHomeSafe.total+=1;
-                  }
-                }
-
-            else if(responseArray[i].Program =="HomeAgain"||responseArray[i].Program =="Home Again"){
-                if(age>=5 && age <= 18){
-                  $scope.childdobHomeAgain.total+=1;
-                  }
-                }
-
-            else if(responseArray[i].Program =="HomeFront"||responseArray[i].Program =="Home Front"){
-                if(age>=5 && age <= 18){
-                  $scope.childdobHomeFront.total+=1;
-                  }
-                }
-      }//end of for loop
-      console.log("OUTCOME TEST", $scope.childdobEMP);
-      console.log("OUTCOME TEST", $scope.childdobEMPII);
-      console.log("OUTCOME TEST", $scope.childdobHomeFront);
-      console.log("OUTCOME TEST", $scope.childdobHomeAgain);
-      console.log("OUTCOME TEST", $scope.childdobHomeSafe);
-
-    });//end of dobChildren
+    function dateDiff(personDOB, endDate){
+      var personYear = endDate.getFullYear();
+      var personMonth = endDate.getMonth();
+      var personDate = endDate.getDate();
+      var endYear = personDOB.getFullYear();
+      var endMonth = personDOB.getMonth();
+      var endDay = personDOB.getDate();
+      var diff = personYear - endYear;
+      if(endMonth > personMonth) diff--;
+      else
+      {
+        if(endMonth == personMonth)
+        {
+          if(endDay > personDate) diff--;
+        }
+      }
+      return diff;
+    };
 
 // end controller
 }]);

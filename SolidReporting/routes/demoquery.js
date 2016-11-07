@@ -246,7 +246,7 @@ router.post('/dobchildren', function(req, res) {
   // sorting through raceChild selections:
   if(raceChild.length === 0) {
     // somehow delete the query or make it blank or assume this is select all
-    raceQuery = "length is 0, nothing selected";
+    raceQuery = "";
   } else if(raceChild.length === 1) {
     raceQuery = "(\"Members of Household\".\"Race Code\" = '" + raceChild[0] + "') AND ";
   } else {
