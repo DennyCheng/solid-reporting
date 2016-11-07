@@ -3,7 +3,6 @@
           <md-toolbar flex>
             <h1 class="md-title tablehead" >EMP</h1>
           </md-toolbar>
-
 <!-- EMP: Housing Stability ----------------------------->
           <table md-table>
           <thead md-head>
@@ -261,7 +260,8 @@
             </tr> -->
             <tr md-row>
               <td md-cell>Completed Parenting Education (prior year)</td>
-              <td ng-model="empParentEdu_priorYr"md-cell>{{ empParentEdu_priorYr.completed }}</td>
+              <td ng-model="empParentEdu_priorYr"
+              md-cell>{{ empParentEdu_priorYr.completed }}</td>
               <td ng-model="empParentEdu_priorYr" md-cell>{{ (100 * empParentEdu_priorYr.completed / empParentEdu_priorYr.completed ) | number:2  }}%</td>
             </tr>
             <tr md-row>
