@@ -9,7 +9,7 @@ var connection = require('../modules/connection');
 var pool = new pg.Pool(connection);
 
 
-// Houseing Stability
+// Housing Stability
 router.post('/houseStabil', function(req, res) {
   console.log("go house stabil");
   console.log("req.body line 09: ", req.body);
