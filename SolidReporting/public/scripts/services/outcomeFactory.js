@@ -281,6 +281,16 @@ myApp.factory('OutcomeFactory', ['$http', '$location', function($http, $location
       return promise;
     }
 
+    var totalPeople = function(selections) {
+
+      var promise = $http.post('/outcomequery/totalpeopleforoutcomes', selections).then(function (response) {
+        var totalPeople = response.data;
+        console.log("totalPeople: ", totalPeople);
+        return totalPeople;
+      });
+      return promise;
+    }
+
   return {  //start of return scope
     retrieveData: function () {
       return getData();
