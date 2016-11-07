@@ -28,7 +28,7 @@ console.log('logincontroller');
     $scope.userRegister = function() {
       var userWhole = $scope.user;
       console.log('preinfo', userWhole);
-    $scope.dataFactory.registerUser(userWhole);
+      $scope.dataFactory.registerUser(userWhole);
     };
 
     $scope.forgotPassword = function () {
@@ -72,7 +72,7 @@ console.log('logincontroller');
             toaster.error('password do not match');
         }
     };
-    
+
     // angular
     //     .module('MyApp')
     //     .controller('DemoCtrl', function( $scope ) {
