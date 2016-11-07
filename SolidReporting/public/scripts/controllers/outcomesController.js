@@ -1153,6 +1153,264 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
         }); // End of econStabil
 
 
+        $scope.outcomeFactory.econStabilMOH(selections).then(function(response) {
+            console.log("response econStabilMOH: ", response);
+            var responseArray = response;
+
+            $scope.empEconSMOH = {
+                work3month: 0,
+                appliedforSSD: 0,
+                appliedforSSDbutDenied: 0,
+                jobAtYearEndorExit: 0,
+                diagDisAlreadySSD: 0,
+                approvedSSDduringProgram: 0,
+                alreadySSD: 0,
+                refusedSSD: 0,
+                total: 0
+            };
+
+            $scope.emp2EconSMOH = {
+                work3month: 0,
+                appliedforSSD: 0,
+                appliedforSSDbutDenied: 0,
+                jobAtYearEndorExit: 0,
+                diagDisAlreadySSD: 0,
+                approvedSSDduringProgram: 0,
+                alreadySSD: 0,
+                refusedSSD: 0,
+                total: 0
+            };
+
+            $scope.homeAgainEconSMOH = {
+                work3month: 0,
+                appliedforSSD: 0,
+                appliedforSSDbutDenied: 0,
+                jobAtYearEndorExit: 0,
+                diagDisAlreadySSD: 0,
+                approvedSSDduringProgram: 0,
+                alreadySSD: 0,
+                refusedSSD: 0,
+                total: 0
+            };
+
+            $scope.homeSafeEconSMOH = {
+                work3month: 0,
+                appliedforSSD: 0,
+                appliedforSSDbutDenied: 0,
+                jobAtYearEndorExit: 0,
+                diagDisAlreadySSD: 0,
+                approvedSSDduringProgram: 0,
+                alreadySSD: 0,
+                refusedSSD: 0,
+                total: 0
+            };
+
+            $scope.homeFrontEconSMOH = {
+                work3month: 0,
+                appliedforSSD: 0,
+                appliedforSSDbutDenied: 0,
+                jobAtYearEndorExit: 0,
+                diagDisAlreadySSD: 0,
+                approvedSSDduringProgram: 0,
+                alreadySSD: 0,
+                refusedSSD: 0,
+                total: 0
+            };
+
+            for (var i = 0; i < responseArray.length; i++) {
+              var econStabValue = responseArray[i]['Improved Econ Stability'];
+                if(responseArray[i].Program == "EMP"){
+                    if(econStabValue == "Worked for 3+ months"){
+                        $scope.empEconSMOH.work3month += parseInt(responseArray[i].count);
+                        $scope.empEconSMOH.total ++;
+                        console.log("emp 3 mo", $scope.empEconSMOH.work3month);
+                    }
+                    else if(econStabValue == "Applied for SSD during program" || econStabValue == "Diag-Disability applied for SSD during program"){
+                        $scope.empEconSMOH.appliedforSSD += parseInt(responseArray[i].count);
+                        $scope.empEconSMOH.total ++;
+                        console.log("emp emp for ssd", $scope.empEconSMOH.appliedforSSD);
+                    }
+                    else if(econStabValue == "Had a job at year-end or at exit" || econStabValue == "Had a job at year-end or at exiting"){
+                        $scope.empEconSMOH.jobAtYearEndorExit += parseInt(responseArray[i].count)
+                        $scope.empEconSMOH.total ++;
+                        console.log("emp job at exit", $scope.empEconSMOH.jobAtYearEndorExit);
+                    }
+                    else if(econStabValue == "Applied for SSD but denied"){
+                        $scope.empEconSMOH.appliedforSSDbutDenied += parseInt(responseArray[i].count);
+                        $scope.empEconSMOH.total ++;
+                        console.log("emp denied ssd", $scope.empEconSMOH.appliedforSSDbutDenied);
+                    }
+                    else if(econStabValue == "Approved for SSD during program" || econStabValue == "Diag-Disability approved for SSD during program"){
+                        $scope.empEconSMOH.approvedSSDduringProgram += parseInt(responseArray[i].count);
+                        $scope.empEconSMOH.total ++;
+                        console.log("emp approved ssd", $scope.empEconSMOH.approvedSSDduringProgram);
+                    }
+                    else if(econStabValue == "Already receiving SSD prior program" || econStabValue == "Diag-Disability already received SSD prior program"){
+                        $scope.empEconSMOH.alreadySSD += parseInt(responseArray[i].count);
+                        $scope.empEconSMOH.total ++;
+                        console.log("emp already ssd", $scope.empEconS.alreadySSD);
+                    }
+                    else if(/refuse/i.test(econStabValue)) {
+                        $scope.empEconSMOH.refusedSSD += parseInt(responseArray[i].count);
+                        $scope.empEconSMOH.total ++;
+                        console.log("emp refused ssd", $scope.empEconSMOH.refusedSSD);
+                    }
+
+                }//end of EMP if
+                else if(responseArray[i].Program == "EMPII"){
+                    if(econStabValue == "Worked for 3+ months"){
+                        $scope.emp2EconSMOH.work3month += parseInt(responseArray[i].count);
+                        $scope.emp2EconSMOH.total ++;
+                        console.log("emp2 3 mo", $scope.emp2EconSMOH.work3month);
+                    }
+                    else if(econStabValue == "Applied for SSD during program"){
+                        $scope.emp2EconSMOH.appliedforSSD += parseInt(responseArray[i].count);
+                        $scope.emp2EconSMOH.total ++;
+                        console.log("emp2 for ssd", $scope.emp2EconSMOH.appliedforSSD);
+                    }
+                    else if(econStabValue == "Had a job at year-end or at exit" || econStabValue == "Had a job at year-end or at exiting"){
+                        $scope.emp2EconSMOH.jobAtYearEndorExit += parseInt(responseArray[i].count)
+                        $scope.emp2EconSMOH.total ++;
+                        console.log("emp2 job at exit", $scope.emp2EconSMOH.jobAtYearEndorExit);
+                    }
+                    else if(econStabValue == "Applied for SSD but denied"){
+                        $scope.emp2EconSMOH.appliedforSSDbutDenied += parseInt(responseArray[i].count);
+                        $scope.emp2EconSMOH.total ++;
+                        console.log("emp2 denied ssd", $scope.emp2EconSMOH.appliedforSSDbutDenied);
+                    }
+                    else if(econStabValue == "Approved for SSD during program"){
+                        $scope.emp2EconSMOH.approvedSSDduringProgram += parseInt(responseArray[i].count);
+                        $scope.emp2EconSMOH.total ++;
+                        console.log("emp2 approved ssd", $scope.emp2EconSMOH.approvedSSDduringProgram);
+                    }
+                    else if(econStabValue == "Already receiving SSD prior program"){
+                        $scope.emp2EconSMOH.alreadySSD += parseInt(responseArray[i].count);
+                        $scope.emp2EconSMOH.total ++;
+                        console.log("emp2 already ssd", $scope.emp2EconSMOH.alreadySSD);
+                    }
+                    else if(/refuse/i.test(econStabValue)) {
+                        $scope.emp2EconSMOH.refusedSSD += parseInt(responseArray[i].count);
+                        $scope.emp2EconSMOH.total ++;
+                        console.log("emp2 refused ssd", $scope.empEconSMOH.refusedSSD);
+                    }
+                }//end of emp2
+                else if(responseArray[i].Program == "HomeSafe"){
+                    if(econStabValue == "Worked for 3+ months"){
+                        $scope.homeSafeEconSMOH.work3month += parseInt(responseArray[i].count);
+                        $scope.homeSafeEconSMOH.total ++;
+                        console.log("homeSafe 3 mo", $scope.homeSafeEconSMOH.work3month);
+                    }
+                    else if(econStabValue == "Applied for SSD during program"){
+                        $scope.homeSafeEconSMOH.appliedforSSD += parseInt(responseArray[i].count);
+                        $scope.homeSafeEconSMOH.total ++;
+                        console.log("homeSafe for ssd", $scope.homeSafeEconSMOH.appliedforSSD);
+                    }
+                    else if(econStabValue == "Had a job at year-end or at exit" || econStabValue == "Had a job at year-end or at exiting"){
+                        $scope.homeSafeEconSMOH.jobAtYearEndorExit += parseInt(responseArray[i].count)
+                        $scope.homeSafeEconSMOH.total ++;
+                        console.log("homeSafe job at exit", $scope.homeSafeEconSMOH.jobAtYearEndorExit);
+                    }
+                    else if(econStabValue == "Applied for SSD but denied"){
+                        $scope.homeSafeEconSMOH.appliedforSSDbutDenied += parseInt(responseArray[i].count);
+                        $scope.homeSafeEconSMOH.total ++;
+                        console.log("homeSafe denied ssd", $scope.homeSafeEconSMOH.appliedforSSDbutDenied);
+                    }
+                    else if(econStabValue == "Approved for SSD during program"){
+                        $scope.homeSafeEconSMOH.approvedSSDduringProgram += parseInt(responseArray[i].count);
+                        $scope.homeSafeEconSMOH.total ++;
+                        console.log("homeSafe approved ssd", $scope.homeSafeEconSMOH.approvedSSDduringProgram);
+                    }
+                    else if(econStabValue == "Already receiving SSD prior program"){
+                        $scope.homeSafeEconSMOH.alreadySSD += parseInt(responseArray[i].count);
+                        $scope.homeSafeEconSMOH.total ++;
+                        console.log("homeSafe already ssd", $scope.homeSafeEconSMOH.alreadySSD);
+                    }
+                    else if(/refuse/i.test(econStabValue)) {
+                        $scope.homeSafeEconSMOH.refusedSSD += parseInt(responseArray[i].count);
+                        $scope.homeSafeEconSMOH.total ++;
+                        console.log("homeSafe refused ssd", $scope.homeSafeEconSMOH.refusedSSD);
+                    }
+                }//end of HomeSafe
+                else if(responseArray[i].Program == "Home Again"){
+                    if(econStabValue == "Worked for 3+ months"){
+                        $scope.homeAgainEconSMOH.work3month += parseInt(responseArray[i].count);
+                        $scope.homeAgainEconSMOH.total ++;
+                        console.log("home again 3 mo", $scope.homeAgainEconSMOH.work3month);
+                    }
+                    else if(econStabValue == "Applied for SSD during program"){
+                        $scope.homeAgainEconSMOH.appliedforSSD += parseInt(responseArray[i].count);
+                        $scope.homeAgainEconSMOH.total ++;
+                        console.log("home again for ssd", $scope.homeAgainEconSMOH.appliedforSSD);
+                    }
+                    else if(econStabValue == "Had a job at year-end or at exit" || econStabValue == "Had a job at year-end or at exiting"){
+                        $scope.homeAgainEconSMOH.jobAtYearEndorExit += parseInt(responseArray[i].count)
+                        $scope.homeAgainEconSMOH.total ++;
+                        console.log("home again job at exit", $scope.homeAgainEconSMOH.jobAtYearEndorExit);
+                    }
+                    else if(econStabValue == "Applied for SSD but denied"){
+                        $scope.homeAgainEconSMOH.appliedforSSDbutDenied += parseInt(responseArray[i].count);
+                        $scope.homeAgainEconSMOH.total ++;
+                        console.log("home again denied ssd", $scope.homeAgainEconSMOH.appliedforSSDbutDenied);
+                    }
+                    else if(econStabValue == "Approved for SSD during program"){
+                        $scope.homeAgainEconSMOH.approvedSSDduringProgram += parseInt(responseArray[i].count);
+                        $scope.homeAgainEconSMOH.total ++;
+                        console.log("home again approved ssd", $scope.homeAgainEconSMOH.approvedSSDduringProgram);
+                    }
+                    else if(econStabValue == "Already receiving SSD prior program"){
+                        $scope.homeAgainEconSMOH.alreadySSD += parseInt(responseArray[i].count);
+                        $scope.homeAgainEconSMOH.total ++;
+                        console.log("home again already ssd", $scope.homeAgainEconSMOH.alreadySSD);
+                    }
+                    else if(/refuse/i.test(econStabValue)) {
+                        $scope.homeAgainEconSMOH.refusedSSD += parseInt(responseArray[i].count);
+                        $scope.homeAgainEconSMOH.total ++;
+                        console.log("homeAgain refused ssd", $scope.homeAgainEconSMOH.refusedSSD);
+                    }
+
+                }//end of Home Again
+                else if(responseArray[i].Program == "HomeFront" || responseArray[i].Program == "Home Front"){
+                    if(econStabValue == "Worked for 3+ months"){
+                        $scope.homeFrontEconSMOH.work3month += parseInt(responseArray[i].count);
+                        $scope.homeFrontEconSMOH.total ++;
+                        console.log("home front 3 mo", $scope.homeFrontEconSMOH.work3month);
+                    }
+                    else if(econStabValue == "Applied for SSD during program"){
+                        $scope.homeFrontEconSMOH.appliedforSSD += parseInt(responseArray[i].count);
+                        $scope.homeFrontEconSMOH.total ++;
+                        console.log("home front for ssd", $scope.homeFrontEconSMOH.appliedforSSD);
+                    }
+                    else if(econStabValue == "Had a job at year-end or at exit" || econStabValue == "Had a job at year-end or at exiting"){
+                        $scope.homeFrontEconSMOH.jobAtYearEndorExit += parseInt(responseArray[i].count)
+                        $scope.homeFrontEconSMOH.total ++;
+                        console.log("home front job at exit", $scope.homeFrontEconSMOH.jobAtYearEndorExit);
+                    }
+                    else if(econStabValue == "Applied for SSD but denied"){
+                        $scope.homeFrontEconSMOH.appliedforSSDbutDenied += parseInt(responseArray[i].count);
+                        $scope.homeFrontEconSMOH.total ++;
+                        console.log("home front denied ssd", $scope.homeFrontEconSMOH.appliedforSSDbutDenied);
+                    }
+                    else if(econStabValue == "Approved for SSD during program"){
+                        $scope.homeFrontEconSMOH.approvedSSDduringProgram += parseInt(responseArray[i].count);
+                        $scope.homeFrontEconSMOH.total ++;
+                        console.log("home front approved ssd", $scope.homeFrontEconSMOH.approvedSSDduringProgram);
+                    }
+                    else if(econStabValue == "Already receiving SSD prior program"){
+                        $scope.homeFrontEconSMOH.alreadySSD += parseInt(responseArray[i].count);
+                        $scope.homeFrontEconSMOH.total ++;
+                        console.log("home front already ssd", $scope.homeFrontEconSMOH.alreadySSD);
+                    }
+                    else if(/refuse/i.test(econStabValue)) {
+                        $scope.homeFrontEconSMOH.refusedSSD += parseInt(responseArray[i].count);
+                        $scope.homeFrontEconSMOH.total ++;
+                        console.log("homeFront refused ssd", $scope.homeFrontEconSMOH.refusedSSD);
+                    }
+
+                }//end of homeFront
+            }//these check for the objects to have values(these total values hsould equal response.length)
+        }); // End of econStabilMOH
+
+
         $scope.outcomeFactory.adultDisabil(selections).then(function(response) {
             console.log("response adultDisabil: ", response);
             var responseArray = response;
