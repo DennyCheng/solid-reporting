@@ -43,6 +43,16 @@ myApp.factory('DemoFactory', ['$http', '$location', function($http, $location) {
     return promise;
   }
 
+  var totalFamilies = function(selections) {
+
+    var promise = $http.post('/demoquery/totalfamilies', selections).then(function (response) {
+      var totalFamilies = response.data;
+      console.log("totalFamilies: ", totalFamilies);
+      return totalFamilies;
+    });
+    return promise;
+  }
+
   var allGender = function(selections) {
 
     var promise = $http.post('/demoquery/allgender', selections).then(function (response) {
@@ -145,7 +155,10 @@ myApp.factory('DemoFactory', ['$http', '$location', function($http, $location) {
     },
     exportdemo: function (selections) {
       return exportData(selections);
-    }
+    },
+    totalFamilies: function (selections) {
+      return totalFamilies(selections);
+    },
 
   };  //end of return scope
 
