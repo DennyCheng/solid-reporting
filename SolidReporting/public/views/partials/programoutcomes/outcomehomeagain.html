@@ -1,467 +1,470 @@
 <!-- Home Again  --------------------------------->
-        <md-table-container ng-model="toggleSelect" class="homeagain" ng-show="selectedprogram.indexOf('Home Again') !== -1 || selectedprogram.indexOf('HomeAgain') !== -1" flex>
+        <md-table-container ng-model="toggleSelect" class="homeagain" ng-show="selectedprograms.indexOf('Home Again') !== -1 || selectedprograms.indexOf('HomeAgain') !== -1" flex>
           <md-toolbar flex>
             <h1 class="md-title tablehead" >{{"Home Again"}}</h1>
           </md-toolbar>
 
 <!-- Home Again: Housing Stability ----------------------------->
-        <table md-table>
-        <thead md-head>
-          <tr md-row >
-            <th md-column>Housing Stability</th>
-            <th md-column md-numeric>Number</th>
-            <th md-column md-numeric>Percent</th>
-          </tr>
-        </thead>
-        <tbody md-body>
-          <tr md-row>
-            <td md-cell>Number Entering Housing</td>
-            <td ng-model="houseHomeAgain" md-cell>{{ houseHomeAgain.entered }}</td>
-            <td ng-model="houseHomeAgain" md-cell>{{ (100 * houseHomeAgain.entered / houseHomeAgain.total ) | number:2 }}%</td>
-          </tr>
-          <!-- <tr md-row>
-            <td md-cell>Families making 1st step to stability</td>
-            <td ng-model="houseHomeAgain" md-cell>{{ houseHomeAgain.male }}</td>
-            <td ng-model="houseHomeAgain" md-cell>{{ (100 * houseHomeAgain.male / houseHomeAgain.total ) | number:2 }}%</td>
-          </tr> -->
-          <tr md-row>
-            <td md-cell>Families residing in housing at least 6 months</td>
-            <td ng-model="houseHomeAgain" md-cell>{{ houseHomeAgain.reside6 }}</td>
-            <td ng-model="houseHomeAgain" md-cell>{{ (100 * houseHomeAgain.reside6 / houseHomeAgain.total ) | number:2 }}%</td>
-          </tr>
-          <tr md-row>
-            <td md-cell>Families residing in housing 1+ years</td>
-            <td ng-model="houseHomeAgain" md-cell>{{ houseHomeAgain.reside1year }}</td>
-            <td ng-model="houseHomeAgain" md-cell>{{ (100 * houseHomeAgain.reside1year / houseHomeAgain.total ) | number:2 }}%</td>
-          </tr>
-          <tr md-row class="boldrow">
-            <td md-cell>Families achieving housing stability</td>
-            <td ng-model="houseHomeAgain" md-cell>{{ houseHomeAgain.achieveStability }}</td>
-            <td ng-model="houseHomeAgain" md-cell>{{ (100 * houseHomeAgain.achieveStability / houseHomeAgain.total ) | number:2 }}%</td>
-          </tr>
-          <tr md-row>
-            <td md-cell>Number exiting housing</td>
-            <td ng-model="houseHomeAgain" md-cell>{{ houseHomeAgain.exited }}</td>
-            <td ng-model="houseHomeAgain" md-cell>{{ (100 * houseHomeAgain.exited / houseHomeAgain.total ) | number:2 }}%</td>
-          </tr>
-          <tr class="boldrow" md-row>
-            <td md-cell>Families securing permanent housing</td>
-            <td ng-model="houseHomeAgain" md-cell>{{ houseHomeAgain.securePermanent }}</td>
-            <td ng-model="houseHomeAgain" md-cell>{{ (100 * houseHomeAgain.securePermanent / houseHomeAgain.total ) | number:2 }}%</td>
-          </tr>
-          <tr md-row>
-            <td md-cell>Other</td>
-            <td ng-model="houseHomeAgain" md-cell>{{ houseHomeAgain.other }}</td>
-            <td ng-model="houseHomeAgain" md-cell>{{ (100 * houseHomeAgain.other / houseHomeAgain.total ) | number:2 }}%</td>
-          </tr>
-          <tr md-row>
-            <td md-cell>Total</td>
-            <td ng-model="houseHomeAgain" md-cell>{{ houseHomeAgain.total }}</td>
-            <td ng-model="houseHomeAgain" md-cell>{{ (100 * houseHomeAgain.total / houseHomeAgain.total ) | number:2 }}%</td>
-          </tr>
+          <table md-table ng-model="toggleSelect" ng-show="selectedoutcomes.indexOf('Housing Stability') !== -1">
+          <thead md-head>
+            <tr md-row >
+              <th md-column>Housing Stability</th>
+              <th md-column md-numeric>Number</th>
+              <th md-column md-numeric>Percent</th>
+            </tr>
+          </thead>
+          <tbody md-body>
+            <tr md-row>
+              <td md-cell>Families Entering Housing</td>
+              <td md-cell>{{ houseHomeAgain.entered }}</td>
+              <td md-cell></td>
+            </tr>
+            <!-- <tr md-row>
+              <td md-cell>Families making 1st step to stability</td>
+              <td md-cell>{{ houseHomeAgain. }}</td>
+              <td md-cell>{{ (100 * houseHomeAgain. / homeAgainPeople.family ) | number:0 }}%</td>
+            </tr> -->
+            <tr md-row>
+              <td md-cell>Families residing in housing at least 6 months</td>
+              <td md-cell>{{ houseHomeAgain.reside6 }}</td>
+              <td md-cell>{{ (100 * houseHomeAgain.reside6 / homeAgainPeople.family ) | number:0 }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Families residing in housing 1+ years</td>
+              <td md-cell>{{ houseHomeAgain.reside1year }}</td>
+              <td md-cell>{{ (100 * houseHomeAgain.reside1year / homeAgainPeople.family ) | number:0 }}%</td>
+            </tr>
+            <tr md-row class="boldrow">
+              <td md-cell>Families achieving housing stability</td>
+              <td md-cell>{{ houseHomeAgain.achieveStability }}</td>
+              <td md-cell>{{ (100 * houseHomeAgain.achieveStability / homeAgainPeople.family ) | number:0 }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Number exiting housing</td>
+              <td md-cell>{{ houseHomeAgain.exited }}</td>
+              <td md-cell></td>
+            </tr>
+            <tr class="boldrow" md-row>
+              <td md-cell>Families securing permanent housing</td>
+              <td md-cell>{{ houseHomeAgain.securePermanent }}</td>
+              <td md-cell>{{ (100 * houseHomeAgain.securePermanent / houseHomeAgain.exited ) | number:0 }}%</td>
+            </tr>
+            <!-- <tr md-row>
+              <td md-cell>Other</td>
+              <td md-cell>{{ houseHomeAgain.other }}</td>
+              <td md-cell>{{ (100 * houseHomeAgain.other / houseHomeAgain.total ) | number:0 }}%</td>
+            </tr> -->
 
-        </tbody>
-      </table>
+          </tbody>
+        </table>
 
 <!-- Home Again: Educational Advancement -------------------------->
-      <table md-table>
-          <thead md-head>
-          <tr md-row >
-            <th md-column>Educational Advancement</th>
-            <th md-column md-numeric>Number</th>
-            <th md-column md-numeric>Percent</th>
+        <table md-table ng-show="selectedoutcomes.indexOf('Educational Advancement') !== -1">
+            <thead md-head>
+            <tr md-row >
+              <th md-column>Educational Advancement</th>
+              <th md-column md-numeric>Number</th>
+              <th md-column md-numeric>Percent</th>
+            </tr>
+          </thead>
+          <tbody md-body>
+          <tr md-row>
+            <td md-cell>Adults enrolled in education</td>
+            <td md-cell>{{ homeAgainAdult.enrolled }}</td>
+            <td md-cell>{{ (100 * homeAgainAdult.enrolled / homeAgainPeople.adult ) | number:0 }}%</td>
           </tr>
-        </thead>
-        <tbody md-body>
-        <tr md-row>
-          <td md-cell>Adults enrolled in education</td>
-          <td ng-model="homeAgainAdult" md-cell>{{ homeAgainAdult.enrolled }}</td>
-          <td ng-model="homeAgainAdult" md-cell>{{ (100 * homeAgainAdult.enrolled / homeAgainAdult.total ) | number:2 }}%</td>
-        </tr>
-        <tr md-row>
-          <td md-cell>Adults completing education</td>
-          <td ng-model="homeAgainAdult" md-cell>{{ homeAgainAdult.complete }}</td>
-          <td ng-model="homeAgainAdult" md-cell>{{ (100 * homeAgainAdult.complete / homeAgainAdult.total ) | number:2 }}%</td>
-        </tr>
-        <tr md-row>
-          <td md-cell>Adults continuing education</td>
-          <td ng-model="homeAgainAdult" md-cell>{{ homeAgainAdult.continue }}</td>
-          <td ng-model="homeAgainAdult" md-cell>{{ (100 * homeAgainAdult.continue / homeAgainAdult.total ) | number:2 }}%</td>
-        </tr>
-        <tr md-row>
-          <td md-cell>Adults who dropped out</td>
-          <td ng-model="homeAgainAdult" md-cell>{{ homeAgainAdult.dropout }}</td>
-          <td ng-model="homeAgainAdult" md-cell>{{ (100 * homeAgainAdult.dropout / homeAgainAdult.total ) | number:2 }}%</td>
-        </tr>
-        <tr md-row class="boldrow bottomdivider">
-          <td md-cell>Adults who completed/continued education</td>
-          <td ng-model="homeAgainAdult" md-cell>{{ homeAgainAdult.complete + homeAgainAdult.continue }}</td>
-          <td ng-model="homeAgainAdult" md-cell>{{ (100 * (homeAgainAdult.complete + homeAgainAdult.continue) / homeAgainAdult.total ) | number:2 }}%</td>
-        </tr>
-        <md-divider></md-divider>
-        <!-- <tr md-row>
-          <td md-cell>School-age children</td>
-          <td ng-model="empRace" md-cell>{{ empRace.multiracial }}</td>
-          <td ng-model="empRace" md-cell>{{ (100 * empRace.multiracial / empRace.total ) | number:2 }}%</td>
-        </tr>
-        <tr md-row class="boldrow">
-          <td md-cell>Children regularly attending school</td>
-          <td ng-model="empRace" md-cell>{{ empRace.other }}</td>
-          <td ng-model="empRace" md-cell>{{ (100 * empRace.other / empRace.total ) | number:2 }}%</td>
-        </tr>
-        <tr md-row>
-          <td md-cell>Adults with a documented learning disability</td>
-          <td ng-model="empRace" md-cell>{{ empRace.other }}</td>
-          <td ng-model="empRace" md-cell>{{ (100 * empRace.other / empRace.total ) | number:2 }}%</td>
-        </tr>
-        <tr md-row class="boldrow">
-          <td md-cell>Adults who have/had an IEP</td>
-          <td ng-model="empRace" md-cell>{{ empRace.other }}</td>
-          <td ng-model="empRace" md-cell>{{ (100 * empRace.other / empRace.total ) | number:2 }}%</td>
-        </tr>
-        <tr md-row>
-          <td md-cell>Children with a documented learning disability</td>
-          <td ng-model="empRace" md-cell>{{ empRace.other }}</td>
-          <td ng-model="empRace" md-cell>{{ (100 * empRace.other / empRace.total ) | number:2 }}%</td>
-        </tr>
-        <tr class="boldrow" md-row>
-          <td md-cell>Children who have/had an IEP</td>
-          <td ng-model="empRace" md-cell>{{ empRace.total }}</td>
-          <td ng-model="empRace" md-cell>{{ (100 * empRace.total / empRace.total ) | number:2 }}%</td>
-        </tr> -->
-        </tbody>
+          <tr md-row>
+            <td md-cell>Adults completing education</td>
+            <td md-cell>{{ homeAgainAdult.complete }}</td>
+            <td md-cell>{{ (100 * homeAgainAdult.complete / homeAgainAdult.enrolled ) | number:0 }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>Adults continuing education</td>
+            <td md-cell>{{ homeAgainAdult.continue }}</td>
+            <td md-cell>{{ (100 * homeAgainAdult.continue / homeAgainAdult.enrolled ) | number:0 }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>Adults who dropped out</td>
+            <td md-cell>{{ homeAgainAdult.dropout }}</td>
+            <td md-cell>{{ (100 * homeAgainAdult.dropout / homeAgainAdult.enrolled ) | number:0 }}%</td>
+          </tr>
+          <tr md-row class="boldrow bottomdivider">
+            <td md-cell>Adults who completed/continued education</td>
+            <td md-cell>{{ homeAgainAdult.complete + homeAgainAdult.continue }}</td>
+            <td md-cell>{{ (100 * (homeAgainAdult.complete + homeAgainAdult.continue) / homeAgainAdult.enrolled ) | number:0 }}%</td>
+          </tr>
+          <md-divider></md-divider>
+          <tr md-row>
+            <td md-cell>School-age children</td>
+            <td md-cell>{{ childSchoolAgeHomeAgain.total }}</td>
+            <td md-cell>{{ (100 * childSchoolAgeHomeAgain.total / homeAgainPeople.children ) | number:0 }}%</td>
+          </tr>
+          <tr md-row class="boldrow">
+            <td md-cell>Children regularly attending school</td>
+            <td md-cell>{{ x }}</td>
+            <td md-cell>{{ (100 * x / childSchoolAgeHomeAgain.total ) | number:0 }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>Adults with a documented learning disability</td>
+            <td md-cell>{{ adultDisHomeAgain.countTotal }}</td>
+            <td md-cell>{{ (100 * adultDisHomeAgain.countTotal / homeAgainPeople.adult ) | number:0 }}%</td>
+          </tr>
+          <tr md-row class="boldrow">
+            <td md-cell>Adults who have/had an IEP</td>
+            <td md-cell>{{ adultDisHomeAgain.IEP }}</td>
+            <td md-cell>{{ (100 * adultDisHomeAgain.IEP / adultDisHomeAgain.countTotal ) | number:0 }}%</td>
+          </tr>
+          <tr md-row>
+            <td md-cell>Children with a documented learning disability</td>
+            <td md-cell>{{ childDisHomeAgain.countTotal }}</td>
+            <td md-cell>{{ (100 * childDisHomeAgain.countTotal / homeAgainPeople.children ) | number:0 }}%</td>
+          </tr>
+          <tr class="boldrow" md-row>
+            <td md-cell>Children who have/had an IEP</td>
+            <td md-cell>{{ childDisHomeAgain.IEP }}</td>
+            <td md-cell>{{ (100 * childDisHomeAgain.IEP / childDisHomeAgain.countTotal ) | number:0 }}%</td>
+          </tr>
+          </tbody>
+        </table>
 
 <!-- Home Again: Economic Stability ---------------------------->
-        <thead md-head>
-          <tr md-row>
-            <th md-column>Economic Stability</th>
-            <th md-column md-numeric>Number</th>
-            <th md-column md-numeric>Percent</th>
-          </tr>
-        </thead>
-        <tbody md-body>
-          <tr md-row class="boldrow">
-            <td md-cell>Adults with a job at year-end or exit</td>
-            <td ng-model="homeAgainEconS" md-cell>{{ homeAgainEconS.jobAtYearEndorExit }}</td>
-            <td ng-model="homeAgainEconS" md-cell>{{ (100 * homeAgainEconS.jobAtYearEndorExit / homeAgainEconS.total ) | number:2 }}%</td>
-          </tr>
-          <!-- <tr class="boldrow" md-row>
-            <td md-cell>Increased employment income at exit</td>
-            <td ng-model="homeAgainEconS"
-            md-cell>{{ homeAgainEconS.africanAmerican }}</td>
-            <td ng-model="homeAgainEconS" md-cell>{{ (100 * homeAgainEconS.africanAmerican / homeAgainEconS.totalCount ) | number:2 }}%</td>
-          </tr> -->
-          <!-- <tr md-row class="boldrow">
-            <td md-cell>Increased household income (all) at exit</td>
-            <td ng-model="homeAgainEconS"
-            md-cell>{{ homeAgainEconS.americanIndian }}</td>
-            <td ng-model="homeAgainEconS" md-cell>{{ (100 * homeAgainEconS.americanIndian / homeAgainEconS.totalCount ) | number:2  }}%</td>
-          </tr> -->
-          <tr md-row>
-            <td md-cell>Disabled adults</td>
-            <td ng-model="homeAgainAdultDis"
-            md-cell>{{ homeAgainAdultDis.total }}</td>
-            <td ng-model="homeAgainAdultDis" md-cell>{{}}%</td>
-          </tr>
-          <tr md-row>
-            <td md-cell>Disabled adults already receiving benefits</td>
-            <td ng-model="homeAgainEconS"
-            md-cell>{{ homeAgainEconS.diagDisAlreadySSD }}</td>
-            <td ng-model="homeAgainEconS" md-cell>{{ (100 * homeAgainEconS.diagDisAlreadySSD / homeAgainAdultDis.total ) | number:2  }}%</td>
-          </tr>
-          <tr md-row>
-            <td md-cell>Disabled adults who applied for benefits</td>
-            <td ng-model="homeAgainEconS"
-            md-cell>{{ homeAgainEconS.appliedforSSD }}</td>
-            <td ng-model="homeAgainEconS" md-cell>{{ (100 * homeAgainEconS.appliedforSSD / homeAgainAdultDis.total ) | number:2  }}%</td>
-          </tr>
-          <tr md-row>
-            <td md-cell>Disabled adults approved for benefits</td>
-            <td ng-model="homeAgainEconS"
-            md-cell>{{ homeAgainEconS.approvedSSDduringProgram }}</td>
-            <td ng-model="homeAgainEconS" md-cell>{{ (100 * homeAgainEconS.approvedSSDduringProgram / homeAgainAdultDis.total ) | number:2  }}%</td>
-          </tr>
-          <tr md-row>
-            <td md-cell>Disabled adults denied benefits</td>
-            <td ng-model="homeAgainEconS"
-            md-cell>{{ homeAgainEconS.appliedforSSDbutDenied }}</td>
-            <td ng-model="homeAgainEconS" md-cell>{{ (100 * homeAgainEconS.appliedforSSDbutDenied / homeAgainAdultDis.total ) | number:2  }}%</td>
-          </tr>
-          <!-- <tr md-row>
-            <td md-cell>Disabled adults who refused to apply</td>
-            <td ng-model="homeAgainEconS"
-            md-cell>{{ homeAgainEconS.other }}</td>
-            <td ng-model="homeAgainEconS" md-cell>{{ (100 * homeAgainEconS.other / homeAgainEconS.totalCount ) | number:2  }}%</td>
-          </tr> -->
-          <!-- <tr class="boldrow" md-row>
-            <td md-cell>Disabled adults who received/applied for disability</td>
-            <td ng-model="homeAgainEconS"
-            md-cell>{{ homeAgainEconS.appliedforSSD + homeAgainEconS }}</td>
-            <td ng-model="homeAgainEconS" md-cell>{{ (100 * homeAgainEconS.totalCount / homeAgainEconS.totalCount ) | number:2  }}%</td>
-          </tr> -->
-          <tr md-row>
-            <td md-cell>Disabled children</td>
-            <td ng-model="homeAgain_childDis"
-            md-cell>{{ homeAgain_childDis.total }}</td>
-            <td ng-model="homeAgain_childDis" md-cell>{{ (100 * homeAgain_childDis.total / "total children" ) | number:2  }}%</td>
-          </tr>
-          <!-- <tr md-row>
-            <td md-cell>Disabled children already receiving benefits</td>
-            <td ng-model="raceChildEMP"
-            md-cell>{{ raceChildEMP.other }}</td>
-            <td ng-model="raceChildEMP" md-cell>{{ (100 * raceChildEMP.other / raceChildEMP.totalCount ) | number:2  }}%</td>
-          </tr>
-          <tr md-row>
-            <td md-cell>Disabled children who applied for benefits</td>
-            <td ng-model="raceChildEMP"
-            md-cell>{{ raceChildEMP.other }}</td>
-            <td ng-model="raceChildEMP" md-cell>{{ (100 * raceChildEMP.other / raceChildEMP.totalCount ) | number:2  }}%</td>
-          </tr>
-          <tr md-row>
-            <td md-cell>Disabled children approved for benefits</td>
-            <td ng-model="raceChildEMP"
-            md-cell>{{ raceChildEMP.other }}</td>
-            <td ng-model="raceChildEMP" md-cell>{{ (100 * raceChildEMP.other / raceChildEMP.totalCount ) | number:2  }}%</td>
-          </tr>
-          <tr md-row>
-            <td md-cell>Disabled children denied benefits</td>
-            <td ng-model="raceChildEMP"
-            md-cell>{{ raceChildEMP.other }}</td>
-            <td ng-model="raceChildEMP" md-cell>{{ (100 * raceChildEMP.other / raceChildEMP.totalCount ) | number:2  }}%</td>
-          </tr>
-          <tr md-row>
-            <td md-cell>Disabled children who refused to apply</td>
-            <td ng-model="raceChildEMP"
-            md-cell>{{ raceChildEMP.other }}</td>
-            <td ng-model="raceChildEMP" md-cell>{{ (100 * raceChildEMP.other / raceChildEMP.totalCount ) | number:2  }}%</td>
-          </tr>
-          <tr class="boldrow" md-row>
-            <td md-cell>Disabled children applying for disability</td>
-            <td ng-model="raceChildEMP"
-            md-cell>{{ raceChildEMP.other }}</td>
-            <td ng-model="raceChildEMP" md-cell>{{ (100 * raceChildEMP.other / raceChildEMP.totalCount ) | number:2  }}%</td>
-          </tr> -->
+        <table md-table ng-show="selectedoutcomes.indexOf('Economic Stability') !== -1">
+          <thead md-head>
+            <tr md-row>
+              <th md-column>Economic Stability</th>
+              <th md-column md-numeric>Number</th>
+              <th md-column md-numeric>Percent</th>
+            </tr>
+          </thead>
+          <tbody md-body>
+            <tr md-row class="boldrow">
+              <td md-cell>Adults with a job at year-end or exit</td>
+              <td
+              md-cell>{{ homeAgainEconS.jobAtYearEndorExit }}</td>
+              <td
+              md-cell>{{ (100 * homeAgainEconS.jobAtYearEndorExit / homeAgainPeople.adult ) | number:0 }}%</td>
+            </tr>
+            <!-- <tr class="boldrow" md-row>
+              <td md-cell>Increased employment income at exit</td>
+              <td md-cell>{{ homeAgainEconS.africanAmerican }}</td>
+              <td md-cell>{{ (100 * homeAgainEconS.africanAmerican / homeAgainEconS.totalCount ) | number:0 }}%</td>
+            </tr> -->
+            <!-- <tr md-row class="boldrow">
+              <td md-cell>Increased household income (all) at exit</td>
+              <td md-cell>{{ homeAgainEconS.americanIndian }}</td>
+              <td md-cell>{{ (100 * homeAgainEconS.americanIndian / homeAgainEconS.totalCount ) | number:0  }}%</td>
+            </tr> -->
+            <tr md-row>
+              <td md-cell>Disabled adults</td>
+              <td md-cell>{{ homeAgainAdultDis.total }}</td>
+              <td md-cell>{{ (100 * homeAgainAdultDis.total / homeAgainPeople.adult ) | number:0 }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Disabled adults already receiving benefits</td>
+              <td md-cell>{{ homeAgainEconS.alreadySSD }}</td>
+              <td md-cell>{{ (100 * homeAgainEconS.alreadySSD / homeAgainAdultDis.total ) | number:0  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Disabled adults who applied for benefits</td>
+              <td md-cell>{{ homeAgainEconS.appliedforSSD }}</td>
+              <td md-cell>{{ (100 * homeAgainEconS.appliedforSSD / homeAgainAdultDis.total ) | number:0  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Disabled adults approved for benefits</td>
+              <td md-cell>{{ homeAgainEconS.approvedSSDduringProgram }}</td>
+              <td md-cell>{{ (100 * homeAgainEconS.approvedSSDduringProgram / homeAgainAdultDis.total ) | number:0  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Disabled adults denied benefits</td>
+              <td md-cell>{{ homeAgainEconS.deniedSSD }}</td>
+              <td md-cell>{{ (100 * homeAgainEconS.deniedSSD / homeAgainAdultDis.total ) | number:0  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Disabled adults who refused to apply</td>
+              <td md-cell>{{ homeAgainEconS.refusedSSD }}</td>
+              <td md-cell>{{ (100 * homeAgainEconS.refusedSSD / homeAgainAdultDis.total ) | number:0  }}%</td>
+            </tr>
+            <tr class="boldrow" md-row>
+              <td md-cell>Disabled adults who received/applied for disability</td>
+              <td md-cell>{{ homeAgainEconS.appliedforSSD + homeAgainEconS.alreadySSD + homeAgainEconS.approvedSSDduringProgram + homeAgainEconS.deniedSSD }}</td>
+              <td md-cell>{{ (100 * (homeAgainEconS.appliedforSSD + homeAgainEconS.alreadySSD + homeAgainEconS.approvedSSDduringProgram + homeAgainEconS.deniedSSD) / homeAgainAdultDis.total ) | number:0  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Disabled children</td>
+              <td md-cell>{{ homeAgain_childDis.total }}</td>
+              <td md-cell>{{ (100 * homeAgain_childDis.total / homeAgainPeople.children) | number:0  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Disabled children already receiving benefits</td>
+              <td md-cell>{{ homeAgainEconSMOH.alreadySSD }}</td>
+              <td md-cell>{{ (100 * homeAgainEconSMOH.alreadySSD / homeAgain_childDis.total ) | number:0  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Disabled children who applied for benefits</td>
+              <td md-cell>{{ homeAgainEconSMOH.appliedforSSD }}</td>
+              <td md-cell>{{ (100 * homeAgainEconSMOH.appliedforSSD / homeAgain_childDis.total ) | number:0  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Disabled children approved for benefits</td>
+              <td md-cell>{{ homeAgainEconSMOH.approvedSSDduringProgram }}</td>
+              <td md-cell>{{ (100 * homeAgainEconSMOH.approvedSSDduringProgram / homeAgain_childDis.total ) | number:0  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Disabled children denied benefits</td>
+              <td md-cell>{{ homeAgainEconSMOH.deniedSSD }}</td>
+              <td md-cell>{{ (100 * homeAgainEconSMOH.deniedSSD / homeAgain_childDis.total ) | number:0  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Disabled children who refused to apply</td>
+              <td md-cell>{{ homeAgainEconSMOH.refusedSSD }}</td>
+              <td md-cell>{{ (100 * homeAgainEconSMOH.refusedSSD / homeAgain_childDis.total ) | number:0  }}%</td>
+            </tr>
+            <tr class="boldrow" md-row>
+              <td md-cell>Disabled children receiving/applying for disability</td>
+              <td md-cell>{{ homeAgainEconSMOH.alreadySSD + homeAgainEconSMOH.approvedSSDduringProgram + homeAgainEconSMOH.appliedforSSD + homeAgainEconSMOH.deniedSSD }}</td>
+              <td md-cell>{{ (100 * (homeAgainEconSMOH.alreadySSD + homeAgainEconSMOH.approvedSSDduringProgram + homeAgainEconSMOH.appliedforSSD + homeAgainEconSMOH.deniedSSD) / homeAgain_childDis.total ) | number:0  }}%</td>
+            </tr>
 
-        </tbody>
-
+          </tbody>
+        </table>
 <!-- Home Again: Strengthened Families ---------------------------->
-        <thead md-head>
-          <tr md-row >
-            <th md-column>Strengthened Families</th>
-            <th md-column md-numeric>Number</th>
-            <th md-column md-numeric>Percent</th>
-          </tr>
-        </thead>
-        <tbody md-body>
-          <!-- <tr class="boldrow" md-row>
-            <td md-cell>Achieved a Parenting Goal</td>
-            <td ng-model="dobEMP"
-            md-cell>{{ dobEMP.age18to22 }}</td>
-            <td ng-model="dobEMP" md-cell>{{ (100 * dobEMP.age18to22 / dobEMP.total ) | number:2  }}%</td>
-          </tr> -->
-
-          <tr md-row>
-            <td md-cell>Completed Parenting Education (prior year)</td>
-            <td ng-model="homeagainParentEdu_priorYr"
-            md-cell>{{ homeagainParentEdu_priorYr.completed }}</td>
-            <td ng-model="homeagainParentEdu_priorYr" md-cell>{{ (100 * homeagainParentEdu_priorYr.completed / 17 ) | number:2  }}%</td>
-          </tr>
-          <tr md-row>
-            <td md-cell>Completed Parenting Education (current year)</td>
-            <td ng-model="parentEduThisYear_HomeAgain" md-cell>{{ parentEduThisYear_HomeAgain.total }}</td>
-            <td ng-model="parentEduThisYear_HomeAgain" md-cell>{{ (100 * parentEduThisYear_HomeAgain.total / 17 ) | number:2  }}%</td>
-          </tr>
-          <tr md-row>
-            <td md-cell>Total completing Parenting Education</td>
-            <td ng-model="homeAgainParentEdu" md-cell>{{ homeAgainParentEdu.total }}</td>
-            <td ng-model="homeAgainParentEdu" md-cell>{{ (100 * homeAgainParentEdu.total / 17 ) | number:2  }}%</td>
-          </tr>
-          <!-- <tr class="boldrow" md-row>
-            <td md-cell>Achieved a Budgeting Goal</td>
-            <td ng-model="dobEMP" md-cell>{{ dobEMP.age55to64 }}</td>
-            <td ng-model="dobEMP" md-cell>{{ (100 * dobEMP.age55to64 / dobEMP.total ) | number:2  }}%</td>
-          </tr>
-          <tr md-row>
-            <td md-cell>Completed Budgeting Class (prior year)</td>
-            <td ng-model="dobEMP" md-cell>{{ dobEMP.age65tobeyond }}</td>
-            <td ng-model="dobEMP" md-cell> {{ (100 * dobEMP.age65tobeyond / dobEMP.total ) | number:2  }}%</td>
-          </tr>
-          <tr md-row>
-            <td md-cell>Completed Budgeting Class (current year)</td>
-            <td ng-model="number" md-cell> {{ dobEMP.total }}</td>
-            <td ng-model="percent" md-cell>{{ (100 * dobEMP.total / dobEMP.total ) | number:2  }}%</td>
-          </tr>
-          <tr md-row>
-            <td md-cell>Total Completing Budgeting Class</td>
-            <td ng-model="number" md-cell> {{ dobEMP.total }}</td>
-            <td ng-model="percent" md-cell>{{ (100 * dobEMP.total / dobEMP.total ) | number:2  }}%</td>
-          </tr>
-          <tr md-row>
-            <td md-cell>Families experiencing Family Violence</td>
-            <td ng-model="number" md-cell> {{ dobEMP.total }}</td>
-            <td ng-model="percent" md-cell>{{ (100 * dobEMP.total / dobEMP.total ) | number:2  }}%</td>
-          </tr>
-          <tr class="boldrow" md-row>
-            <td md-cell>Families with a written Safety Plan</td>
-            <td ng-model="number" md-cell> {{ dobEMP.total }}</td>
-            <td ng-model="percent" md-cell>{{ (100 * dobEMP.total / dobEMP.total ) | number:2  }}%</td>
-          </tr>
-          <tr class="boldrow" md-row>
-            <td md-cell>Families residing in housing 1+ years</td>
-            <td ng-model="number" md-cell> {{ dobEMP.total }}</td>
-            <td ng-model="percent" md-cell>{{ (100 * dobEMP.total / dobEMP.total ) | number:2  }}%</td>
-          </tr>
-          <tr md-row>
-            <td md-cell>Completed Tenant Training (prior year)</td>
-            <td ng-model="number" md-cell> {{ dobEMP.total }}</td>
-            <td ng-model="percent" md-cell>{{ (100 * dobEMP.total / dobEMP.total ) | number:2  }}%</td>
-          </tr>
-          <tr md-row>
-            <td md-cell>Completed Tenant Training (current year)</td>
-            <td ng-model="number" md-cell> {{ dobEMP.total }}</td>
-            <td ng-model="percent" md-cell>{{ (100 * dobEMP.total / dobEMP.total ) | number:2  }}%</td>
-          </tr>
-          <tr md-row>
-            <td md-cell>Families in housing 1+ years completing Tenant Training</td>
-            <td ng-model="number" md-cell> {{ dobEMP.total }}</td>
-            <td ng-model="percent" md-cell>{{ (100 * dobEMP.total / dobEMP.total ) | number:2  }}%</td>
-          </tr>
-          <tr md-row>
-            <td md-cell>Completed DBT (prior year)</td>
-            <td ng-model="number" md-cell> {{ dobEMP.total }}</td>
-            <td ng-model="percent" md-cell>{{ (100 * dobEMP.total / dobEMP.total ) | number:2  }}%</td>
-          </tr>
-          <tr md-row>
-            <td md-cell>Completed DBT (current year)</td>
-            <td ng-model="number" md-cell> {{ dobEMP.total }}</td>
-            <td ng-model="percent" md-cell>{{ (100 * dobEMP.total / dobEMP.total ) | number:2  }}%</td>
-          </tr>
-          <tr md-row>
-            <td md-cell>Currently participating in DBT</td>
-            <td ng-model="number" md-cell> {{ dobEMP.total }}</td>
-            <td ng-model="percent" md-cell>{{ (100 * dobEMP.total / dobEMP.total ) | number:2  }}%</td>
-          </tr>
-          <tr md-row>
-            <td md-cell>Dropped out of DBT and did not return</td>
-            <td ng-model="number" md-cell> {{ dobEMP.total }}</td>
-            <td ng-model="percent" md-cell>{{ (100 * dobEMP.total / dobEMP.total ) | number:2  }}%</td>
-          </tr>
-          <tr md-row>
-            <td md-cell>Adults in housing 1+ years completing DBT Skills</td>
-            <td ng-model="number" md-cell> {{ dobEMP.total }}</td>
-            <td ng-model="percent" md-cell>{{ (100 * dobEMP.total / dobEMP.total ) | number:2  }}%</td>
-          </tr> -->
-
-        </tbody>
+        <table md-table ng-show="selectedoutcomes.indexOf('Strengthened Families') !== -1">
+          <thead md-head>
+            <tr md-row >
+              <th md-column>Strengthened Families</th>
+              <th md-column md-numeric>Number</th>
+              <th md-column md-numeric>Percent</th>
+            </tr>
+          </thead>
+          <tbody md-body>
+            <!-- <tr class="boldrow" md-row>
+              <td md-cell>Achieved a Parenting Goal</td>
+              <td md-cell>{{ dobEMP.age18to22 }}</td>
+              <td md-cell>{{ (100 * dobEMP.age18to22 / dobEMP.total ) | number:0  }}%</td>
+            </tr> -->
+            <tr md-row>
+              <td md-cell>Completed Parenting Education (prior year)</td>
+              <td md-cell>{{ homeAgainParentEdu_priorYr.completed }}</td>
+              <td md-cell>{{ (100 * homeAgainParentEdu_priorYr.completed / homeAgainPeople.adult ) | number:0  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Completed Parenting Education (current year)</td>
+              <td md-cell>{{ parentEduThisYear_HomeAgain.total }}</td>
+              <td md-cell>{{ (100 * parentEduThisYear_HomeAgain.total / homeAgainPeople.adult ) | number:0  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Total completing Parenting Education</td>
+              <td md-cell>{{ homeAgainParentEdu_priorYr.completed + parentEduThisYear_HomeAgain.total }}</td>
+              <td md-cell>{{ (100 * homeAgain2ParentEdu.total / homeAgainPeople.adult ) | number:0  }}%</td>
+            </tr>
+            <!-- <tr class="boldrow" md-row>
+              <td md-cell>Achieved a Budgeting Goal</td>
+              <td md-cell>{{ dobEMP.age55to64 }}</td>
+              <td md-cell>{{ (100 * dobEMP.age55to64 / dobEMP.total ) | number:0  }}%</td>
+            </tr> -->
+            <tr md-row>
+              <td md-cell>Completed Budgeting Class (prior year)</td>
+              <td md-cell>{{ budgetingEduYearBefore.homeAgain }}</td>
+              <td md-cell> {{ (100 * budgetingEduYearBefore.homeAgain / homeAgainPeople.adult ) | number:0  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Completed Budgeting Class (current year)</td>
+              <td md-cell> {{ homeAgain_budgetingEduSameYear.total }}</td>
+              <td md-cell>{{ (100 * homeAgain_budgetingEduSameYear.total / homeAgainPeople.adult ) | number:0  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Total Completing Budgeting Class</td>
+              <td md-cell> {{ homeAgain_budgetingEdu.total }}</td>
+              <td md-cell>{{ (100 * homeAgain_budgetingEdu.total / homeAgainPeople.adult ) | number:0  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Families experiencing Family Violence</td>
+              <td md-cell> {{ violentHomeAgain.total }}</td>
+              <td md-cell>{{ (100 * violentHomeAgain.total / homeAgainPeople.family ) | number:0  }}%</td>
+            </tr>
+            <tr class="boldrow" md-row>
+              <td md-cell>Families with a written Safety Plan</td>
+              <td md-cell> {{ violentHomeAgain.yesWithSafety }}</td>
+              <td md-cell>{{ (100 * violentHomeAgain.yesWithSafety / violentHomeAgain.total ) | number:0  }}%</td>
+            </tr>
+            <tr class="boldrow" md-row>
+              <td md-cell>Families residing in housing 1+ years</td>
+              <td md-cell> {{ houseHomeAgain.reside1year }}</td>
+              <td md-cell></td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Completed Tenant Training (prior year)</td>
+              <td md-cell> {{ tenantTrainingPriorYear.homeAgain }}</td>
+              <td md-cell>{{ (100 * tenantTrainingPriorYear.homeAgain / houseHomeAgain.reside1year ) | number:0  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Completed Tenant Training (current year)</td>
+              <td md-cell> {{ tenantTrainingSameYear.homeAgain }}</td>
+              <td md-cell>{{ (100 * tenantTrainingSameYear.homeAgain / houseHomeAgain.reside1year ) | number:0  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Families in housing 1+ years completing Tenant Training</td>
+              <td md-cell> {{ tenantTraining.homeAgain }}</td>
+              <td md-cell>{{ (100 * tenantTraining.homeAgain / houseHomeAgain.reside1year ) | number:0  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Completed DBT (prior year)</td>
+              <td md-cell> {{ homeAgainDbtPriorYear.total }}</td>
+              <td md-cell>{{ (100 * homeAgainDbtPriorYear.total / houseHomeAgain.reside1year ) | number:0  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Completed DBT (current year)</td>
+              <td md-cell> {{ homeAgainDbtSameYear.total }}</td>
+              <td md-cell>{{ (100 * homeAgainDbtSameYear.total / houseHomeAgain.reside1year ) | number:0  }}%</td>
+            </tr>
+            <!-- <tr md-row>
+              <td md-cell>Currently participating in DBT</td>
+              <td md-cell> {{ dobEMP.total }}</td>
+              <td md-cell>{{ (100 * dobEMP.total / houseHomeAgain.reside1year ) | number:0  }}%</td>
+            </tr> -->
+            <tr md-row>
+              <td md-cell>Dropped out of DBT and did not return</td>
+              <td md-cell> {{ homeAgainDbt.droppedOut }}</td>
+              <td md-cell>{{ (100 * homeAgainDbt.droppedOut / houseHomeAgain.reside1year ) | number:0  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Adults in housing 1+ years completing DBT Skills</td>
+              <td md-cell> {{ homeAgainDbt.total }}</td>
+              <td md-cell>{{ (100 * homeAgainDbt.total / houseHomeAgain.reside1year ) | number:0  }}%</td>
+            </tr>
+          </tbody>
+        </table>
 
 <!-- Home Again: Improved Health ---------------------------->
-        <thead md-head>
-          <tr md-row >
-            <th md-column>Improved Health</th>
-            <th md-column md-numeric>Number</th>
-            <th md-column md-numeric>Percent</th>
-          </tr>
-        </thead>
-        <tbody md-body>
-          <!-- <tr md-row>
-            <td md-cell>Adults abusing substances</td>
-            <td ng-model="childdobEMP" md-cell>{{ childdobEMP.age0to1 }}</td>
-            <td ng-model="childdobEMP" md-cell>{{ (100 * childdobEMP.age0to1 / childdobEMP.total ) | number:2  }}%</td>
-          </tr>
-          <tr md-row>
-            <td md-cell>Adults with a Rule 25 Assessment</td>
-            <td ng-model="childdobEMP" md-cell>{{ childdobEMP.age2to3 }}</td>
-            <td ng-model="childdobEMP" md-cell>{{ (100 * childdobEMP.age2to3 / childdobEMP.total ) | number:2  }}%</td>
-          </tr>
-          <tr md-row>
-            <td md-cell>Adults attending CD treatment</td>
-            <td ng-model="childdobEMP" md-cell>{{ childdobEMP.age4to5 }}</td>
-            <td ng-model="childdobEMP" md-cell>{{ (100 * childdobEMP.age4to5 / childdobEMP.total ) | number:2  }}%</td>
-          </tr>
-          <tr md-row>
-            <td md-cell>Adults attending self-help groups</td>
-            <td ng-model="childdobEMP" md-cell>{{ childdobEMP.age6to9 }}</td>
-            <td ng-model="childdobEMP" md-cell>{{ (100 * childdobEMP.age6to9 / childdobEMP.total ) | number:2  }}%</td>
-          </tr>
-          <tr class="boldrow" md-row>
-            <td md-cell>Adults maintaining sobriety for past 90 days</td>
-            <td ng-model="childdobEMP" md-cell>{{ childdobEMP.age10to14 }}</td>
-            <td ng-model="childdobEMP" md-cell>{{ (100 * childdobEMP.age10to14 / childdobEMP.total ) | number:2  }}%</td>
-          </tr>
-          <tr class="boldrow" md-row>
-            <td md-cell>Adults maintaining sobriety for past 6 months</td>
-            <td ng-model="childdobEMP" md-cell>{{ childdobEMP.age15to17 }}</td>
-            <td ng-model="childdobEMP" md-cell>{{ (100 * childdobEMP.age15to17 / childdobEMP.total ) | number:2  }}%</td>
-          </tr>
-          <tr class="boldrow" md-row>
-            <td md-cell>Adults maintaining sobriety for 12+ months</td>
-            <td ng-model="childdobEMP" md-cell>{{ childdobEMP.age18tobeyond }}</td>
-            <td ng-model="childdobEMP" md-cell>{{ (100 * childdobEMP.age18tobeyond / childdobEMP.total ) | number:2  }}%</td>
-          </tr>
-          <tr class="boldrow" md-row>
-            <td md-cell>Adults who abused substances achieving sobriety</td>
-            <td ng-model="childdobEMP" md-cell>{{ childdobEMP.total }}</td>
-            <td ng-model="childdobEMP" md-cell>{{ (100 * childdobEMP.total / childdobEMP.total ) | number:2  }}%</td>
-          </tr> -->
-          <tr md-row>
-            <td md-cell>Adults with MI diagnosis</td>
-            <td ng-model="adultMI_HomeAgain" md-cell>{{ adultMI_HomeAgain.yesAndBeingTreated + adultMI_HomeAgain.yesAndReferredForAssessment + adultMI_HomeAgain.yesAndNotBeingTreated }}</td>
-            <td ng-model="adultMI_HomeAgain" md-cell>{{ (100 * (adultMI_HomeAgain.yesAndBeingTreated + adultMI_HomeAgain.yesAndReferredForAssessment + adultMI_HomeAgain.yesAndNotBeingTreated) / 23 ) | number:2 }}%</td>
-          </tr>
-          <tr class="boldrow" md-row>
-            <td md-cell>Adults with MI diagnosis receiving treatment</td>
-            <td ng-model="adultMI_HomeAgain" md-cell>{{ adultMI_HomeAgain.yesAndBeingTreated }}</td>
-            <td ng-model="adultMI_HomeAgain" md-cell>{{ (100 * adultMI_HomeAgain.yesAndBeingTreated / (adultMI_HomeAgain.yesAndBeingTreated + adultMI_HomeAgain.yesAndReferredForAssessment + adultMI_HomeAgain.yesAndNotBeingTreated) ) | number:2 }}%</td>
-          </tr>
-          <tr md-row>
-            <td md-cell>Adults with diagnosed MI referred for assessment</td>
-            <td ng-model="adultMI_HomeAgain" md-cell>{{ adultMI_HomeAgain.yesAndReferredForAssessment }}</td>
-            <td ng-model="adultMI_HomeAgain" md-cell>{{ (100 * adultMI_HomeAgain.yesAndReferredForAssessment / (adultMI_HomeAgain.yesAndBeingTreated + adultMI_HomeAgain.yesAndReferredForAssessment + adultMI_HomeAgain.yesAndNotBeingTreated) ) | number:2  }}%</td>
-          </tr>
-          <tr class="boldrow" md-row>
-            <td md-cell>Adults with undiagnosed MI referred for assessment</td>
-            <td ng-model="adultMI_HomeAgain" md-cell>{{ adultMI_HomeAgain.undiagnosedReferredForAssessment }}</td>
-            <td ng-model="adultMI_HomeAgain" md-cell>{{ (100 * adultMI_HomeAgain.undiagnosedReferredForAssessment / adultMI_HomeAgain.total ) | number:2  }}%</td>
-          </tr>
-        </tbody>
-
+        <table md-table ng-show="selectedoutcomes.indexOf('Improved Health') !== -1">
+          <thead md-head>
+            <tr md-row >
+              <th md-column>Improved Health</th>
+              <th md-column md-numeric>Number</th>
+              <th md-column md-numeric>Percent</th>
+            </tr>
+          </thead>
+          <tbody md-body>
+            <tr md-row>
+              <td md-cell>Adults abusing substances</td>
+              <td md-cell>{{ homeAgainHealthImp.total }}</td>
+              <td md-cell>{{ (100 * homeAgainHealthImp.total / homeAgainPeople.adult ) | number:0  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Adults with a Rule 25 Assessment</td>
+              <td md-cell>{{ homeAgainHealthImp.adultsHaveRuleAs }}</td>
+              <td md-cell>{{ (100 * homeAgainHealthImp.adultsHaveRuleAs / homeAgainHealthImp.total ) | number:0  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Adults attending CD treatment</td>
+              <td md-cell>{{ homeAgainHealthImp.adultsCdTreatment }}</td>
+              <td md-cell>{{ (100 * homeAgainHealthImp.adultsCdTreatment / homeAgainHealthImp.total ) | number:0  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Adults attending self-help groups</td>
+              <td md-cell>{{ homeAgainHealthImp.adultsSelfHelp }}</td>
+              <td md-cell>{{ (100 * homeAgainHealthImp.adultsSelfHelp / homeAgainHealthImp.total ) | number:0  }}%</td>
+            </tr>
+            <tr class="boldrow" md-row>
+              <td md-cell>Adults maintaining sobriety for past 90 days</td>
+              <td md-cell>{{ homeAgainHealthImp.sobrietyNinety }}</td>
+              <td md-cell>{{ (100 * homeAgainHealthImp.sobrietyNinety / homeAgainHealthImp.total ) | number:0  }}%</td>
+            </tr>
+            <tr class="boldrow" md-row>
+              <td md-cell>Adults maintaining sobriety for past 6 months</td>
+              <td md-cell>{{ homeAgainHealthImp.sobrietySixMo }}</td>
+              <td md-cell>{{ (100 * homeAgainHealthImp.sobrietySixMo / homeAgainHealthImp.total ) | number:0  }}%</td>
+            </tr>
+            <tr class="boldrow" md-row>
+              <td md-cell>Adults maintaining sobriety for 12+ months</td>
+              <td md-cell>{{ homeAgainHealthImp.sobrietyTwelvePlus }}</td>
+              <td md-cell>{{ (100 * homeAgainHealthImp.sobrietyTwelvePlus / homeAgainHealthImp.total ) | number:0  }}%</td>
+            </tr>
+            <tr class="boldrow" md-row>
+              <td md-cell>Adults who abused substances achieving sobriety</td>
+              <td md-cell>How is this different from 12 months?</td>
+              <td md-cell>{{ (100 * homeAgainHealthImp.sobrietyTwelvePlus / homeAgainHealthImp.total ) | number:0  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Adults with MI diagnosis</td>
+              <td md-cell>{{ adultMI_HomeAgain.yesTreated + adultMI_HomeAgain.yesReferred + adultMI_HomeAgain.yesNotTreated }}</td>
+              <td md-cell>{{ (100 * (adultMI_HomeAgain.yesTreated + adultMI_HomeAgain.yesReferred + adultMI_HomeAgain.yesNotTreated) / homeAgainPeople.adult ) | number:0 }}%</td>
+            </tr>
+            <tr class="boldrow" md-row>
+              <td md-cell>Adults with MI diagnosis receiving treatment</td>
+              <td md-cell>{{ adultMI_HomeAgain.yesTreated }}</td>
+              <td md-cell>{{ (100 * adultMI_HomeAgain.yesTreated / (adultMI_HomeAgain.yesTreated + adultMI_HomeAgain.yesReferred + adultMI_HomeAgain.yesNotTreated) ) | number:0 }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Adults with diagnosed MI referred for assessment</td>
+              <td md-cell>{{ adultMI_HomeAgain.yesReferred }}</td>
+              <td md-cell>{{ (100 * adultMI_HomeAgain.yesReferred / (adultMI_HomeAgain.yesTreated + adultMI_HomeAgain.yesReferred + adultMI_HomeAgain.yesNotTreated) ) | number:0  }}%</td>
+            </tr>
+            <tr class="boldrow" md-row>
+              <td md-cell>Adults with undiagnosed MI referred for assessment</td>
+              <td md-cell>{{ adultMI_HomeAgain.undiagnosedReferredForAssessment }}</td>
+              <td md-cell>{{ (100 * adultMI_HomeAgain.undiagnosedReferredForAssessment / adultMI_HomeAgain.total ) | number:0  }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Children with MI diagnosis</td>
+              <td md-cell>{{ childMI_HomeAgain.yesTreated + childMI_HomeAgain.yesReferred + childMI_HomeAgain.yesNotTreated }}</td>
+              <td md-cell>{{ (100 * (childMI_HomeAgain.yesTreated + childMI_HomeAgain.yesReferred + childMI_HomeAgain.yesNotTreated) / homeAgainPeople.children ) | number:0 }}%</td>
+            </tr>
+            <tr class="boldrow" md-row>
+              <td md-cell>Children with MI diagnosis receiving treatment</td>
+              <td md-cell>{{ childMI_HomeAgain.yesTreated }}</td>
+              <td  md-cell>{{ (100 * childMI_HomeAgain.yesTreated / (childMI_HomeAgain.yesTreated + childMI_HomeAgain.yesReferred + childMI_HomeAgain.yesNotTreated) ) | number:0 }}%</td>
+            </tr>
+            <tr md-row>
+              <td md-cell>Children with diagnosed MI referred for assessment</td>
+              <td md-cell>{{ childMI_HomeAgain.yesReferred }}</td>
+              <td md-cell>{{ (100 * childMI_HomeAgain.yesReferred / childMI_HomeAgain.yesTreated + childMI_HomeAgain.yesReferred + childMI_HomeAgain.yesNotTreated ) | number:0  }}%</td>
+            </tr>
+            <tr class="boldrow" md-row>
+              <td md-cell>Children with undiagnosed MI referred for assessment</td>
+              <td md-cell>{{ childMI_HomeAgain.undiagnosedReferred }}</td>
+              <td md-cell>{{ (100 * childMI_HomeAgain.undiagnosedReferred / homeAgainPeople.children ) | number:0  }}%</td>
+            </tr>
+          </tbody>
+        </table>
 <!-- Home Again: Community Connections ---------------------------->
-        <!-- <thead md-head>
-          <tr md-row >
-            <th md-column>Community Connections</th>
-            <th md-column md-numeric>Number</th>
-            <th md-column md-numeric>Percent</th>
-          </tr>
-        </thead>
-        <tbody md-body>
-          <tr md-row class="boldrow">
-            <td md-cell>Residents connected to community</td>
-            <td ng-model="residenceEMP" md-cell>{{ residenceEMP.ramsey }}</td>
-            <td ng-model="residenceEMP" md-cell>{{ (100 * residenceEMP.ramsey / residenceEMP.total ) | number:2  }}%</td>
-          </tr>
-        </tbody> -->
-
+        <table md-table ng-show="selectedoutcomes.indexOf('Community Connections') !== -1">
+          <thead md-head>
+            <tr md-row >
+              <th md-column>Community Connections</th>
+              <th md-column md-numeric>Number</th>
+              <th md-column md-numeric>Percent</th>
+            </tr>
+          </thead>
+          <tbody md-body>
+            <tr md-row class="boldrow">
+              <td md-cell>Increased their social support</td>
+              <td md-cell>{{ socialHomeAgain.totalPeople }}</td>
+              <td md-cell>{{ (100 * socialHomeAgain.totalPeople / homeAgainPeople.family ) | number:0  }}%</td>
+            </tr>
+          </tbody>
+        </table>
 <!-- Home Again: Graduates ---------------------------->
-        <!-- <thead md-head>
-          <tr md-row >
-            <th md-column>Graduates</th>
-            <th md-column md-numeric>Number</th>
-            <th md-column md-numeric>Percent</th>
-          </tr>
-        </thead>
-        <tbody md-body>
-          <tr md-row>
-            <td md-cell>Persons graduating</td>
-            <td ng-model="earnedIncomeEMP" md-cell>{{ earnedIncomeEMP.n0_499 }}</td>
-            <td ng-model="earnedIncomeEMP" md-cell>{{ (100 * earnedIncomeEMP.n0_499 / earnedIncomeEMP.total ) | number:2  }}%</td>
-          </tr>
-          <tr md-row class="boldrow">
-            <td md-cell>Retained housing at 6 months</td>
-            <td ng-model="earnedIncomeEMP" md-cell>{{ earnedIncomeEMP.n500_999 }}</td>
-            <td ng-model="earnedIncomeEMP" md-cell>{{ (100 * earnedIncomeEMP.n500_999 / earnedIncomeEMP.total ) | number:2  }}%</td>
-          </tr>
-        </tbody> -->
+        <table md-table>
+          <thead md-head>
+            <tr md-row >
+              <th md-column>Graduates</th>
+              <th md-column md-numeric>Number</th>
+              <th md-column md-numeric>Percent</th>
+            </tr>
+          </thead>
+          <tbody md-body>
+            <!-- <tr md-row>
+              <td md-cell>Persons graduating</td>
+              <td md-cell>{{ earnedIncomeEMP.n0_499 }}</td>
+              <td md-cell>{{ (100 * earnedIncomeEMP.n0_499 / earnedIncomeEMP.total ) | number:0  }}%</td>
+            </tr>
+            <tr md-row class="boldrow">
+              <td md-cell>Retained housing at 6 months</td>
+              <td md-cell>{{ earnedIncomeEMP.n500_999 }}</td>
+              <td md-cell>{{ (100 * earnedIncomeEMP.n500_999 / earnedIncomeEMP.total ) | number:0  }}%</td>
+            </tr> -->
+          </tbody>
 
-
-      </table>
-    </md-table-container>
+        </table>
+      </md-table-container>

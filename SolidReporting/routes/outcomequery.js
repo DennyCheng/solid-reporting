@@ -1016,16 +1016,9 @@ router.post('/tenanttrainingprioryear', function(req, res) {
 // DBT
 router.post('/DBT', function(req, res) {
   console.log("go DBT");
-  // console.log("req.body line 56: ", req.body);
-  // var raceAdult = req.body.raceAdultSelection;
-  // var ageAdult = req.body.ageAdultSelection;
-  // var raceChild = req.body.raceChildrenSelection;
-  // var gender = req.body.genderSelection;
-  // var ageChild = req.body.ageChildrenSelection;
   var startDate = req.body.startdate;
   var endDate = req.body.enddate;
   var firstOfYear = req.body.firstDayOfTheYear;
-
 
   pool.connect(function(err, client, done) {
 
@@ -1061,12 +1054,6 @@ router.post('/DBT', function(req, res) {
 // DBT in the same year
 router.post('/DBTsameyear', function(req, res) {
   console.log("go DBT same year");
-  // console.log("req.body line 56: ", req.body);
-  // var raceAdult = req.body.raceAdultSelection;
-  // var ageAdult = req.body.ageAdultSelection;
-  // var raceChild = req.body.raceChildrenSelection;
-  // var gender = req.body.genderSelection;
-  // var ageChild = req.body.ageChildrenSelection;
   var startDate = req.body.startdate;
   var endDate = req.body.enddate;
   var firstOfYear = req.body.firstDayOfTheYear;
@@ -1081,7 +1068,7 @@ router.post('/DBTsameyear', function(req, res) {
 
     client.query("SELECT COUNT(*) \"DBT Completed\", \"Program\" " +
     "FROM \"Head of Household\" " +
-    "WHERE(\"Head of Household\".\"Tenant Training Completed\" >= '" + firstOfYear + "' AND \"Head of Household\".\"Tenant Training Completed\" <= '" + endDate + "') AND ((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
+    "WHERE(\"Head of Household\".\"DBT Completed\" >= '" + firstOfYear + "' AND \"Head of Household\".\"DBT Completed\" <= '" + endDate + "') AND ((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "')) " +
@@ -1126,7 +1113,7 @@ router.post('/DBTprioryear', function(req, res) {
 
     client.query("SELECT COUNT(*) \"DBT Completed\" , \"Program\" " +
     "FROM \"Head of Household\" " +
-    "WHERE(\"Head of Household\".\"Tenant Training Completed\" < '" + firstOfYear + "') AND " +
+    "WHERE(\"Head of Household\".\"DBT Completed\" < '" + firstOfYear + "') AND " +
     "((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
     "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
