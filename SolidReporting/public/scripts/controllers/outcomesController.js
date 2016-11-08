@@ -3357,6 +3357,80 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                     console.log("MEOWSZ");
                     });//end of dobChildren
 
+                    $scope.demoFactory.totalFamilies(selections).then(function (response) {
+        console.log("response totalFamilies: ", response);
+        var data = response;
+        console.log('data---------', data);
+
+        // console.log('3204239438403324-23------',dataProgram);
+        for (var i = 0; i < data.length; i++) {
+          // console.log('3204239438403324-23DATATAT------', data[i]);
+          var dataProgram = data[i]['Program'];
+          var dataRole = data[i]['numberofpeople'];
+
+          if (dataProgram === 'EMP') {
+            var empSum = Number(data[i]['numberofpeople']);
+            console.log('total sum emp families -------', empSum);
+          } else if (dataProgram === 'EMPII') {
+            var emp2Sum = Number(data[i]['numberofpeople']);
+            console.log('total sum empII adult -------', emp2Sum);
+          } else if (dataProgram === 'HomeSafe') {
+            var homesafeSum = Number(data[i]['numberofpeople']);
+            console.log('total sum HomeSafe Adults -------', homesafeSum);
+          } else if (dataProgram === 'Home Again') {
+            var homeAgainSum = Number(data[i]['numberofpeople']);
+            console.log('total sum Home Again Adults -------', homeAgainSum);
+          } else if(dataProgram =="Home Front"|| dataProgram =="HomeFront") {
+            var homeFrontSum = Number(data[i]['numberofpeople']);
+            console.log('total sum Home front adult -------', homeFrontSum);
+          }
+
+        }
+
+        // EMP1
+        $scope.empPeople = {
+          family: 0,
+        };
+
+        $scope.empPeople.family = empSum;
+        console.log('emp1family sum value',$scope.empPeople.family);
+
+        // EMP2
+        $scope.emp2People = {
+          family: 0,
+        };
+
+        $scope.emp2People.family = emp2Sum;
+        console.log('emp2family sum value',$scope.emp2People.family);
+
+
+        // HOMESAFE
+        $scope.homesafePeople = {
+          family: 0,
+        };
+
+        $scope.homesafePeople.family = homesafeSum;
+        console.log('homesafefamily sum value',$scope.homesafePeople.family);
+
+        // HOMEAGAIN People
+        $scope.homeagainPeople = {
+          family: 0,
+        };
+
+        $scope.homeagainPeople.family = homeAgainSum;
+        console.log('homeagianfamily sum value',$scope.homeagainPeople.family);
+
+        // HOMEFRONT People
+        $scope.homeafrontPeople = {
+          family: 0,
+        };
+
+        $scope.homefrontPeople.family = homeFrontSum;
+        console.log('homeagianfamily sum value',$scope.homefrontPeople.family);
+
+
+      });
+
 
     } //end of click
 
