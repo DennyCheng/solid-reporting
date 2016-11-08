@@ -6,14 +6,6 @@ myApp.controller("DemoController", ["$scope",'$http','DataFactory', '$location',
     $scope.userName = $scope.dataFactory.varUsername();
     $scope.demoFactory = DemoFactory;
 
-    $scope.tologout = function() {
-      $scope.dataFactory.logout().then(function(response) {
-        console.log('logged out');
-        console.log('i redirected you to the home page');
-        $location.path("/login");
-      });
-    };
-
     $scope.toggleSide = function() {
       $mdSidenav('left').toggle();
     };

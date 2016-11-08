@@ -1,6 +1,6 @@
 myApp.controller('navigationController', ['$scope', '$location','DataFactory', function($scope, $location, DataFactory) {
     $scope.dataFactory = DataFactory;
-
+    
     $scope.isActive = function(viewLocation) {
         return viewLocation === $location.path();
     };
