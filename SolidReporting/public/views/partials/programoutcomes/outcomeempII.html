@@ -94,16 +94,16 @@
             <td md-cell>{{ (100 * (emp2Adult.complete + emp2Adult.continue) / emp2Adult.enrolled ) | number:0 }}%</td>
           </tr>
           <md-divider></md-divider>
-          <!-- <tr md-row>
+          <tr md-row>
             <td md-cell>School-age children</td>
-            <td md-cell>{{ empRace.multiracial }}</td>
-            <td md-cell>{{ (100 * empRace.multiracial / empRace.total ) | number:0 }}%</td>
+            <td md-cell>{{ childSchoolAgeEMPII.total }}</td>
+            <td md-cell>{{ (100 * childSchoolAgeEMPII.total / emp2People.children ) | number:0 }}%</td>
           </tr>
           <tr md-row class="boldrow">
             <td md-cell>Children regularly attending school</td>
-            <td md-cell>{{ empRace.other }}</td>
-            <td md-cell>{{ (100 * empRace.other / empRace.total ) | number:0 }}%</td>
-          </tr> -->
+            <td md-cell>{{ x }}</td>
+            <td md-cell>{{ (100 * x / childSchoolAgeEMPII.total ) | number:0 }}%</td>
+          </tr>
           <tr md-row>
             <td md-cell>Adults with a documented learning disability</td>
             <td md-cell>{{ adultDisEMPII.countTotal }}</td>
@@ -321,16 +321,16 @@
               <td md-cell>Currently participating in DBT</td>
               <td md-cell> {{ dobEMP.total }}</td>
               <td md-cell>{{ (100 * dobEMP.total / houseEMPII.reside1year ) | number:0  }}%</td>
-            </tr>
-            <tr md-row>
-              <td md-cell>Dropped out of DBT and did not return</td>
-              <td md-cell> {{ dobEMP.total }}</td>
-              <td md-cell>{{ (100 * dobEMP.total / dobEMP.total ) | number:0  }}%</td>
             </tr> -->
             <tr md-row>
+              <td md-cell>Dropped out of DBT and did not return</td>
+              <td md-cell> {{ emp2Dbt.droppedOut }}</td>
+              <td md-cell>{{ (100 * emp2Dbt.droppedOut / houseEMPII.reside1year ) | number:0  }}%</td>
+            </tr>
+            <tr md-row>
               <td md-cell>Adults in housing 1+ years completing DBT Skills</td>
-              <td md-cell> {{ emp2Dbt.total }}</td>
-              <td md-cell>{{ (100 * emp2Dbt.total / houseEMPII.reside1year ) | number:0  }}%</td>
+              <td md-cell> {{ emp2Dbt.yesDBT }}</td>
+              <td md-cell>{{ (100 * emp2Dbt.yesDBT / houseEMPII.reside1year ) | number:0  }}%</td>
             </tr>
           </tbody>
         </table>
@@ -387,18 +387,18 @@
             </tr>
             <tr md-row>
               <td md-cell>Adults with MI diagnosis</td>
-              <td md-cell>{{ adultMI_EMPII.yesAndBeingTreated + adultMI_EMPII.yesAndReferredForAssessment + adultMI_EMPII.yesAndNotBeingTreated }}</td>
-              <td md-cell>{{ (100 * (adultMI_EMPII.yesAndBeingTreated + adultMI_EMPII.yesAndReferredForAssessment + adultMI_EMPII.yesAndNotBeingTreated) / emp2People.adult ) | number:0 }}%</td>
+              <td md-cell>{{ adultMI_EMPII.yesTreated + adultMI_EMPII.yesReferred + adultMI_EMPII.yesNotTreated }}</td>
+              <td md-cell>{{ (100 * (adultMI_EMPII.yesTreated + adultMI_EMPII.yesReferred + adultMI_EMPII.yesNotTreated) / emp2People.adult ) | number:0 }}%</td>
             </tr>
             <tr class="boldrow" md-row>
               <td md-cell>Adults with MI diagnosis receiving treatment</td>
-              <td md-cell>{{ adultMI_EMPII.yesAndBeingTreated }}</td>
-              <td md-cell>{{ (100 * adultMI_EMPII.yesAndBeingTreated / (adultMI_EMPII.yesAndBeingTreated + adultMI_EMPII.yesAndReferredForAssessment + adultMI_EMPII.yesAndNotBeingTreated) ) | number:0 }}%</td>
+              <td md-cell>{{ adultMI_EMPII.yesTreated }}</td>
+              <td md-cell>{{ (100 * adultMI_EMPII.yesTreated / (adultMI_EMPII.yesTreated + adultMI_EMPII.yesReferred + adultMI_EMPII.yesNotTreated) ) | number:0 }}%</td>
             </tr>
             <tr md-row>
               <td md-cell>Adults with diagnosed MI referred for assessment</td>
-              <td md-cell>{{ adultMI_EMPII.yesAndReferredForAssessment }}</td>
-              <td md-cell>{{ (100 * adultMI_EMPII.yesAndReferredForAssessment / (adultMI_EMPII.yesAndBeingTreated + adultMI_EMPII.yesAndReferredForAssessment + adultMI_EMPII.yesAndNotBeingTreated) ) | number:0  }}%</td>
+              <td md-cell>{{ adultMI_EMPII.yesReferred }}</td>
+              <td md-cell>{{ (100 * adultMI_EMPII.yesReferred / (adultMI_EMPII.yesTreated + adultMI_EMPII.yesReferred + adultMI_EMPII.yesNotTreated) ) | number:0  }}%</td>
             </tr>
             <tr class="boldrow" md-row>
               <td md-cell>Adults with undiagnosed MI referred for assessment</td>

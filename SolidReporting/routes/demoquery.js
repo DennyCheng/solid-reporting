@@ -246,7 +246,7 @@ router.post('/dobchildren', function(req, res) {
   // sorting through raceChild selections:
   if(raceChild.length === 0) {
     // somehow delete the query or make it blank or assume this is select all
-    raceQuery = "length is 0, nothing selected";
+    raceQuery = "";
   } else if(raceChild.length === 1) {
     raceQuery = "(\"Members of Household\".\"Race Code\" = '" + raceChild[0] + "') AND ";
   } else {
@@ -1713,6 +1713,236 @@ router.post('/famsexit', function(req, res) {
 
         res.send(result.rows);
 
+    });
+
+  });
+});
+
+// Total families - Just adults from Head of Household //
+router.post('/totalfamilies', function(req, res) {
+  console.log("go total families");
+  // console.log("req.body line 107: ", req.body);
+  var raceAdult = req.body.raceAdultSelection;
+  var ageAdult = req.body.ageAdultSelection;
+  var raceChild = req.body.raceChildrenSelection;
+  var gender = req.body.genderSelection;
+  var ageChild = req.body.ageChildrenSelection;
+  var lastResidence = req.body.lastResidenceSelection;
+  var startDate = req.body.startdate;
+  var endDate = req.body.enddate;
+  // Query variables to use in SQL Query
+  var raceAdultQuery = '';
+  var raceAdult_2Query = '';
+  var raceChildQuery = '';
+  var ageAdultQuery = '';
+  var ageAdult_2Query = '';
+  var ageChildQuery = '';
+  var genderAdultQuery = '';
+  var genderAdult_2Query = '';
+  var genderChildQuery = '';
+  var lastResidenceQuery = '';
+  var lastResidence_2Query = '';
+  console.log("lastResidence line 354: ", lastResidence);
+
+  // sorting through raceAdult selections:
+  if(raceAdult.length === 0) {
+    // somehow delete the query or make it blank or assume this is select all
+    raceAdultQuery = "";
+  } else if(raceAdult.length === 1) {
+    raceAdultQuery = "(\"Head of Household\".\"Race Code\" = '" + raceAdult[0] + "') AND ";
+  } else {
+    raceAdult.forEach(function(race, i) {
+      //differences if there is a beginning '(' or ')' and ending with 'OR' or 'AND'
+      if(race === null) {
+        raceAdultQuery += "(\"Head of Household\".\"Race Code\" IS NULL)) AND ";
+      } else if(i === 0) {
+        raceAdultQuery += "((\"Head of Household\".\"Race Code\" = '" + race + "') OR ";
+      } else if(i === (raceAdult.length - 1)) {
+        raceAdultQuery += "(\"Head of Household\".\"Race Code\" = '" + race + "')) AND ";
+      } else {
+          raceAdultQuery += "(\"Head of Household\".\"Race Code\" = '" + race + "') OR ";
+        }
+    });
+  }
+  console.log("raceAdultQuery after if statement: ", raceAdultQuery);
+
+  // sorting through raceAdult for HOH-2 selections:
+  if(raceAdult.length === 0) {
+    // somehow delete the query or make it blank or assume this is select all
+    raceAdult_2Query = "";
+  } else if(raceAdult.length === 1) {
+    raceAdult_2Query = "(\"Head of Household-2\".\"Race Code\" = '" + raceAdult[0] + "') AND ";
+  } else {
+    raceAdult.forEach(function(race, i) {
+      //differences if there is a beginning '(' or ')' and ending with 'OR' or 'AND'
+      if(race === null) {
+        raceAdult_2Query += "(\"Head of Household-2\".\"Race Code\" IS NULL)) AND ";
+      } else if(i === 0) {
+        raceAdult_2Query += "((\"Head of Household-2\".\"Race Code\" = '" + race + "') OR ";
+      } else if(i === (raceAdult.length - 1)) {
+        raceAdult_2Query += "(\"Head of Household-2\".\"Race Code\" = '" + race + "')) AND ";
+      } else {
+          raceAdult_2Query += "(\"Head of Household-2\".\"Race Code\" = '" + race + "') OR ";
+        }
+    });
+  }
+  console.log("raceAdult_2Query after if statement: ", raceAdult_2Query);
+
+  // // sorting through ageAdult Selections:
+  // if(ageAdult.length === 0) {
+  //    ageAdultQuery
+  // } else if (ageAdult.length === 1) {
+  //    ageAdultQuery
+  // } else {
+  //    ageAdultQuery
+  // }
+
+  // sorting through raceChild selections:
+  if(raceChild.length === 0) {
+    // somehow delete the query or make it blank or assume this is select all
+    raceChildQuery = "";
+  } else if(raceChild.length === 1) {
+    raceChildQuery = "(\"Members of Household\".\"Race Code\" = '" + raceChild[0] + "') AND ";
+  } else {
+    raceChild.forEach(function(race, i) {
+      //differences if there is a beginning '(' or ')' and ending with 'OR' or 'AND'
+      if(race === null) {
+        raceChildQuery += "(\"Members of Household\".\"Race Code\" IS NULL)) AND "
+      } else if(i === 0) {
+        raceChildQuery += "((\"Members of Household\".\"Race Code\" = '" + race + "') OR ";
+      } else if(i === (raceChild.length - 1)) {
+        raceChildQuery += "(\"Members of Household\".\"Race Code\" = '" + race + "')) AND ";
+      } else {
+          raceChildQuery += "(\"Members of Household\".\"Race Code\" = '" + race + "') OR ";
+        }
+    });
+  }
+  console.log("raceChildQuery after if statement: ", raceChildQuery);
+
+  // sorting through gender for Adults in HOH selections:
+  if(gender.length === 0) {
+    // somehow delete the query or make it blank or assume this is select all
+    genderAdultQuery = 'length is 0, nothing selected';
+  } else if(gender.length === 1) {
+    genderAdultQuery = "(\"Head of Household\".\"Gender\" = '" + gender[0] + "') AND ";
+  } else {
+    gender.forEach(function(gen, i) {
+      if(i === (gender.length - 1)) {
+        genderAdultQuery += "(\"Head of Household\".\"Gender\" = '" + gen + "')) AND ";
+      } else {
+          genderAdultQuery += "((\"Head of Household\".\"Gender\" = '" + gen + "') OR ";
+        }
+    });
+  }
+  console.log("genderAdultQuery for HOH after if statement: ", genderAdultQuery);
+
+  // sorting through gender for Adults in HOH-2 selections:
+  if(gender.length === 0) {
+    // somehow delete the query or make it blank or assume this is select all
+    genderAdult_2Query = '';
+  } else if(gender.length === 1) {
+    genderAdult_2Query = "(\"Head of Household-2\".\"Gender\" = '" + gender[0] + "') AND ";
+  } else {
+    gender.forEach(function(gen, i) {
+      if(i === (gender.length - 1)) {
+        genderAdult_2Query += "(\"Head of Household-2\".\"Gender\" = '" + gen + "')) AND ";
+      } else {
+          genderAdult_2Query += "((\"Head of Household-2\".\"Gender\" = '" + gen + "') OR ";
+        }
+    });
+  }
+  console.log("genderAdult_2Query for HOH-2 after if statement: ", genderAdult_2Query);
+
+  // sorting through gender for children in MOH selections:
+  if(gender.length === 0) {
+    // somehow delete the query or make it blank or assume this is select all
+    genderChildQuery = '';
+  } else if(gender.length === 1) {
+    genderChildQuery = "(\"Members of Household\".\"Gender\" = '" + gender[0] + "') AND ";
+  } else {
+    gender.forEach(function(gen, i) {
+      if(i === (gender.length - 1)) {
+        genderChildQuery += "(\"Members of Household\".\"Gender\" = '" + gen + "')) AND ";
+      } else {
+          genderChildQuery += "((\"Members of Household\".\"Gender\" = '" + gen + "') OR ";
+        }
+    });
+  }
+  console.log("genderChildQuery for Children after if statement: ", genderChildQuery);
+
+  // // sorting through ageChild Selections:
+  // if(ageChild.length === 0) {
+  //    ageChildQuery +=
+  // } else if (ageChild.length === 1) {
+  //    ageChildQuery +=
+  // } else {
+  //    ageChildQuery +=
+  // }
+
+  // sorting through lastResidence for HOH Selections:
+  if(lastResidence.length === 0) {
+    // somehow delete the query or make it blank or assume this is select all
+    lastResidenceQuery = '';
+  } else if(lastResidence.length === 1) {
+    lastResidenceQuery = "(\"Head of Household\".\"County of Last Residence\" = '" + lastResidence[0] + "') AND ";
+  } else {
+    lastResidence.forEach(function(county, i) {
+      if(i === 0) {
+        lastResidenceQuery += "((\"Head of Household\".\"County of Last Residence\" = '" + county + "') OR ";
+      } else if(i === (lastResidence.length - 1)) {
+        lastResidenceQuery += "(\"Head of Household\".\"County of Last Residence\" = '" + county + "')) AND ";
+      } else {
+        lastResidenceQuery += "(\"Head of Household\".\"County of Last Residence\" = '" + county + "') OR ";
+        }
+    });
+  }
+  console.log("lastResidenceQuery HOH & MOH after if statement: ", lastResidenceQuery);
+
+  // sorting through lastResidence for HOH-2 Selections:
+  if(lastResidence.length === 0) {
+    // somehow delete the query or make it blank or assume this is select all
+    lastResidence_2Query = 'length is 0, nothing selected';
+  } else if(lastResidence.length === 1) {
+    lastResidence_2Query = "(\"Head of Household-2\".\"County of Last Residence\" = '" + lastResidence[0] + "') AND ";
+  } else {
+    lastResidence.forEach(function(county, i) {
+      if(i === 0) {
+        lastResidence_2Query += "((\"Head of Household-2\".\"County of Last Residence\" = '" + county + "') OR ";
+      } else if(i === (lastResidence.length - 1)) {
+        lastResidence_2Query += "(\"Head of Household-2\".\"County of Last Residence\" = '" + county + "')) AND ";
+      } else {
+        lastResidence_2Query += "(\"Head of Household-2\".\"County of Last Residence\" = '" + county + "') OR ";
+        }
+    });
+  }
+  console.log("lastResidence_2Query for HOH-2 after if statement: ", lastResidence_2Query);
+
+
+  pool.connect(function(err, client, done) {
+
+    if(err) {
+      console.log(err);
+      res.sendStatus(500);
+    }
+
+    client.query( "SELECT COUNT (*) as numberOfPeople, \"Program\" " +
+                  "FROM \"Head of Household\" " +
+                  "WHERE " + raceAdultQuery + genderAdultQuery + lastResidenceQuery +
+                  "((\"Head of Household\".\"Program Exit Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" <= '" + endDate + "') " +
+                  "OR (\"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" IS NULL) " +
+                  "OR (\"Head of Household\".\"Program Entry Date\" <= '" + startDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "') " +
+                  "OR (\"Head of Household\".\"Program Entry Date\" >= '" + startDate + "' AND \"Head of Household\".\"Program Entry Date\" <= '" + endDate + "' AND \"Head of Household\".\"Program Exit Date\" >= '" + endDate + "')) " +
+                  "GROUP BY \"Program\" ;",
+      function(err, result) {
+        done();
+
+        if(err) {
+          console.log("select error: ", err);
+          res.sendStatus(500);
+        }
+        // console.log('results.row: ', result.rows);
+
+        res.send(result.rows);
     });
 
   });

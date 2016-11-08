@@ -48,12 +48,12 @@ myApp.controller('uploadController', ['$scope', 'DataFactory', '$http', '$locati
                         console.log(result);
                     if(result.status === 200) {
                         $scope.isDisabled = true;
-                        toaster.success('You have successfully upload!');
+                        toaster.success('You have successfully uploaded!');
                         setTimeout(function(){
                             $location.path("/landing");
                         }, 500);
                     } else {
-                        toaster.error('upload has fail');
+                        toaster.error('Upload has failed');
                     }
                 });
             } else {

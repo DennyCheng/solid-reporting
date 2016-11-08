@@ -1,5 +1,5 @@
 <!-- Home Front  --------------------------------->
-        <md-table-container ng-model="toggleSelect" class="homefront" ng-show="selectedprogram.indexOf('Home Front') !== -1 || selectedprogram.indexOf('HomeFront') !== -1" flex>
+        <md-table-container ng-model="toggleSelect" class="homefront" ng-show="selectedprograms.indexOf('Home Front') !== -1 || selectedprograms.indexOf('HomeFront') !== -1" flex>
           <md-toolbar flex>
             <h1 class="md-title tablehead" >{{"Home Front"}}</h1>
           </md-toolbar>
@@ -94,16 +94,16 @@
             <td md-cell>{{ (100 * (homeFrontAdult.complete + homeFrontAdult.continue) / homeFrontAdult.enrolled ) | number:0 }}%</td>
           </tr>
           <md-divider></md-divider>
-          <!-- <tr md-row>
+          <tr md-row>
             <td md-cell>School-age children</td>
-            <td md-cell>{{ empRace.multiracial }}</td>
-            <td md-cell>{{ (100 * empRace.multiracial / empRace.total ) | number:0 }}%</td>
+            <td md-cell>{{ childSchoolAgeHomeFront.total }}</td>
+            <td md-cell>{{ (100 * childSchoolAgeHomeFront.total / homeFrontPeople.children ) | number:0 }}%</td>
           </tr>
           <tr md-row class="boldrow">
             <td md-cell>Children regularly attending school</td>
-            <td md-cell>{{ empRace.other }}</td>
-            <td md-cell>{{ (100 * empRace.other / empRace.total ) | number:0 }}%</td>
-          </tr> -->
+            <td md-cell>{{ x }}</td>
+            <td md-cell>{{ (100 * x / childSchoolAgeHomeFront.total ) | number:0 }}%</td>
+          </tr>
           <tr md-row>
             <td md-cell>Adults with a documented learning disability</td>
             <td md-cell>{{ adultDisHomeFront.countTotal }}</td>
@@ -321,16 +321,16 @@
               <td md-cell>Currently participating in DBT</td>
               <td md-cell> {{ dobEMP.total }}</td>
               <td md-cell>{{ (100 * dobEMP.total / houseHomeFront.reside1year ) | number:0  }}%</td>
-            </tr>
-            <tr md-row>
-              <td md-cell>Dropped out of DBT and did not return</td>
-              <td md-cell> {{ dobEMP.total }}</td>
-              <td md-cell>{{ (100 * dobEMP.total / dobEMP.total ) | number:0  }}%</td>
             </tr> -->
             <tr md-row>
+              <td md-cell>Dropped out of DBT and did not return</td>
+              <td md-cell> {{ homeFrontDbt.droppedOut }}</td>
+              <td md-cell>{{ (100 * homeFrontDbt.droppedOut / houseHomeFront.reside1year ) | number:0  }}%</td>
+            </tr>
+            <tr md-row>
               <td md-cell>Adults in housing 1+ years completing DBT Skills</td>
-              <td md-cell> {{ homeFrontDbt.total }}</td>
-              <td md-cell>{{ (100 * homeFrontDbt.total / houseHomeFront.reside1year ) | number:0  }}%</td>
+              <td md-cell> {{ homeFrontDbt.yesDBT }}</td>
+              <td md-cell>{{ (100 * homeFrontDbt.yesDBT / houseHomeFront.reside1year ) | number:0  }}%</td>
             </tr>
           </tbody>
         </table>
@@ -387,18 +387,18 @@
             </tr>
             <tr md-row>
               <td md-cell>Adults with MI diagnosis</td>
-              <td md-cell>{{ adultMI_HomeFront.yesAndBeingTreated + adultMI_HomeFront.yesAndReferredForAssessment + adultMI_HomeFront.yesAndNotBeingTreated }}</td>
-              <td md-cell>{{ (100 * (adultMI_HomeFront.yesAndBeingTreated + adultMI_HomeFront.yesAndReferredForAssessment + adultMI_HomeFront.yesAndNotBeingTreated) / homeFrontPeople.adult ) | number:0 }}%</td>
+              <td md-cell>{{ adultMI_HomeFront.yesTreated + adultMI_HomeFront.yesReferred + adultMI_HomeFront.yesNotTreated }}</td>
+              <td md-cell>{{ (100 * (adultMI_HomeFront.yesTreated + adultMI_HomeFront.yesReferred + adultMI_HomeFront.yesNotTreated) / homeFrontPeople.adult ) | number:0 }}%</td>
             </tr>
             <tr class="boldrow" md-row>
               <td md-cell>Adults with MI diagnosis receiving treatment</td>
-              <td md-cell>{{ adultMI_HomeFront.yesAndBeingTreated }}</td>
-              <td md-cell>{{ (100 * adultMI_HomeFront.yesAndBeingTreated / (adultMI_HomeFront.yesAndBeingTreated + adultMI_HomeFront.yesAndReferredForAssessment + adultMI_HomeFront.yesAndNotBeingTreated) ) | number:0 }}%</td>
+              <td md-cell>{{ adultMI_HomeFront.yesTreated }}</td>
+              <td md-cell>{{ (100 * adultMI_HomeFront.yesTreated / (adultMI_HomeFront.yesTreated + adultMI_HomeFront.yesReferred + adultMI_HomeFront.yesNotTreated) ) | number:0 }}%</td>
             </tr>
             <tr md-row>
               <td md-cell>Adults with diagnosed MI referred for assessment</td>
-              <td md-cell>{{ adultMI_HomeFront.yesAndReferredForAssessment }}</td>
-              <td md-cell>{{ (100 * adultMI_HomeFront.yesAndReferredForAssessment / (adultMI_HomeFront.yesAndBeingTreated + adultMI_HomeFront.yesAndReferredForAssessment + adultMI_HomeFront.yesAndNotBeingTreated) ) | number:0  }}%</td>
+              <td md-cell>{{ adultMI_HomeFront.yesReferred }}</td>
+              <td md-cell>{{ (100 * adultMI_HomeFront.yesReferred / (adultMI_HomeFront.yesTreated + adultMI_HomeFront.yesReferred + adultMI_HomeFront.yesNotTreated) ) | number:0  }}%</td>
             </tr>
             <tr class="boldrow" md-row>
               <td md-cell>Adults with undiagnosed MI referred for assessment</td>
