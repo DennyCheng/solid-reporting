@@ -902,7 +902,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
             $scope.empEconS = {
                 work3month: 0,
                 appliedforSSD: 0,
-                appliedforSSDbutDenied: 0,
+                deniedSSD: 0,
                 jobAtYearEndorExit: 0,
                 diagDisAlreadySSD: 0,
                 approvedSSDduringProgram: 0,
@@ -914,7 +914,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
             $scope.emp2EconS = {
                 work3month: 0,
                 appliedforSSD: 0,
-                appliedforSSDbutDenied: 0,
+                deniedSSD: 0,
                 jobAtYearEndorExit: 0,
                 diagDisAlreadySSD: 0,
                 approvedSSDduringProgram: 0,
@@ -926,7 +926,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
             $scope.homeAgainEconS = {
                 work3month: 0,
                 appliedforSSD: 0,
-                appliedforSSDbutDenied: 0,
+                deniedSSD: 0,
                 jobAtYearEndorExit: 0,
                 diagDisAlreadySSD: 0,
                 approvedSSDduringProgram: 0,
@@ -938,7 +938,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
             $scope.homeSafeEconS = {
                 work3month: 0,
                 appliedforSSD: 0,
-                appliedforSSDbutDenied: 0,
+                deniedSSD: 0,
                 jobAtYearEndorExit: 0,
                 diagDisAlreadySSD: 0,
                 approvedSSDduringProgram: 0,
@@ -950,7 +950,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
             $scope.homeFrontEconS = {
                 work3month: 0,
                 appliedforSSD: 0,
-                appliedforSSDbutDenied: 0,
+                deniedSSD: 0,
                 jobAtYearEndorExit: 0,
                 diagDisAlreadySSD: 0,
                 approvedSSDduringProgram: 0,
@@ -978,9 +978,9 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                         console.log("emp job at exit", $scope.empEconS.jobAtYearEndorExit);
                     }
                     else if(econStabValue == "Applied for SSD but denied"){
-                        $scope.empEconS.appliedforSSDbutDenied += parseInt(responseArray[i].count);
+                        $scope.empEconS.deniedSSD += parseInt(responseArray[i].count);
                         $scope.empEconS.total ++;
-                        console.log("emp denied ssd", $scope.empEconS.appliedforSSDbutDenied);
+                        console.log("emp denied ssd", $scope.empEconS.deniedSSD);
                     }
                     else if(econStabValue == "Approved for SSD during program" || econStabValue == "Diag-Disability approved for SSD during program"){
                         $scope.empEconS.approvedSSDduringProgram += parseInt(responseArray[i].count);
@@ -1016,9 +1016,9 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                         console.log("emp2 job at exit", $scope.emp2EconS.jobAtYearEndorExit);
                     }
                     else if(econStabValue == "Applied for SSD but denied"){
-                        $scope.emp2EconS.appliedforSSDbutDenied += parseInt(responseArray[i].count);
+                        $scope.emp2EconS.deniedSSD += parseInt(responseArray[i].count);
                         $scope.emp2EconS.total ++;
-                        console.log("emp2 denied ssd", $scope.emp2EconS.appliedforSSDbutDenied);
+                        console.log("emp2 denied ssd", $scope.emp2EconS.deniedSSD);
                     }
                     else if(econStabValue == "Approved for SSD during program"){
                         $scope.emp2EconS.approvedSSDduringProgram += parseInt(responseArray[i].count);
@@ -1053,9 +1053,9 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                         console.log("homeSafe job at exit", $scope.homeSafeEconS.jobAtYearEndorExit);
                     }
                     else if(econStabValue == "Applied for SSD but denied"){
-                        $scope.homeSafeEconS.appliedforSSDbutDenied += parseInt(responseArray[i].count);
+                        $scope.homeSafeEconS.deniedSSD += parseInt(responseArray[i].count);
                         $scope.homeSafeEconS.total ++;
-                        console.log("homeSafe denied ssd", $scope.homeSafeEconS.appliedforSSDbutDenied);
+                        console.log("homeSafe denied ssd", $scope.homeSafeEconS.deniedSSD);
                     }
                     else if(econStabValue == "Approved for SSD during program"){
                         $scope.homeSafeEconS.approvedSSDduringProgram += parseInt(responseArray[i].count);
@@ -1090,9 +1090,9 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                         console.log("home again job at exit", $scope.homeAgainEconS.jobAtYearEndorExit);
                     }
                     else if(econStabValue == "Applied for SSD but denied"){
-                        $scope.homeAgainEconS.appliedforSSDbutDenied += parseInt(responseArray[i].count);
+                        $scope.homeAgainEconS.deniedSSD += parseInt(responseArray[i].count);
                         $scope.homeAgainEconS.total ++;
-                        console.log("home again denied ssd", $scope.homeAgainEconS.appliedforSSDbutDenied);
+                        console.log("home again denied ssd", $scope.homeAgainEconS.deniedSSD);
                     }
                     else if(econStabValue == "Approved for SSD during program"){
                         $scope.homeAgainEconS.approvedSSDduringProgram += parseInt(responseArray[i].count);
@@ -1128,9 +1128,9 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                         console.log("home front job at exit", $scope.homeFrontEconS.jobAtYearEndorExit);
                     }
                     else if(econStabValue == "Applied for SSD but denied"){
-                        $scope.homeFrontEconS.appliedforSSDbutDenied += parseInt(responseArray[i].count);
+                        $scope.homeFrontEconS.deniedSSD += parseInt(responseArray[i].count);
                         $scope.homeFrontEconS.total ++;
-                        console.log("home front denied ssd", $scope.homeFrontEconS.appliedforSSDbutDenied);
+                        console.log("home front denied ssd", $scope.homeFrontEconS.deniedSSD);
                     }
                     else if(econStabValue == "Approved for SSD during program"){
                         $scope.homeFrontEconS.approvedSSDduringProgram += parseInt(responseArray[i].count);
@@ -1152,69 +1152,64 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
             }//these check for the objects to have values(these total values hsould equal response.length)
         }); // End of econStabil
 
-
+        /// econStabilMOH = Economic Stability of Members of Household
         $scope.outcomeFactory.econStabilMOH(selections).then(function(response) {
             console.log("response econStabilMOH: ", response);
             var responseArray = response;
 
             $scope.empEconSMOH = {
-                work3month: 0,
-                appliedforSSD: 0,
-                appliedforSSDbutDenied: 0,
-                jobAtYearEndorExit: 0,
-                diagDisAlreadySSD: 0,
-                approvedSSDduringProgram: 0,
-                alreadySSD: 0,
-                refusedSSD: 0,
-                total: 0
+              work3month: 0,
+              jobAtYearEndorExit: 0,
+              appliedforSSD: 0,
+              deniedSSD: 0,
+              approvedSSDduringProgram: 0,
+              alreadySSD: 0,
+              refusedSSD: 0,
+              total: 0
             };
 
             $scope.emp2EconSMOH = {
-                work3month: 0,
-                appliedforSSD: 0,
-                appliedforSSDbutDenied: 0,
-                jobAtYearEndorExit: 0,
-                diagDisAlreadySSD: 0,
-                approvedSSDduringProgram: 0,
-                alreadySSD: 0,
-                refusedSSD: 0,
-                total: 0
+              work3month: 0,
+              jobAtYearEndorExit: 0,
+              appliedforSSD: 0,
+              deniedSSD: 0,
+              approvedSSDduringProgram: 0,
+              alreadySSD: 0,
+              refusedSSD: 0,
+              total: 0
             };
 
             $scope.homeAgainEconSMOH = {
-                work3month: 0,
-                appliedforSSD: 0,
-                appliedforSSDbutDenied: 0,
-                jobAtYearEndorExit: 0,
-                diagDisAlreadySSD: 0,
-                approvedSSDduringProgram: 0,
-                alreadySSD: 0,
-                refusedSSD: 0,
-                total: 0
+              work3month: 0,
+              jobAtYearEndorExit: 0,
+              appliedforSSD: 0,
+              deniedSSD: 0,
+              approvedSSDduringProgram: 0,
+              alreadySSD: 0,
+              refusedSSD: 0,
+              total: 0
             };
 
             $scope.homeSafeEconSMOH = {
-                work3month: 0,
-                appliedforSSD: 0,
-                appliedforSSDbutDenied: 0,
-                jobAtYearEndorExit: 0,
-                diagDisAlreadySSD: 0,
-                approvedSSDduringProgram: 0,
-                alreadySSD: 0,
-                refusedSSD: 0,
-                total: 0
+              work3month: 0,
+              jobAtYearEndorExit: 0,
+              appliedforSSD: 0,
+              deniedSSD: 0,
+              approvedSSDduringProgram: 0,
+              alreadySSD: 0,
+              refusedSSD: 0,
+              total: 0
             };
 
             $scope.homeFrontEconSMOH = {
-                work3month: 0,
-                appliedforSSD: 0,
-                appliedforSSDbutDenied: 0,
-                jobAtYearEndorExit: 0,
-                diagDisAlreadySSD: 0,
-                approvedSSDduringProgram: 0,
-                alreadySSD: 0,
-                refusedSSD: 0,
-                total: 0
+              work3month: 0,
+              jobAtYearEndorExit: 0,
+              appliedforSSD: 0,
+              deniedSSD: 0,
+              approvedSSDduringProgram: 0,
+              alreadySSD: 0,
+              refusedSSD: 0,
+              total: 0
             };
 
             for (var i = 0; i < responseArray.length; i++) {
@@ -1236,9 +1231,9 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                         console.log("emp job at exit", $scope.empEconSMOH.jobAtYearEndorExit);
                     }
                     else if(econStabValue == "Applied for SSD but denied"){
-                        $scope.empEconSMOH.appliedforSSDbutDenied += parseInt(responseArray[i].count);
+                        $scope.empEconSMOH.deniedSSD += parseInt(responseArray[i].count);
                         $scope.empEconSMOH.total ++;
-                        console.log("emp denied ssd", $scope.empEconSMOH.appliedforSSDbutDenied);
+                        console.log("emp denied ssd", $scope.empEconSMOH.deniedSSD);
                     }
                     else if(econStabValue == "Approved for SSD during program" || econStabValue == "Diag-Disability approved for SSD during program"){
                         $scope.empEconSMOH.approvedSSDduringProgram += parseInt(responseArray[i].count);
@@ -1274,9 +1269,9 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                         console.log("emp2 job at exit", $scope.emp2EconSMOH.jobAtYearEndorExit);
                     }
                     else if(econStabValue == "Applied for SSD but denied"){
-                        $scope.emp2EconSMOH.appliedforSSDbutDenied += parseInt(responseArray[i].count);
+                        $scope.emp2EconSMOH.deniedSSD += parseInt(responseArray[i].count);
                         $scope.emp2EconSMOH.total ++;
-                        console.log("emp2 denied ssd", $scope.emp2EconSMOH.appliedforSSDbutDenied);
+                        console.log("emp2 denied ssd", $scope.emp2EconSMOH.deniedSSD);
                     }
                     else if(econStabValue == "Approved for SSD during program"){
                         $scope.emp2EconSMOH.approvedSSDduringProgram += parseInt(responseArray[i].count);
@@ -1311,9 +1306,9 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                         console.log("homeSafe job at exit", $scope.homeSafeEconSMOH.jobAtYearEndorExit);
                     }
                     else if(econStabValue == "Applied for SSD but denied"){
-                        $scope.homeSafeEconSMOH.appliedforSSDbutDenied += parseInt(responseArray[i].count);
+                        $scope.homeSafeEconSMOH.deniedSSD += parseInt(responseArray[i].count);
                         $scope.homeSafeEconSMOH.total ++;
-                        console.log("homeSafe denied ssd", $scope.homeSafeEconSMOH.appliedforSSDbutDenied);
+                        console.log("homeSafe denied ssd", $scope.homeSafeEconSMOH.deniedSSD);
                     }
                     else if(econStabValue == "Approved for SSD during program"){
                         $scope.homeSafeEconSMOH.approvedSSDduringProgram += parseInt(responseArray[i].count);
@@ -1348,9 +1343,9 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                         console.log("home again job at exit", $scope.homeAgainEconSMOH.jobAtYearEndorExit);
                     }
                     else if(econStabValue == "Applied for SSD but denied"){
-                        $scope.homeAgainEconSMOH.appliedforSSDbutDenied += parseInt(responseArray[i].count);
+                        $scope.homeAgainEconSMOH.deniedSSD += parseInt(responseArray[i].count);
                         $scope.homeAgainEconSMOH.total ++;
-                        console.log("home again denied ssd", $scope.homeAgainEconSMOH.appliedforSSDbutDenied);
+                        console.log("home again denied ssd", $scope.homeAgainEconSMOH.deniedSSD);
                     }
                     else if(econStabValue == "Approved for SSD during program"){
                         $scope.homeAgainEconSMOH.approvedSSDduringProgram += parseInt(responseArray[i].count);
@@ -1386,9 +1381,9 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                         console.log("home front job at exit", $scope.homeFrontEconSMOH.jobAtYearEndorExit);
                     }
                     else if(econStabValue == "Applied for SSD but denied"){
-                        $scope.homeFrontEconSMOH.appliedforSSDbutDenied += parseInt(responseArray[i].count);
+                        $scope.homeFrontEconSMOH.deniedSSD += parseInt(responseArray[i].count);
                         $scope.homeFrontEconSMOH.total ++;
-                        console.log("home front denied ssd", $scope.homeFrontEconSMOH.appliedforSSDbutDenied);
+                        console.log("home front denied ssd", $scope.homeFrontEconSMOH.deniedSSD);
                     }
                     else if(econStabValue == "Approved for SSD during program"){
                         $scope.homeFrontEconSMOH.approvedSSDduringProgram += parseInt(responseArray[i].count);
@@ -3104,6 +3099,7 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
         $scope.demoFactory.totalPeople(selections).then(function (response) {
                   console.log("response totalPeople: ", response);
                   var data = response;
+                  var empSum;
                   // console.log('data---------', data);
 
                   // console.log('3204239438403324-23------',dataProgram);
@@ -3128,12 +3124,11 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                       var emp2ChildrenSum = Number(data[i]['sum']);
                       console.log('total sum empII children -------', emp2ChildrenSum);
                     }
-
-                    if (dataProgram === 'HomeSafe' && dataRole === 'Adults') {
+                    if ( (dataProgram === 'HomeSafe' || dataProgram === 'Home Safe') && dataRole === 'Adults') {
                       var homeSafeSum = Number(data[i]['sum']);
                       console.log('total sum HomeSafe Adults -------', homeSafeSum);
                     }
-                    if (dataProgram === 'HomeSafe' && dataRole === 'Children') {
+                    if ( (dataProgram === 'HomeSafe' || dataProgram === 'Home Safe') && dataRole === 'Children') {
                       var homeSafeChildrenSum = Number(data[i]['sum']);
                       console.log('total sum HomeSafe children -------', homeSafeChildrenSum);
                     }
@@ -3145,11 +3140,11 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
                       var homeAgainChildrenSum = Number(data[i]['sum']);
                       console.log('total sum Home Again children -------', homeAgainChildrenSum);
                     }
-                    if(dataProgram =="Home Front"|| dataProgram =="HomeFront"  && dataRole === 'Adults') {
+                    if( (dataProgram =="Home Front" || dataProgram =="HomeFront")  && dataRole === 'Adults') {
                       var homeFrontSum = Number(data[i]['sum']);
                       console.log('total sum Home front adult -------', homeFrontSum);
                     }
-                    if(dataProgram == "Home Front"|| dataProgram == "HomeFront" && dataRole === 'Children') {
+                    if( (dataProgram == "Home Front" || dataProgram == "HomeFront") && dataRole === 'Children') {
                       var homeFrontChildrenSum = Number(data[i]['sum']);
                       console.log('total sum Home front children -------', homeFrontChildrenSum);
                     }
@@ -3291,7 +3286,79 @@ myApp.controller("OutcomesController", ["$scope",'$http', '$location', 'DataFact
 
                 });
 
-
+        // $scope.demoFactory.totalFamilies(selections).then(function (response) {
+        //           console.log("response totalFamilies: ", response);
+        //           var data = response;
+        //           console.log('data---------', data);
+        //
+        //           // console.log('3204239438403324-23------',dataProgram);
+        //           for (var i = 0; i < data.length; i++) {
+        //             // console.log('3204239438403324-23DATATAT------', data[i]);
+        //             var dataProgram = data[i]['Program'];
+        //             var dataRole = data[i]['numberofpeople'];
+        //
+        //             if (dataProgram === 'EMP') {
+        //               var empSum = Number(data[i]['numberofpeople']);
+        //               console.log('total sum emp families -------', empSum);
+        //             } else if (dataProgram === 'EMPII') {
+        //               var emp2Sum = Number(data[i]['numberofpeople']);
+        //               console.log('total sum empII adult -------', emp2Sum);
+        //             } else if (dataProgram === 'HomeSafe') {
+        //               var homesafeSum = Number(data[i]['numberofpeople']);
+        //               console.log('total sum HomeSafe Adults -------', homesafeSum);
+        //             } else if (dataProgram === 'Home Again') {
+        //               var homeAgainSum = Number(data[i]['numberofpeople']);
+        //               console.log('total sum Home Again Adults -------', homeAgainSum);
+        //             } else if(dataProgram =="Home Front"|| dataProgram =="HomeFront") {
+        //               var homeFrontSum = Number(data[i]['numberofpeople']);
+        //               console.log('total sum Home front adult -------', homeFrontSum);
+        //             }
+        //
+        //           }
+        //
+        //           // EMP1
+        //           $scope.empPeople = {
+        //             family: 0,
+        //           };
+        //
+        //           $scope.empPeople.family = empSum;
+        //           console.log('emp1family sum value',$scope.empPeople.family);
+        //
+        //           // EMP2
+        //           $scope.emp2People = {
+        //             family: 0,
+        //           };
+        //
+        //           $scope.emp2People.family = emp2Sum;
+        //           console.log('emp2family sum value',$scope.emp2People.family);
+        //
+        //
+        //           // HOMESAFE
+        //           $scope.homeSafePeople = {
+        //             family: 0,
+        //           };
+        //
+        //           $scope.homeSafePeople.family = homesafeSum;
+        //           console.log('homesafefamily sum value',$scope.homeSafePeople.family);
+        //
+        //           // HOMEAGAIN People
+        //           $scope.homeAgainPeople = {
+        //             family: 0,
+        //           };
+        //
+        //           $scope.homeAgainPeople.family = homeAgainSum;
+        //           console.log('homeagianfamily sum value',$scope.homeAgainPeople.family);
+        //
+        //           // HOMEFRONT People
+        //           $scope.homeFrontPeople = {
+        //             family: 0,
+        //           };
+        //
+        //           $scope.homeFrontPeople.family = homeFrontSum;
+        //           console.log('homeagianfamily sum value',$scope.homeFrontPeople.family);
+        //
+        //
+        //         });
 
     } //end of click
 

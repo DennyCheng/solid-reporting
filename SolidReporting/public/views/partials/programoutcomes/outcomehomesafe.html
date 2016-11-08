@@ -22,22 +22,22 @@
             <!-- <tr md-row>
               <td md-cell>Families making 1st step to stability</td>
               <td md-cell>{{ houseHomeSafe. }}</td>
-              <td md-cell>{{ (100 * houseHomeSafe. / FAMILIES_PROGRAM ) | number:0 }}%</td>
+              <td md-cell>{{ (100 * houseHomeSafe. / homeSafePeople.family ) | number:0 }}%</td>
             </tr> -->
             <tr md-row>
               <td md-cell>Families residing in housing at least 6 months</td>
               <td md-cell>{{ houseHomeSafe.reside6 }}</td>
-              <td md-cell>{{ (100 * houseHomeSafe.reside6 / FAMILIES_PROGRAM ) | number:0 }}%</td>
+              <td md-cell>{{ (100 * houseHomeSafe.reside6 / homeSafePeople.family ) | number:0 }}%</td>
             </tr>
             <tr md-row>
               <td md-cell>Families residing in housing 1+ years</td>
               <td md-cell>{{ houseHomeSafe.reside1year }}</td>
-              <td md-cell>{{ (100 * houseHomeSafe.reside1year / FAMILIES_PROGRAM ) | number:0 }}%</td>
+              <td md-cell>{{ (100 * houseHomeSafe.reside1year / homeSafePeople.family ) | number:0 }}%</td>
             </tr>
             <tr md-row class="boldrow">
               <td md-cell>Families achieving housing stability</td>
               <td md-cell>{{ houseHomeSafe.achieveStability }}</td>
-              <td md-cell>{{ (100 * houseHomeSafe.achieveStability / FAMILIES_PROGRAM ) | number:0 }}%</td>
+              <td md-cell>{{ (100 * houseHomeSafe.achieveStability / homeSafePeople.family ) | number:0 }}%</td>
             </tr>
             <tr md-row>
               <td md-cell>Number exiting housing</td>
@@ -176,8 +176,8 @@
             </tr>
             <tr md-row>
               <td md-cell>Disabled adults denied benefits</td>
-              <td md-cell>{{ homeSafeEconS.appliedforSSDbutDenied }}</td>
-              <td md-cell>{{ (100 * homeSafeEconS.appliedforSSDbutDenied / homeSafeAdultDis.total ) | number:0  }}%</td>
+              <td md-cell>{{ homeSafeEconS.deniedSSD }}</td>
+              <td md-cell>{{ (100 * homeSafeEconS.deniedSSD / homeSafeAdultDis.total ) | number:0  }}%</td>
             </tr>
             <tr md-row>
               <td md-cell>Disabled adults who refused to apply</td>
@@ -186,44 +186,44 @@
             </tr>
             <tr class="boldrow" md-row>
               <td md-cell>Disabled adults who received/applied for disability</td>
-              <td md-cell>{{ homeSafeEconS.appliedforSSD + homeSafeEconS.alreadySSD }}</td>
-              <td md-cell>{{ (100 * (homeSafeEconS.appliedforSSD + homeSafeEconS.alreadySSD) / homeSafeAdultDis.total ) | number:0  }}%</td>
+              <td md-cell>{{ homeSafeEconS.approvedSSDduringProgram + homeSafeEconS.appliedforSSD + homeSafeEconS.alreadySSD + homeSafeEconS.deniedSSD }}</td>
+              <td md-cell>{{ (100 * (homeSafeEconS.approvedSSDduringProgram + homeSafeEconS.appliedforSSD + homeSafeEconS.alreadySSD + homeSafeEconS.deniedSSD ) / homeSafeAdultDis.total ) | number:0  }}%</td>
             </tr>
             <tr md-row>
               <td md-cell>Disabled children</td>
               <td md-cell>{{ homeSafe_childDis.total }}</td>
               <td md-cell>{{ (100 * homeSafe_childDis.total / homeSafePeople.children) | number:0  }}%</td>
             </tr>
-            <!-- <tr md-row>
+            <tr md-row>
               <td md-cell>Disabled children already receiving benefits</td>
-              <td md-cell>{{ raceChildEMP.other }}</td>
-              <td md-cell>{{ (100 * raceChildEMP.other / raceChildEMP.totalCount ) | number:0  }}%</td>
-            </tr> -->
-            <!-- <tr md-row>
+              <td md-cell>{{ homeSafeEconSMOH.alreadySSD }}</td>
+              <td md-cell>{{ (100 * homeSafeEconSMOH.alreadySSD / homeSafe_childDis.total ) | number:0  }}%</td>
+            </tr>
+            <tr md-row>
               <td md-cell>Disabled children who applied for benefits</td>
-              <td md-cell>{{ raceChildEMP.other }}</td>
-              <td md-cell>{{ (100 * raceChildEMP.other / raceChildEMP.totalCount ) | number:0  }}%</td>
-            </tr> -->
-            <!-- <tr md-row>
+              <td md-cell>{{ homeSafeEconSMOH.appliedforSSD }}</td>
+              <td md-cell>{{ (100 * homeSafeEconSMOH.appliedforSSD / homeSafe_childDis.total ) | number:0  }}%</td>
+            </tr>
+            <tr md-row>
               <td md-cell>Disabled children approved for benefits</td>
-              <td md-cell>{{ raceChildEMP.other }}</td>
-              <td md-cell>{{ (100 * raceChildEMP.other / raceChildEMP.totalCount ) | number:0  }}%</td>
-            </tr> -->
-            <!-- <tr md-row>
+              <td md-cell>{{ homeSafeEconSMOH.approvedSSDduringProgram }}</td>
+              <td md-cell>{{ (100 * homeSafeEconSMOH.approvedSSDduringProgram / homeSafe_childDis.total ) | number:0  }}%</td>
+            </tr>
+            <tr md-row>
               <td md-cell>Disabled children denied benefits</td>
-              <td md-cell>{{ raceChildEMP.other }}</td>
-              <td md-cell>{{ (100 * raceChildEMP.other / raceChildEMP.totalCount ) | number:0  }}%</td>
-            </tr> -->
-            <!-- <tr md-row>
+              <td md-cell>{{ homeSafeEconSMOH.deniedSSD }}</td>
+              <td md-cell>{{ (100 * homeSafeEconSMOH.deniedSSD / homeSafe_childDis.total ) | number:0  }}%</td>
+            </tr>
+            <tr md-row>
               <td md-cell>Disabled children who refused to apply</td>
-              <td md-cell>{{ raceChildEMP.other }}</td>
-              <td md-cell>{{ (100 * raceChildEMP.other / raceChildEMP.totalCount ) | number:0  }}%</td>
-            </tr> -->
-            <!-- <tr class="boldrow" md-row>
-              <td md-cell>Disabled children applying for disability</td>
-              <td md-cell>{{ raceChildEMP.other }}</td>
-              <td md-cell>{{ (100 * raceChildEMP.other / raceChildEMP.totalCount ) | number:0  }}%</td>
-            </tr> -->
+              <td md-cell>{{ homeSafeEconSMOH.refusedSSD }}</td>
+              <td md-cell>{{ (100 * homeSafeEconSMOH.refusedSSD / homeSafe_childDis.total ) | number:0  }}%</td>
+            </tr>
+            <tr class="boldrow" md-row>
+              <td md-cell>Disabled children receiving/applying for disability</td>
+              <td md-cell>{{ homeSafeEconSMOH.alreadySSD + homeSafeEconSMOH.approvedSSDduringProgram + homeSafeEconSMOH.appliedforSSD + homeSafeEconSMOH.deniedSSD}}</td>
+              <td md-cell>{{ (100 * (homeSafeEconSMOH.alreadySSD + homeSafeEconSMOH.approvedSSDduringProgram + homeSafeEconSMOH.appliedforSSD + homeSafeEconSMOH.deniedSSD) / homeSafe_childDis.total ) | number:0  }}%</td>
+            </tr>
 
           </tbody>
         </table>
@@ -280,7 +280,7 @@
             <tr md-row>
               <td md-cell>Families experiencing Family Violence</td>
               <td md-cell> {{ violentHomeSafe.total }}</td>
-              <td md-cell>{{ (100 * violentHomeSafe.total / FAMILIES_PROGRAM ) | number:0  }}%</td>
+              <td md-cell>{{ (100 * violentHomeSafe.total / homeSafePeople.family ) | number:0  }}%</td>
             </tr>
             <tr class="boldrow" md-row>
               <td md-cell>Families with a written Safety Plan</td>
@@ -440,7 +440,7 @@
             <tr md-row class="boldrow">
               <td md-cell>Increased their social support</td>
               <td md-cell>{{ socialHomeSafe.totalPeople }}</td>
-              <td md-cell>{{ (100 * socialHomeSafe.totalPeople / FAMILIES_PROGRAM ) | number:0  }}%</td>
+              <td md-cell>{{ (100 * socialHomeSafe.totalPeople / homeSafePeople.family ) | number:0  }}%</td>
             </tr>
           </tbody>
         </table>
