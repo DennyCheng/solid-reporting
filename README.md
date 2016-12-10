@@ -5,6 +5,6 @@ Solid Reporting Application
 
 #Demographics
 
-#Outcomes
+#Outcom
 
 #Database
